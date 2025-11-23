@@ -1,0 +1,902 @@
+[
+  {
+    "pr_id": "003",
+    "repository": "reporting-engine",
+    "branch_source": "feature/pr-003",
+    "branch_target": "main",
+    "title": "Create user profile management API",
+    "description": "Creates REST API endpoints for user profile management including CRUD operations.",
+    "author": "eve.junior",
+    "commit_messages": [
+      "Create profile API",
+      "Add validation",
+      "Update docs"
+    ],
+    "files_changed": 13,
+    "lines_added": 314,
+    "lines_deleted": 38,
+    "language": "javascript"
+  },
+  {
+    "pr_id": "011",
+    "repository": "analytics-dashboard",
+    "branch_source": "feature/pr-011",
+    "branch_target": "main",
+    "title": "Implement rate limiting middleware",
+    "description": "Implements rate limiting to prevent API abuse. Uses Redis for distributed rate limiting.",
+    "author": "frank.architect",
+    "commit_messages": [
+      "Implement rate limiting",
+      "Add configuration",
+      "Update tests"
+    ],
+    "files_changed": 7,
+    "lines_added": 235,
+    "lines_deleted": 27,
+    "language": "typescript"
+  },
+  {
+    "pr_id": "026",
+    "repository": "analytics-dashboard",
+    "branch_source": "feature/pr-026",
+    "branch_target": "main",
+    "title": "Fix incorrect error handling",
+    "description": "Fixes error handling that was swallowing exceptions silently.",
+    "author": "diana.lead",
+    "commit_messages": [
+      "Fix error handling",
+      "Add proper exception handling",
+      "Update tests"
+    ],
+    "files_changed": 4,
+    "lines_added": 36,
+    "lines_deleted": 35,
+    "language": "python"
+  },
+  {
+    "pr_id": "007",
+    "repository": "data-processing-pipeline",
+    "branch_source": "feature/pr-007",
+    "branch_target": "main",
+    "title": "Create admin dashboard",
+    "description": "Creates admin dashboard with user management and analytics views.",
+    "author": "diana.lead",
+    "commit_messages": [
+      "Create admin dashboard",
+      "Add routes",
+      "Add UI components"
+    ],
+    "files_changed": 9,
+    "lines_added": 140,
+    "lines_deleted": 39,
+    "language": "javascript"
+  },
+  {
+    "pr_id": "014",
+    "repository": "notification-service",
+    "branch_source": "feature/pr-014",
+    "branch_target": "main",
+    "title": "Add data export functionality",
+    "description": "Adds functionality to export data in multiple formats (CSV, JSON, Excel).",
+    "author": "alice.dev",
+    "commit_messages": [
+      "Add export feature",
+      "Add format handlers",
+      "Add tests"
+    ],
+    "files_changed": 13,
+    "lines_added": 484,
+    "lines_deleted": 44,
+    "language": "javascript"
+  },
+  {
+    "pr_id": "001",
+    "repository": "payment-gateway",
+    "branch_source": "feature/pr-001",
+    "branch_target": "main",
+    "title": "Implement rate limiting middleware",
+    "description": "Implements rate limiting to prevent API abuse. Uses Redis for distributed rate limiting.",
+    "author": "bob.engineer",
+    "commit_messages": [
+      "Implement rate limiting",
+      "Add configuration",
+      "Update tests"
+    ],
+    "files_changed": 15,
+    "lines_added": 157,
+    "lines_deleted": 13,
+    "language": "python"
+  },
+  {
+    "pr_id": "010",
+    "repository": "data-processing-pipeline",
+    "branch_source": "feature/pr-010",
+    "branch_target": "main",
+    "title": "Add user authentication endpoint",
+    "description": "This PR adds a new authentication endpoint that supports JWT tokens and OAuth2.",
+    "author": "bob.engineer",
+    "commit_messages": [
+      "Add authentication endpoint",
+      "Add tests",
+      "Update documentation"
+    ],
+    "files_changed": 10,
+    "lines_added": 305,
+    "lines_deleted": 44,
+    "language": "typescript"
+  },
+  {
+    "pr_id": "037",
+    "repository": "notification-service",
+    "branch_source": "feature/pr-037",
+    "branch_target": "main",
+    "title": "Restructure project layout",
+    "description": "Restructures project layout to follow clean architecture principles.",
+    "author": "eve.junior",
+    "commit_messages": [
+      "Restructure layout",
+      "Update imports",
+      "Update documentation"
+    ],
+    "files_changed": 14,
+    "lines_added": 758,
+    "lines_deleted": 186,
+    "language": "typescript"
+  },
+  {
+    "pr_id": "031",
+    "repository": "notification-service",
+    "branch_source": "feature/pr-031",
+    "branch_target": "main",
+    "title": "Add input validation for API endpoints",
+    "description": "Adds comprehensive input validation to prevent injection attacks.",
+    "author": "alice.dev",
+    "commit_messages": [
+      "Add input validation",
+      "Add validation rules",
+      "Update tests"
+    ],
+    "files_changed": 7,
+    "lines_added": 96,
+    "lines_deleted": 68,
+    "language": "python"
+  },
+  {
+    "pr_id": "013",
+    "repository": "reporting-engine",
+    "branch_source": "feature/pr-013",
+    "branch_target": "main",
+    "title": "Create user profile management API",
+    "description": "Creates REST API endpoints for user profile management including CRUD operations.",
+    "author": "eve.junior",
+    "commit_messages": [
+      "Create profile API",
+      "Add validation",
+      "Update docs"
+    ],
+    "files_changed": 11,
+    "lines_added": 295,
+    "lines_deleted": 86,
+    "language": "javascript"
+  },
+  {
+    "pr_id": "044",
+    "repository": "analytics-dashboard",
+    "branch_source": "feature/pr-044",
+    "branch_target": "main",
+    "title": "Reduce memory usage",
+    "description": "Reduces memory usage by optimizing data structures and adding memory cleanup.",
+    "author": "charlie.senior",
+    "commit_messages": [
+      "Reduce memory",
+      "Optimize structures",
+      "Add memory tests"
+    ],
+    "files_changed": 9,
+    "lines_added": 280,
+    "lines_deleted": 177,
+    "language": "python"
+  },
+  {
+    "pr_id": "005",
+    "repository": "web-api-service",
+    "branch_source": "feature/pr-005",
+    "branch_target": "main",
+    "title": "Implement caching layer",
+    "description": "Implements Redis-based caching layer to improve API response times.",
+    "author": "frank.architect",
+    "commit_messages": [
+      "Implement caching",
+      "Add cache invalidation",
+      "Update config"
+    ],
+    "files_changed": 10,
+    "lines_added": 409,
+    "lines_deleted": 43,
+    "language": "javascript"
+  },
+  {
+    "pr_id": "048",
+    "repository": "data-processing-pipeline",
+    "branch_source": "feature/pr-048",
+    "branch_target": "main",
+    "title": "Update code comments",
+    "description": "Updates code comments to be more accurate and helpful.",
+    "author": "charlie.senior",
+    "commit_messages": [
+      "Update comments",
+      "Improve docs",
+      "Update code"
+    ],
+    "files_changed": 20,
+    "lines_added": 31,
+    "lines_deleted": 94,
+    "language": "typescript"
+  },
+  {
+    "pr_id": "002",
+    "repository": "analytics-dashboard",
+    "branch_source": "feature/pr-002",
+    "branch_target": "main",
+    "title": "Add email notification service",
+    "description": "Adds email notification service with support for multiple providers (SendGrid, SES).",
+    "author": "bob.engineer",
+    "commit_messages": [
+      "Add email service",
+      "Configure providers",
+      "Add tests"
+    ],
+    "files_changed": 5,
+    "lines_added": 115,
+    "lines_deleted": 21,
+    "language": "typescript"
+  },
+  {
+    "pr_id": "019",
+    "repository": "reporting-engine",
+    "branch_source": "feature/pr-019",
+    "branch_target": "main",
+    "title": "Fix missing null checks",
+    "description": "Adds missing null checks that were causing crashes in edge cases.",
+    "author": "alice.dev",
+    "commit_messages": [
+      "Add null checks",
+      "Fix crashes",
+      "Add test coverage"
+    ],
+    "files_changed": 3,
+    "lines_added": 33,
+    "lines_deleted": 38,
+    "language": "python"
+  },
+  {
+    "pr_id": "020",
+    "repository": "analytics-dashboard",
+    "branch_source": "feature/pr-020",
+    "branch_target": "main",
+    "title": "Fix null pointer exception in user service",
+    "description": "Fixes null pointer exception when user object is None. Adds proper null checks.",
+    "author": "alice.dev",
+    "commit_messages": [
+      "Fix null pointer",
+      "Add null checks",
+      "Add test case"
+    ],
+    "files_changed": 5,
+    "lines_added": 19,
+    "lines_deleted": 42,
+    "language": "python"
+  },
+  {
+    "pr_id": "022",
+    "repository": "user-management",
+    "branch_source": "feature/pr-022",
+    "branch_target": "main",
+    "title": "Fix incorrect date calculation",
+    "description": "Fixes incorrect date calculation that was causing timezone issues.",
+    "author": "bob.engineer",
+    "commit_messages": [
+      "Fix date calculation",
+      "Add timezone handling",
+      "Update tests"
+    ],
+    "files_changed": 4,
+    "lines_added": 20,
+    "lines_deleted": 35,
+    "language": "python"
+  },
+  {
+    "pr_id": "025",
+    "repository": "data-processing-pipeline",
+    "branch_source": "feature/pr-025",
+    "branch_target": "main",
+    "title": "Fix authentication token expiration",
+    "description": "Fixes token expiration logic that was incorrectly rejecting valid tokens.",
+    "author": "alice.dev",
+    "commit_messages": [
+      "Fix token expiration",
+      "Update validation logic",
+      "Add tests"
+    ],
+    "files_changed": 1,
+    "lines_added": 33,
+    "lines_deleted": 40,
+    "language": "typescript"
+  },
+  {
+    "pr_id": "017",
+    "repository": "data-processing-pipeline",
+    "branch_source": "feature/pr-017",
+    "branch_target": "main",
+    "title": "Fix data type mismatch",
+    "description": "Fixes data type mismatch between API and database layer.",
+    "author": "alice.dev",
+    "commit_messages": [
+      "Fix type mismatch",
+      "Add type conversion",
+      "Add validation"
+    ],
+    "files_changed": 1,
+    "lines_added": 20,
+    "lines_deleted": 41,
+    "language": "typescript"
+  },
+  {
+    "pr_id": "023",
+    "repository": "web-api-service",
+    "branch_source": "feature/pr-023",
+    "branch_target": "main",
+    "title": "Fix race condition in cache update",
+    "description": "Fixes race condition when multiple threads update cache simultaneously.",
+    "author": "frank.architect",
+    "commit_messages": [
+      "Fix race condition",
+      "Add locking",
+      "Add concurrency tests"
+    ],
+    "files_changed": 4,
+    "lines_added": 31,
+    "lines_deleted": 34,
+    "language": "typescript"
+  },
+  {
+    "pr_id": "035",
+    "repository": "data-processing-pipeline",
+    "branch_source": "feature/pr-035",
+    "branch_target": "main",
+    "title": "Add rate limiting to prevent brute force",
+    "description": "Adds rate limiting to prevent brute force attacks on authentication endpoints.",
+    "author": "frank.architect",
+    "commit_messages": [
+      "Add rate limiting",
+      "Configure limits",
+      "Add tests"
+    ],
+    "files_changed": 5,
+    "lines_added": 84,
+    "lines_deleted": 16,
+    "language": "javascript"
+  },
+  {
+    "pr_id": "041",
+    "repository": "reporting-engine",
+    "branch_source": "feature/pr-041",
+    "branch_target": "main",
+    "title": "Extract common utilities",
+    "description": "Extracts common utility functions into shared module to reduce duplication.",
+    "author": "charlie.senior",
+    "commit_messages": [
+      "Extract utilities",
+      "Update imports",
+      "Add tests"
+    ],
+    "files_changed": 25,
+    "lines_added": 427,
+    "lines_deleted": 354,
+    "language": "javascript"
+  },
+  {
+    "pr_id": "039",
+    "repository": "authentication-service",
+    "branch_source": "feature/pr-039",
+    "branch_target": "main",
+    "title": "Refactor test utilities",
+    "description": "Refactors test utilities to improve reusability and maintainability.",
+    "author": "bob.engineer",
+    "commit_messages": [
+      "Refactor test utilities",
+      "Improve reusability",
+      "Update tests"
+    ],
+    "files_changed": 23,
+    "lines_added": 358,
+    "lines_deleted": 392,
+    "language": "javascript"
+  },
+  {
+    "pr_id": "032",
+    "repository": "notification-service",
+    "branch_source": "feature/pr-032",
+    "branch_target": "main",
+    "title": "Fix insecure password hashing",
+    "description": "Replaces weak password hashing with bcrypt and proper salt generation.",
+    "author": "alice.dev",
+    "commit_messages": [
+      "Fix password hashing",
+      "Use bcrypt",
+      "Update password tests"
+    ],
+    "files_changed": 6,
+    "lines_added": 87,
+    "lines_deleted": 26,
+    "language": "python"
+  },
+  {
+    "pr_id": "042",
+    "repository": "data-processing-pipeline",
+    "branch_source": "feature/pr-042",
+    "branch_target": "main",
+    "title": "Restructure API routes",
+    "description": "Restructures API routes for better organization and clarity.",
+    "author": "charlie.senior",
+    "commit_messages": [
+      "Restructure routes",
+      "Update route handlers",
+      "Update tests"
+    ],
+    "files_changed": 22,
+    "lines_added": 536,
+    "lines_deleted": 435,
+    "language": "javascript"
+  },
+  {
+    "pr_id": "024",
+    "repository": "analytics-dashboard",
+    "branch_source": "feature/pr-024",
+    "branch_target": "main",
+    "title": "Fix SQL injection vulnerability",
+    "description": "Fixes SQL injection vulnerability by using parameterized queries.",
+    "author": "bob.engineer",
+    "commit_messages": [
+      "Fix SQL injection",
+      "Use parameterized queries",
+      "Add security tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 11,
+    "lines_deleted": 20,
+    "language": "typescript"
+  },
+  {
+    "pr_id": "006",
+    "repository": "notification-service",
+    "branch_source": "feature/pr-006",
+    "branch_target": "main",
+    "title": "Add real-time notifications",
+    "description": "Adds WebSocket support for real-time notifications to connected clients.",
+    "author": "eve.junior",
+    "commit_messages": [
+      "Add WebSocket support",
+      "Add event handlers",
+      "Update tests"
+    ],
+    "files_changed": 9,
+    "lines_added": 421,
+    "lines_deleted": 89,
+    "language": "python"
+  },
+  {
+    "pr_id": "049",
+    "repository": "web-api-service",
+    "branch_source": "feature/pr-049",
+    "branch_target": "main",
+    "title": "Fix indentation",
+    "description": "Fixes indentation issues throughout the codebase.",
+    "author": "alice.dev",
+    "commit_messages": [
+      "Fix indentation",
+      "Update formatting",
+      "Update code"
+    ],
+    "files_changed": 12,
+    "lines_added": 35,
+    "lines_deleted": 28,
+    "language": "python"
+  },
+  {
+    "pr_id": "018",
+    "repository": "user-management",
+    "branch_source": "feature/pr-018",
+    "branch_target": "main",
+    "title": "Fix infinite loop in parser",
+    "description": "Fixes infinite loop in CSV parser when encountering malformed data.",
+    "author": "bob.engineer",
+    "commit_messages": [
+      "Fix infinite loop",
+      "Add loop guard",
+      "Add edge case tests"
+    ],
+    "files_changed": 5,
+    "lines_added": 15,
+    "lines_deleted": 21,
+    "language": "typescript"
+  },
+  {
+    "pr_id": "038",
+    "repository": "analytics-dashboard",
+    "branch_source": "feature/pr-038",
+    "branch_target": "main",
+    "title": "Extract business logic",
+    "description": "Extracts business logic from controllers into dedicated service classes.",
+    "author": "frank.architect",
+    "commit_messages": [
+      "Extract business logic",
+      "Create service classes",
+      "Update tests"
+    ],
+    "files_changed": 21,
+    "lines_added": 240,
+    "lines_deleted": 516,
+    "language": "python"
+  },
+  {
+    "pr_id": "027",
+    "repository": "reporting-engine",
+    "branch_source": "feature/pr-027",
+    "branch_target": "main",
+    "title": "Fix data type mismatch",
+    "description": "Fixes data type mismatch between API and database layer.",
+    "author": "bob.engineer",
+    "commit_messages": [
+      "Fix type mismatch",
+      "Add type conversion",
+      "Add validation"
+    ],
+    "files_changed": 4,
+    "lines_added": 23,
+    "lines_deleted": 32,
+    "language": "python"
+  },
+  {
+    "pr_id": "050",
+    "repository": "reporting-engine",
+    "branch_source": "feature/pr-050",
+    "branch_target": "main",
+    "title": "Fix code formatting",
+    "description": "Fixes code formatting to match project style guidelines using ruff/black.",
+    "author": "diana.lead",
+    "commit_messages": [
+      "Fix formatting",
+      "Run formatter",
+      "Update code"
+    ],
+    "files_changed": 11,
+    "lines_added": 99,
+    "lines_deleted": 59,
+    "language": "python"
+  },
+  {
+    "pr_id": "033",
+    "repository": "payment-gateway",
+    "branch_source": "feature/pr-033",
+    "branch_target": "main",
+    "title": "Add CSRF protection",
+    "description": "Implements CSRF protection using token-based validation.",
+    "author": "frank.architect",
+    "commit_messages": [
+      "Add CSRF protection",
+      "Add token validation",
+      "Add tests"
+    ],
+    "files_changed": 4,
+    "lines_added": 22,
+    "lines_deleted": 80,
+    "language": "python"
+  },
+  {
+    "pr_id": "029",
+    "repository": "analytics-dashboard",
+    "branch_source": "feature/pr-029",
+    "branch_target": "main",
+    "title": "Add security headers",
+    "description": "Adds security headers (CSP, HSTS, X-Frame-Options) to HTTP responses.",
+    "author": "diana.lead",
+    "commit_messages": [
+      "Add security headers",
+      "Configure headers",
+      "Add tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 37,
+    "lines_deleted": 18,
+    "language": "python"
+  },
+  {
+    "pr_id": "021",
+    "repository": "analytics-dashboard",
+    "branch_source": "feature/pr-021",
+    "branch_target": "main",
+    "title": "Fix memory leak in data processor",
+    "description": "Fixes memory leak in data processing pipeline. Properly releases resources.",
+    "author": "charlie.senior",
+    "commit_messages": [
+      "Fix memory leak",
+      "Add resource cleanup",
+      "Add tests"
+    ],
+    "files_changed": 1,
+    "lines_added": 26,
+    "lines_deleted": 9,
+    "language": "typescript"
+  },
+  {
+    "pr_id": "043",
+    "repository": "web-api-service",
+    "branch_source": "feature/pr-043",
+    "branch_target": "main",
+    "title": "Optimize API response time",
+    "description": "Optimizes API response time by reducing unnecessary computations and database calls.",
+    "author": "alice.dev",
+    "commit_messages": [
+      "Optimize API",
+      "Reduce computations",
+      "Update tests"
+    ],
+    "files_changed": 12,
+    "lines_added": 296,
+    "lines_deleted": 97,
+    "language": "typescript"
+  },
+  {
+    "pr_id": "046",
+    "repository": "analytics-dashboard",
+    "branch_source": "feature/pr-046",
+    "branch_target": "main",
+    "title": "Add connection pooling",
+    "description": "Adds connection pooling to reduce database connection overhead.",
+    "author": "diana.lead",
+    "commit_messages": [
+      "Add connection pooling",
+      "Configure pool",
+      "Update tests"
+    ],
+    "files_changed": 7,
+    "lines_added": 191,
+    "lines_deleted": 62,
+    "language": "typescript"
+  },
+  {
+    "pr_id": "040",
+    "repository": "payment-gateway",
+    "branch_source": "feature/pr-040",
+    "branch_target": "main",
+    "title": "Refactor authentication module",
+    "description": "Refactors authentication module to improve maintainability and testability.",
+    "author": "bob.engineer",
+    "commit_messages": [
+      "Refactor auth module",
+      "Update tests",
+      "Update documentation"
+    ],
+    "files_changed": 20,
+    "lines_added": 621,
+    "lines_deleted": 404,
+    "language": "typescript"
+  },
+  {
+    "pr_id": "009",
+    "repository": "analytics-dashboard",
+    "branch_source": "feature/pr-009",
+    "branch_target": "main",
+    "title": "Implement search functionality",
+    "description": "Adds full-text search functionality with Elasticsearch integration.",
+    "author": "frank.architect",
+    "commit_messages": [
+      "Implement search",
+      "Add indexing",
+      "Add query builder"
+    ],
+    "files_changed": 11,
+    "lines_added": 238,
+    "lines_deleted": 91,
+    "language": "javascript"
+  },
+  {
+    "pr_id": "047",
+    "repository": "analytics-dashboard",
+    "branch_source": "feature/pr-047",
+    "branch_target": "main",
+    "title": "Optimize serialization",
+    "description": "Optimizes JSON serialization by using faster serialization libraries.",
+    "author": "diana.lead",
+    "commit_messages": [
+      "Optimize serialization",
+      "Use faster libs",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 127,
+    "lines_deleted": 103,
+    "language": "typescript"
+  },
+  {
+    "pr_id": "008",
+    "repository": "data-processing-pipeline",
+    "branch_source": "feature/pr-008",
+    "branch_target": "main",
+    "title": "Add file upload feature",
+    "description": "Implements secure file upload with validation and virus scanning.",
+    "author": "eve.junior",
+    "commit_messages": [
+      "Add file upload",
+      "Add validation",
+      "Add security checks"
+    ],
+    "files_changed": 9,
+    "lines_added": 459,
+    "lines_deleted": 97,
+    "language": "typescript"
+  },
+  {
+    "pr_id": "016",
+    "repository": "notification-service",
+    "branch_source": "feature/pr-016",
+    "branch_target": "main",
+    "title": "Fix incorrect error handling",
+    "description": "Fixes error handling that was swallowing exceptions silently.",
+    "author": "diana.lead",
+    "commit_messages": [
+      "Fix error handling",
+      "Add proper exception handling",
+      "Update tests"
+    ],
+    "files_changed": 5,
+    "lines_added": 5,
+    "lines_deleted": 43,
+    "language": "python"
+  },
+  {
+    "pr_id": "036",
+    "repository": "user-management",
+    "branch_source": "feature/pr-036",
+    "branch_target": "main",
+    "title": "Refactor service layer",
+    "description": "Refactors service layer to follow single responsibility principle.",
+    "author": "eve.junior",
+    "commit_messages": [
+      "Refactor service layer",
+      "Improve structure",
+      "Update tests"
+    ],
+    "files_changed": 18,
+    "lines_added": 365,
+    "lines_deleted": 602,
+    "language": "python"
+  },
+  {
+    "pr_id": "004",
+    "repository": "analytics-dashboard",
+    "branch_source": "feature/pr-004",
+    "branch_target": "main",
+    "title": "Add data export functionality",
+    "description": "Adds functionality to export data in multiple formats (CSV, JSON, Excel).",
+    "author": "charlie.senior",
+    "commit_messages": [
+      "Add export feature",
+      "Add format handlers",
+      "Add tests"
+    ],
+    "files_changed": 10,
+    "lines_added": 242,
+    "lines_deleted": 29,
+    "language": "python"
+  },
+  {
+    "pr_id": "030",
+    "repository": "notification-service",
+    "branch_source": "feature/pr-030",
+    "branch_target": "main",
+    "title": "Fix XSS vulnerability in user input",
+    "description": "Fixes XSS vulnerability by properly escaping user input in templates.",
+    "author": "charlie.senior",
+    "commit_messages": [
+      "Fix XSS vulnerability",
+      "Add input sanitization",
+      "Add security tests"
+    ],
+    "files_changed": 2,
+    "lines_added": 127,
+    "lines_deleted": 76,
+    "language": "python"
+  },
+  {
+    "pr_id": "034",
+    "repository": "payment-gateway",
+    "branch_source": "feature/pr-034",
+    "branch_target": "main",
+    "title": "Fix authorization bypass",
+    "description": "Fixes authorization bypass that allowed unauthorized access to admin endpoints.",
+    "author": "eve.junior",
+    "commit_messages": [
+      "Fix authorization bypass",
+      "Add permission checks",
+      "Add security tests"
+    ],
+    "files_changed": 6,
+    "lines_added": 59,
+    "lines_deleted": 44,
+    "language": "python"
+  },
+  {
+    "pr_id": "045",
+    "repository": "data-processing-pipeline",
+    "branch_source": "feature/pr-045",
+    "branch_target": "main",
+    "title": "Optimize image processing",
+    "description": "Optimizes image processing by using more efficient algorithms and libraries.",
+    "author": "frank.architect",
+    "commit_messages": [
+      "Optimize image processing",
+      "Use efficient libs",
+      "Update tests"
+    ],
+    "files_changed": 8,
+    "lines_added": 209,
+    "lines_deleted": 110,
+    "language": "javascript"
+  },
+  {
+    "pr_id": "012",
+    "repository": "data-processing-pipeline",
+    "branch_source": "feature/pr-012",
+    "branch_target": "main",
+    "title": "Add email notification service",
+    "description": "Adds email notification service with support for multiple providers (SendGrid, SES).",
+    "author": "alice.dev",
+    "commit_messages": [
+      "Add email service",
+      "Configure providers",
+      "Add tests"
+    ],
+    "files_changed": 7,
+    "lines_added": 360,
+    "lines_deleted": 73,
+    "language": "python"
+  },
+  {
+    "pr_id": "015",
+    "repository": "payment-gateway",
+    "branch_source": "feature/pr-015",
+    "branch_target": "main",
+    "title": "Implement caching layer",
+    "description": "Implements Redis-based caching layer to improve API response times.",
+    "author": "frank.architect",
+    "commit_messages": [
+      "Implement caching",
+      "Add cache invalidation",
+      "Update config"
+    ],
+    "files_changed": 7,
+    "lines_added": 359,
+    "lines_deleted": 23,
+    "language": "typescript"
+  },
+  {
+    "pr_id": "028",
+    "repository": "web-api-service",
+    "branch_source": "feature/pr-028",
+    "branch_target": "main",
+    "title": "Fix insecure random number generation",
+    "description": "Replaces insecure random number generation with cryptographically secure methods.",
+    "author": "eve.junior",
+    "commit_messages": [
+      "Fix random generation",
+      "Use secure random",
+      "Update tests"
+    ],
+    "files_changed": 2,
+    "lines_added": 100,
+    "lines_deleted": 17,
+    "language": "javascript"
+  }
+]
