@@ -36,10 +36,10 @@ class StyleFormatReviewer(BaseAgent):
 
     def analyze(self, context: PRContext) -> AgentDecision:
         """Analyze style and format issues.
-        
+
         Args:
             context: Complete PR context
-            
+
         Returns:
             AgentDecision with style findings
         """
@@ -81,22 +81,79 @@ class StyleFormatReviewer(BaseAgent):
         """Analyze ruff linter results."""
         findings = []
         ruff_result = context.tool_results["ruff"]
-        
+
         if not ruff_result.success or not ruff_result.output:
             return findings
 
         try:
-            data = json.loads(ruff_result.output)
-            for violation in data.get("violations", []):
-                location = violation.get("location", {})
-                
+            # Parse ruff output directly - it's a JSON list
+            violations_list = []
+
+            if ruff_result.output:
+                try:
+                    violations_data = json.loads(ruff_result.output)
+                    if isinstance(violations_data, list):
+                        violations_list = violations_data
+                    elif isinstance(violations_data, dict):
+                        violations_list = violations_data.get("violations", [])
+                except (json.JSONDecodeError, AttributeError) as e:
+                    logger.warning(f"Failed to parse ruff output: {e}")
+                    return findings
+
+            for violation in violations_list:
+                # Ensure violation is a dict
+                if not isinstance(violation, dict):
+                    logger.warning(f"Skipping non-dict violation: {type(violation)}")
+                    continue
+
+                # Get location safely
+                location_obj = violation.get("location")
+                if isinstance(location_obj, dict):
+                    row = location_obj.get("row", 0)
+                    column = location_obj.get("column", 0)
+                else:
+                    # Try direct row/column in violation
+                    row = violation.get("row", 0)
+                    column = violation.get("column", 0)
+                    location_obj = {"row": row, "column": column}
+
+                # Handle patch - ruff fix is a dict with 'message' and 'edits'
+                fix_obj = violation.get("fix")
+                patch_str = None
+                if fix_obj:
+                    if isinstance(fix_obj, dict):
+                        # Extract patch from ruff fix format
+                        edits = fix_obj.get("edits", [])
+                        if edits:
+                            # Convert edits to patch string
+                            patch_parts = []
+                            for edit in edits:
+                                if isinstance(edit, dict):
+                                    content_obj = edit.get("content", {})
+                                    if isinstance(content_obj, dict):
+                                        content = content_obj.get("text", "")
+                                    else:
+                                        content = str(content_obj)
+                                else:
+                                    content = str(edit)
+                                if content:
+                                    patch_parts.append(content)
+                            patch_str = "\n".join(patch_parts) if patch_parts else None
+                    elif isinstance(fix_obj, str):
+                        patch_str = fix_obj
+
+                filename = violation.get("filename", "unknown")
+                # Extract just filename if full path
+                if "/" in str(filename):
+                    filename = str(filename).split("/")[-1]
+
                 finding = Finding(
                     type=FindingType.STYLE,
                     severity=Severity.NIT,
                     source_agent=self.role,
                     evidence=Evidence(
                         tool="ruff",
-                        reference=f"{violation['filename']}:{location.get('row', 0)}",
+                        reference=f"{filename}:{row}",
                         snippet="",
                         metadata={
                             "code": violation.get("code"),
@@ -105,9 +162,9 @@ class StyleFormatReviewer(BaseAgent):
                     ),
                     title=f"[{violation.get('code', '')}] Style violation",
                     description=violation.get("message", ""),
-                    location=f"{violation['filename']}:{location.get('row', 0)}",
-                    has_patch=violation.get("fix") is not None,
-                    patch=violation.get("fix"),
+                    location=f"{filename}:{row}",
+                    has_patch=patch_str is not None,
+                    patch=patch_str,
                 )
                 findings.append(finding)
         except json.JSONDecodeError:
@@ -119,7 +176,7 @@ class StyleFormatReviewer(BaseAgent):
         """Analyze eslint results."""
         findings = []
         eslint_result = context.tool_results["eslint"]
-        
+
         if not eslint_result.success or not eslint_result.output:
             return findings
 
@@ -129,7 +186,7 @@ class StyleFormatReviewer(BaseAgent):
                 filename = file_result.get("filename", "")
                 for message in file_result.get("messages", []):
                     severity = Severity.MINOR if message.get("severity") == 2 else Severity.NIT
-                    
+
                     finding = Finding(
                         type=FindingType.STYLE,
                         severity=severity,
@@ -156,20 +213,19 @@ class StyleFormatReviewer(BaseAgent):
         """Apply maximum nit limit, keeping most important issues."""
         nits = [f for f in findings if f.severity == Severity.NIT]
         others = [f for f in findings if f.severity != Severity.NIT]
-        
+
         if len(nits) <= self.max_nits:
             return findings
-        
+
         # Keep nits with fixes first
         nits_with_fix = [f for f in nits if f.has_patch]
         nits_without_fix = [f for f in nits if not f.has_patch]
-        
+
         limited_nits = (nits_with_fix + nits_without_fix)[:self.max_nits]
-        
+
         logger.info(
             f"Applied nit limit: {len(nits)} -> {len(limited_nits)}",
             extra={"max_nits": self.max_nits}
         )
-        
-        return others + limited_nits
 
+        return others + limited_nits

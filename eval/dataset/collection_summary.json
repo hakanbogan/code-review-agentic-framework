@@ -1,0 +1,26 @@
+{
+  "total_prs": 16,
+  "total_ground_truth": 6,
+  "repositories": [
+    "pallets/flask",
+    "django/django",
+    "fastapi/fastapi",
+    "tornadoweb/tornado",
+    "bottlepy/bottle",
+    "pandas-dev/pandas",
+    "scikit-learn/scikit-learn",
+    "numpy/numpy",
+    "matplotlib/matplotlib",
+    "scipy/scipy",
+    "pytorch/pytorch",
+    "tensorflow/tensorflow",
+    "psf/requests",
+    "pytest-dev/pytest",
+    "python-poetry/poetry"
+  ],
+  "filters": {
+    "min_lines": 0,
+    "max_lines": 999999,
+    "balanced": true
+  }
+}

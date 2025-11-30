@@ -56,7 +56,14 @@ collect-dataset: ## Collect PR dataset from GitHub (requires GITHUB_TOKEN)
 		echo "Create token at: https://github.com/settings/tokens"; \
 		exit 1; \
 	fi
-	poetry run python eval/dataset/collect_dataset.py --repos 5 --prs-per-repo 5 --balanced
+	poetry run python eval/dataset/collect_dataset.py collect --repos 15 --prs-per-repo 3 --balanced --min-lines 0 --max-lines 999999
+
+collect-dataset-large: ## Collect large dataset (20+ repos, more PRs)
+	@if [ -z "$$GITHUB_TOKEN" ]; then \
+		echo "Error: GITHUB_TOKEN not set"; \
+		exit 1; \
+	fi
+	poetry run python eval/dataset/collect_dataset.py collect --repos 25 --prs-per-repo 4 --balanced --min-lines 0 --max-lines 999999
 
 collect-dataset-large: ## Collect larger dataset
 	@if [ -z "$$GITHUB_TOKEN" ]; then \

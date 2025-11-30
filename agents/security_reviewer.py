@@ -29,15 +29,15 @@ class SecurityReviewer(BaseAgent):
         self.llm = ChatOpenAI(
             model=settings.openai_model,
             temperature=settings.openai_temperature,
-            model_kwargs={"seed": settings.openai_seed},
+            seed=settings.openai_seed,
         )
 
     def analyze(self, context: PRContext) -> AgentDecision:
         """Analyze security aspects of changes.
-        
+
         Args:
             context: Complete PR context
-            
+
         Returns:
             AgentDecision with security findings
         """
@@ -80,7 +80,7 @@ class SecurityReviewer(BaseAgent):
         """Analyze semgrep results."""
         findings = []
         semgrep_result = context.tool_results["semgrep"]
-        
+
         if not semgrep_result.success or not semgrep_result.output:
             return findings
 
@@ -89,7 +89,7 @@ class SecurityReviewer(BaseAgent):
             data = json.loads(semgrep_result.output)
             for result in data.get("results", []):
                 severity = self._map_severity(result.get("severity", "INFO"))
-                
+
                 finding = Finding(
                     type=FindingType.SECURITY,
                     severity=severity,
@@ -114,7 +114,7 @@ class SecurityReviewer(BaseAgent):
         """Analyze bandit results."""
         findings = []
         bandit_result = context.tool_results["bandit"]
-        
+
         if not bandit_result.success or not bandit_result.output:
             return findings
 
@@ -126,7 +126,7 @@ class SecurityReviewer(BaseAgent):
                     result.get("issue_severity", "LOW"),
                     result.get("issue_confidence", "LOW")
                 )
-                
+
                 finding = Finding(
                     type=FindingType.SECURITY,
                     severity=severity,
@@ -175,4 +175,3 @@ class SecurityReviewer(BaseAgent):
             return Severity.MINOR
         else:
             return Severity.NIT
-

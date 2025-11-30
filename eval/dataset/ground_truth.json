@@ -1,497 +1,64 @@
 [
   {
-    "pr_id": "003",
+    "pr_id": "20273",
     "important_issues": [],
-    "false_positive_tolerance": 3,
-    "labeler_id": "expert_3",
-    "labeled_at": "2025-11-09T12:30:43.113820",
-    "notes": "PR type: feature. No critical issues expected, but should catch style/consistency issues."
+    "false_positive_tolerance": 0,
+    "labeler_id": "github_reviewers",
+    "labeled_at": "2025-11-30T12:44:49.315322",
+    "notes": "Extracted from 1 review comments"
   },
   {
-    "pr_id": "011",
+    "pr_id": "62699",
     "important_issues": [
-      "Missing documentation for new API",
-      "No tests for new functionality"
+      "since this was a bug in development code, you don't need to update whatsnew... @ doc/source/whatsnew/v3.0.0.rst:1099"
+    ],
+    "false_positive_tolerance": 2,
+    "labeler_id": "github_reviewers",
+    "labeled_at": "2025-11-30T12:55:20.078731",
+    "notes": "Extracted from 8 review comments"
+  },
+  {
+    "pr_id": "61920",
+    "important_issues": [
+      "The reason I kept this is because [this test](https://github.com/pandas-dev/pandas/blob/e72c8a1e0ad4... @ pandas/core/arrays/interval.py:1995",
+      "removing ravel here causes a failure in the _shallow_copy() call, with the error: \u201cIndex data must b... @ pandas/core/arrays/interval.py:1992",
+      "@rhshadrach I added this check to handle mypy failure. should I add a separate test for this one?... @ pandas/core/arrays/interval.py:2139"
     ],
     "false_positive_tolerance": 5,
-    "labeler_id": "expert_2",
-    "labeled_at": "2025-11-15T12:30:43.113917",
-    "notes": "PR type: feature. Critical issues: Missing documentation for new API, No tests for new functionality."
+    "labeler_id": "github_reviewers",
+    "labeled_at": "2025-11-30T12:55:20.080375",
+    "notes": "Extracted from 25 review comments"
   },
   {
-    "pr_id": "026",
-    "important_issues": [
-      "Fix doesn't handle all error cases"
-    ],
-    "false_positive_tolerance": 1,
-    "labeler_id": "expert_2",
-    "labeled_at": "2025-11-14T12:30:43.114090",
-    "notes": "PR type: bugfix. Critical issues: Fix doesn't handle all error cases."
-  },
-  {
-    "pr_id": "007",
-    "important_issues": [
-      "Missing error handling in new feature",
-      "No rate limiting on new API endpoint",
-      "No tests for new functionality"
-    ],
-    "false_positive_tolerance": 4,
-    "labeler_id": "expert_1",
-    "labeled_at": "2025-11-01T12:30:43.113868",
-    "notes": "PR type: feature. Critical issues: Missing error handling in new feature, No rate limiting on new API endpoint."
-  },
-  {
-    "pr_id": "014",
-    "important_issues": [
-      "No rate limiting on new API endpoint",
-      "No tests for new functionality",
-      "Missing input validation on new endpoint"
-    ],
-    "false_positive_tolerance": 4,
-    "labeler_id": "expert_3",
-    "labeled_at": "2025-10-29T12:30:43.113952",
-    "notes": "PR type: feature. Critical issues: No rate limiting on new API endpoint, No tests for new functionality."
-  },
-  {
-    "pr_id": "001",
-    "important_issues": [
-      "Missing input validation on new endpoint"
-    ],
+    "pr_id": "62641",
+    "important_issues": [],
     "false_positive_tolerance": 2,
-    "labeler_id": "expert_3",
-    "labeled_at": "2025-11-09T12:30:43.113606",
-    "notes": "PR type: feature. Critical issues: Missing input validation on new endpoint."
+    "labeler_id": "github_reviewers",
+    "labeled_at": "2025-11-30T12:55:20.081355",
+    "notes": "Extracted from 6 review comments"
   },
   {
-    "pr_id": "010",
+    "pr_id": "32592",
+    "important_issues": [],
+    "false_positive_tolerance": 0,
+    "labeler_id": "github_reviewers",
+    "labeled_at": "2025-11-30T12:58:11.647353",
+    "notes": "Extracted from 1 review comments"
+  },
+  {
+    "pr_id": "32582",
     "important_issues": [
-      "No rate limiting on new API endpoint",
-      "No tests for new functionality"
+      "Yes, you are right that only NumPy supports string arrays.\r\n\r\nHere, I'm considering the case where `... @ sklearn/preprocessing/_label.py:574",
+      "I don't understand in which context one would expect integer valued `y` and `str` valued `classes`. ... @ sklearn/preprocessing/tests/test_label.py:751",
+      "I realised that we have to convert `classes` into an array anyway, since the `_isin` function doesn\u2019... @ sklearn/preprocessing/_label.py:588",
+      "Suggestion to remove the additional newline before except\r\n```suggestion\r\n    try:\r\n        classes ... @ sklearn/preprocessing/_label.py:584",
+      "```suggestion\r\n            # Numeric class labels should not raise any errors for non-NumPy namespac... @ sklearn/preprocessing/tests/test_label.py:791",
+      "For the helper functions `_inverse_binarize_multiclass` and `_inverse_binarize_thresholding`, the `c... @ sklearn/preprocessing/_label.py:748",
+      "Do you think it would be informative to add `from e` here? (e.g., would the original error say what ... @ sklearn/preprocessing/_label.py:588"
     ],
     "false_positive_tolerance": 5,
-    "labeler_id": "expert_3",
-    "labeled_at": "2025-11-08T12:30:43.113905",
-    "notes": "PR type: feature. Critical issues: No rate limiting on new API endpoint, No tests for new functionality."
-  },
-  {
-    "pr_id": "037",
-    "important_issues": [
-      "Refactoring introduces bugs"
-    ],
-    "false_positive_tolerance": 4,
-    "labeler_id": "expert_1",
-    "labeled_at": "2025-11-13T12:30:43.114334",
-    "notes": "PR type: refactor. Critical issues: Refactoring introduces bugs."
-  },
-  {
-    "pr_id": "031",
-    "important_issues": [
-      "Authorization bypass",
-      "Sensitive data exposure",
-      "SQL injection vulnerability"
-    ],
-    "false_positive_tolerance": 1,
-    "labeler_id": "expert_3",
-    "labeled_at": "2025-11-16T12:30:43.114149",
-    "notes": "PR type: security. Critical issues: Authorization bypass, Sensitive data exposure."
-  },
-  {
-    "pr_id": "013",
-    "important_issues": [],
-    "false_positive_tolerance": 2,
-    "labeler_id": "expert_3",
-    "labeled_at": "2025-10-25T12:30:43.113940",
-    "notes": "PR type: feature. No critical issues expected, but should catch style/consistency issues."
-  },
-  {
-    "pr_id": "044",
-    "important_issues": [
-      "Optimization introduces bugs",
-      "Optimization doesn't improve performance",
-      "Missing performance benchmarks"
-    ],
-    "false_positive_tolerance": 6,
-    "labeler_id": "expert_1",
-    "labeled_at": "2025-11-01T12:30:43.114428",
-    "notes": "PR type: performance. Critical issues: Optimization introduces bugs, Optimization doesn't improve performance."
-  },
-  {
-    "pr_id": "005",
-    "important_issues": [],
-    "false_positive_tolerance": 5,
-    "labeler_id": "expert_1",
-    "labeled_at": "2025-11-05T12:30:43.113843",
-    "notes": "PR type: feature. No critical issues expected, but should catch style/consistency issues."
-  },
-  {
-    "pr_id": "048",
-    "important_issues": [
-      "Formatting changes break functionality"
-    ],
-    "false_positive_tolerance": 4,
-    "labeler_id": "expert_3",
-    "labeled_at": "2025-11-13T12:30:43.114482",
-    "notes": "PR type: style. Critical issues: Formatting changes break functionality."
-  },
-  {
-    "pr_id": "002",
-    "important_issues": [],
-    "false_positive_tolerance": 3,
-    "labeler_id": "expert_3",
-    "labeled_at": "2025-11-02T12:30:43.113803",
-    "notes": "PR type: feature. No critical issues expected, but should catch style/consistency issues."
-  },
-  {
-    "pr_id": "019",
-    "important_issues": [
-      "Root cause not properly addressed"
-    ],
-    "false_positive_tolerance": 2,
-    "labeler_id": "expert_1",
-    "labeled_at": "2025-11-04T12:30:43.114012",
-    "notes": "PR type: bugfix. Critical issues: Root cause not properly addressed."
-  },
-  {
-    "pr_id": "020",
-    "important_issues": [],
-    "false_positive_tolerance": 1,
-    "labeler_id": "expert_1",
-    "labeled_at": "2025-10-25T12:30:43.114022",
-    "notes": "PR type: bugfix. No critical issues expected, but should catch style/consistency issues."
-  },
-  {
-    "pr_id": "022",
-    "important_issues": [],
-    "false_positive_tolerance": 3,
-    "labeler_id": "expert_2",
-    "labeled_at": "2025-11-11T12:30:43.114044",
-    "notes": "PR type: bugfix. No critical issues expected, but should catch style/consistency issues."
-  },
-  {
-    "pr_id": "025",
-    "important_issues": [],
-    "false_positive_tolerance": 1,
-    "labeler_id": "expert_1",
-    "labeled_at": "2025-11-17T12:30:43.114079",
-    "notes": "PR type: bugfix. No critical issues expected, but should catch style/consistency issues."
-  },
-  {
-    "pr_id": "017",
-    "important_issues": [
-      "Root cause not properly addressed",
-      "Missing test coverage for bug fix",
-      "Fix doesn't handle all error cases"
-    ],
-    "false_positive_tolerance": 1,
-    "labeler_id": "expert_3",
-    "labeled_at": "2025-11-07T12:30:43.113989",
-    "notes": "PR type: bugfix. Critical issues: Root cause not properly addressed, Missing test coverage for bug fix."
-  },
-  {
-    "pr_id": "023",
-    "important_issues": [],
-    "false_positive_tolerance": 1,
-    "labeler_id": "expert_2",
-    "labeled_at": "2025-10-30T12:30:43.114054",
-    "notes": "PR type: bugfix. No critical issues expected, but should catch style/consistency issues."
-  },
-  {
-    "pr_id": "035",
-    "important_issues": [
-      "SQL injection vulnerability",
-      "Sensitive data exposure"
-    ],
-    "false_positive_tolerance": 2,
-    "labeler_id": "expert_1",
-    "labeled_at": "2025-11-02T12:30:43.114310",
-    "notes": "PR type: security. Critical issues: SQL injection vulnerability, Sensitive data exposure."
-  },
-  {
-    "pr_id": "041",
-    "important_issues": [
-      "Breaking change without version bump"
-    ],
-    "false_positive_tolerance": 3,
-    "labeler_id": "expert_3",
-    "labeled_at": "2025-11-16T12:30:43.114383",
-    "notes": "PR type: refactor. Critical issues: Breaking change without version bump."
-  },
-  {
-    "pr_id": "039",
-    "important_issues": [],
-    "false_positive_tolerance": 4,
-    "labeler_id": "expert_3",
-    "labeled_at": "2025-10-24T12:30:43.114360",
-    "notes": "PR type: refactor. No critical issues expected, but should catch style/consistency issues."
-  },
-  {
-    "pr_id": "032",
-    "important_issues": [
-      "Missing input validation",
-      "XSS vulnerability in user input"
-    ],
-    "false_positive_tolerance": 2,
-    "labeler_id": "expert_3",
-    "labeled_at": "2025-10-31T12:30:43.114161",
-    "notes": "PR type: security. Critical issues: Missing input validation, XSS vulnerability in user input."
-  },
-  {
-    "pr_id": "042",
-    "important_issues": [
-      "Missing test updates after refactor",
-      "Refactoring introduces bugs",
-      "Breaking change without version bump"
-    ],
-    "false_positive_tolerance": 3,
-    "labeler_id": "expert_2",
-    "labeled_at": "2025-11-17T12:30:43.114399",
-    "notes": "PR type: refactor. Critical issues: Missing test updates after refactor, Refactoring introduces bugs."
-  },
-  {
-    "pr_id": "024",
-    "important_issues": [
-      "Fix introduces new edge case",
-      "Fix doesn't handle all error cases",
-      "Root cause not properly addressed"
-    ],
-    "false_positive_tolerance": 2,
-    "labeler_id": "expert_2",
-    "labeled_at": "2025-11-15T12:30:43.114067",
-    "notes": "PR type: bugfix. Critical issues: Fix introduces new edge case, Fix doesn't handle all error cases."
-  },
-  {
-    "pr_id": "006",
-    "important_issues": [],
-    "false_positive_tolerance": 2,
-    "labeler_id": "expert_3",
-    "labeled_at": "2025-11-15T12:30:43.113854",
-    "notes": "PR type: feature. No critical issues expected, but should catch style/consistency issues."
-  },
-  {
-    "pr_id": "049",
-    "important_issues": [
-      "Formatting changes break functionality"
-    ],
-    "false_positive_tolerance": 6,
-    "labeler_id": "expert_2",
-    "labeled_at": "2025-10-25T12:30:43.114493",
-    "notes": "PR type: style. Critical issues: Formatting changes break functionality."
-  },
-  {
-    "pr_id": "018",
-    "important_issues": [
-      "Missing test coverage for bug fix"
-    ],
-    "false_positive_tolerance": 2,
-    "labeler_id": "expert_3",
-    "labeled_at": "2025-11-02T12:30:43.114001",
-    "notes": "PR type: bugfix. Critical issues: Missing test coverage for bug fix."
-  },
-  {
-    "pr_id": "038",
-    "important_issues": [],
-    "false_positive_tolerance": 5,
-    "labeler_id": "expert_3",
-    "labeled_at": "2025-10-25T12:30:43.114346",
-    "notes": "PR type: refactor. No critical issues expected, but should catch style/consistency issues."
-  },
-  {
-    "pr_id": "027",
-    "important_issues": [
-      "Fix introduces new edge case",
-      "Root cause not properly addressed"
-    ],
-    "false_positive_tolerance": 3,
-    "labeler_id": "expert_3",
-    "labeled_at": "2025-11-05T12:30:43.114101",
-    "notes": "PR type: bugfix. Critical issues: Fix introduces new edge case, Root cause not properly addressed."
-  },
-  {
-    "pr_id": "050",
-    "important_issues": [],
-    "false_positive_tolerance": 3,
-    "labeler_id": "expert_1",
-    "labeled_at": "2025-10-29T12:30:43.114504",
-    "notes": "PR type: style. No critical issues expected, but should catch style/consistency issues."
-  },
-  {
-    "pr_id": "033",
-    "important_issues": [
-      "Missing input validation"
-    ],
-    "false_positive_tolerance": 1,
-    "labeler_id": "expert_1",
-    "labeled_at": "2025-10-30T12:30:43.114280",
-    "notes": "PR type: security. Critical issues: Missing input validation."
-  },
-  {
-    "pr_id": "029",
-    "important_issues": [
-      "Authorization bypass"
-    ],
-    "false_positive_tolerance": 3,
-    "labeler_id": "expert_1",
-    "labeled_at": "2025-11-03T12:30:43.114125",
-    "notes": "PR type: security. Critical issues: Authorization bypass."
-  },
-  {
-    "pr_id": "021",
-    "important_issues": [
-      "Fix introduces new edge case",
-      "Missing test coverage for bug fix",
-      "Root cause not properly addressed"
-    ],
-    "false_positive_tolerance": 3,
-    "labeler_id": "expert_3",
-    "labeled_at": "2025-11-04T12:30:43.114034",
-    "notes": "PR type: bugfix. Critical issues: Fix introduces new edge case, Missing test coverage for bug fix."
-  },
-  {
-    "pr_id": "043",
-    "important_issues": [
-      "Missing performance benchmarks",
-      "Optimization doesn't improve performance",
-      "Optimization introduces bugs"
-    ],
-    "false_positive_tolerance": 7,
-    "labeler_id": "expert_3",
-    "labeled_at": "2025-11-19T12:30:43.114416",
-    "notes": "PR type: performance. Critical issues: Missing performance benchmarks, Optimization doesn't improve performance."
-  },
-  {
-    "pr_id": "046",
-    "important_issues": [
-      "Optimization doesn't improve performance",
-      "Optimization introduces bugs",
-      "Missing performance benchmarks"
-    ],
-    "false_positive_tolerance": 6,
-    "labeler_id": "expert_3",
-    "labeled_at": "2025-10-27T12:30:43.114458",
-    "notes": "PR type: performance. Critical issues: Optimization doesn't improve performance, Optimization introduces bugs."
-  },
-  {
-    "pr_id": "040",
-    "important_issues": [],
-    "false_positive_tolerance": 6,
-    "labeler_id": "expert_1",
-    "labeled_at": "2025-10-26T12:30:43.114371",
-    "notes": "PR type: refactor. No critical issues expected, but should catch style/consistency issues."
-  },
-  {
-    "pr_id": "009",
-    "important_issues": [],
-    "false_positive_tolerance": 3,
-    "labeler_id": "expert_1",
-    "labeled_at": "2025-10-28T12:30:43.113891",
-    "notes": "PR type: feature. No critical issues expected, but should catch style/consistency issues."
-  },
-  {
-    "pr_id": "047",
-    "important_issues": [
-      "Missing performance benchmarks",
-      "Optimization doesn't improve performance"
-    ],
-    "false_positive_tolerance": 6,
-    "labeler_id": "expert_3",
-    "labeled_at": "2025-11-16T12:30:43.114470",
-    "notes": "PR type: performance. Critical issues: Missing performance benchmarks, Optimization doesn't improve performance."
-  },
-  {
-    "pr_id": "008",
-    "important_issues": [
-      "Missing documentation for new API"
-    ],
-    "false_positive_tolerance": 3,
-    "labeler_id": "expert_1",
-    "labeled_at": "2025-11-08T12:30:43.113880",
-    "notes": "PR type: feature. Critical issues: Missing documentation for new API."
-  },
-  {
-    "pr_id": "016",
-    "important_issues": [],
-    "false_positive_tolerance": 2,
-    "labeler_id": "expert_2",
-    "labeled_at": "2025-11-15T12:30:43.113976",
-    "notes": "PR type: bugfix. No critical issues expected, but should catch style/consistency issues."
-  },
-  {
-    "pr_id": "036",
-    "important_issues": [],
-    "false_positive_tolerance": 3,
-    "labeler_id": "expert_3",
-    "labeled_at": "2025-10-25T12:30:43.114322",
-    "notes": "PR type: refactor. No critical issues expected, but should catch style/consistency issues."
-  },
-  {
-    "pr_id": "004",
-    "important_issues": [],
-    "false_positive_tolerance": 5,
-    "labeler_id": "expert_1",
-    "labeled_at": "2025-11-11T12:30:43.113832",
-    "notes": "PR type: feature. No critical issues expected, but should catch style/consistency issues."
-  },
-  {
-    "pr_id": "030",
-    "important_issues": [
-      "XSS vulnerability in user input",
-      "Missing input validation"
-    ],
-    "false_positive_tolerance": 2,
-    "labeler_id": "expert_1",
-    "labeled_at": "2025-11-01T12:30:43.114136",
-    "notes": "PR type: security. Critical issues: XSS vulnerability in user input, Missing input validation."
-  },
-  {
-    "pr_id": "034",
-    "important_issues": [
-      "XSS vulnerability in user input",
-      "CSRF vulnerability"
-    ],
-    "false_positive_tolerance": 3,
-    "labeler_id": "expert_2",
-    "labeled_at": "2025-11-06T12:30:43.114298",
-    "notes": "PR type: security. Critical issues: XSS vulnerability in user input, CSRF vulnerability."
-  },
-  {
-    "pr_id": "045",
-    "important_issues": [
-      "Optimization doesn't improve performance",
-      "Missing performance benchmarks"
-    ],
-    "false_positive_tolerance": 5,
-    "labeler_id": "expert_2",
-    "labeled_at": "2025-10-31T12:30:43.114440",
-    "notes": "PR type: performance. Critical issues: Optimization doesn't improve performance, Missing performance benchmarks."
-  },
-  {
-    "pr_id": "012",
-    "important_issues": [
-      "No rate limiting on new API endpoint"
-    ],
-    "false_positive_tolerance": 5,
-    "labeler_id": "expert_3",
-    "labeled_at": "2025-11-20T12:30:43.113929",
-    "notes": "PR type: feature. Critical issues: No rate limiting on new API endpoint."
-  },
-  {
-    "pr_id": "015",
-    "important_issues": [
-      "No rate limiting on new API endpoint"
-    ],
-    "false_positive_tolerance": 4,
-    "labeler_id": "expert_1",
-    "labeled_at": "2025-11-05T12:30:43.113963",
-    "notes": "PR type: feature. Critical issues: No rate limiting on new API endpoint."
-  },
-  {
-    "pr_id": "028",
-    "important_issues": [
-      "SQL injection vulnerability"
-    ],
-    "false_positive_tolerance": 3,
-    "labeler_id": "expert_1",
-    "labeled_at": "2025-10-26T12:30:43.114113",
-    "notes": "PR type: security. Critical issues: SQL injection vulnerability."
+    "labeler_id": "github_reviewers",
+    "labeled_at": "2025-11-30T12:58:11.649506",
+    "notes": "Extracted from 30 review comments"
   }
 ]

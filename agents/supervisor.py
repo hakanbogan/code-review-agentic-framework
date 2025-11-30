@@ -23,7 +23,7 @@ class Supervisor(BaseAgent):
         self.llm = ChatOpenAI(
             model=settings.openai_model,
             temperature=settings.openai_temperature,
-            model_kwargs={"seed": settings.openai_seed},
+            seed=settings.openai_seed,
         )
 
     def analyze(self, context: PRContext) -> AgentDecision:

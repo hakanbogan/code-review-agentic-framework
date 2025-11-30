@@ -21,7 +21,7 @@ class ChangeContextAnalyst(BaseAgent):
         self.llm = ChatOpenAI(
             model=settings.openai_model,
             temperature=settings.openai_temperature,
-            model_kwargs={"seed": settings.openai_seed},
+            seed=settings.openai_seed,
         )
 
     def analyze(self, context: PRContext) -> AgentDecision:
@@ -100,19 +100,48 @@ class ChangeContextAnalyst(BaseAgent):
             f"\nDiff:\n{context.diff_content[:5000]}",  # Limit diff size
         ]
 
-        return prompt_template.format(
-            pr_context="\n".join(context_parts)
-        )
+        pr_context = "\n".join(context_parts)
+
+        # Replace placeholder in prompt template
+        if "{pr_context}" in prompt_template:
+            return prompt_template.replace("{pr_context}", pr_context)
+        else:
+            # If no placeholder, append context
+            return f"{prompt_template}\n\n{pr_context}"
 
     def _execute_task(self, agent: Agent, task: Task) -> dict:
         """Execute CrewAI task and extract results."""
-        # For now, simulate execution
-        # In real implementation, use agent.execute_task(task)
-        return {
-            "reasoning": "Analyzed PR for consistency",
-            "tokens": 500,
-            "findings": [],
-        }
+        from crewai import Crew
+
+        try:
+            # Create crew with single agent and task
+            crew = Crew(
+                agents=[agent],
+                tasks=[task],
+                verbose=True,
+            )
+
+            # Execute
+            result = crew.kickoff()
+
+            # Extract output
+            output_text = str(result) if result else ""
+
+            return {
+                "reasoning": output_text[:500] if output_text else "Analysis completed",
+                "tokens": 0,  # Will be updated if available
+                "findings": [],
+                "raw_output": output_text,
+            }
+        except Exception as e:
+            logger.error(f"Error executing CrewAI task: {e}")
+            # Fallback to simple analysis
+            return {
+                "reasoning": f"Analysis completed with error: {str(e)}",
+                "tokens": 0,
+                "findings": [],
+                "raw_output": "",
+            }
 
     def _parse_findings(self, result: dict, context: PRContext) -> List[Finding]:
         """Parse agent output into structured findings."""

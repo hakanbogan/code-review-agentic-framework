@@ -22,24 +22,54 @@ CURATED_REPOS = [
     ("pallets", "flask"),
     ("django", "django"),
     ("fastapi", "fastapi"),
+    ("tornadoweb", "tornado"),
+    ("bottlepy", "bottle"),
 
-    # Data science
+    # Data science & ML
     ("pandas-dev", "pandas"),
     ("scikit-learn", "scikit-learn"),
     ("numpy", "numpy"),
+    ("matplotlib", "matplotlib"),
+    ("scipy", "scipy"),
+    ("pytorch", "pytorch"),
+    ("tensorflow", "tensorflow"),
 
-    # Tools
+    # Tools & Libraries
     ("psf", "requests"),
     ("pytest-dev", "pytest"),
     ("python-poetry", "poetry"),
+    ("python", "cpython"),
+    ("python", "mypy"),
+    ("python", "black"),
 
     # APIs & async
     ("encode", "httpx"),
     ("aio-libs", "aiohttp"),
+    ("celery", "celery"),
 
     # CLI tools
     ("tiangolo", "typer"),
     ("tqdm", "tqdm"),
+    ("click-contrib", "click"),
+
+    # Database & ORM
+    ("sqlalchemy", "sqlalchemy"),
+    ("mongodb", "mongo-python-driver"),
+    ("redis", "redis-py"),
+
+    # Testing & Quality
+    ("pytest-dev", "pytest"),
+    ("coveragepy", "coverage"),
+    ("PyCQA", "flake8"),
+    ("PyCQA", "pylint"),
+
+    # Configuration & Deployment
+    ("ansible", "ansible"),
+    ("saltstack", "salt"),
+
+    # Scientific Computing
+    ("sympy", "sympy"),
+    ("statsmodels", "statsmodels"),
 ]
 
 
@@ -52,24 +82,24 @@ def collect(
         help="Output directory",
     ),
     num_repos: int = typer.Option(
-        5,
+        15,  # More repos by default
         "--repos",
         "-r",
         help="Number of repositories to collect from",
     ),
     prs_per_repo: int = typer.Option(
-        5,
+        3,  # Fewer per repo but more repos
         "--prs-per-repo",
         "-p",
         help="Target PRs per repository",
     ),
     min_lines: int = typer.Option(
-        50,
+        0,  # No minimum (disabled)
         "--min-lines",
-        help="Minimum lines changed",
+        help="Minimum lines changed (0 to disable)",
     ),
     max_lines: int = typer.Option(
-        500,
+        999999,  # Very high maximum (effectively disabled)
         "--max-lines",
         help="Maximum lines changed",
     ),
@@ -87,7 +117,13 @@ def collect(
         export GITHUB_TOKEN=ghp_...
         poetry run python eval/dataset/collect_dataset.py --repos 5 --prs-per-repo 5
     """
-    setup_logging()
+    # Setup logging (optional - don't fail if settings not configured)
+    try:
+        setup_logging()
+    except Exception:
+        # Use basic logging if settings not available
+        import logging
+        logging.basicConfig(level=logging.INFO)
 
     # Check token
     token = os.getenv("GITHUB_TOKEN")
@@ -99,7 +135,14 @@ def collect(
 
     # Initialize
     collector = GitHubPRCollector(token)
-    selector = PRSelector(min_lines=min_lines, max_lines=max_lines)
+    # More lenient filters for better results
+    selector = PRSelector(
+        min_lines=min_lines,
+        max_lines=max_lines,
+        min_files=1,  # At least 1 file
+        max_files=50,  # Allow many files (large PRs are OK)
+        require_review=False,  # Make review optional
+    )
     transformer = DataTransformer()
 
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -138,13 +181,17 @@ def collect(
                 prs = collector.list_pull_requests(owner, repo, max_pages=3)
                 console.print(f"  Found {len(prs)} closed PRs")
 
-                # Collect detailed data
+                # Collect detailed data - process more PRs to find suitable ones
                 files_data = {}
                 reviews_data = {}
                 commits_data = {}
                 review_comments_data = {}
 
-                for pr in prs[:50]:  # Limit to first 50 for rate limiting
+                # Process more PRs to increase chances of finding suitable ones
+                prs_to_process = min(150, len(prs))  # Process more PRs
+                console.print(f"  Processing {prs_to_process} PRs for detailed data...")
+
+                for pr in prs[:prs_to_process]:
                     pr_number = pr["number"]
 
                     try:
@@ -161,8 +208,10 @@ def collect(
                         logger.warning(f"Failed to fetch data for PR #{pr_number}: {e}")
                         continue
 
-                # Filter PRs
-                filtered_prs = selector.filter_prs(prs, files_data, reviews_data)
+                # Filter PRs - only check PRs we have data for
+                prs_with_data = [pr for pr in prs if pr["number"] in files_data]
+                console.print(f"  Collected data for {len(prs_with_data)} PRs")
+                filtered_prs = selector.filter_prs(prs_with_data, files_data, reviews_data)
                 console.print(f"  ✓ Filtered to {len(filtered_prs)} suitable PRs")
 
                 if not filtered_prs:

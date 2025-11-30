@@ -50,39 +50,62 @@ class PRSelector:
             Filtered list of PRs
         """
         filtered = []
+        stats = {
+            "not_merged": 0,
+            "file_count": 0,
+            "no_python": 0,
+            "lines": 0,
+            "reviews": 0,
+            "passed": 0,
+        }
 
         for pr in prs:
             pr_number = pr["number"]
 
-            # Must be merged
-            if not pr.get("merged_at"):
+            # Prefer merged PRs, but also accept closed PRs that look good
+            # (Some repos auto-merge or use squash merge without merged_at)
+            if pr.get("state") != "closed":
+                stats["not_merged"] += 1
                 continue
 
             # Check file count
             files = files_data.get(pr_number, [])
             if len(files) < self.min_files or len(files) > self.max_files:
+                stats["file_count"] += 1
                 continue
 
-            # Check if Python files present
-            python_files = [f for f in files if f.get("filename", "").endswith(".py")]
-            if not python_files:
+            # Check if Python files present (including test files)
+            python_files = [
+                f for f in files
+                if f.get("filename", "").endswith(".py")
+            ]
+            # Allow PRs without Python files if they have reasonable file count
+            # (some PRs might be docs, config, etc.)
+            if not python_files and len(files) < 3:
+                stats["no_python"] += 1
                 continue
 
-            # Check lines changed
-            additions = pr.get("additions", 0)
-            deletions = pr.get("deletions", 0)
-            total_lines = additions + deletions
+            # Check lines changed (optional - can be disabled by setting min=0, max=very large)
+            if self.min_lines > 0 or self.max_lines < 100000:
+                additions = pr.get("additions", 0)
+                deletions = pr.get("deletions", 0)
+                total_lines = additions + deletions
 
-            if total_lines < self.min_lines or total_lines > self.max_lines:
-                continue
+                if total_lines < self.min_lines or total_lines > self.max_lines:
+                    stats["lines"] += 1
+                    continue
 
             # Check for reviews if required
             if self.require_review:
                 reviews = reviews_data.get(pr_number, [])
                 if not reviews or len(reviews) == 0:
+                    stats["reviews"] += 1
                     continue
 
+            stats["passed"] += 1
             filtered.append(pr)
+
+        logger.info(f"Filter stats: {stats}")
 
         logger.info(f"Filtered {len(filtered)} PRs from {len(prs)} total")
         return filtered
