@@ -4,9 +4,9 @@ from pathlib import Path
 from typing import Dict
 from uuid import uuid4
 
+from app.logging import get_logger
 from domain import PRContext, PRMetadata, ToolResult
 from tools import ToolRegistry
-from app.logging import get_logger
 
 logger = get_logger(__name__)
 
@@ -24,87 +24,53 @@ class ContextBuilder:
         base_ref: str = "HEAD",
         compare_ref: str | None = None,
     ) -> PRContext:
-        """Build complete PR context.
-
-        Args:
-            pr_metadata: PR metadata
-            repo_path: Path to repository
-            base_ref: Base git reference
-            compare_ref: Compare git reference
-
-        Returns:
-            Complete PRContext with tool results
-        """
+        """Build complete PR context with tool results."""
         correlation_id = uuid4()
-        logger.info(
-            f"Building context for PR {pr_metadata.pr_id}",
-            extra={"correlation_id": str(correlation_id)}
-        )
+        logger.info(f"Building context for PR {pr_metadata.pr_id}", extra={"correlation_id": str(correlation_id)})
 
         # Extract git diff
-        git_tool = self.tool_registry.get("git_diff")
-        diff_result = git_tool.run(repo_path, base_ref=base_ref, compare_ref=compare_ref)
-
+        diff_result = self._run_tool("git_diff", repo_path, base_ref=base_ref, compare_ref=compare_ref)
         if not diff_result.success:
             raise RuntimeError(f"Failed to extract git diff: {diff_result.errors}")
 
-        diff_content = diff_result.output or ""
+        # Build tool results
+        tool_results = {"git_diff": diff_result}
+        tool_results.update(self._run_language_tools(pr_metadata.language, repo_path))
 
-        # Run analysis tools based on language
-        tool_results: Dict[str, ToolResult] = {
-            "git_diff": diff_result,
-        }
-
-        if pr_metadata.language == "python":
-            tool_results.update(self._run_python_tools(repo_path))
-        elif pr_metadata.language in ["javascript", "typescript"]:
-            tool_results.update(self._run_js_tools(repo_path))
-
-        # Always try to run security tools
-        tool_results.update(self._run_security_tools(repo_path))
-
-        logger.info(
-            f"Context built with {len(tool_results)} tool results",
-            extra={"correlation_id": str(correlation_id)}
-        )
+        logger.info(f"Context built with {len(tool_results)} tool results")
 
         return PRContext(
             correlation_id=correlation_id,
             pr_metadata=pr_metadata,
-            diff_content=diff_content,
+            diff_content=diff_result.output or "",
             tool_results=tool_results,
         )
 
-    def _run_python_tools(self, repo_path: Path) -> Dict[str, ToolResult]:
-        """Run Python-specific tools."""
+    def _run_language_tools(self, language: str, repo_path: Path) -> Dict[str, ToolResult]:
+        """Run language-specific and security tools."""
         results = {}
 
-        if self.tool_registry.is_registered("ruff"):
-            ruff_tool = self.tool_registry.get("ruff")
-            results["ruff"] = ruff_tool.run(repo_path)
+        # Language-specific tools
+        language_tools = {
+            "python": ["ruff", "bandit"],
+            "javascript": ["eslint"],
+            "typescript": ["eslint"],
+        }
 
-        if self.tool_registry.is_registered("bandit"):
-            bandit_tool = self.tool_registry.get("bandit")
-            results["bandit"] = bandit_tool.run(repo_path)
+        for tool_name in language_tools.get(language, []):
+            result = self._run_tool(tool_name, repo_path)
+            if result:
+                results[tool_name] = result
+
+        # Security tools (always try)
+        semgrep_result = self._run_tool("semgrep", repo_path)
+        if semgrep_result:
+            results["semgrep"] = semgrep_result
 
         return results
 
-    def _run_js_tools(self, repo_path: Path) -> Dict[str, ToolResult]:
-        """Run JavaScript/TypeScript-specific tools."""
-        results = {}
-
-        if self.tool_registry.is_registered("eslint"):
-            eslint_tool = self.tool_registry.get("eslint")
-            results["eslint"] = eslint_tool.run(repo_path)
-
-        return results
-
-    def _run_security_tools(self, repo_path: Path) -> Dict[str, ToolResult]:
-        """Run security analysis tools."""
-        results = {}
-
-        if self.tool_registry.is_registered("semgrep"):
-            semgrep_tool = self.tool_registry.get("semgrep")
-            results["semgrep"] = semgrep_tool.run(repo_path)
-
-        return results
+    def _run_tool(self, tool_name: str, repo_path: Path, **kwargs) -> ToolResult | None:
+        """Run a tool if registered."""
+        if not self.tool_registry.is_registered(tool_name):
+            return None
+        return self.tool_registry.get(tool_name).run(repo_path, **kwargs)

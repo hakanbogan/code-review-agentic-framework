@@ -1,6 +1,4 @@
-"""Change and Context Analyst agent."""
-
-from typing import List
+"""Logic and Bug Reviewer agent."""
 
 from crewai import Agent, Crew, Task
 
@@ -12,23 +10,26 @@ from domain import AgentDecision, AgentRole, FindingType, PRContext
 logger = get_logger(__name__)
 
 
-class ChangeContextAnalyst(BaseAgent):
-    """Analyzes PR changes for consistency and context."""
+class LogicBugReviewer(BaseAgent):
+    """Reviews code for logical errors and potential bugs."""
 
     def __init__(self, settings: Settings):
-        super().__init__(AgentRole.CHANGE_CONTEXT_ANALYST, settings)
+        super().__init__(AgentRole.LOGIC_REVIEWER, settings)
 
     def analyze(self, context: PRContext) -> AgentDecision:
-        """Analyze change context and consistency."""
-        logger.info("Change Context Analyst starting analysis", extra={"pr_id": context.pr_metadata.pr_id})
+        """Analyze code for logical errors and bugs."""
+        logger.info("Logic Bug Reviewer starting analysis", extra={"pr_id": context.pr_metadata.pr_id})
 
         prompt_template = self.load_prompt()
         analysis_context = self._build_analysis_context(context, prompt_template)
 
         crew_agent = Agent(
-            role="Change & Context Analyst",
-            goal="Analyze PR changes for consistency and appropriate context",
-            backstory="You are an expert at understanding code changes and ensuring they align with stated intentions.",
+            role="Logic & Bug Reviewer",
+            goal="Identify logical errors, edge cases, and potential bugs in code changes",
+            backstory=(
+                "You are an expert software engineer specialized in finding subtle bugs, "
+                "edge cases, and logical errors that could cause runtime failures or incorrect behavior."
+            ),
             llm=self.llm,
             verbose=False,
         )
@@ -36,20 +37,20 @@ class ChangeContextAnalyst(BaseAgent):
         task = Task(
             description=analysis_context,
             agent=crew_agent,
-            expected_output="JSON with findings array and reasoning string.",
+            expected_output="JSON with findings array containing logic/bug issues and reasoning string.",
         )
 
         result, elapsed = self._execute_with_timing(self._execute_task, crew_agent, task)
 
         # Parse LLM output to findings
         parsed = self._parse_llm_json_output(result.get("raw_output", ""))
-        findings = self._parse_findings_from_llm(parsed, FindingType.CONSISTENCY, "change_analysis")
+        findings = self._parse_findings_from_llm(parsed, FindingType.LOGIC, "logic_analysis")
         validated = self._validate_findings(findings)
 
-        logger.info(f"Change Context Analyst completed: {len(validated)} findings")
+        logger.info(f"Logic Bug Reviewer completed: {len(validated)} findings")
 
         return self._create_decision(
-            task_description="Analyze PR changes for consistency and context",
+            task_description="Review code for logical errors and potential bugs",
             findings=validated,
             reasoning=parsed.get("reasoning", result.get("reasoning", "Analysis completed")),
             llm_calls=1,
@@ -63,10 +64,9 @@ class ChangeContextAnalyst(BaseAgent):
         pr_context = "\n".join([
             f"PR Title: {pr.title}",
             f"PR Description: {pr.description or 'No description'}",
-            f"Commit Messages: {', '.join(pr.commit_messages)}",
+            f"Language: {pr.language}",
             f"Files Changed: {pr.files_changed}",
-            f"Lines Added: {pr.lines_added}, Lines Deleted: {pr.lines_deleted}",
-            f"\nDiff:\n{context.diff_content[:8000]}",
+            f"\nCode Diff:\n{context.diff_content[:10000]}",
         ])
 
         if "{pr_context}" in prompt_template:

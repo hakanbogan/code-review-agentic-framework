@@ -1,0 +1,39 @@
+{
+  "correlation_id": "2328be5c-e37e-4320-b79c-aff2d60fdb16",
+  "pr_id": "13971",
+  "system_type": "multi_agent",
+  "change_summary": "Migrated review for PR 13971",
+  "findings": [
+    {
+      "id": "f78ee6db-2c28-4c27-b863-768a84542588",
+      "type": "other",
+      "severity": "minor",
+      "source_agent": "Supervisor",
+      "evidence": {
+        "tool": "migrated",
+        "reference": "unknown",
+        "snippet": "",
+        "metadata": {}
+      },
+      "title": "Migrated finding 1",
+      "description": "Migrated from markdown review",
+      "has_patch": false,
+      "patch": null,
+      "location": "unknown",
+      "created_at": "2025-11-30T18:49:57.315954"
+    }
+  ],
+  "agent_decisions": [],
+  "final_comment_md": "# Code Review\n\n## Summary\nReviewed PR #13971: Add narcissistic number finder with dynamic programming\nChanged 0 files (+0/-0)\nFound 6 issues requiring attention.\n\n## \ud83d\udfe1 Minor Issues\n\n### python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1\n\n**Location:** `/tmp/Python/hashes/sha1.py:135-135`  \n**Type:** security  \n**Source:** semgrep  \n\n\n\n### python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected\n\n**Location:** `/tmp/Python/machine_learning/sequential_minimum_optimization.py:458-458`  \n**Type:** security  \n**Source:** semgrep  \n\n\n\n### python.lang.security.deserialization.pickle.avoid-pickle\n\n**Location:** `/tmp/Python/neural_network/convolution_neural_network.py:74-74`  \n**Type:** security  \n**Source:** semgrep  \n\n\n\n### python.lang.security.deserialization.pickle.avoid-pickle\n\n**Location:** `/tmp/Python/neural_network/convolution_neural_network.py:82-82`  \n**Type:** security  \n**Source:** semgrep  \n\n\n\n### python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected\n\n**Location:** `/tmp/Python/neural_network/input_data.py:262-262`  \n**Type:** security  \n**Source:** semgrep  \n\n\n\n### python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected\n\n**Location:** `/tmp/Python/web_programming/download_images_from_google_query.py:99-101`  \n**Type:** security  \n**Source:** semgrep  \n\n\n\n",
+  "review_time_s": 0.0,
+  "token_cost_estimate": 0.0,
+  "prompt_versions": {},
+  "metadata": {
+    "repository": "unknown",
+    "title": "Add narcissistic number finder with dynamic programming",
+    "author": "unknown",
+    "migrated": true,
+    "migrated_at": "2025-11-30T21:49:57.315962"
+  },
+  "created_at": "2025-11-30T18:49:57.315972"
+}

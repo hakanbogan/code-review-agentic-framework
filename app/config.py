@@ -71,6 +71,12 @@ class Settings(BaseSettings):
         description="Enable parallel agent execution"
     )
 
+    # Review Storage Settings
+    reviews_path: Path = Field(
+        default=Path("./reviews"),
+        description="Path to store review results"
+    )
+
     # Evaluation Settings
     eval_dataset_path: Path = Field(
         default=Path("./eval/dataset"),
@@ -101,7 +107,7 @@ class Settings(BaseSettings):
         description="Default prompt version to use"
     )
 
-    @field_validator("artifact_path", "eval_dataset_path", "eval_results_path", "prompt_base_path")
+    @field_validator("artifact_path", "eval_dataset_path", "eval_results_path", "prompt_base_path", "reviews_path")
     @classmethod
     def create_paths(cls, v: Path) -> Path:
         """Ensure paths exist."""

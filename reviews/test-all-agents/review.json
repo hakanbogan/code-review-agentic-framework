@@ -1,0 +1,456 @@
+{
+  "correlation_id": "9370984e-fc47-4e13-a068-e1079142e540",
+  "pr_id": "test-all-agents",
+  "system_type": "multi_agent",
+  "change_summary": "Reviewed PR #test-all-agents: Test all agents\nChanged 0 files (+0/-0)\nFound 5 issues requiring attention.",
+  "findings": [
+    {
+      "id": "8d91b968-8d90-4bef-b75b-58c65ef296d6",
+      "type": "security",
+      "severity": "minor",
+      "source_agent": "SR",
+      "evidence": {
+        "tool": "semgrep",
+        "reference": "/tmp/test-review-repo/auth.py:8",
+        "snippet": "    result = db.execute(query)",
+        "metadata": {}
+      },
+      "title": "python.lang.security.audit.formatted-sql-query.formatted-sql-query",
+      "description": "",
+      "has_patch": false,
+      "patch": null,
+      "location": "/tmp/test-review-repo/auth.py:8-8",
+      "created_at": "2025-12-01T07:26:27.721525"
+    },
+    {
+      "id": "0509f632-8e5c-4c7e-98a4-5a24ee02356e",
+      "type": "security",
+      "severity": "minor",
+      "source_agent": "SR",
+      "evidence": {
+        "tool": "bandit",
+        "reference": "/tmp/test-review-repo/auth.py:7",
+        "snippet": "6     # SQL injection vulnerability - should use parameterized query\n7     query = f\"SELECT * FROM users WHERE username='{username}' AND password='{password}'\"\n8     result = db.execute(query)\n",
+        "metadata": {
+          "test_id": "B608",
+          "test_name": "hardcoded_sql_expressions"
+        }
+      },
+      "title": "hardcoded_sql_expressions",
+      "description": "Possible SQL injection vector through string-based query construction.",
+      "has_patch": false,
+      "patch": null,
+      "location": "/tmp/test-review-repo/auth.py:7",
+      "created_at": "2025-12-01T07:26:27.721737"
+    },
+    {
+      "id": "fb9494b6-ee53-4068-afda-c9d4dddc2738",
+      "type": "style",
+      "severity": "nit",
+      "source_agent": "SFR",
+      "evidence": {
+        "tool": "ruff",
+        "reference": "auth.py:5",
+        "snippet": "",
+        "metadata": {
+          "code": "W293",
+          "url": "https://docs.astral.sh/ruff/rules/blank-line-with-whitespace"
+        }
+      },
+      "title": "[W293] Style violation",
+      "description": "Blank line contains whitespace",
+      "has_patch": true,
+      "patch": "",
+      "location": "auth.py:5",
+      "created_at": "2025-12-01T07:26:27.724370"
+    },
+    {
+      "id": "66788678-eb99-44b1-95a3-921e702c505f",
+      "type": "style",
+      "severity": "nit",
+      "source_agent": "SFR",
+      "evidence": {
+        "tool": "ruff",
+        "reference": "auth.py:8",
+        "snippet": "",
+        "metadata": {
+          "code": "F821",
+          "url": "https://docs.astral.sh/ruff/rules/undefined-name"
+        }
+      },
+      "title": "[F821] Style violation",
+      "description": "Undefined name `db`",
+      "has_patch": false,
+      "patch": null,
+      "location": "auth.py:8",
+      "created_at": "2025-12-01T07:26:27.724409"
+    },
+    {
+      "id": "40979763-1799-40b2-b1e5-2e6aec7d9175",
+      "type": "style",
+      "severity": "nit",
+      "source_agent": "SFR",
+      "evidence": {
+        "tool": "ruff",
+        "reference": "auth.py:9",
+        "snippet": "",
+        "metadata": {
+          "code": "W293",
+          "url": "https://docs.astral.sh/ruff/rules/blank-line-with-whitespace"
+        }
+      },
+      "title": "[W293] Style violation",
+      "description": "Blank line contains whitespace",
+      "has_patch": true,
+      "patch": "",
+      "location": "auth.py:9",
+      "created_at": "2025-12-01T07:26:27.724446"
+    }
+  ],
+  "agent_decisions": [
+    {
+      "agent_role": "CCA",
+      "task_description": "Analyze PR changes for consistency and context",
+      "findings": [],
+      "reasoning": "Upon analysis of the provided PR metadata, commit messages, and the diff statistics, it is observed that there are no actual code changes (files changed: 0, lines added: 0, lines deleted: 0). This directly contradicts the PR title 'Test all agents' and description 'Testing all code review agents', which imply an intention to modify or add tests across various agents. Without any code changes, the PR does not align with its stated purpose, nor does it adhere to the basic expectation of a pull request to include modifications or additions to the codebase. However, since there are no specific changes to evaluate against the criteria of consistency, scope appropriateness, and convention adherence, no findings can be reported. The critical observation here is the complete absence of content to review, which fundamentally misaligns with the PR's stated intent.",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 6.531832933425903,
+      "timestamp": "2025-12-01T07:26:27.719337"
+    },
+    {
+      "agent_role": "SR",
+      "task_description": "Review code for security vulnerabilities",
+      "findings": [
+        {
+          "id": "8d91b968-8d90-4bef-b75b-58c65ef296d6",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/tmp/test-review-repo/auth.py:8",
+            "snippet": "    result = db.execute(query)",
+            "metadata": {}
+          },
+          "title": "python.lang.security.audit.formatted-sql-query.formatted-sql-query",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/tmp/test-review-repo/auth.py:8-8",
+          "created_at": "2025-12-01T07:26:27.721525"
+        },
+        {
+          "id": "2c99a43e-256f-4420-a3ca-92e85f8f377f",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/tmp/test-review-repo/auth.py:8",
+            "snippet": "    result = db.execute(query)",
+            "metadata": {}
+          },
+          "title": "python.sqlalchemy.security.sqlalchemy-execute-raw-query.sqlalchemy-execute-raw-query",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/tmp/test-review-repo/auth.py:8-8",
+          "created_at": "2025-12-01T07:26:27.721598"
+        },
+        {
+          "id": "0509f632-8e5c-4c7e-98a4-5a24ee02356e",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "bandit",
+            "reference": "/tmp/test-review-repo/auth.py:7",
+            "snippet": "6     # SQL injection vulnerability - should use parameterized query\n7     query = f\"SELECT * FROM users WHERE username='{username}' AND password='{password}'\"\n8     result = db.execute(query)\n",
+            "metadata": {
+              "test_id": "B608",
+              "test_name": "hardcoded_sql_expressions"
+            }
+          },
+          "title": "hardcoded_sql_expressions",
+          "description": "Possible SQL injection vector through string-based query construction.",
+          "has_patch": false,
+          "patch": null,
+          "location": "/tmp/test-review-repo/auth.py:7",
+          "created_at": "2025-12-01T07:26:27.721737"
+        }
+      ],
+      "reasoning": "Analyzed security tools output",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-01T07:26:27.723144"
+    },
+    {
+      "agent_role": "SFR",
+      "task_description": "Review code style and formatting",
+      "findings": [
+        {
+          "id": "fb9494b6-ee53-4068-afda-c9d4dddc2738",
+          "type": "style",
+          "severity": "nit",
+          "source_agent": "SFR",
+          "evidence": {
+            "tool": "ruff",
+            "reference": "auth.py:5",
+            "snippet": "",
+            "metadata": {
+              "code": "W293",
+              "url": "https://docs.astral.sh/ruff/rules/blank-line-with-whitespace"
+            }
+          },
+          "title": "[W293] Style violation",
+          "description": "Blank line contains whitespace",
+          "has_patch": true,
+          "patch": "",
+          "location": "auth.py:5",
+          "created_at": "2025-12-01T07:26:27.724370"
+        },
+        {
+          "id": "66788678-eb99-44b1-95a3-921e702c505f",
+          "type": "style",
+          "severity": "nit",
+          "source_agent": "SFR",
+          "evidence": {
+            "tool": "ruff",
+            "reference": "auth.py:8",
+            "snippet": "",
+            "metadata": {
+              "code": "F821",
+              "url": "https://docs.astral.sh/ruff/rules/undefined-name"
+            }
+          },
+          "title": "[F821] Style violation",
+          "description": "Undefined name `db`",
+          "has_patch": false,
+          "patch": null,
+          "location": "auth.py:8",
+          "created_at": "2025-12-01T07:26:27.724409"
+        },
+        {
+          "id": "40979763-1799-40b2-b1e5-2e6aec7d9175",
+          "type": "style",
+          "severity": "nit",
+          "source_agent": "SFR",
+          "evidence": {
+            "tool": "ruff",
+            "reference": "auth.py:9",
+            "snippet": "",
+            "metadata": {
+              "code": "W293",
+              "url": "https://docs.astral.sh/ruff/rules/blank-line-with-whitespace"
+            }
+          },
+          "title": "[W293] Style violation",
+          "description": "Blank line contains whitespace",
+          "has_patch": true,
+          "patch": "",
+          "location": "auth.py:9",
+          "created_at": "2025-12-01T07:26:27.724446"
+        }
+      ],
+      "reasoning": "Analyzed linter output and applied nit limits",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-01T07:26:27.725596"
+    },
+    {
+      "agent_role": "LR",
+      "task_description": "Review code for logical errors and potential bugs",
+      "findings": [],
+      "reasoning": "The task lacks the essential code diff required for identifying logical errors, edge cases, potential bugs, or any specific issues within the code changes. Without the actual code modifications, it's impossible to conduct a meaningful review or report specific findings.",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 5.171497106552124,
+      "timestamp": "2025-12-01T07:26:32.939979"
+    },
+    {
+      "agent_role": "PR",
+      "task_description": "Review code for performance issues",
+      "findings": [],
+      "reasoning": "Static analysis: 0, LLM analysis: 0",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 2.392106056213379,
+      "timestamp": "2025-12-01T07:26:35.384307"
+    },
+    {
+      "agent_role": "DR",
+      "task_description": "Review code documentation quality",
+      "findings": [],
+      "reasoning": "Reviewed documentation completeness and found no code changes to evaluate. Without any code diffs provided in the PR, there are no new or changed lines of code to assess for documentation quality, type hints, comments, or API documentation updates. The task specified reviewing documentation related to code changes, but since there were no files changed, this review does not yield any findings. It's crucial for future submissions that code diffs are included to properly evaluate the documentation and maintainability of the codebase.",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 4.3296849727630615,
+      "timestamp": "2025-12-01T07:26:39.767696"
+    },
+    {
+      "agent_role": "TR",
+      "task_description": "Review test coverage and quality",
+      "findings": [],
+      "reasoning": "Static: 0, LLM: 0",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 0.7579998970031738,
+      "timestamp": "2025-12-01T07:26:40.577903"
+    },
+    {
+      "agent_role": "RP",
+      "task_description": "Generate code revision proposals",
+      "findings": [],
+      "reasoning": "Generated patches for 0 high-priority findings",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-01T07:26:40.580702"
+    },
+    {
+      "agent_role": "Supervisor",
+      "task_description": "Consolidate and validate all findings",
+      "findings": [
+        {
+          "id": "8d91b968-8d90-4bef-b75b-58c65ef296d6",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/tmp/test-review-repo/auth.py:8",
+            "snippet": "    result = db.execute(query)",
+            "metadata": {}
+          },
+          "title": "python.lang.security.audit.formatted-sql-query.formatted-sql-query",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/tmp/test-review-repo/auth.py:8-8",
+          "created_at": "2025-12-01T07:26:27.721525"
+        },
+        {
+          "id": "0509f632-8e5c-4c7e-98a4-5a24ee02356e",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "bandit",
+            "reference": "/tmp/test-review-repo/auth.py:7",
+            "snippet": "6     # SQL injection vulnerability - should use parameterized query\n7     query = f\"SELECT * FROM users WHERE username='{username}' AND password='{password}'\"\n8     result = db.execute(query)\n",
+            "metadata": {
+              "test_id": "B608",
+              "test_name": "hardcoded_sql_expressions"
+            }
+          },
+          "title": "hardcoded_sql_expressions",
+          "description": "Possible SQL injection vector through string-based query construction.",
+          "has_patch": false,
+          "patch": null,
+          "location": "/tmp/test-review-repo/auth.py:7",
+          "created_at": "2025-12-01T07:26:27.721737"
+        },
+        {
+          "id": "fb9494b6-ee53-4068-afda-c9d4dddc2738",
+          "type": "style",
+          "severity": "nit",
+          "source_agent": "SFR",
+          "evidence": {
+            "tool": "ruff",
+            "reference": "auth.py:5",
+            "snippet": "",
+            "metadata": {
+              "code": "W293",
+              "url": "https://docs.astral.sh/ruff/rules/blank-line-with-whitespace"
+            }
+          },
+          "title": "[W293] Style violation",
+          "description": "Blank line contains whitespace",
+          "has_patch": true,
+          "patch": "",
+          "location": "auth.py:5",
+          "created_at": "2025-12-01T07:26:27.724370"
+        },
+        {
+          "id": "66788678-eb99-44b1-95a3-921e702c505f",
+          "type": "style",
+          "severity": "nit",
+          "source_agent": "SFR",
+          "evidence": {
+            "tool": "ruff",
+            "reference": "auth.py:8",
+            "snippet": "",
+            "metadata": {
+              "code": "F821",
+              "url": "https://docs.astral.sh/ruff/rules/undefined-name"
+            }
+          },
+          "title": "[F821] Style violation",
+          "description": "Undefined name `db`",
+          "has_patch": false,
+          "patch": null,
+          "location": "auth.py:8",
+          "created_at": "2025-12-01T07:26:27.724409"
+        },
+        {
+          "id": "40979763-1799-40b2-b1e5-2e6aec7d9175",
+          "type": "style",
+          "severity": "nit",
+          "source_agent": "SFR",
+          "evidence": {
+            "tool": "ruff",
+            "reference": "auth.py:9",
+            "snippet": "",
+            "metadata": {
+              "code": "W293",
+              "url": "https://docs.astral.sh/ruff/rules/blank-line-with-whitespace"
+            }
+          },
+          "title": "[W293] Style violation",
+          "description": "Blank line contains whitespace",
+          "has_patch": true,
+          "patch": "",
+          "location": "auth.py:9",
+          "created_at": "2025-12-01T07:26:27.724446"
+        }
+      ],
+      "reasoning": "Consolidated 6 findings from 8 agents.",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-01T07:26:40.584855"
+    }
+  ],
+  "final_comment_md": "# Code Review\n\n## Summary\nReviewed PR #test-all-agents: Test all agents\nChanged 0 files (+0/-0)\nFound 5 issues requiring attention.\n\n## \ud83d\udfe1 Minor Issues\n\n### python.lang.security.audit.formatted-sql-query.formatted-sql-query\n\n**Location:** `/tmp/test-review-repo/auth.py:8-8`  \n**Type:** security  \n**Source:** semgrep  \n\n\n\n### hardcoded_sql_expressions\n\n**Location:** `/tmp/test-review-repo/auth.py:7`  \n**Type:** security  \n**Source:** bandit  \n\nPossible SQL injection vector through string-based query construction.\n\n\n## \ud83d\udcac Nits\n\n### [W293] Style violation\n\n**Location:** `auth.py:5`  \n**Type:** style  \n**Source:** ruff  \n\nBlank line contains whitespace\n\n### [F821] Style violation\n\n**Location:** `auth.py:8`  \n**Type:** style  \n**Source:** ruff  \n\nUndefined name `db`\n\n### [W293] Style violation\n\n**Location:** `auth.py:9`  \n**Type:** style  \n**Source:** ruff  \n\nBlank line contains whitespace\n\n",
+  "review_time_s": 30.525174617767334,
+  "token_cost_estimate": 0.0,
+  "prompt_versions": {
+    "CCA": "v1",
+    "SR": "v1",
+    "SFR": "v1",
+    "LR": "v1",
+    "PR": "v1",
+    "DR": "v1",
+    "TR": "v1",
+    "RP": "v1",
+    "Supervisor": "v1"
+  },
+  "metadata": {
+    "repository": "test-review-repo",
+    "title": "Test all agents",
+    "author": "unknown"
+  },
+  "created_at": "2025-12-01T07:26:40.584967"
+}

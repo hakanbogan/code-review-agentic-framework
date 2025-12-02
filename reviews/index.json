@@ -1,0 +1,121 @@
+{
+  "13971": {
+    "created_at": "2025-11-30T18:49:57.315972",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 1,
+      "nit": 0
+    },
+    "findings_count": 1,
+    "pr_id": "13971",
+    "repository": "unknown",
+    "review_time_s": 0.0,
+    "reviewed_at": "2025-11-30T18:49:57.316243",
+    "system_type": "multi_agent",
+    "title": "Add narcissistic number finder with dynamic programming",
+    "token_cost": 0.0
+  },
+  "13973": {
+    "created_at": "2025-11-30T18:49:57.312263",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 1,
+      "nit": 0
+    },
+    "findings_count": 1,
+    "pr_id": "13973",
+    "repository": "unknown",
+    "review_time_s": 0.0,
+    "reviewed_at": "2025-11-30T18:49:57.313862",
+    "system_type": "multi_agent",
+    "title": "Optimized Trapping Rainwater Solution to O(1) Space (Two-Pointer Approach)",
+    "token_cost": 0.0
+  },
+  "13977": {
+    "created_at": "2025-11-30T18:49:57.315300",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 1,
+      "nit": 0
+    },
+    "findings_count": 1,
+    "pr_id": "13977",
+    "repository": "unknown",
+    "review_time_s": 0.0,
+    "reviewed_at": "2025-11-30T18:49:57.315544",
+    "system_type": "multi_agent",
+    "title": "Add bubble_sort_optimized with early termination",
+    "token_cost": 0.0
+  },
+  "crewai-test": {
+    "created_at": "2025-12-01T07:14:59.419250",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 2,
+      "nit": 3
+    },
+    "findings_count": 5,
+    "pr_id": "crewai-test",
+    "repository": "test-review-repo",
+    "review_time_s": 13.430445909500122,
+    "reviewed_at": "2025-12-01T07:14:59.426785",
+    "system_type": "multi_agent",
+    "title": "Test CrewAI",
+    "token_cost": 0.0
+  },
+  "test-001": {
+    "created_at": "2025-11-30T18:49:57.314503",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 1,
+      "nit": 1
+    },
+    "findings_count": 2,
+    "pr_id": "test-001",
+    "repository": "unknown",
+    "review_time_s": 0.0,
+    "reviewed_at": "2025-11-30T18:49:57.314950",
+    "system_type": "multi_agent",
+    "title": "Unknown",
+    "token_cost": 0.0
+  },
+  "test-all-agents": {
+    "created_at": "2025-12-01T07:26:40.584967",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 2,
+      "nit": 3
+    },
+    "findings_count": 5,
+    "pr_id": "test-all-agents",
+    "repository": "test-review-repo",
+    "review_time_s": 30.525174617767334,
+    "reviewed_at": "2025-12-01T07:26:40.593263",
+    "system_type": "multi_agent",
+    "title": "Test all agents",
+    "token_cost": 0.0
+  },
+  "test-new-agents": {
+    "created_at": "2025-12-01T07:25:42.342543",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 2,
+      "nit": 3
+    },
+    "findings_count": 5,
+    "pr_id": "test-new-agents",
+    "repository": "test-review-repo",
+    "review_time_s": 35.61407780647278,
+    "reviewed_at": "2025-12-01T07:25:42.352244",
+    "system_type": "multi_agent",
+    "title": "Test new agents",
+    "token_cost": 0.0
+  }
+}
