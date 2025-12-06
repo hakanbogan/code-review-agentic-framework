@@ -1,0 +1,2752 @@
+[
+  {
+    "pr_id": "dummy-feature-0001",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "feature/database-caching-me",
+    "branch_target": "main",
+    "title": "Implement caching mechanism for database functionality",
+    "description": "Closes #3188\n\nThis adds caching mechanism support to improve testability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "alexchen",
+    "commit_messages": [
+      "Add caching mechanism interface",
+      "Implement caching mechanism",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 332,
+    "lines_deleted": 105,
+    "language": "python",
+    "metrics": {
+      "total_lines": 535,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 55,
+      "lines_added": 341,
+      "lines_deleted": 147
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0002",
+    "repository": "scipy/scipy",
+    "branch_source": "feature/database-validation",
+    "branch_target": "main",
+    "title": "Add validation schema to database",
+    "description": "This PR implements validation schema for database.\n\nFeatures:\n- Automatic failover\n- JSON schema validation\n- Rate limiting support\n\nAPI Example:\n```python\nresult = database.validation_schema(data, options={'enabled': True})\n```",
+    "author": "janesmit",
+    "commit_messages": [
+      "Implement validation schema",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 131,
+    "lines_deleted": 150,
+    "language": "python",
+    "metrics": {
+      "total_lines": 627,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 32,
+      "lines_added": 393,
+      "lines_deleted": 147
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0003",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "feature/database-batch-proc",
+    "branch_target": "main",
+    "title": "Implement batch processing for database functionality",
+    "description": "Closes #1911\n\nThis adds batch processing support to improve readability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "alexchen",
+    "commit_messages": [
+      "Add batch processing interface",
+      "Implement batch processing",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 362,
+    "lines_deleted": 116,
+    "language": "python",
+    "metrics": {
+      "total_lines": 577,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 56,
+      "lines_added": 129,
+      "lines_deleted": 128
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0004",
+    "repository": "django/django",
+    "branch_source": "feature/router-caching-me",
+    "branch_target": "main",
+    "title": "Add caching mechanism to router",
+    "description": "This PR implements caching mechanism for router.\n\nFeatures:\n- Supports both sync and async modes\n- Rate limiting support\n- Configurable batch size\n\nAPI Example:\n```python\nresult = router.caching_mechanism(data, options={'enabled': True})\n```",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Implement caching mechanism",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 276,
+    "lines_deleted": 26,
+    "language": "python",
+    "metrics": {
+      "total_lines": 171,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 24,
+      "lines_added": 341,
+      "lines_deleted": 18
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 3
+  },
+  {
+    "pr_id": "dummy-feature-0005",
+    "repository": "pytorch/pytorch",
+    "branch_source": "feature/serializer-retry-logi",
+    "branch_target": "main",
+    "title": "Implement retry logic for serializer functionality",
+    "description": "Closes #2314\n\nThis adds retry logic support to improve readability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "alexchen",
+    "commit_messages": [
+      "Add retry logic interface",
+      "Implement retry logic",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 434,
+    "lines_deleted": 99,
+    "language": "python",
+    "metrics": {
+      "total_lines": 231,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 31,
+      "lines_added": 375,
+      "lines_deleted": 110
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0006",
+    "repository": "pytorch/pytorch",
+    "branch_source": "feature/authentication-async-supp",
+    "branch_target": "main",
+    "title": "Add async support to authentication",
+    "description": "This PR implements async support for authentication.\n\nFeatures:\n- JSON schema validation\n- Exponential backoff retry\n- Rate limiting support\n\nAPI Example:\n```python\nresult = authentication.async_support(data, options={'enabled': True})\n```",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Implement async support",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 217,
+    "lines_deleted": 73,
+    "language": "python",
+    "metrics": {
+      "total_lines": 581,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 42,
+      "lines_added": 179,
+      "lines_deleted": 80
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0007",
+    "repository": "scipy/scipy",
+    "branch_source": "feature/authentication-retry-logi",
+    "branch_target": "main",
+    "title": "Add retry logic to authentication",
+    "description": "This PR implements retry logic for authentication.\n\nFeatures:\n- Supports both sync and async modes\n- Configurable batch size\n- Connection pooling\n\nAPI Example:\n```python\nresult = authentication.retry_logic(data, options={'enabled': True})\n```",
+    "author": "johndoe",
+    "commit_messages": [
+      "Implement retry logic",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 328,
+    "lines_deleted": 22,
+    "language": "python",
+    "metrics": {
+      "total_lines": 360,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 22,
+      "lines_added": 305,
+      "lines_deleted": 122
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 2
+  },
+  {
+    "pr_id": "dummy-feature-0008",
+    "repository": "flask/flask",
+    "branch_source": "feature/validator-batch-proc",
+    "branch_target": "main",
+    "title": "Add batch processing to validator",
+    "description": "This PR implements batch processing for validator.\n\nFeatures:\n- Rate limiting support\n- JSON schema validation\n- Connection pooling\n\nAPI Example:\n```python\nresult = validator.batch_processing(data, options={'enabled': True})\n```",
+    "author": "briankim",
+    "commit_messages": [
+      "Implement batch processing",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 173,
+    "lines_deleted": 143,
+    "language": "python",
+    "metrics": {
+      "total_lines": 336,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 46,
+      "lines_added": 253,
+      "lines_deleted": 80
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0009",
+    "repository": "requests/requests",
+    "branch_source": "feature/router-validation",
+    "branch_target": "main",
+    "title": "Add validation schema to router",
+    "description": "This PR implements validation schema for router.\n\nFeatures:\n- Automatic failover\n- Supports both sync and async modes\n- Optional caching with TTL\n\nAPI Example:\n```python\nresult = router.validation_schema(data, options={'enabled': True})\n```",
+    "author": "annalee",
+    "commit_messages": [
+      "Implement validation schema",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 313,
+    "lines_deleted": 114,
+    "language": "python",
+    "metrics": {
+      "total_lines": 262,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 39,
+      "lines_added": 292,
+      "lines_deleted": 57
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0010",
+    "repository": "pytorch/pytorch",
+    "branch_source": "feature/validator-batch-proc",
+    "branch_target": "main",
+    "title": "Add batch processing to validator",
+    "description": "This PR implements batch processing for validator.\n\nFeatures:\n- Automatic failover\n- Supports both sync and async modes\n- JSON schema validation\n\nAPI Example:\n```python\nresult = validator.batch_processing(data, options={'enabled': True})\n```",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Implement batch processing",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 168,
+    "lines_deleted": 109,
+    "language": "python",
+    "metrics": {
+      "total_lines": 358,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 36,
+      "lines_added": 204,
+      "lines_deleted": 94
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0011",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "feature/database-validation",
+    "branch_target": "main",
+    "title": "Implement validation schema for database functionality",
+    "description": "Closes #1647\n\nThis adds validation schema support to improve readability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "mariaperez",
+    "commit_messages": [
+      "Add validation schema interface",
+      "Implement validation schema",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 489,
+    "lines_deleted": 65,
+    "language": "python",
+    "metrics": {
+      "total_lines": 600,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 33,
+      "lines_added": 270,
+      "lines_deleted": 87
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 3
+  },
+  {
+    "pr_id": "dummy-feature-0012",
+    "repository": "flask/flask",
+    "branch_source": "feature/middleware-batch-proc",
+    "branch_target": "main",
+    "title": "Add batch processing to middleware",
+    "description": "This PR implements batch processing for middleware.\n\nFeatures:\n- Exponential backoff retry\n- Automatic failover\n- Configurable batch size\n\nAPI Example:\n```python\nresult = middleware.batch_processing(data, options={'enabled': True})\n```",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Implement batch processing",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 338,
+    "lines_deleted": 146,
+    "language": "python",
+    "metrics": {
+      "total_lines": 477,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 39,
+      "lines_added": 233,
+      "lines_deleted": 102
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0013",
+    "repository": "scipy/scipy",
+    "branch_source": "feature/middleware-caching-me",
+    "branch_target": "main",
+    "title": "Add caching mechanism to middleware",
+    "description": "This PR implements caching mechanism for middleware.\n\nFeatures:\n- Exponential backoff retry\n- Optional caching with TTL\n- Connection pooling\n\nAPI Example:\n```python\nresult = middleware.caching_mechanism(data, options={'enabled': True})\n```",
+    "author": "rachelchen",
+    "commit_messages": [
+      "Implement caching mechanism",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 213,
+    "lines_deleted": 47,
+    "language": "python",
+    "metrics": {
+      "total_lines": 126,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 36,
+      "lines_added": 383,
+      "lines_deleted": 116
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 3
+  },
+  {
+    "pr_id": "dummy-feature-0014",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "feature/parser-retry-logi",
+    "branch_target": "main",
+    "title": "Implement retry logic for parser functionality",
+    "description": "Closes #8550\n\nThis adds retry logic support to improve readability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "annalee",
+    "commit_messages": [
+      "Add retry logic interface",
+      "Implement retry logic",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 280,
+    "lines_deleted": 53,
+    "language": "python",
+    "metrics": {
+      "total_lines": 253,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 54,
+      "lines_added": 350,
+      "lines_deleted": 57
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0015",
+    "repository": "fastapi/fastapi",
+    "branch_source": "feature/authentication-async-supp",
+    "branch_target": "main",
+    "title": "Add async support to authentication",
+    "description": "This PR implements async support for authentication.\n\nFeatures:\n- Supports both sync and async modes\n- Connection pooling\n- Automatic failover\n\nAPI Example:\n```python\nresult = authentication.async_support(data, options={'enabled': True})\n```",
+    "author": "janesmit",
+    "commit_messages": [
+      "Implement async support",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 462,
+    "lines_deleted": 48,
+    "language": "python",
+    "metrics": {
+      "total_lines": 119,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 33,
+      "lines_added": 358,
+      "lines_deleted": 126
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0016",
+    "repository": "django/django",
+    "branch_source": "feature/middleware-async-supp",
+    "branch_target": "main",
+    "title": "Implement async support for middleware functionality",
+    "description": "Closes #1194\n\nThis adds async support support to improve readability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Add async support interface",
+      "Implement async support",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 469,
+    "lines_deleted": 80,
+    "language": "python",
+    "metrics": {
+      "total_lines": 403,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 21,
+      "lines_added": 357,
+      "lines_deleted": 120
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0017",
+    "repository": "flask/flask",
+    "branch_source": "feature/database-validation",
+    "branch_target": "main",
+    "title": "Add validation schema to database",
+    "description": "This PR implements validation schema for database.\n\nFeatures:\n- Optional caching with TTL\n- Configurable batch size\n- Connection pooling\n\nAPI Example:\n```python\nresult = database.validation_schema(data, options={'enabled': True})\n```",
+    "author": "rachelchen",
+    "commit_messages": [
+      "Implement validation schema",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 281,
+    "lines_deleted": 78,
+    "language": "python",
+    "metrics": {
+      "total_lines": 516,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 25,
+      "lines_added": 291,
+      "lines_deleted": 113
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 3
+  },
+  {
+    "pr_id": "dummy-feature-0018",
+    "repository": "django/django",
+    "branch_source": "feature/database-async-supp",
+    "branch_target": "main",
+    "title": "Implement async support for database functionality",
+    "description": "Closes #8798\n\nThis adds async support support to improve readability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "tomsmith",
+    "commit_messages": [
+      "Add async support interface",
+      "Implement async support",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 104,
+    "lines_deleted": 53,
+    "language": "python",
+    "metrics": {
+      "total_lines": 194,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 51,
+      "lines_added": 322,
+      "lines_deleted": 94
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0019",
+    "repository": "flask/flask",
+    "branch_source": "feature/authentication-batch-proc",
+    "branch_target": "main",
+    "title": "Add batch processing to authentication",
+    "description": "This PR implements batch processing for authentication.\n\nFeatures:\n- Exponential backoff retry\n- Connection pooling\n- Rate limiting support\n\nAPI Example:\n```python\nresult = authentication.batch_processing(data, options={'enabled': True})\n```",
+    "author": "johndoe",
+    "commit_messages": [
+      "Implement batch processing",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 138,
+    "lines_deleted": 81,
+    "language": "python",
+    "metrics": {
+      "total_lines": 143,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 31,
+      "lines_added": 261,
+      "lines_deleted": 14
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0020",
+    "repository": "pytorch/pytorch",
+    "branch_source": "feature/database-caching-me",
+    "branch_target": "main",
+    "title": "Implement caching mechanism for database functionality",
+    "description": "Closes #7375\n\nThis adds caching mechanism support to improve modularity.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Add caching mechanism interface",
+      "Implement caching mechanism",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 296,
+    "lines_deleted": 45,
+    "language": "python",
+    "metrics": {
+      "total_lines": 190,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 52,
+      "lines_added": 481,
+      "lines_deleted": 98
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0021",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "feature/serializer-validation",
+    "branch_target": "main",
+    "title": "Add validation schema to serializer",
+    "description": "This PR implements validation schema for serializer.\n\nFeatures:\n- Connection pooling\n- Automatic failover\n- Optional caching with TTL\n\nAPI Example:\n```python\nresult = serializer.validation_schema(data, options={'enabled': True})\n```",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Implement validation schema",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 216,
+    "lines_deleted": 101,
+    "language": "python",
+    "metrics": {
+      "total_lines": 494,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 47,
+      "lines_added": 195,
+      "lines_deleted": 107
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0022",
+    "repository": "requests/requests",
+    "branch_source": "feature/database-async-supp",
+    "branch_target": "main",
+    "title": "Add async support to database",
+    "description": "This PR implements async support for database.\n\nFeatures:\n- JSON schema validation\n- Configurable batch size\n- Exponential backoff retry\n\nAPI Example:\n```python\nresult = database.async_support(data, options={'enabled': True})\n```",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Implement async support",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 154,
+    "lines_deleted": 33,
+    "language": "python",
+    "metrics": {
+      "total_lines": 115,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 39,
+      "lines_added": 327,
+      "lines_deleted": 102
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 2
+  },
+  {
+    "pr_id": "dummy-feature-0023",
+    "repository": "pytorch/pytorch",
+    "branch_source": "feature/router-retry-logi",
+    "branch_target": "main",
+    "title": "Add retry logic to router",
+    "description": "This PR implements retry logic for router.\n\nFeatures:\n- Connection pooling\n- Supports both sync and async modes\n- Automatic failover\n\nAPI Example:\n```python\nresult = router.retry_logic(data, options={'enabled': True})\n```",
+    "author": "janesmit",
+    "commit_messages": [
+      "Implement retry logic",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 405,
+    "lines_deleted": 93,
+    "language": "python",
+    "metrics": {
+      "total_lines": 504,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 20,
+      "lines_added": 249,
+      "lines_deleted": 115
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 6
+  },
+  {
+    "pr_id": "dummy-feature-0024",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "feature/cache-retry-logi",
+    "branch_target": "main",
+    "title": "Add retry logic to cache",
+    "description": "This PR implements retry logic for cache.\n\nFeatures:\n- Optional caching with TTL\n- Configurable batch size\n- Automatic failover\n\nAPI Example:\n```python\nresult = cache.retry_logic(data, options={'enabled': True})\n```",
+    "author": "alexchen",
+    "commit_messages": [
+      "Implement retry logic",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 132,
+    "lines_deleted": 52,
+    "language": "python",
+    "metrics": {
+      "total_lines": 555,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 37,
+      "lines_added": 315,
+      "lines_deleted": 86
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 4
+  },
+  {
+    "pr_id": "dummy-feature-0025",
+    "repository": "django/django",
+    "branch_source": "feature/middleware-validation",
+    "branch_target": "main",
+    "title": "Add validation schema to middleware",
+    "description": "This PR implements validation schema for middleware.\n\nFeatures:\n- Exponential backoff retry\n- Automatic failover\n- Supports both sync and async modes\n\nAPI Example:\n```python\nresult = middleware.validation_schema(data, options={'enabled': True})\n```",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Implement validation schema",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 270,
+    "lines_deleted": 107,
+    "language": "python",
+    "metrics": {
+      "total_lines": 447,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 48,
+      "lines_added": 271,
+      "lines_deleted": 120
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0026",
+    "repository": "requests/requests",
+    "branch_source": "feature/validator-caching-me",
+    "branch_target": "main",
+    "title": "Add caching mechanism to validator",
+    "description": "This PR implements caching mechanism for validator.\n\nFeatures:\n- Exponential backoff retry\n- Automatic failover\n- Optional caching with TTL\n\nAPI Example:\n```python\nresult = validator.caching_mechanism(data, options={'enabled': True})\n```",
+    "author": "davidkim",
+    "commit_messages": [
+      "Implement caching mechanism",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 476,
+    "lines_deleted": 135,
+    "language": "python",
+    "metrics": {
+      "total_lines": 358,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 40,
+      "lines_added": 292,
+      "lines_deleted": 81
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0027",
+    "repository": "fastapi/fastapi",
+    "branch_source": "feature/parser-validation",
+    "branch_target": "main",
+    "title": "Add validation schema to parser",
+    "description": "This PR implements validation schema for parser.\n\nFeatures:\n- Optional caching with TTL\n- Rate limiting support\n- JSON schema validation\n\nAPI Example:\n```python\nresult = parser.validation_schema(data, options={'enabled': True})\n```",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Implement validation schema",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 249,
+    "lines_deleted": 27,
+    "language": "python",
+    "metrics": {
+      "total_lines": 528,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 51,
+      "lines_added": 171,
+      "lines_deleted": 87
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0028",
+    "repository": "pytorch/pytorch",
+    "branch_source": "feature/router-async-supp",
+    "branch_target": "main",
+    "title": "Implement async support for router functionality",
+    "description": "Closes #7566\n\nThis adds async support support to improve modularity.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Add async support interface",
+      "Implement async support",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 454,
+    "lines_deleted": 117,
+    "language": "python",
+    "metrics": {
+      "total_lines": 147,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 43,
+      "lines_added": 459,
+      "lines_deleted": 147
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0029",
+    "repository": "requests/requests",
+    "branch_source": "feature/parser-caching-me",
+    "branch_target": "main",
+    "title": "Add caching mechanism to parser",
+    "description": "This PR implements caching mechanism for parser.\n\nFeatures:\n- Optional caching with TTL\n- Rate limiting support\n- JSON schema validation\n\nAPI Example:\n```python\nresult = parser.caching_mechanism(data, options={'enabled': True})\n```",
+    "author": "kevinpatel",
+    "commit_messages": [
+      "Implement caching mechanism",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 320,
+    "lines_deleted": 37,
+    "language": "python",
+    "metrics": {
+      "total_lines": 120,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 26,
+      "lines_added": 232,
+      "lines_deleted": 66
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0030",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "feature/middleware-caching-me",
+    "branch_target": "main",
+    "title": "Add caching mechanism to middleware",
+    "description": "This PR implements caching mechanism for middleware.\n\nFeatures:\n- Connection pooling\n- Exponential backoff retry\n- Rate limiting support\n\nAPI Example:\n```python\nresult = middleware.caching_mechanism(data, options={'enabled': True})\n```",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Implement caching mechanism",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 112,
+    "lines_deleted": 133,
+    "language": "python",
+    "metrics": {
+      "total_lines": 217,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 38,
+      "lines_added": 312,
+      "lines_deleted": 31
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0031",
+    "repository": "requests/requests",
+    "branch_source": "feature/serializer-caching-me",
+    "branch_target": "main",
+    "title": "Add caching mechanism to serializer",
+    "description": "This PR implements caching mechanism for serializer.\n\nFeatures:\n- Rate limiting support\n- Exponential backoff retry\n- Configurable batch size\n\nAPI Example:\n```python\nresult = serializer.caching_mechanism(data, options={'enabled': True})\n```",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Implement caching mechanism",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 149,
+    "lines_deleted": 122,
+    "language": "python",
+    "metrics": {
+      "total_lines": 573,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 40,
+      "lines_added": 134,
+      "lines_deleted": 86
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0032",
+    "repository": "pytorch/pytorch",
+    "branch_source": "feature/serializer-async-supp",
+    "branch_target": "main",
+    "title": "Add async support to serializer",
+    "description": "This PR implements async support for serializer.\n\nFeatures:\n- Optional caching with TTL\n- Rate limiting support\n- Configurable batch size\n\nAPI Example:\n```python\nresult = serializer.async_support(data, options={'enabled': True})\n```",
+    "author": "alexchen",
+    "commit_messages": [
+      "Implement async support",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 269,
+    "lines_deleted": 119,
+    "language": "python",
+    "metrics": {
+      "total_lines": 583,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 34,
+      "lines_added": 307,
+      "lines_deleted": 57
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0033",
+    "repository": "django/django",
+    "branch_source": "feature/authentication-validation",
+    "branch_target": "main",
+    "title": "Implement validation schema for authentication functionality",
+    "description": "Closes #7370\n\nThis adds validation schema support to improve readability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "annalee",
+    "commit_messages": [
+      "Add validation schema interface",
+      "Implement validation schema",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 209,
+    "lines_deleted": 62,
+    "language": "python",
+    "metrics": {
+      "total_lines": 395,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 24,
+      "lines_added": 395,
+      "lines_deleted": 36
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0034",
+    "repository": "requests/requests",
+    "branch_source": "feature/serializer-batch-proc",
+    "branch_target": "main",
+    "title": "Implement batch processing for serializer functionality",
+    "description": "Closes #9646\n\nThis adds batch processing support to improve readability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "lisawang",
+    "commit_messages": [
+      "Add batch processing interface",
+      "Implement batch processing",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 298,
+    "lines_deleted": 110,
+    "language": "python",
+    "metrics": {
+      "total_lines": 226,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 42,
+      "lines_added": 280,
+      "lines_deleted": 127
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0035",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "feature/database-batch-proc",
+    "branch_target": "main",
+    "title": "Implement batch processing for database functionality",
+    "description": "Closes #2916\n\nThis adds batch processing support to improve performance.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Add batch processing interface",
+      "Implement batch processing",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 455,
+    "lines_deleted": 46,
+    "language": "python",
+    "metrics": {
+      "total_lines": 633,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 44,
+      "lines_added": 314,
+      "lines_deleted": 45
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0036",
+    "repository": "requests/requests",
+    "branch_source": "feature/cache-validation",
+    "branch_target": "main",
+    "title": "Implement validation schema for cache functionality",
+    "description": "Closes #4065\n\nThis adds validation schema support to improve testability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "rachelchen",
+    "commit_messages": [
+      "Add validation schema interface",
+      "Implement validation schema",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 330,
+    "lines_deleted": 23,
+    "language": "python",
+    "metrics": {
+      "total_lines": 477,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 20,
+      "lines_added": 348,
+      "lines_deleted": 44
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0037",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "feature/router-retry-logi",
+    "branch_target": "main",
+    "title": "Implement retry logic for router functionality",
+    "description": "Closes #3740\n\nThis adds retry logic support to improve readability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "lisawang",
+    "commit_messages": [
+      "Add retry logic interface",
+      "Implement retry logic",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 115,
+    "lines_deleted": 66,
+    "language": "python",
+    "metrics": {
+      "total_lines": 409,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 22,
+      "lines_added": 240,
+      "lines_deleted": 67
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 5
+  },
+  {
+    "pr_id": "dummy-feature-0038",
+    "repository": "django/django",
+    "branch_source": "feature/database-validation",
+    "branch_target": "main",
+    "title": "Implement validation schema for database functionality",
+    "description": "Closes #9880\n\nThis adds validation schema support to improve performance.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "kevinpatel",
+    "commit_messages": [
+      "Add validation schema interface",
+      "Implement validation schema",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 468,
+    "lines_deleted": 122,
+    "language": "python",
+    "metrics": {
+      "total_lines": 333,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 47,
+      "lines_added": 152,
+      "lines_deleted": 73
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0039",
+    "repository": "scipy/scipy",
+    "branch_source": "feature/validator-caching-me",
+    "branch_target": "main",
+    "title": "Implement caching mechanism for validator functionality",
+    "description": "Closes #4438\n\nThis adds caching mechanism support to improve testability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "annalee",
+    "commit_messages": [
+      "Add caching mechanism interface",
+      "Implement caching mechanism",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 279,
+    "lines_deleted": 119,
+    "language": "python",
+    "metrics": {
+      "total_lines": 279,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 59,
+      "lines_added": 171,
+      "lines_deleted": 62
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0040",
+    "repository": "scipy/scipy",
+    "branch_source": "feature/validator-validation",
+    "branch_target": "main",
+    "title": "Implement validation schema for validator functionality",
+    "description": "Closes #5740\n\nThis adds validation schema support to improve performance.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "davidkim",
+    "commit_messages": [
+      "Add validation schema interface",
+      "Implement validation schema",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 363,
+    "lines_deleted": 34,
+    "language": "python",
+    "metrics": {
+      "total_lines": 248,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 46,
+      "lines_added": 130,
+      "lines_deleted": 80
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 3
+  },
+  {
+    "pr_id": "dummy-feature-0041",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "feature/cache-caching-me",
+    "branch_target": "main",
+    "title": "Add caching mechanism to cache",
+    "description": "This PR implements caching mechanism for cache.\n\nFeatures:\n- Exponential backoff retry\n- Connection pooling\n- Rate limiting support\n\nAPI Example:\n```python\nresult = cache.caching_mechanism(data, options={'enabled': True})\n```",
+    "author": "lisawang",
+    "commit_messages": [
+      "Implement caching mechanism",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 423,
+    "lines_deleted": 78,
+    "language": "python",
+    "metrics": {
+      "total_lines": 534,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 44,
+      "lines_added": 331,
+      "lines_deleted": 29
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0042",
+    "repository": "requests/requests",
+    "branch_source": "feature/router-validation",
+    "branch_target": "main",
+    "title": "Add validation schema to router",
+    "description": "This PR implements validation schema for router.\n\nFeatures:\n- JSON schema validation\n- Rate limiting support\n- Optional caching with TTL\n\nAPI Example:\n```python\nresult = router.validation_schema(data, options={'enabled': True})\n```",
+    "author": "lisawang",
+    "commit_messages": [
+      "Implement validation schema",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 101,
+    "lines_deleted": 33,
+    "language": "python",
+    "metrics": {
+      "total_lines": 579,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 60,
+      "lines_added": 440,
+      "lines_deleted": 101
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0043",
+    "repository": "requests/requests",
+    "branch_source": "feature/parser-retry-logi",
+    "branch_target": "main",
+    "title": "Implement retry logic for parser functionality",
+    "description": "Closes #5646\n\nThis adds retry logic support to improve performance.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Add retry logic interface",
+      "Implement retry logic",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 395,
+    "lines_deleted": 43,
+    "language": "python",
+    "metrics": {
+      "total_lines": 606,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 41,
+      "lines_added": 449,
+      "lines_deleted": 22
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0044",
+    "repository": "fastapi/fastapi",
+    "branch_source": "feature/authentication-async-supp",
+    "branch_target": "main",
+    "title": "Implement async support for authentication functionality",
+    "description": "Closes #8009\n\nThis adds async support support to improve maintainability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "annalee",
+    "commit_messages": [
+      "Add async support interface",
+      "Implement async support",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 167,
+    "lines_deleted": 87,
+    "language": "python",
+    "metrics": {
+      "total_lines": 272,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 37,
+      "lines_added": 147,
+      "lines_deleted": 102
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0045",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "feature/authentication-retry-logi",
+    "branch_target": "main",
+    "title": "Add retry logic to authentication",
+    "description": "This PR implements retry logic for authentication.\n\nFeatures:\n- JSON schema validation\n- Rate limiting support\n- Connection pooling\n\nAPI Example:\n```python\nresult = authentication.retry_logic(data, options={'enabled': True})\n```",
+    "author": "annalee",
+    "commit_messages": [
+      "Implement retry logic",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 148,
+    "lines_deleted": 10,
+    "language": "python",
+    "metrics": {
+      "total_lines": 328,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 50,
+      "lines_added": 139,
+      "lines_deleted": 43
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0046",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "feature/authentication-async-supp",
+    "branch_target": "main",
+    "title": "Implement async support for authentication functionality",
+    "description": "Closes #3165\n\nThis adds async support support to improve readability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "janesmit",
+    "commit_messages": [
+      "Add async support interface",
+      "Implement async support",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 217,
+    "lines_deleted": 108,
+    "language": "python",
+    "metrics": {
+      "total_lines": 201,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 26,
+      "lines_added": 152,
+      "lines_deleted": 90
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0047",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "feature/cache-batch-proc",
+    "branch_target": "main",
+    "title": "Implement batch processing for cache functionality",
+    "description": "Closes #3688\n\nThis adds batch processing support to improve maintainability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Add batch processing interface",
+      "Implement batch processing",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 469,
+    "lines_deleted": 64,
+    "language": "python",
+    "metrics": {
+      "total_lines": 265,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 46,
+      "lines_added": 415,
+      "lines_deleted": 123
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 2
+  },
+  {
+    "pr_id": "dummy-feature-0048",
+    "repository": "fastapi/fastapi",
+    "branch_source": "feature/database-validation",
+    "branch_target": "main",
+    "title": "Add validation schema to database",
+    "description": "This PR implements validation schema for database.\n\nFeatures:\n- Connection pooling\n- Optional caching with TTL\n- Exponential backoff retry\n\nAPI Example:\n```python\nresult = database.validation_schema(data, options={'enabled': True})\n```",
+    "author": "davidkim",
+    "commit_messages": [
+      "Implement validation schema",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 430,
+    "lines_deleted": 31,
+    "language": "python",
+    "metrics": {
+      "total_lines": 364,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 55,
+      "lines_added": 407,
+      "lines_deleted": 82
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0049",
+    "repository": "fastapi/fastapi",
+    "branch_source": "feature/parser-validation",
+    "branch_target": "main",
+    "title": "Implement validation schema for parser functionality",
+    "description": "Closes #1894\n\nThis adds validation schema support to improve performance.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Add validation schema interface",
+      "Implement validation schema",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 297,
+    "lines_deleted": 38,
+    "language": "python",
+    "metrics": {
+      "total_lines": 356,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 51,
+      "lines_added": 426,
+      "lines_deleted": 28
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0050",
+    "repository": "pytorch/pytorch",
+    "branch_source": "feature/serializer-batch-proc",
+    "branch_target": "main",
+    "title": "Implement batch processing for serializer functionality",
+    "description": "Closes #6986\n\nThis adds batch processing support to improve readability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "tomsmith",
+    "commit_messages": [
+      "Add batch processing interface",
+      "Implement batch processing",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 188,
+    "lines_deleted": 130,
+    "language": "python",
+    "metrics": {
+      "total_lines": 184,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 21,
+      "lines_added": 400,
+      "lines_deleted": 27
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 2
+  },
+  {
+    "pr_id": "dummy-feature-0051",
+    "repository": "pytorch/pytorch",
+    "branch_source": "feature/validator-validation",
+    "branch_target": "main",
+    "title": "Implement validation schema for validator functionality",
+    "description": "Closes #2350\n\nThis adds validation schema support to improve readability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Add validation schema interface",
+      "Implement validation schema",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 415,
+    "lines_deleted": 49,
+    "language": "python",
+    "metrics": {
+      "total_lines": 394,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 25,
+      "lines_added": 258,
+      "lines_deleted": 30
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 3
+  },
+  {
+    "pr_id": "dummy-feature-0052",
+    "repository": "django/django",
+    "branch_source": "feature/router-validation",
+    "branch_target": "main",
+    "title": "Implement validation schema for router functionality",
+    "description": "Closes #4909\n\nThis adds validation schema support to improve readability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "mariaperez",
+    "commit_messages": [
+      "Add validation schema interface",
+      "Implement validation schema",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 144,
+    "lines_deleted": 121,
+    "language": "python",
+    "metrics": {
+      "total_lines": 228,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 49,
+      "lines_added": 413,
+      "lines_deleted": 24
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0053",
+    "repository": "requests/requests",
+    "branch_source": "feature/database-async-supp",
+    "branch_target": "main",
+    "title": "Add async support to database",
+    "description": "This PR implements async support for database.\n\nFeatures:\n- Optional caching with TTL\n- Rate limiting support\n- Supports both sync and async modes\n\nAPI Example:\n```python\nresult = database.async_support(data, options={'enabled': True})\n```",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Implement async support",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 364,
+    "lines_deleted": 76,
+    "language": "python",
+    "metrics": {
+      "total_lines": 280,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 43,
+      "lines_added": 164,
+      "lines_deleted": 78
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 2
+  },
+  {
+    "pr_id": "dummy-feature-0054",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "feature/router-caching-me",
+    "branch_target": "main",
+    "title": "Implement caching mechanism for router functionality",
+    "description": "Closes #2262\n\nThis adds caching mechanism support to improve modularity.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Add caching mechanism interface",
+      "Implement caching mechanism",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 361,
+    "lines_deleted": 102,
+    "language": "python",
+    "metrics": {
+      "total_lines": 166,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 51,
+      "lines_added": 390,
+      "lines_deleted": 52
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0055",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "feature/database-batch-proc",
+    "branch_target": "main",
+    "title": "Add batch processing to database",
+    "description": "This PR implements batch processing for database.\n\nFeatures:\n- Supports both sync and async modes\n- Automatic failover\n- Connection pooling\n\nAPI Example:\n```python\nresult = database.batch_processing(data, options={'enabled': True})\n```",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Implement batch processing",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 296,
+    "lines_deleted": 48,
+    "language": "python",
+    "metrics": {
+      "total_lines": 293,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 22,
+      "lines_added": 383,
+      "lines_deleted": 117
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 4
+  },
+  {
+    "pr_id": "dummy-feature-0056",
+    "repository": "fastapi/fastapi",
+    "branch_source": "feature/database-validation",
+    "branch_target": "main",
+    "title": "Implement validation schema for database functionality",
+    "description": "Closes #3938\n\nThis adds validation schema support to improve maintainability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "kevinpatel",
+    "commit_messages": [
+      "Add validation schema interface",
+      "Implement validation schema",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 364,
+    "lines_deleted": 21,
+    "language": "python",
+    "metrics": {
+      "total_lines": 520,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 24,
+      "lines_added": 338,
+      "lines_deleted": 82
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0057",
+    "repository": "scipy/scipy",
+    "branch_source": "feature/middleware-async-supp",
+    "branch_target": "main",
+    "title": "Add async support to middleware",
+    "description": "This PR implements async support for middleware.\n\nFeatures:\n- Rate limiting support\n- Configurable batch size\n- Optional caching with TTL\n\nAPI Example:\n```python\nresult = middleware.async_support(data, options={'enabled': True})\n```",
+    "author": "mariaperez",
+    "commit_messages": [
+      "Implement async support",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 337,
+    "lines_deleted": 104,
+    "language": "python",
+    "metrics": {
+      "total_lines": 615,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 32,
+      "lines_added": 475,
+      "lines_deleted": 149
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 2
+  },
+  {
+    "pr_id": "dummy-feature-0058",
+    "repository": "django/django",
+    "branch_source": "feature/authentication-batch-proc",
+    "branch_target": "main",
+    "title": "Implement batch processing for authentication functionality",
+    "description": "Closes #6488\n\nThis adds batch processing support to improve maintainability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "kevinpatel",
+    "commit_messages": [
+      "Add batch processing interface",
+      "Implement batch processing",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 436,
+    "lines_deleted": 106,
+    "language": "python",
+    "metrics": {
+      "total_lines": 424,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 26,
+      "lines_added": 205,
+      "lines_deleted": 145
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0059",
+    "repository": "requests/requests",
+    "branch_source": "feature/cache-caching-me",
+    "branch_target": "main",
+    "title": "Add caching mechanism to cache",
+    "description": "This PR implements caching mechanism for cache.\n\nFeatures:\n- Configurable batch size\n- Supports both sync and async modes\n- Automatic failover\n\nAPI Example:\n```python\nresult = cache.caching_mechanism(data, options={'enabled': True})\n```",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Implement caching mechanism",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 482,
+    "lines_deleted": 31,
+    "language": "python",
+    "metrics": {
+      "total_lines": 207,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 52,
+      "lines_added": 168,
+      "lines_deleted": 110
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0060",
+    "repository": "requests/requests",
+    "branch_source": "feature/cache-batch-proc",
+    "branch_target": "main",
+    "title": "Implement batch processing for cache functionality",
+    "description": "Closes #6345\n\nThis adds batch processing support to improve readability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Add batch processing interface",
+      "Implement batch processing",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 239,
+    "lines_deleted": 69,
+    "language": "python",
+    "metrics": {
+      "total_lines": 186,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 32,
+      "lines_added": 169,
+      "lines_deleted": 37
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 5
+  },
+  {
+    "pr_id": "dummy-feature-0061",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "feature/router-async-supp",
+    "branch_target": "main",
+    "title": "Implement async support for router functionality",
+    "description": "Closes #6051\n\nThis adds async support support to improve readability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "davidkim",
+    "commit_messages": [
+      "Add async support interface",
+      "Implement async support",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 161,
+    "lines_deleted": 33,
+    "language": "python",
+    "metrics": {
+      "total_lines": 271,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 39,
+      "lines_added": 460,
+      "lines_deleted": 20
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0062",
+    "repository": "flask/flask",
+    "branch_source": "feature/database-batch-proc",
+    "branch_target": "main",
+    "title": "Add batch processing to database",
+    "description": "This PR implements batch processing for database.\n\nFeatures:\n- Rate limiting support\n- Exponential backoff retry\n- JSON schema validation\n\nAPI Example:\n```python\nresult = database.batch_processing(data, options={'enabled': True})\n```",
+    "author": "rachelchen",
+    "commit_messages": [
+      "Implement batch processing",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 189,
+    "lines_deleted": 17,
+    "language": "python",
+    "metrics": {
+      "total_lines": 524,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 48,
+      "lines_added": 384,
+      "lines_deleted": 150
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0063",
+    "repository": "numpy/numpy",
+    "branch_source": "feature/database-async-supp",
+    "branch_target": "main",
+    "title": "Add async support to database",
+    "description": "This PR implements async support for database.\n\nFeatures:\n- Supports both sync and async modes\n- Connection pooling\n- Configurable batch size\n\nAPI Example:\n```python\nresult = database.async_support(data, options={'enabled': True})\n```",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Implement async support",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 451,
+    "lines_deleted": 31,
+    "language": "python",
+    "metrics": {
+      "total_lines": 375,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 24,
+      "lines_added": 111,
+      "lines_deleted": 26
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0064",
+    "repository": "scipy/scipy",
+    "branch_source": "feature/database-caching-me",
+    "branch_target": "main",
+    "title": "Add caching mechanism to database",
+    "description": "This PR implements caching mechanism for database.\n\nFeatures:\n- Configurable batch size\n- Supports both sync and async modes\n- Exponential backoff retry\n\nAPI Example:\n```python\nresult = database.caching_mechanism(data, options={'enabled': True})\n```",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Implement caching mechanism",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 470,
+    "lines_deleted": 111,
+    "language": "python",
+    "metrics": {
+      "total_lines": 618,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 21,
+      "lines_added": 295,
+      "lines_deleted": 119
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 3
+  },
+  {
+    "pr_id": "dummy-feature-0065",
+    "repository": "flask/flask",
+    "branch_source": "feature/validator-retry-logi",
+    "branch_target": "main",
+    "title": "Implement retry logic for validator functionality",
+    "description": "Closes #5026\n\nThis adds retry logic support to improve modularity.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Add retry logic interface",
+      "Implement retry logic",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 310,
+    "lines_deleted": 150,
+    "language": "python",
+    "metrics": {
+      "total_lines": 600,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 23,
+      "lines_added": 144,
+      "lines_deleted": 81
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0066",
+    "repository": "scipy/scipy",
+    "branch_source": "feature/authentication-retry-logi",
+    "branch_target": "main",
+    "title": "Add retry logic to authentication",
+    "description": "This PR implements retry logic for authentication.\n\nFeatures:\n- Rate limiting support\n- Exponential backoff retry\n- JSON schema validation\n\nAPI Example:\n```python\nresult = authentication.retry_logic(data, options={'enabled': True})\n```",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Implement retry logic",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 264,
+    "lines_deleted": 109,
+    "language": "python",
+    "metrics": {
+      "total_lines": 386,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 31,
+      "lines_added": 113,
+      "lines_deleted": 91
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 4
+  },
+  {
+    "pr_id": "dummy-feature-0067",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "feature/middleware-validation",
+    "branch_target": "main",
+    "title": "Add validation schema to middleware",
+    "description": "This PR implements validation schema for middleware.\n\nFeatures:\n- Rate limiting support\n- Connection pooling\n- JSON schema validation\n\nAPI Example:\n```python\nresult = middleware.validation_schema(data, options={'enabled': True})\n```",
+    "author": "mariaperez",
+    "commit_messages": [
+      "Implement validation schema",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 436,
+    "lines_deleted": 71,
+    "language": "python",
+    "metrics": {
+      "total_lines": 382,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 54,
+      "lines_added": 477,
+      "lines_deleted": 24
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0068",
+    "repository": "scipy/scipy",
+    "branch_source": "feature/serializer-batch-proc",
+    "branch_target": "main",
+    "title": "Implement batch processing for serializer functionality",
+    "description": "Closes #6878\n\nThis adds batch processing support to improve performance.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "johndoe",
+    "commit_messages": [
+      "Add batch processing interface",
+      "Implement batch processing",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 460,
+    "lines_deleted": 100,
+    "language": "python",
+    "metrics": {
+      "total_lines": 255,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 56,
+      "lines_added": 196,
+      "lines_deleted": 136
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 2
+  },
+  {
+    "pr_id": "dummy-feature-0069",
+    "repository": "requests/requests",
+    "branch_source": "feature/authentication-batch-proc",
+    "branch_target": "main",
+    "title": "Add batch processing to authentication",
+    "description": "This PR implements batch processing for authentication.\n\nFeatures:\n- Exponential backoff retry\n- Supports both sync and async modes\n- JSON schema validation\n\nAPI Example:\n```python\nresult = authentication.batch_processing(data, options={'enabled': True})\n```",
+    "author": "briankim",
+    "commit_messages": [
+      "Implement batch processing",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 414,
+    "lines_deleted": 61,
+    "language": "python",
+    "metrics": {
+      "total_lines": 243,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 41,
+      "lines_added": 467,
+      "lines_deleted": 55
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0070",
+    "repository": "pytorch/pytorch",
+    "branch_source": "feature/authentication-async-supp",
+    "branch_target": "main",
+    "title": "Implement async support for authentication functionality",
+    "description": "Closes #2817\n\nThis adds async support support to improve testability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "rachelchen",
+    "commit_messages": [
+      "Add async support interface",
+      "Implement async support",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 286,
+    "lines_deleted": 28,
+    "language": "python",
+    "metrics": {
+      "total_lines": 492,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 45,
+      "lines_added": 400,
+      "lines_deleted": 35
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0071",
+    "repository": "fastapi/fastapi",
+    "branch_source": "feature/router-retry-logi",
+    "branch_target": "main",
+    "title": "Add retry logic to router",
+    "description": "This PR implements retry logic for router.\n\nFeatures:\n- Rate limiting support\n- Configurable batch size\n- Automatic failover\n\nAPI Example:\n```python\nresult = router.retry_logic(data, options={'enabled': True})\n```",
+    "author": "tomsmith",
+    "commit_messages": [
+      "Implement retry logic",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 401,
+    "lines_deleted": 54,
+    "language": "python",
+    "metrics": {
+      "total_lines": 497,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 39,
+      "lines_added": 475,
+      "lines_deleted": 85
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0072",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "feature/authentication-batch-proc",
+    "branch_target": "main",
+    "title": "Implement batch processing for authentication functionality",
+    "description": "Closes #2705\n\nThis adds batch processing support to improve testability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "alexchen",
+    "commit_messages": [
+      "Add batch processing interface",
+      "Implement batch processing",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 269,
+    "lines_deleted": 29,
+    "language": "python",
+    "metrics": {
+      "total_lines": 353,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 42,
+      "lines_added": 263,
+      "lines_deleted": 52
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0073",
+    "repository": "flask/flask",
+    "branch_source": "feature/middleware-async-supp",
+    "branch_target": "main",
+    "title": "Implement async support for middleware functionality",
+    "description": "Closes #6742\n\nThis adds async support support to improve maintainability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "kevinpatel",
+    "commit_messages": [
+      "Add async support interface",
+      "Implement async support",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 155,
+    "lines_deleted": 10,
+    "language": "python",
+    "metrics": {
+      "total_lines": 159,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 44,
+      "lines_added": 324,
+      "lines_deleted": 117
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0074",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "feature/router-caching-me",
+    "branch_target": "main",
+    "title": "Implement caching mechanism for router functionality",
+    "description": "Closes #4695\n\nThis adds caching mechanism support to improve modularity.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Add caching mechanism interface",
+      "Implement caching mechanism",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 137,
+    "lines_deleted": 18,
+    "language": "python",
+    "metrics": {
+      "total_lines": 411,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 21,
+      "lines_added": 263,
+      "lines_deleted": 76
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 3
+  },
+  {
+    "pr_id": "dummy-feature-0075",
+    "repository": "django/django",
+    "branch_source": "feature/cache-async-supp",
+    "branch_target": "main",
+    "title": "Implement async support for cache functionality",
+    "description": "Closes #8909\n\nThis adds async support support to improve modularity.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Add async support interface",
+      "Implement async support",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 434,
+    "lines_deleted": 52,
+    "language": "python",
+    "metrics": {
+      "total_lines": 554,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 30,
+      "lines_added": 127,
+      "lines_deleted": 35
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0076",
+    "repository": "scipy/scipy",
+    "branch_source": "feature/validator-caching-me",
+    "branch_target": "main",
+    "title": "Implement caching mechanism for validator functionality",
+    "description": "Closes #7437\n\nThis adds caching mechanism support to improve maintainability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Add caching mechanism interface",
+      "Implement caching mechanism",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 351,
+    "lines_deleted": 49,
+    "language": "python",
+    "metrics": {
+      "total_lines": 165,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 43,
+      "lines_added": 101,
+      "lines_deleted": 119
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0077",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "feature/parser-async-supp",
+    "branch_target": "main",
+    "title": "Implement async support for parser functionality",
+    "description": "Closes #2342\n\nThis adds async support support to improve performance.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "rachelchen",
+    "commit_messages": [
+      "Add async support interface",
+      "Implement async support",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 159,
+    "lines_deleted": 88,
+    "language": "python",
+    "metrics": {
+      "total_lines": 517,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 50,
+      "lines_added": 350,
+      "lines_deleted": 77
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0078",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "feature/serializer-retry-logi",
+    "branch_target": "main",
+    "title": "Add retry logic to serializer",
+    "description": "This PR implements retry logic for serializer.\n\nFeatures:\n- Rate limiting support\n- Configurable batch size\n- Exponential backoff retry\n\nAPI Example:\n```python\nresult = serializer.retry_logic(data, options={'enabled': True})\n```",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Implement retry logic",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 234,
+    "lines_deleted": 67,
+    "language": "python",
+    "metrics": {
+      "total_lines": 385,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 56,
+      "lines_added": 131,
+      "lines_deleted": 48
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0079",
+    "repository": "numpy/numpy",
+    "branch_source": "feature/serializer-validation",
+    "branch_target": "main",
+    "title": "Add validation schema to serializer",
+    "description": "This PR implements validation schema for serializer.\n\nFeatures:\n- Connection pooling\n- Automatic failover\n- JSON schema validation\n\nAPI Example:\n```python\nresult = serializer.validation_schema(data, options={'enabled': True})\n```",
+    "author": "rachelchen",
+    "commit_messages": [
+      "Implement validation schema",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 367,
+    "lines_deleted": 117,
+    "language": "python",
+    "metrics": {
+      "total_lines": 596,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 56,
+      "lines_added": 220,
+      "lines_deleted": 131
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0080",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "feature/cache-async-supp",
+    "branch_target": "main",
+    "title": "Add async support to cache",
+    "description": "This PR implements async support for cache.\n\nFeatures:\n- Automatic failover\n- Configurable batch size\n- Connection pooling\n\nAPI Example:\n```python\nresult = cache.async_support(data, options={'enabled': True})\n```",
+    "author": "johndoe",
+    "commit_messages": [
+      "Implement async support",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 316,
+    "lines_deleted": 30,
+    "language": "python",
+    "metrics": {
+      "total_lines": 555,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 32,
+      "lines_added": 421,
+      "lines_deleted": 47
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0081",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "feature/database-retry-logi",
+    "branch_target": "main",
+    "title": "Add retry logic to database",
+    "description": "This PR implements retry logic for database.\n\nFeatures:\n- Connection pooling\n- JSON schema validation\n- Optional caching with TTL\n\nAPI Example:\n```python\nresult = database.retry_logic(data, options={'enabled': True})\n```",
+    "author": "briankim",
+    "commit_messages": [
+      "Implement retry logic",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 106,
+    "lines_deleted": 143,
+    "language": "python",
+    "metrics": {
+      "total_lines": 539,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 27,
+      "lines_added": 312,
+      "lines_deleted": 48
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0082",
+    "repository": "numpy/numpy",
+    "branch_source": "feature/database-validation",
+    "branch_target": "main",
+    "title": "Add validation schema to database",
+    "description": "This PR implements validation schema for database.\n\nFeatures:\n- Configurable batch size\n- Connection pooling\n- Optional caching with TTL\n\nAPI Example:\n```python\nresult = database.validation_schema(data, options={'enabled': True})\n```",
+    "author": "davidkim",
+    "commit_messages": [
+      "Implement validation schema",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 296,
+    "lines_deleted": 134,
+    "language": "python",
+    "metrics": {
+      "total_lines": 594,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 22,
+      "lines_added": 188,
+      "lines_deleted": 80
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0083",
+    "repository": "flask/flask",
+    "branch_source": "feature/authentication-retry-logi",
+    "branch_target": "main",
+    "title": "Implement retry logic for authentication functionality",
+    "description": "Closes #8785\n\nThis adds retry logic support to improve maintainability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "briankim",
+    "commit_messages": [
+      "Add retry logic interface",
+      "Implement retry logic",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 290,
+    "lines_deleted": 15,
+    "language": "python",
+    "metrics": {
+      "total_lines": 455,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 39,
+      "lines_added": 259,
+      "lines_deleted": 81
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0084",
+    "repository": "numpy/numpy",
+    "branch_source": "feature/parser-batch-proc",
+    "branch_target": "main",
+    "title": "Add batch processing to parser",
+    "description": "This PR implements batch processing for parser.\n\nFeatures:\n- JSON schema validation\n- Rate limiting support\n- Exponential backoff retry\n\nAPI Example:\n```python\nresult = parser.batch_processing(data, options={'enabled': True})\n```",
+    "author": "lisawang",
+    "commit_messages": [
+      "Implement batch processing",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 430,
+    "lines_deleted": 32,
+    "language": "python",
+    "metrics": {
+      "total_lines": 302,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 48,
+      "lines_added": 208,
+      "lines_deleted": 114
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0085",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "feature/authentication-validation",
+    "branch_target": "main",
+    "title": "Implement validation schema for authentication functionality",
+    "description": "Closes #7609\n\nThis adds validation schema support to improve modularity.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "kevinpatel",
+    "commit_messages": [
+      "Add validation schema interface",
+      "Implement validation schema",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 368,
+    "lines_deleted": 17,
+    "language": "python",
+    "metrics": {
+      "total_lines": 287,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 32,
+      "lines_added": 202,
+      "lines_deleted": 24
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0086",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "feature/parser-caching-me",
+    "branch_target": "main",
+    "title": "Implement caching mechanism for parser functionality",
+    "description": "Closes #7503\n\nThis adds caching mechanism support to improve modularity.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "tomsmith",
+    "commit_messages": [
+      "Add caching mechanism interface",
+      "Implement caching mechanism",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 115,
+    "lines_deleted": 71,
+    "language": "python",
+    "metrics": {
+      "total_lines": 491,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 51,
+      "lines_added": 404,
+      "lines_deleted": 124
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0087",
+    "repository": "django/django",
+    "branch_source": "feature/serializer-batch-proc",
+    "branch_target": "main",
+    "title": "Implement batch processing for serializer functionality",
+    "description": "Closes #5670\n\nThis adds batch processing support to improve maintainability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Add batch processing interface",
+      "Implement batch processing",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 125,
+    "lines_deleted": 51,
+    "language": "python",
+    "metrics": {
+      "total_lines": 329,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 34,
+      "lines_added": 431,
+      "lines_deleted": 67
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0088",
+    "repository": "fastapi/fastapi",
+    "branch_source": "feature/authentication-async-supp",
+    "branch_target": "main",
+    "title": "Implement async support for authentication functionality",
+    "description": "Closes #1138\n\nThis adds async support support to improve testability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "davidkim",
+    "commit_messages": [
+      "Add async support interface",
+      "Implement async support",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 411,
+    "lines_deleted": 88,
+    "language": "python",
+    "metrics": {
+      "total_lines": 391,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 47,
+      "lines_added": 292,
+      "lines_deleted": 99
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 4
+  },
+  {
+    "pr_id": "dummy-feature-0089",
+    "repository": "flask/flask",
+    "branch_source": "feature/database-async-supp",
+    "branch_target": "main",
+    "title": "Implement async support for database functionality",
+    "description": "Closes #5631\n\nThis adds async support support to improve modularity.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "tomsmith",
+    "commit_messages": [
+      "Add async support interface",
+      "Implement async support",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 155,
+    "lines_deleted": 133,
+    "language": "python",
+    "metrics": {
+      "total_lines": 175,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 41,
+      "lines_added": 241,
+      "lines_deleted": 93
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0090",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "feature/parser-batch-proc",
+    "branch_target": "main",
+    "title": "Implement batch processing for parser functionality",
+    "description": "Closes #6236\n\nThis adds batch processing support to improve readability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "annalee",
+    "commit_messages": [
+      "Add batch processing interface",
+      "Implement batch processing",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 113,
+    "lines_deleted": 137,
+    "language": "python",
+    "metrics": {
+      "total_lines": 412,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 36,
+      "lines_added": 314,
+      "lines_deleted": 113
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 6
+  },
+  {
+    "pr_id": "dummy-feature-0091",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "feature/serializer-batch-proc",
+    "branch_target": "main",
+    "title": "Add batch processing to serializer",
+    "description": "This PR implements batch processing for serializer.\n\nFeatures:\n- Automatic failover\n- Rate limiting support\n- Optional caching with TTL\n\nAPI Example:\n```python\nresult = serializer.batch_processing(data, options={'enabled': True})\n```",
+    "author": "rachelchen",
+    "commit_messages": [
+      "Implement batch processing",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 436,
+    "lines_deleted": 56,
+    "language": "python",
+    "metrics": {
+      "total_lines": 410,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 26,
+      "lines_added": 341,
+      "lines_deleted": 42
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0092",
+    "repository": "requests/requests",
+    "branch_source": "feature/serializer-async-supp",
+    "branch_target": "main",
+    "title": "Add async support to serializer",
+    "description": "This PR implements async support for serializer.\n\nFeatures:\n- Exponential backoff retry\n- Optional caching with TTL\n- Configurable batch size\n\nAPI Example:\n```python\nresult = serializer.async_support(data, options={'enabled': True})\n```",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Implement async support",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 233,
+    "lines_deleted": 85,
+    "language": "python",
+    "metrics": {
+      "total_lines": 584,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 27,
+      "lines_added": 340,
+      "lines_deleted": 23
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0093",
+    "repository": "flask/flask",
+    "branch_source": "feature/middleware-batch-proc",
+    "branch_target": "main",
+    "title": "Add batch processing to middleware",
+    "description": "This PR implements batch processing for middleware.\n\nFeatures:\n- Configurable batch size\n- Connection pooling\n- Rate limiting support\n\nAPI Example:\n```python\nresult = middleware.batch_processing(data, options={'enabled': True})\n```",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Implement batch processing",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 127,
+    "lines_deleted": 48,
+    "language": "python",
+    "metrics": {
+      "total_lines": 250,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 32,
+      "lines_added": 275,
+      "lines_deleted": 114
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0094",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "feature/cache-caching-me",
+    "branch_target": "main",
+    "title": "Implement caching mechanism for cache functionality",
+    "description": "Closes #6449\n\nThis adds caching mechanism support to improve readability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Add caching mechanism interface",
+      "Implement caching mechanism",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 424,
+    "lines_deleted": 24,
+    "language": "python",
+    "metrics": {
+      "total_lines": 114,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 48,
+      "lines_added": 240,
+      "lines_deleted": 63
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 3
+  },
+  {
+    "pr_id": "dummy-feature-0095",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "feature/database-batch-proc",
+    "branch_target": "main",
+    "title": "Implement batch processing for database functionality",
+    "description": "Closes #8029\n\nThis adds batch processing support to improve readability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Add batch processing interface",
+      "Implement batch processing",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 102,
+    "lines_deleted": 19,
+    "language": "python",
+    "metrics": {
+      "total_lines": 314,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 43,
+      "lines_added": 107,
+      "lines_deleted": 92
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0096",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "feature/authentication-batch-proc",
+    "branch_target": "main",
+    "title": "Add batch processing to authentication",
+    "description": "This PR implements batch processing for authentication.\n\nFeatures:\n- Exponential backoff retry\n- Rate limiting support\n- Optional caching with TTL\n\nAPI Example:\n```python\nresult = authentication.batch_processing(data, options={'enabled': True})\n```",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Implement batch processing",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 357,
+    "lines_deleted": 88,
+    "language": "python",
+    "metrics": {
+      "total_lines": 281,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 24,
+      "lines_added": 123,
+      "lines_deleted": 86
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0097",
+    "repository": "numpy/numpy",
+    "branch_source": "feature/router-batch-proc",
+    "branch_target": "main",
+    "title": "Implement batch processing for router functionality",
+    "description": "Closes #3701\n\nThis adds batch processing support to improve testability.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "johndoe",
+    "commit_messages": [
+      "Add batch processing interface",
+      "Implement batch processing",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 216,
+    "lines_deleted": 67,
+    "language": "python",
+    "metrics": {
+      "total_lines": 244,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 33,
+      "lines_added": 475,
+      "lines_deleted": 15
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 4
+  },
+  {
+    "pr_id": "dummy-feature-0098",
+    "repository": "django/django",
+    "branch_source": "feature/router-caching-me",
+    "branch_target": "main",
+    "title": "Add caching mechanism to router",
+    "description": "This PR implements caching mechanism for router.\n\nFeatures:\n- Supports both sync and async modes\n- JSON schema validation\n- Automatic failover\n\nAPI Example:\n```python\nresult = router.caching_mechanism(data, options={'enabled': True})\n```",
+    "author": "annalee",
+    "commit_messages": [
+      "Implement caching mechanism",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 159,
+    "lines_deleted": 116,
+    "language": "python",
+    "metrics": {
+      "total_lines": 564,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 44,
+      "lines_added": 163,
+      "lines_deleted": 150
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0099",
+    "repository": "scipy/scipy",
+    "branch_source": "feature/authentication-caching-me",
+    "branch_target": "main",
+    "title": "Add caching mechanism to authentication",
+    "description": "This PR implements caching mechanism for authentication.\n\nFeatures:\n- Connection pooling\n- Rate limiting support\n- Supports both sync and async modes\n\nAPI Example:\n```python\nresult = authentication.caching_mechanism(data, options={'enabled': True})\n```",
+    "author": "lisawang",
+    "commit_messages": [
+      "Implement caching mechanism",
+      "Add tests and documentation"
+    ],
+    "files_changed": 4,
+    "lines_added": 458,
+    "lines_deleted": 45,
+    "language": "python",
+    "metrics": {
+      "total_lines": 538,
+      "files_changed": 4,
+      "commits": 2,
+      "complexity_score": 26,
+      "lines_added": 361,
+      "lines_deleted": 40
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-feature-0100",
+    "repository": "requests/requests",
+    "branch_source": "feature/parser-validation",
+    "branch_target": "main",
+    "title": "Implement validation schema for parser functionality",
+    "description": "Closes #4304\n\nThis adds validation schema support to improve modularity.\n\nBreaking Changes: None\n\nBackward Compatible: Yes",
+    "author": "annalee",
+    "commit_messages": [
+      "Add validation schema interface",
+      "Implement validation schema",
+      "Add integration tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 309,
+    "lines_deleted": 85,
+    "language": "python",
+    "metrics": {
+      "total_lines": 274,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 22,
+      "lines_added": 380,
+      "lines_deleted": 137
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  }
+]

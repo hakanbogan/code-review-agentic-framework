@@ -1,5 +1,7 @@
 """Command-line interface for code review framework."""
 
+import subprocess
+import tempfile
 from pathlib import Path
 from typing import Optional
 
@@ -23,6 +25,159 @@ app = typer.Typer(
 console = Console()
 
 
+def _resolve_repo_path(repo_path_or_url: str) -> Path:
+    """Resolve repository path from local path or GitHub URL.
+
+    Args:
+        repo_path_or_url: Local path or GitHub URL (https://github.com/owner/repo)
+
+    Returns:
+        Path: Local repository path
+    """
+    # Check if it's a GitHub URL
+    if repo_path_or_url.startswith(("https://github.com/", "git@github.com:")):
+        # Extract repo name from URL
+        if repo_path_or_url.startswith("https://"):
+            repo_name = repo_path_or_url.rstrip("/").rstrip(".git").split("/")[-1]
+        else:  # git@github.com:owner/repo.git
+            repo_name = repo_path_or_url.split(":")[-1].rstrip(".git").split("/")[-1]
+
+        # Clone to temp directory
+        temp_dir = Path(tempfile.gettempdir()) / "code-review-repos" / repo_name
+
+        if temp_dir.exists():
+            console.print(f"[yellow]Repository exists at {temp_dir}, updating...[/yellow]")
+            # Get current branch
+            current_branch_result = subprocess.run(
+                ["git", "-C", str(temp_dir), "rev-parse", "--abbrev-ref", "HEAD"],
+                capture_output=True,
+                text=True,
+                check=True,
+            )
+            current_branch = current_branch_result.stdout.strip()
+
+            # Fetch updates
+            subprocess.run(["git", "-C", str(temp_dir), "fetch", "origin"], check=True)
+
+            # Only pull if on a tracking branch (not a PR branch)
+            if not current_branch.startswith("pr-"):
+                try:
+                    subprocess.run(["git", "-C", str(temp_dir), "pull"], check=True, capture_output=True)
+                except subprocess.CalledProcessError:
+                    # If pull fails, try to checkout default branch and pull
+                    default_branch = _get_base_branch(temp_dir).replace("origin/", "")
+                    subprocess.run(["git", "-C", str(temp_dir), "checkout", default_branch],
+                                   check=True, capture_output=True)
+                    subprocess.run(["git", "-C", str(temp_dir), "pull"], check=True, capture_output=True)
+        else:
+            console.print(f"[cyan]Cloning {repo_path_or_url} to {temp_dir}...[/cyan]")
+            temp_dir.parent.mkdir(parents=True, exist_ok=True)
+            subprocess.run(["git", "clone", repo_path_or_url, str(temp_dir)], check=True)
+
+        console.print(f"[green]✓ Repository ready at {temp_dir}[/green]")
+        return temp_dir
+
+    # Local path
+    return Path(repo_path_or_url)
+
+
+def _checkout_pr_branch(repo_path: Path, pr_id: str) -> tuple[str, str]:
+    """Checkout PR branch for review.
+
+    Args:
+        repo_path: Repository path
+        pr_id: PR number
+
+    Returns:
+        Tuple of (merge_base_commit, pr_branch_name)
+    """
+    branch_name = f"pr-{pr_id}"
+
+    console.print(f"[cyan]Fetching PR #{pr_id} branch...[/cyan]")
+
+    # Get default branch name
+    base_branch = _get_base_branch(repo_path).replace("origin/", "")
+
+    # Checkout master first to allow branch deletion
+    subprocess.run(
+        ["git", "-C", str(repo_path), "checkout", base_branch],
+        capture_output=True,
+    )
+
+    # Delete PR branch if it exists
+    subprocess.run(
+        ["git", "-C", str(repo_path), "branch", "-D", branch_name],
+        capture_output=True,
+    )
+
+    # Fetch PR branch (don't update base branch if currently checked out)
+    subprocess.run(
+        ["git", "-C", str(repo_path), "fetch", "origin", f"pull/{pr_id}/head:{branch_name}"],
+        check=True,
+    )
+    subprocess.run(
+        ["git", "-C", str(repo_path), "fetch", "origin", base_branch],
+        check=True,
+    )
+
+    # Checkout PR branch
+    subprocess.run(
+        ["git", "-C", str(repo_path), "checkout", branch_name],
+        check=True,
+        capture_output=True,
+    )
+
+    # Get merge base (common ancestor of PR and base branch)
+    merge_base_result = subprocess.run(
+        ["git", "-C", str(repo_path), "merge-base", base_branch, branch_name],
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    merge_base = merge_base_result.stdout.strip()
+
+    console.print(f"[green]✓ Checked out PR #{pr_id} branch[/green]")
+    console.print(f"[dim]Merge base: {merge_base[:8]}[/dim]")
+
+    return merge_base, branch_name
+
+
+def _get_base_branch(repo_path: Path) -> str:
+    """Get default branch name (main or master).
+
+    Args:
+        repo_path: Repository path
+
+    Returns:
+        Default branch name
+    """
+    try:
+        # Try to get default branch from remote
+        result = subprocess.run(
+            ["git", "-C", str(repo_path), "symbolic-ref", "refs/remotes/origin/HEAD"],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        # Extract branch name (e.g., "refs/remotes/origin/main" -> "origin/main")
+        ref = result.stdout.strip()
+        return ref.replace("refs/remotes/", "")
+    except subprocess.CalledProcessError:
+        # Fallback: try common branch names
+        for branch in ["origin/main", "origin/master"]:
+            try:
+                subprocess.run(
+                    ["git", "-C", str(repo_path), "rev-parse", "--verify", branch],
+                    capture_output=True,
+                    check=True,
+                )
+                return branch
+            except subprocess.CalledProcessError:
+                continue
+        # Last resort: use HEAD
+        return "HEAD"
+
+
 @app.callback()
 def callback():
     """Initialize logging and configuration."""
@@ -31,18 +186,34 @@ def callback():
 
 @app.command()
 def review(
-    repo_path: Path = typer.Argument(..., help="Path to repository"),
+    repo_path_or_url: str = typer.Argument(..., help="Local path or GitHub URL (https://github.com/owner/repo)"),
     pr_id: str = typer.Option(..., "--pr-id", help="PR identifier"),
     title: str = typer.Option(..., "--title", help="PR title"),
     description: str = typer.Option("", "--description", help="PR description"),
     language: str = typer.Option("python", "--language", help="Primary language"),
     multi_agent: bool = typer.Option(True, "--multi-agent/--single-agent", help="Use multi-agent system"),
     output: Optional[Path] = typer.Option(None, "--output", "-o", help="Output file path"),
+    checkout_pr: bool = typer.Option(True, "--checkout-pr/--no-checkout-pr",
+                                     help="Checkout PR branch if GitHub URL provided"),
 ):
     """Run code review on a repository."""
     settings = get_settings()
 
     console.print(f"[bold]Starting review for PR {pr_id}[/bold]")
+
+    # Resolve repository path (handle both local paths and GitHub URLs)
+    repo_path = _resolve_repo_path(repo_path_or_url)
+
+    # If GitHub URL and checkout_pr enabled, try to checkout PR branch
+    base_ref = None
+    if checkout_pr and repo_path_or_url.startswith(("https://github.com/", "git@github.com:")):
+        try:
+            merge_base, pr_branch = _checkout_pr_branch(repo_path, pr_id)
+            # Use merge base as base_ref for accurate diff
+            base_ref = merge_base
+        except Exception as e:
+            console.print(f"[yellow]Warning: Could not checkout PR branch: {e}[/yellow]")
+            console.print("[yellow]Continuing with current branch...[/yellow]")
 
     # Create PR metadata
     pr_metadata = PRMetadata(
@@ -62,10 +233,10 @@ def review(
     try:
         if multi_agent:
             console.print("[cyan]Running multi-agent review...[/cyan]")
-            result = flow.run_multi_agent_review(pr_metadata, repo_path)
+            result = flow.run_multi_agent_review(pr_metadata, repo_path, base_branch=base_ref)
         else:
             console.print("[cyan]Running single-agent review...[/cyan]")
-            result = flow.run_single_agent_review(pr_metadata, repo_path)
+            result = flow.run_single_agent_review(pr_metadata, repo_path, base_branch=base_ref)
 
         # Display results
         _display_review_result(result)

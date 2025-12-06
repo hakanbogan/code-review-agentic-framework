@@ -31,11 +31,19 @@ class ReviewFlow:
         self.settings = settings
         self.tool_registry = create_tool_registry(settings)
         self.context_builder = ContextBuilder(self.tool_registry)
+        self.base_branch = None  # Will be set if PR branch is checked out
 
-    def run_single_agent_review(self, pr_metadata: PRMetadata, repo_path: Path) -> PRReviewResult:
+    def run_single_agent_review(self, pr_metadata: PRMetadata, repo_path: Path, base_branch: str | None = None) -> PRReviewResult:
         """Run single-agent review (baseline)."""
         start_time = time()
-        context = self.context_builder.build_context(pr_metadata, repo_path)
+        # Use base branch vs current branch (PR branch) for diff
+        base_ref = base_branch or "HEAD~1"  # Fallback to previous commit
+        context = self.context_builder.build_context(
+            pr_metadata,
+            repo_path,
+            base_ref=base_ref,
+            compare_ref="HEAD"
+        )
 
         with LogContext(correlation_id=context.correlation_id):
             logger.info("Starting single-agent review")
@@ -46,10 +54,17 @@ class ReviewFlow:
             logger.info(f"Single-agent review completed: {len(result.findings)} findings")
             return result
 
-    def run_multi_agent_review(self, pr_metadata: PRMetadata, repo_path: Path) -> PRReviewResult:
+    def run_multi_agent_review(self, pr_metadata: PRMetadata, repo_path: Path, base_branch: str | None = None) -> PRReviewResult:
         """Run multi-agent review (proposed system)."""
         start_time = time()
-        context = self.context_builder.build_context(pr_metadata, repo_path)
+        # Use base branch vs current branch (PR branch) for diff
+        base_ref = base_branch or "HEAD~1"  # Fallback to previous commit
+        context = self.context_builder.build_context(
+            pr_metadata,
+            repo_path,
+            base_ref=base_ref,
+            compare_ref="HEAD"
+        )
 
         with LogContext(correlation_id=context.correlation_id):
             logger.info("Starting multi-agent review")

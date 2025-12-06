@@ -1,0 +1,23 @@
+{
+  "category": "refactor",
+  "pr_count": 100,
+  "ground_truth_count": 12,
+  "statistics": {
+    "avg_lines_changed": 349.4,
+    "avg_complexity_score": 29.4,
+    "total_important_issues": 22,
+    "avg_issues_per_pr": 1.8
+  },
+  "repositories": [
+    "scikit-learn/scikit-learn",
+    "django/django",
+    "pandas-dev/pandas",
+    "requests/requests",
+    "tensorflow/tensorflow",
+    "numpy/numpy",
+    "scipy/scipy",
+    "fastapi/fastapi",
+    "flask/flask",
+    "pytorch/pytorch"
+  ]
+}

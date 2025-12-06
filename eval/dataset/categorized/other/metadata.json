@@ -1,0 +1,14 @@
+{
+  "category": "other",
+  "pr_count": 1,
+  "ground_truth_count": 0,
+  "statistics": {
+    "avg_lines_changed": 0.0,
+    "avg_complexity_score": 40.0,
+    "total_important_issues": 0,
+    "avg_issues_per_pr": 0
+  },
+  "repositories": [
+    "pandas-dev/pandas"
+  ]
+}

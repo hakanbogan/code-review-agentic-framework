@@ -1,0 +1,2748 @@
+[
+  {
+    "pr_id": "dummy-refactor-0001",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "refactor/serializer",
+    "branch_target": "main",
+    "title": "Optimize serializer performance",
+    "description": "Performance optimization for serializer.\n\nImprovements:\n- Vectorize operations using numpy\n- Reduce memory allocations\n- Benchmark results: 2.4x faster\n\nNo API changes.",
+    "author": "annalee",
+    "commit_messages": [
+      "Optimize serializer",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 235,
+    "lines_deleted": 65,
+    "language": "python",
+    "metrics": {
+      "total_lines": 553,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 23,
+      "lines_added": 214,
+      "lines_deleted": 99
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0002",
+    "repository": "django/django",
+    "branch_source": "refactor/middleware",
+    "branch_target": "main",
+    "title": "Optimize middleware performance",
+    "description": "Performance optimization for middleware.\n\nImprovements:\n- Cache frequently accessed data\n- Cache frequently accessed data\n- Benchmark results: 3.3x faster\n\nNo API changes.",
+    "author": "johndoe",
+    "commit_messages": [
+      "Optimize middleware",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 268,
+    "lines_deleted": 75,
+    "language": "python",
+    "metrics": {
+      "total_lines": 429,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 35,
+      "lines_added": 93,
+      "lines_deleted": 124
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0003",
+    "repository": "numpy/numpy",
+    "branch_source": "refactor/database",
+    "branch_target": "main",
+    "title": "Optimize database performance",
+    "description": "Performance optimization for database.\n\nImprovements:\n- Reduce memory allocations\n- Reduce memory allocations\n- Benchmark results: 2.8x faster\n\nNo API changes.",
+    "author": "tomsmith",
+    "commit_messages": [
+      "Optimize database",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 276,
+    "lines_deleted": 244,
+    "language": "python",
+    "metrics": {
+      "total_lines": 175,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 18,
+      "lines_added": 83,
+      "lines_deleted": 218
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0004",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "refactor/database",
+    "branch_target": "main",
+    "title": "Refactor database for better readability",
+    "description": "This PR refactors database to improve readability.\n\nChanges:\n- Extract constants into separate configuration file\n- Reduce cyclomatic complexity from 29 to 7\n- Improve code readability\n\nNo functional changes.",
+    "author": "briankim",
+    "commit_messages": [
+      "Refactor database",
+      "Extract helper functions",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 174,
+    "lines_deleted": 68,
+    "language": "python",
+    "metrics": {
+      "total_lines": 544,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 28,
+      "lines_added": 162,
+      "lines_deleted": 51
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0005",
+    "repository": "scipy/scipy",
+    "branch_source": "refactor/parser",
+    "branch_target": "main",
+    "title": "Refactor parser for better performance",
+    "description": "This PR refactors parser to improve performance.\n\nChanges:\n- Extract constants into separate constants file\n- Reduce cyclomatic complexity from 18 to 11\n- Improve code readability\n\nNo functional changes.",
+    "author": "johndoe",
+    "commit_messages": [
+      "Refactor parser",
+      "Extract utility class",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 52,
+    "lines_deleted": 204,
+    "language": "python",
+    "metrics": {
+      "total_lines": 568,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 20,
+      "lines_added": 179,
+      "lines_deleted": 257
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0006",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "refactor/database",
+    "branch_target": "main",
+    "title": "Refactor database for better readability",
+    "description": "This PR refactors database to improve readability.\n\nChanges:\n- Extract configuration logic into separate utility file\n- Reduce cyclomatic complexity from 25 to 9\n- Improve code readability\n\nNo functional changes.",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Refactor database",
+      "Extract validation rules",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 163,
+    "lines_deleted": 245,
+    "language": "python",
+    "metrics": {
+      "total_lines": 383,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 29,
+      "lines_added": 72,
+      "lines_deleted": 259
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0007",
+    "repository": "pytorch/pytorch",
+    "branch_source": "refactor/authentication",
+    "branch_target": "main",
+    "title": "Optimize authentication performance",
+    "description": "Performance optimization for authentication.\n\nImprovements:\n- Replace O(n\u00b2) loop with hash map lookup\n- Vectorize operations using numpy\n- Benchmark results: 4.9x faster\n\nNo API changes.",
+    "author": "mariaperez",
+    "commit_messages": [
+      "Optimize authentication",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 217,
+    "lines_deleted": 211,
+    "language": "python",
+    "metrics": {
+      "total_lines": 323,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 45,
+      "lines_added": 137,
+      "lines_deleted": 133
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0008",
+    "repository": "requests/requests",
+    "branch_source": "refactor/serializer",
+    "branch_target": "main",
+    "title": "Optimize serializer performance",
+    "description": "Performance optimization for serializer.\n\nImprovements:\n- Reduce memory allocations\n- Replace O(n\u00b2) loop with hash map lookup\n- Benchmark results: 2.3x faster\n\nNo API changes.",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Optimize serializer",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 262,
+    "lines_deleted": 202,
+    "language": "python",
+    "metrics": {
+      "total_lines": 499,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 24,
+      "lines_added": 190,
+      "lines_deleted": 173
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 1
+  },
+  {
+    "pr_id": "dummy-refactor-0009",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "refactor/cache",
+    "branch_target": "main",
+    "title": "Optimize cache performance",
+    "description": "Performance optimization for cache.\n\nImprovements:\n- Replace O(n\u00b2) loop with hash map lookup\n- Reduce memory allocations\n- Benchmark results: 2.6x faster\n\nNo API changes.",
+    "author": "kevinpatel",
+    "commit_messages": [
+      "Optimize cache",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 156,
+    "lines_deleted": 51,
+    "language": "python",
+    "metrics": {
+      "total_lines": 564,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 35,
+      "lines_added": 264,
+      "lines_deleted": 212
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0010",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "refactor/middleware",
+    "branch_target": "main",
+    "title": "Optimize middleware performance",
+    "description": "Performance optimization for middleware.\n\nImprovements:\n- Vectorize operations using numpy\n- Replace O(n\u00b2) loop with hash map lookup\n- Benchmark results: 3.7x faster\n\nNo API changes.",
+    "author": "briankim",
+    "commit_messages": [
+      "Optimize middleware",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 180,
+    "lines_deleted": 239,
+    "language": "python",
+    "metrics": {
+      "total_lines": 561,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 44,
+      "lines_added": 95,
+      "lines_deleted": 217
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0011",
+    "repository": "requests/requests",
+    "branch_source": "refactor/database",
+    "branch_target": "main",
+    "title": "Refactor database for better readability",
+    "description": "This PR refactors database to improve readability.\n\nChanges:\n- Extract constants into separate constants file\n- Reduce cyclomatic complexity from 25 to 11\n- Improve code readability\n\nNo functional changes.",
+    "author": "davidkim",
+    "commit_messages": [
+      "Refactor database",
+      "Extract configuration logic",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 165,
+    "lines_deleted": 246,
+    "language": "python",
+    "metrics": {
+      "total_lines": 158,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 19,
+      "lines_added": 155,
+      "lines_deleted": 194
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0012",
+    "repository": "pytorch/pytorch",
+    "branch_source": "refactor/serializer",
+    "branch_target": "main",
+    "title": "Optimize serializer performance",
+    "description": "Performance optimization for serializer.\n\nImprovements:\n- Cache frequently accessed data\n- Use lazy evaluation for expensive operations\n- Benchmark results: 4.9x faster\n\nNo API changes.",
+    "author": "annalee",
+    "commit_messages": [
+      "Optimize serializer",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 213,
+    "lines_deleted": 122,
+    "language": "python",
+    "metrics": {
+      "total_lines": 453,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 18,
+      "lines_added": 244,
+      "lines_deleted": 130
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0013",
+    "repository": "flask/flask",
+    "branch_source": "refactor/validator",
+    "branch_target": "main",
+    "title": "Optimize validator performance",
+    "description": "Performance optimization for validator.\n\nImprovements:\n- Reduce memory allocations\n- Use lazy evaluation for expensive operations\n- Benchmark results: 2.2x faster\n\nNo API changes.",
+    "author": "kevinpatel",
+    "commit_messages": [
+      "Optimize validator",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 251,
+    "lines_deleted": 81,
+    "language": "python",
+    "metrics": {
+      "total_lines": 236,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 36,
+      "lines_added": 114,
+      "lines_deleted": 77
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0014",
+    "repository": "fastapi/fastapi",
+    "branch_source": "refactor/parser",
+    "branch_target": "main",
+    "title": "Optimize parser performance",
+    "description": "Performance optimization for parser.\n\nImprovements:\n- Vectorize operations using numpy\n- Vectorize operations using numpy\n- Benchmark results: 4.6x faster\n\nNo API changes.",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Optimize parser",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 250,
+    "lines_deleted": 243,
+    "language": "python",
+    "metrics": {
+      "total_lines": 498,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 37,
+      "lines_added": 123,
+      "lines_deleted": 217
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0015",
+    "repository": "requests/requests",
+    "branch_source": "refactor/router",
+    "branch_target": "main",
+    "title": "Optimize router performance",
+    "description": "Performance optimization for router.\n\nImprovements:\n- Use lazy evaluation for expensive operations\n- Vectorize operations using numpy\n- Benchmark results: 4.6x faster\n\nNo API changes.",
+    "author": "kevinpatel",
+    "commit_messages": [
+      "Optimize router",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 200,
+    "lines_deleted": 179,
+    "language": "python",
+    "metrics": {
+      "total_lines": 468,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 34,
+      "lines_added": 100,
+      "lines_deleted": 238
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0016",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "refactor/cache",
+    "branch_target": "main",
+    "title": "Optimize cache performance",
+    "description": "Performance optimization for cache.\n\nImprovements:\n- Replace O(n\u00b2) loop with hash map lookup\n- Reduce memory allocations\n- Benchmark results: 2.8x faster\n\nNo API changes.",
+    "author": "lisawang",
+    "commit_messages": [
+      "Optimize cache",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 266,
+    "lines_deleted": 105,
+    "language": "python",
+    "metrics": {
+      "total_lines": 92,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 25,
+      "lines_added": 169,
+      "lines_deleted": 221
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 2
+  },
+  {
+    "pr_id": "dummy-refactor-0017",
+    "repository": "pytorch/pytorch",
+    "branch_source": "refactor/validator",
+    "branch_target": "main",
+    "title": "Refactor validator for better readability",
+    "description": "This PR refactors validator to improve readability.\n\nChanges:\n- Extract constants into separate constants file\n- Reduce cyclomatic complexity from 26 to 6\n- Improve code readability\n\nNo functional changes.",
+    "author": "alexchen",
+    "commit_messages": [
+      "Refactor validator",
+      "Extract constants",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 156,
+    "lines_deleted": 179,
+    "language": "python",
+    "metrics": {
+      "total_lines": 364,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 27,
+      "lines_added": 73,
+      "lines_deleted": 129
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0018",
+    "repository": "fastapi/fastapi",
+    "branch_source": "refactor/serializer",
+    "branch_target": "main",
+    "title": "Optimize serializer performance",
+    "description": "Performance optimization for serializer.\n\nImprovements:\n- Replace O(n\u00b2) loop with hash map lookup\n- Cache frequently accessed data\n- Benchmark results: 3.3x faster\n\nNo API changes.",
+    "author": "johndoe",
+    "commit_messages": [
+      "Optimize serializer",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 224,
+    "lines_deleted": 266,
+    "language": "python",
+    "metrics": {
+      "total_lines": 254,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 27,
+      "lines_added": 284,
+      "lines_deleted": 243
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0019",
+    "repository": "pytorch/pytorch",
+    "branch_source": "refactor/authentication",
+    "branch_target": "main",
+    "title": "Optimize authentication performance",
+    "description": "Performance optimization for authentication.\n\nImprovements:\n- Replace O(n\u00b2) loop with hash map lookup\n- Cache frequently accessed data\n- Benchmark results: 4.7x faster\n\nNo API changes.",
+    "author": "janesmit",
+    "commit_messages": [
+      "Optimize authentication",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 292,
+    "lines_deleted": 64,
+    "language": "python",
+    "metrics": {
+      "total_lines": 175,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 45,
+      "lines_added": 247,
+      "lines_deleted": 177
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0020",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "refactor/parser",
+    "branch_target": "main",
+    "title": "Refactor parser for better readability",
+    "description": "This PR refactors parser to improve readability.\n\nChanges:\n- Extract helper functions into separate utility file\n- Reduce cyclomatic complexity from 28 to 6\n- Improve code readability\n\nNo functional changes.",
+    "author": "johndoe",
+    "commit_messages": [
+      "Refactor parser",
+      "Extract helper functions",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 95,
+    "lines_deleted": 243,
+    "language": "python",
+    "metrics": {
+      "total_lines": 218,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 32,
+      "lines_added": 68,
+      "lines_deleted": 187
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0021",
+    "repository": "scipy/scipy",
+    "branch_source": "refactor/router",
+    "branch_target": "main",
+    "title": "Optimize router performance",
+    "description": "Performance optimization for router.\n\nImprovements:\n- Reduce memory allocations\n- Replace O(n\u00b2) loop with hash map lookup\n- Benchmark results: 3.6x faster\n\nNo API changes.",
+    "author": "johndoe",
+    "commit_messages": [
+      "Optimize router",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 229,
+    "lines_deleted": 257,
+    "language": "python",
+    "metrics": {
+      "total_lines": 127,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 26,
+      "lines_added": 287,
+      "lines_deleted": 168
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0022",
+    "repository": "pytorch/pytorch",
+    "branch_source": "refactor/database",
+    "branch_target": "main",
+    "title": "Optimize database performance",
+    "description": "Performance optimization for database.\n\nImprovements:\n- Reduce memory allocations\n- Use lazy evaluation for expensive operations\n- Benchmark results: 3.6x faster\n\nNo API changes.",
+    "author": "davidkim",
+    "commit_messages": [
+      "Optimize database",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 295,
+    "lines_deleted": 202,
+    "language": "python",
+    "metrics": {
+      "total_lines": 163,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 24,
+      "lines_added": 223,
+      "lines_deleted": 267
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0023",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "refactor/authentication",
+    "branch_target": "main",
+    "title": "Optimize authentication performance",
+    "description": "Performance optimization for authentication.\n\nImprovements:\n- Replace O(n\u00b2) loop with hash map lookup\n- Vectorize operations using numpy\n- Benchmark results: 3.8x faster\n\nNo API changes.",
+    "author": "davidkim",
+    "commit_messages": [
+      "Optimize authentication",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 103,
+    "lines_deleted": 231,
+    "language": "python",
+    "metrics": {
+      "total_lines": 469,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 43,
+      "lines_added": 235,
+      "lines_deleted": 128
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0024",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "refactor/cache",
+    "branch_target": "main",
+    "title": "Refactor cache for better testability",
+    "description": "This PR refactors cache to improve testability.\n\nChanges:\n- Extract utility class into separate constants file\n- Reduce cyclomatic complexity from 23 to 8\n- Improve code readability\n\nNo functional changes.",
+    "author": "tomsmith",
+    "commit_messages": [
+      "Refactor cache",
+      "Extract helper functions",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 190,
+    "lines_deleted": 58,
+    "language": "python",
+    "metrics": {
+      "total_lines": 238,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 36,
+      "lines_added": 67,
+      "lines_deleted": 104
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0025",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "refactor/serializer",
+    "branch_target": "main",
+    "title": "Optimize serializer performance",
+    "description": "Performance optimization for serializer.\n\nImprovements:\n- Vectorize operations using numpy\n- Replace O(n\u00b2) loop with hash map lookup\n- Benchmark results: 4.7x faster\n\nNo API changes.",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Optimize serializer",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 207,
+    "lines_deleted": 208,
+    "language": "python",
+    "metrics": {
+      "total_lines": 246,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 37,
+      "lines_added": 199,
+      "lines_deleted": 79
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0026",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "refactor/router",
+    "branch_target": "main",
+    "title": "Optimize router performance",
+    "description": "Performance optimization for router.\n\nImprovements:\n- Reduce memory allocations\n- Cache frequently accessed data\n- Benchmark results: 4.5x faster\n\nNo API changes.",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Optimize router",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 164,
+    "lines_deleted": 131,
+    "language": "python",
+    "metrics": {
+      "total_lines": 486,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 24,
+      "lines_added": 174,
+      "lines_deleted": 181
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0027",
+    "repository": "numpy/numpy",
+    "branch_source": "refactor/validator",
+    "branch_target": "main",
+    "title": "Refactor validator for better testability",
+    "description": "This PR refactors validator to improve testability.\n\nChanges:\n- Extract constants into separate utility file\n- Reduce cyclomatic complexity from 23 to 6\n- Improve code readability\n\nNo functional changes.",
+    "author": "kevinpatel",
+    "commit_messages": [
+      "Refactor validator",
+      "Extract constants",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 201,
+    "lines_deleted": 94,
+    "language": "python",
+    "metrics": {
+      "total_lines": 554,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 16,
+      "lines_added": 191,
+      "lines_deleted": 106
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0028",
+    "repository": "pytorch/pytorch",
+    "branch_source": "refactor/cache",
+    "branch_target": "main",
+    "title": "Optimize cache performance",
+    "description": "Performance optimization for cache.\n\nImprovements:\n- Reduce memory allocations\n- Vectorize operations using numpy\n- Benchmark results: 3.5x faster\n\nNo API changes.",
+    "author": "johndoe",
+    "commit_messages": [
+      "Optimize cache",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 219,
+    "lines_deleted": 101,
+    "language": "python",
+    "metrics": {
+      "total_lines": 524,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 45,
+      "lines_added": 256,
+      "lines_deleted": 197
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0029",
+    "repository": "flask/flask",
+    "branch_source": "refactor/middleware",
+    "branch_target": "main",
+    "title": "Refactor middleware for better testability",
+    "description": "This PR refactors middleware to improve testability.\n\nChanges:\n- Extract utility class into separate constants file\n- Reduce cyclomatic complexity from 19 to 12\n- Improve code readability\n\nNo functional changes.",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Refactor middleware",
+      "Extract utility class",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 109,
+    "lines_deleted": 50,
+    "language": "python",
+    "metrics": {
+      "total_lines": 432,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 21,
+      "lines_added": 182,
+      "lines_deleted": 272
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0030",
+    "repository": "requests/requests",
+    "branch_source": "refactor/authentication",
+    "branch_target": "main",
+    "title": "Optimize authentication performance",
+    "description": "Performance optimization for authentication.\n\nImprovements:\n- Vectorize operations using numpy\n- Vectorize operations using numpy\n- Benchmark results: 3.7x faster\n\nNo API changes.",
+    "author": "lisawang",
+    "commit_messages": [
+      "Optimize authentication",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 217,
+    "lines_deleted": 269,
+    "language": "python",
+    "metrics": {
+      "total_lines": 517,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 17,
+      "lines_added": 182,
+      "lines_deleted": 104
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0031",
+    "repository": "fastapi/fastapi",
+    "branch_source": "refactor/serializer",
+    "branch_target": "main",
+    "title": "Optimize serializer performance",
+    "description": "Performance optimization for serializer.\n\nImprovements:\n- Reduce memory allocations\n- Use lazy evaluation for expensive operations\n- Benchmark results: 2.7x faster\n\nNo API changes.",
+    "author": "alexchen",
+    "commit_messages": [
+      "Optimize serializer",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 97,
+    "lines_deleted": 80,
+    "language": "python",
+    "metrics": {
+      "total_lines": 275,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 34,
+      "lines_added": 233,
+      "lines_deleted": 249
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0032",
+    "repository": "scipy/scipy",
+    "branch_source": "refactor/database",
+    "branch_target": "main",
+    "title": "Optimize database performance",
+    "description": "Performance optimization for database.\n\nImprovements:\n- Reduce memory allocations\n- Replace O(n\u00b2) loop with hash map lookup\n- Benchmark results: 2.7x faster\n\nNo API changes.",
+    "author": "alexchen",
+    "commit_messages": [
+      "Optimize database",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 84,
+    "lines_deleted": 201,
+    "language": "python",
+    "metrics": {
+      "total_lines": 352,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 16,
+      "lines_added": 278,
+      "lines_deleted": 186
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0033",
+    "repository": "fastapi/fastapi",
+    "branch_source": "refactor/router",
+    "branch_target": "main",
+    "title": "Refactor router for better modularity",
+    "description": "This PR refactors router to improve modularity.\n\nChanges:\n- Extract constants into separate module\n- Reduce cyclomatic complexity from 24 to 6\n- Improve code readability\n\nNo functional changes.",
+    "author": "rachelchen",
+    "commit_messages": [
+      "Refactor router",
+      "Extract validation rules",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 155,
+    "lines_deleted": 193,
+    "language": "python",
+    "metrics": {
+      "total_lines": 163,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 40,
+      "lines_added": 199,
+      "lines_deleted": 250
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0034",
+    "repository": "pytorch/pytorch",
+    "branch_source": "refactor/cache",
+    "branch_target": "main",
+    "title": "Optimize cache performance",
+    "description": "Performance optimization for cache.\n\nImprovements:\n- Reduce memory allocations\n- Reduce memory allocations\n- Benchmark results: 2.4x faster\n\nNo API changes.",
+    "author": "rachelchen",
+    "commit_messages": [
+      "Optimize cache",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 282,
+    "lines_deleted": 169,
+    "language": "python",
+    "metrics": {
+      "total_lines": 440,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 28,
+      "lines_added": 261,
+      "lines_deleted": 78
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0035",
+    "repository": "fastapi/fastapi",
+    "branch_source": "refactor/database",
+    "branch_target": "main",
+    "title": "Refactor database for better maintainability",
+    "description": "This PR refactors database to improve maintainability.\n\nChanges:\n- Extract validation rules into separate utility file\n- Reduce cyclomatic complexity from 15 to 11\n- Improve code readability\n\nNo functional changes.",
+    "author": "kevinpatel",
+    "commit_messages": [
+      "Refactor database",
+      "Extract constants",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 173,
+    "lines_deleted": 242,
+    "language": "python",
+    "metrics": {
+      "total_lines": 483,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 27,
+      "lines_added": 139,
+      "lines_deleted": 190
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0036",
+    "repository": "django/django",
+    "branch_source": "refactor/router",
+    "branch_target": "main",
+    "title": "Refactor router for better testability",
+    "description": "This PR refactors router to improve testability.\n\nChanges:\n- Extract configuration logic into separate configuration file\n- Reduce cyclomatic complexity from 22 to 6\n- Improve code readability\n\nNo functional changes.",
+    "author": "annalee",
+    "commit_messages": [
+      "Refactor router",
+      "Extract configuration logic",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 240,
+    "lines_deleted": 242,
+    "language": "python",
+    "metrics": {
+      "total_lines": 93,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 33,
+      "lines_added": 183,
+      "lines_deleted": 70
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0037",
+    "repository": "requests/requests",
+    "branch_source": "refactor/serializer",
+    "branch_target": "main",
+    "title": "Refactor serializer for better readability",
+    "description": "This PR refactors serializer to improve readability.\n\nChanges:\n- Extract configuration logic into separate module\n- Reduce cyclomatic complexity from 19 to 11\n- Improve code readability\n\nNo functional changes.",
+    "author": "lisawang",
+    "commit_messages": [
+      "Refactor serializer",
+      "Extract validation rules",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 120,
+    "lines_deleted": 214,
+    "language": "python",
+    "metrics": {
+      "total_lines": 293,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 39,
+      "lines_added": 102,
+      "lines_deleted": 145
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0038",
+    "repository": "fastapi/fastapi",
+    "branch_source": "refactor/serializer",
+    "branch_target": "main",
+    "title": "Refactor serializer for better modularity",
+    "description": "This PR refactors serializer to improve modularity.\n\nChanges:\n- Extract constants into separate configuration file\n- Reduce cyclomatic complexity from 23 to 9\n- Improve code readability\n\nNo functional changes.",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Refactor serializer",
+      "Extract utility class",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 250,
+    "lines_deleted": 219,
+    "language": "python",
+    "metrics": {
+      "total_lines": 576,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 20,
+      "lines_added": 75,
+      "lines_deleted": 94
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0039",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "refactor/cache",
+    "branch_target": "main",
+    "title": "Refactor cache for better readability",
+    "description": "This PR refactors cache to improve readability.\n\nChanges:\n- Extract helper functions into separate module\n- Reduce cyclomatic complexity from 19 to 12\n- Improve code readability\n\nNo functional changes.",
+    "author": "lisawang",
+    "commit_messages": [
+      "Refactor cache",
+      "Extract utility class",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 59,
+    "lines_deleted": 225,
+    "language": "python",
+    "metrics": {
+      "total_lines": 286,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 44,
+      "lines_added": 152,
+      "lines_deleted": 197
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0040",
+    "repository": "scipy/scipy",
+    "branch_source": "refactor/cache",
+    "branch_target": "main",
+    "title": "Refactor cache for better readability",
+    "description": "This PR refactors cache to improve readability.\n\nChanges:\n- Extract validation rules into separate module\n- Reduce cyclomatic complexity from 21 to 9\n- Improve code readability\n\nNo functional changes.",
+    "author": "alexchen",
+    "commit_messages": [
+      "Refactor cache",
+      "Extract constants",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 222,
+    "lines_deleted": 49,
+    "language": "python",
+    "metrics": {
+      "total_lines": 274,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 22,
+      "lines_added": 217,
+      "lines_deleted": 40
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 2
+  },
+  {
+    "pr_id": "dummy-refactor-0041",
+    "repository": "requests/requests",
+    "branch_source": "refactor/serializer",
+    "branch_target": "main",
+    "title": "Optimize serializer performance",
+    "description": "Performance optimization for serializer.\n\nImprovements:\n- Replace O(n\u00b2) loop with hash map lookup\n- Replace O(n\u00b2) loop with hash map lookup\n- Benchmark results: 3.6x faster\n\nNo API changes.",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Optimize serializer",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 296,
+    "lines_deleted": 248,
+    "language": "python",
+    "metrics": {
+      "total_lines": 231,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 22,
+      "lines_added": 205,
+      "lines_deleted": 89
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0042",
+    "repository": "pytorch/pytorch",
+    "branch_source": "refactor/validator",
+    "branch_target": "main",
+    "title": "Refactor validator for better testability",
+    "description": "This PR refactors validator to improve testability.\n\nChanges:\n- Extract validation rules into separate constants file\n- Reduce cyclomatic complexity from 18 to 6\n- Improve code readability\n\nNo functional changes.",
+    "author": "rachelchen",
+    "commit_messages": [
+      "Refactor validator",
+      "Extract constants",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 253,
+    "lines_deleted": 187,
+    "language": "python",
+    "metrics": {
+      "total_lines": 218,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 37,
+      "lines_added": 163,
+      "lines_deleted": 136
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0043",
+    "repository": "requests/requests",
+    "branch_source": "refactor/middleware",
+    "branch_target": "main",
+    "title": "Optimize middleware performance",
+    "description": "Performance optimization for middleware.\n\nImprovements:\n- Cache frequently accessed data\n- Replace O(n\u00b2) loop with hash map lookup\n- Benchmark results: 3.1x faster\n\nNo API changes.",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Optimize middleware",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 294,
+    "lines_deleted": 130,
+    "language": "python",
+    "metrics": {
+      "total_lines": 354,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 32,
+      "lines_added": 52,
+      "lines_deleted": 219
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0044",
+    "repository": "fastapi/fastapi",
+    "branch_source": "refactor/router",
+    "branch_target": "main",
+    "title": "Refactor router for better performance",
+    "description": "This PR refactors router to improve performance.\n\nChanges:\n- Extract helper functions into separate constants file\n- Reduce cyclomatic complexity from 20 to 12\n- Improve code readability\n\nNo functional changes.",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Refactor router",
+      "Extract configuration logic",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 238,
+    "lines_deleted": 91,
+    "language": "python",
+    "metrics": {
+      "total_lines": 210,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 38,
+      "lines_added": 111,
+      "lines_deleted": 263
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0045",
+    "repository": "requests/requests",
+    "branch_source": "refactor/serializer",
+    "branch_target": "main",
+    "title": "Refactor serializer for better testability",
+    "description": "This PR refactors serializer to improve testability.\n\nChanges:\n- Extract helper functions into separate module\n- Reduce cyclomatic complexity from 17 to 12\n- Improve code readability\n\nNo functional changes.",
+    "author": "lisawang",
+    "commit_messages": [
+      "Refactor serializer",
+      "Extract helper functions",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 130,
+    "lines_deleted": 166,
+    "language": "python",
+    "metrics": {
+      "total_lines": 549,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 43,
+      "lines_added": 279,
+      "lines_deleted": 187
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0046",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "refactor/router",
+    "branch_target": "main",
+    "title": "Optimize router performance",
+    "description": "Performance optimization for router.\n\nImprovements:\n- Reduce memory allocations\n- Vectorize operations using numpy\n- Benchmark results: 2.1x faster\n\nNo API changes.",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Optimize router",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 299,
+    "lines_deleted": 70,
+    "language": "python",
+    "metrics": {
+      "total_lines": 447,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 31,
+      "lines_added": 167,
+      "lines_deleted": 120
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 1
+  },
+  {
+    "pr_id": "dummy-refactor-0047",
+    "repository": "requests/requests",
+    "branch_source": "refactor/database",
+    "branch_target": "main",
+    "title": "Optimize database performance",
+    "description": "Performance optimization for database.\n\nImprovements:\n- Vectorize operations using numpy\n- Cache frequently accessed data\n- Benchmark results: 2.7x faster\n\nNo API changes.",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Optimize database",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 97,
+    "lines_deleted": 167,
+    "language": "python",
+    "metrics": {
+      "total_lines": 307,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 21,
+      "lines_added": 157,
+      "lines_deleted": 219
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0048",
+    "repository": "numpy/numpy",
+    "branch_source": "refactor/validator",
+    "branch_target": "main",
+    "title": "Optimize validator performance",
+    "description": "Performance optimization for validator.\n\nImprovements:\n- Replace O(n\u00b2) loop with hash map lookup\n- Cache frequently accessed data\n- Benchmark results: 4.4x faster\n\nNo API changes.",
+    "author": "mariaperez",
+    "commit_messages": [
+      "Optimize validator",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 87,
+    "lines_deleted": 244,
+    "language": "python",
+    "metrics": {
+      "total_lines": 468,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 19,
+      "lines_added": 171,
+      "lines_deleted": 246
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0049",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "refactor/serializer",
+    "branch_target": "main",
+    "title": "Refactor serializer for better readability",
+    "description": "This PR refactors serializer to improve readability.\n\nChanges:\n- Extract configuration logic into separate separate class\n- Reduce cyclomatic complexity from 16 to 11\n- Improve code readability\n\nNo functional changes.",
+    "author": "annalee",
+    "commit_messages": [
+      "Refactor serializer",
+      "Extract validation rules",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 135,
+    "lines_deleted": 106,
+    "language": "python",
+    "metrics": {
+      "total_lines": 274,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 26,
+      "lines_added": 193,
+      "lines_deleted": 182
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0050",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "refactor/router",
+    "branch_target": "main",
+    "title": "Refactor router for better maintainability",
+    "description": "This PR refactors router to improve maintainability.\n\nChanges:\n- Extract configuration logic into separate constants file\n- Reduce cyclomatic complexity from 21 to 7\n- Improve code readability\n\nNo functional changes.",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Refactor router",
+      "Extract validation rules",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 207,
+    "lines_deleted": 113,
+    "language": "python",
+    "metrics": {
+      "total_lines": 327,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 35,
+      "lines_added": 294,
+      "lines_deleted": 77
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0051",
+    "repository": "flask/flask",
+    "branch_source": "refactor/router",
+    "branch_target": "main",
+    "title": "Optimize router performance",
+    "description": "Performance optimization for router.\n\nImprovements:\n- Use lazy evaluation for expensive operations\n- Cache frequently accessed data\n- Benchmark results: 2.7x faster\n\nNo API changes.",
+    "author": "lisawang",
+    "commit_messages": [
+      "Optimize router",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 215,
+    "lines_deleted": 141,
+    "language": "python",
+    "metrics": {
+      "total_lines": 228,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 43,
+      "lines_added": 163,
+      "lines_deleted": 239
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0052",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "refactor/router",
+    "branch_target": "main",
+    "title": "Optimize router performance",
+    "description": "Performance optimization for router.\n\nImprovements:\n- Cache frequently accessed data\n- Replace O(n\u00b2) loop with hash map lookup\n- Benchmark results: 2.6x faster\n\nNo API changes.",
+    "author": "janesmit",
+    "commit_messages": [
+      "Optimize router",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 289,
+    "lines_deleted": 264,
+    "language": "python",
+    "metrics": {
+      "total_lines": 332,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 32,
+      "lines_added": 63,
+      "lines_deleted": 46
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0053",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "refactor/database",
+    "branch_target": "main",
+    "title": "Refactor database for better performance",
+    "description": "This PR refactors database to improve performance.\n\nChanges:\n- Extract constants into separate utility file\n- Reduce cyclomatic complexity from 17 to 11\n- Improve code readability\n\nNo functional changes.",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Refactor database",
+      "Extract validation rules",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 264,
+    "lines_deleted": 83,
+    "language": "python",
+    "metrics": {
+      "total_lines": 104,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 16,
+      "lines_added": 219,
+      "lines_deleted": 131
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0054",
+    "repository": "numpy/numpy",
+    "branch_source": "refactor/middleware",
+    "branch_target": "main",
+    "title": "Optimize middleware performance",
+    "description": "Performance optimization for middleware.\n\nImprovements:\n- Vectorize operations using numpy\n- Use lazy evaluation for expensive operations\n- Benchmark results: 3.8x faster\n\nNo API changes.",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Optimize middleware",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 213,
+    "lines_deleted": 203,
+    "language": "python",
+    "metrics": {
+      "total_lines": 363,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 24,
+      "lines_added": 282,
+      "lines_deleted": 128
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0055",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "refactor/middleware",
+    "branch_target": "main",
+    "title": "Refactor middleware for better performance",
+    "description": "This PR refactors middleware to improve performance.\n\nChanges:\n- Extract configuration logic into separate configuration file\n- Reduce cyclomatic complexity from 23 to 7\n- Improve code readability\n\nNo functional changes.",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Refactor middleware",
+      "Extract configuration logic",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 52,
+    "lines_deleted": 216,
+    "language": "python",
+    "metrics": {
+      "total_lines": 562,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 30,
+      "lines_added": 292,
+      "lines_deleted": 233
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 2
+  },
+  {
+    "pr_id": "dummy-refactor-0056",
+    "repository": "numpy/numpy",
+    "branch_source": "refactor/parser",
+    "branch_target": "main",
+    "title": "Optimize parser performance",
+    "description": "Performance optimization for parser.\n\nImprovements:\n- Vectorize operations using numpy\n- Reduce memory allocations\n- Benchmark results: 3.2x faster\n\nNo API changes.",
+    "author": "mariaperez",
+    "commit_messages": [
+      "Optimize parser",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 117,
+    "lines_deleted": 60,
+    "language": "python",
+    "metrics": {
+      "total_lines": 306,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 35,
+      "lines_added": 111,
+      "lines_deleted": 172
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0057",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "refactor/validator",
+    "branch_target": "main",
+    "title": "Optimize validator performance",
+    "description": "Performance optimization for validator.\n\nImprovements:\n- Use lazy evaluation for expensive operations\n- Use lazy evaluation for expensive operations\n- Benchmark results: 2.9x faster\n\nNo API changes.",
+    "author": "davidkim",
+    "commit_messages": [
+      "Optimize validator",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 229,
+    "lines_deleted": 199,
+    "language": "python",
+    "metrics": {
+      "total_lines": 341,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 21,
+      "lines_added": 132,
+      "lines_deleted": 44
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0058",
+    "repository": "requests/requests",
+    "branch_source": "refactor/cache",
+    "branch_target": "main",
+    "title": "Refactor cache for better maintainability",
+    "description": "This PR refactors cache to improve maintainability.\n\nChanges:\n- Extract configuration logic into separate separate class\n- Reduce cyclomatic complexity from 19 to 12\n- Improve code readability\n\nNo functional changes.",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Refactor cache",
+      "Extract validation rules",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 129,
+    "lines_deleted": 241,
+    "language": "python",
+    "metrics": {
+      "total_lines": 499,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 30,
+      "lines_added": 145,
+      "lines_deleted": 158
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 1
+  },
+  {
+    "pr_id": "dummy-refactor-0059",
+    "repository": "numpy/numpy",
+    "branch_source": "refactor/authentication",
+    "branch_target": "main",
+    "title": "Refactor authentication for better performance",
+    "description": "This PR refactors authentication to improve performance.\n\nChanges:\n- Extract validation rules into separate module\n- Reduce cyclomatic complexity from 30 to 7\n- Improve code readability\n\nNo functional changes.",
+    "author": "kevinpatel",
+    "commit_messages": [
+      "Refactor authentication",
+      "Extract helper functions",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 299,
+    "lines_deleted": 153,
+    "language": "python",
+    "metrics": {
+      "total_lines": 216,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 38,
+      "lines_added": 58,
+      "lines_deleted": 90
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0060",
+    "repository": "requests/requests",
+    "branch_source": "refactor/middleware",
+    "branch_target": "main",
+    "title": "Refactor middleware for better readability",
+    "description": "This PR refactors middleware to improve readability.\n\nChanges:\n- Extract configuration logic into separate separate class\n- Reduce cyclomatic complexity from 20 to 5\n- Improve code readability\n\nNo functional changes.",
+    "author": "briankim",
+    "commit_messages": [
+      "Refactor middleware",
+      "Extract configuration logic",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 63,
+    "lines_deleted": 261,
+    "language": "python",
+    "metrics": {
+      "total_lines": 431,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 21,
+      "lines_added": 299,
+      "lines_deleted": 68
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0061",
+    "repository": "requests/requests",
+    "branch_source": "refactor/cache",
+    "branch_target": "main",
+    "title": "Refactor cache for better performance",
+    "description": "This PR refactors cache to improve performance.\n\nChanges:\n- Extract constants into separate module\n- Reduce cyclomatic complexity from 27 to 8\n- Improve code readability\n\nNo functional changes.",
+    "author": "kevinpatel",
+    "commit_messages": [
+      "Refactor cache",
+      "Extract constants",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 72,
+    "lines_deleted": 103,
+    "language": "python",
+    "metrics": {
+      "total_lines": 170,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 30,
+      "lines_added": 73,
+      "lines_deleted": 215
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0062",
+    "repository": "fastapi/fastapi",
+    "branch_source": "refactor/authentication",
+    "branch_target": "main",
+    "title": "Refactor authentication for better performance",
+    "description": "This PR refactors authentication to improve performance.\n\nChanges:\n- Extract utility class into separate constants file\n- Reduce cyclomatic complexity from 18 to 7\n- Improve code readability\n\nNo functional changes.",
+    "author": "johndoe",
+    "commit_messages": [
+      "Refactor authentication",
+      "Extract configuration logic",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 226,
+    "lines_deleted": 136,
+    "language": "python",
+    "metrics": {
+      "total_lines": 273,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 38,
+      "lines_added": 84,
+      "lines_deleted": 104
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0063",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "refactor/validator",
+    "branch_target": "main",
+    "title": "Optimize validator performance",
+    "description": "Performance optimization for validator.\n\nImprovements:\n- Cache frequently accessed data\n- Reduce memory allocations\n- Benchmark results: 2.8x faster\n\nNo API changes.",
+    "author": "janesmit",
+    "commit_messages": [
+      "Optimize validator",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 185,
+    "lines_deleted": 79,
+    "language": "python",
+    "metrics": {
+      "total_lines": 320,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 24,
+      "lines_added": 259,
+      "lines_deleted": 107
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0064",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "refactor/cache",
+    "branch_target": "main",
+    "title": "Optimize cache performance",
+    "description": "Performance optimization for cache.\n\nImprovements:\n- Replace O(n\u00b2) loop with hash map lookup\n- Vectorize operations using numpy\n- Benchmark results: 4.5x faster\n\nNo API changes.",
+    "author": "kevinpatel",
+    "commit_messages": [
+      "Optimize cache",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 191,
+    "lines_deleted": 79,
+    "language": "python",
+    "metrics": {
+      "total_lines": 403,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 24,
+      "lines_added": 132,
+      "lines_deleted": 144
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 3
+  },
+  {
+    "pr_id": "dummy-refactor-0065",
+    "repository": "pytorch/pytorch",
+    "branch_source": "refactor/authentication",
+    "branch_target": "main",
+    "title": "Refactor authentication for better testability",
+    "description": "This PR refactors authentication to improve testability.\n\nChanges:\n- Extract utility class into separate module\n- Reduce cyclomatic complexity from 21 to 6\n- Improve code readability\n\nNo functional changes.",
+    "author": "lisawang",
+    "commit_messages": [
+      "Refactor authentication",
+      "Extract validation rules",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 229,
+    "lines_deleted": 191,
+    "language": "python",
+    "metrics": {
+      "total_lines": 221,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 16,
+      "lines_added": 143,
+      "lines_deleted": 96
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 1
+  },
+  {
+    "pr_id": "dummy-refactor-0066",
+    "repository": "flask/flask",
+    "branch_source": "refactor/database",
+    "branch_target": "main",
+    "title": "Optimize database performance",
+    "description": "Performance optimization for database.\n\nImprovements:\n- Replace O(n\u00b2) loop with hash map lookup\n- Vectorize operations using numpy\n- Benchmark results: 2.8x faster\n\nNo API changes.",
+    "author": "janesmit",
+    "commit_messages": [
+      "Optimize database",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 291,
+    "lines_deleted": 95,
+    "language": "python",
+    "metrics": {
+      "total_lines": 355,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 18,
+      "lines_added": 75,
+      "lines_deleted": 225
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0067",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "refactor/parser",
+    "branch_target": "main",
+    "title": "Refactor parser for better modularity",
+    "description": "This PR refactors parser to improve modularity.\n\nChanges:\n- Extract utility class into separate constants file\n- Reduce cyclomatic complexity from 28 to 6\n- Improve code readability\n\nNo functional changes.",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Refactor parser",
+      "Extract helper functions",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 152,
+    "lines_deleted": 169,
+    "language": "python",
+    "metrics": {
+      "total_lines": 262,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 36,
+      "lines_added": 90,
+      "lines_deleted": 176
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0068",
+    "repository": "numpy/numpy",
+    "branch_source": "refactor/serializer",
+    "branch_target": "main",
+    "title": "Optimize serializer performance",
+    "description": "Performance optimization for serializer.\n\nImprovements:\n- Cache frequently accessed data\n- Vectorize operations using numpy\n- Benchmark results: 2.7x faster\n\nNo API changes.",
+    "author": "kevinpatel",
+    "commit_messages": [
+      "Optimize serializer",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 190,
+    "lines_deleted": 277,
+    "language": "python",
+    "metrics": {
+      "total_lines": 471,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 23,
+      "lines_added": 142,
+      "lines_deleted": 155
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0069",
+    "repository": "flask/flask",
+    "branch_source": "refactor/validator",
+    "branch_target": "main",
+    "title": "Refactor validator for better modularity",
+    "description": "This PR refactors validator to improve modularity.\n\nChanges:\n- Extract helper functions into separate constants file\n- Reduce cyclomatic complexity from 19 to 9\n- Improve code readability\n\nNo functional changes.",
+    "author": "briankim",
+    "commit_messages": [
+      "Refactor validator",
+      "Extract configuration logic",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 191,
+    "lines_deleted": 170,
+    "language": "python",
+    "metrics": {
+      "total_lines": 374,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 33,
+      "lines_added": 287,
+      "lines_deleted": 186
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 2
+  },
+  {
+    "pr_id": "dummy-refactor-0070",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "refactor/cache",
+    "branch_target": "main",
+    "title": "Refactor cache for better performance",
+    "description": "This PR refactors cache to improve performance.\n\nChanges:\n- Extract configuration logic into separate constants file\n- Reduce cyclomatic complexity from 22 to 8\n- Improve code readability\n\nNo functional changes.",
+    "author": "annalee",
+    "commit_messages": [
+      "Refactor cache",
+      "Extract constants",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 133,
+    "lines_deleted": 242,
+    "language": "python",
+    "metrics": {
+      "total_lines": 337,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 20,
+      "lines_added": 174,
+      "lines_deleted": 251
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0071",
+    "repository": "fastapi/fastapi",
+    "branch_source": "refactor/validator",
+    "branch_target": "main",
+    "title": "Refactor validator for better maintainability",
+    "description": "This PR refactors validator to improve maintainability.\n\nChanges:\n- Extract constants into separate configuration file\n- Reduce cyclomatic complexity from 17 to 5\n- Improve code readability\n\nNo functional changes.",
+    "author": "annalee",
+    "commit_messages": [
+      "Refactor validator",
+      "Extract validation rules",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 217,
+    "lines_deleted": 257,
+    "language": "python",
+    "metrics": {
+      "total_lines": 398,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 44,
+      "lines_added": 52,
+      "lines_deleted": 202
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0072",
+    "repository": "scipy/scipy",
+    "branch_source": "refactor/authentication",
+    "branch_target": "main",
+    "title": "Optimize authentication performance",
+    "description": "Performance optimization for authentication.\n\nImprovements:\n- Vectorize operations using numpy\n- Use lazy evaluation for expensive operations\n- Benchmark results: 2.5x faster\n\nNo API changes.",
+    "author": "lisawang",
+    "commit_messages": [
+      "Optimize authentication",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 179,
+    "lines_deleted": 63,
+    "language": "python",
+    "metrics": {
+      "total_lines": 203,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 28,
+      "lines_added": 124,
+      "lines_deleted": 241
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 1
+  },
+  {
+    "pr_id": "dummy-refactor-0073",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "refactor/authentication",
+    "branch_target": "main",
+    "title": "Optimize authentication performance",
+    "description": "Performance optimization for authentication.\n\nImprovements:\n- Vectorize operations using numpy\n- Reduce memory allocations\n- Benchmark results: 4.3x faster\n\nNo API changes.",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Optimize authentication",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 100,
+    "lines_deleted": 164,
+    "language": "python",
+    "metrics": {
+      "total_lines": 292,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 35,
+      "lines_added": 196,
+      "lines_deleted": 90
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0074",
+    "repository": "requests/requests",
+    "branch_source": "refactor/parser",
+    "branch_target": "main",
+    "title": "Refactor parser for better maintainability",
+    "description": "This PR refactors parser to improve maintainability.\n\nChanges:\n- Extract configuration logic into separate configuration file\n- Reduce cyclomatic complexity from 25 to 6\n- Improve code readability\n\nNo functional changes.",
+    "author": "lisawang",
+    "commit_messages": [
+      "Refactor parser",
+      "Extract utility class",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 217,
+    "lines_deleted": 46,
+    "language": "python",
+    "metrics": {
+      "total_lines": 484,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 24,
+      "lines_added": 93,
+      "lines_deleted": 129
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0075",
+    "repository": "scipy/scipy",
+    "branch_source": "refactor/cache",
+    "branch_target": "main",
+    "title": "Optimize cache performance",
+    "description": "Performance optimization for cache.\n\nImprovements:\n- Use lazy evaluation for expensive operations\n- Replace O(n\u00b2) loop with hash map lookup\n- Benchmark results: 2.3x faster\n\nNo API changes.",
+    "author": "briankim",
+    "commit_messages": [
+      "Optimize cache",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 87,
+    "lines_deleted": 262,
+    "language": "python",
+    "metrics": {
+      "total_lines": 516,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 41,
+      "lines_added": 123,
+      "lines_deleted": 43
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0076",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "refactor/middleware",
+    "branch_target": "main",
+    "title": "Optimize middleware performance",
+    "description": "Performance optimization for middleware.\n\nImprovements:\n- Use lazy evaluation for expensive operations\n- Vectorize operations using numpy\n- Benchmark results: 3.6x faster\n\nNo API changes.",
+    "author": "lisawang",
+    "commit_messages": [
+      "Optimize middleware",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 236,
+    "lines_deleted": 76,
+    "language": "python",
+    "metrics": {
+      "total_lines": 445,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 37,
+      "lines_added": 221,
+      "lines_deleted": 44
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0077",
+    "repository": "flask/flask",
+    "branch_source": "refactor/validator",
+    "branch_target": "main",
+    "title": "Refactor validator for better testability",
+    "description": "This PR refactors validator to improve testability.\n\nChanges:\n- Extract helper functions into separate separate class\n- Reduce cyclomatic complexity from 21 to 9\n- Improve code readability\n\nNo functional changes.",
+    "author": "tomsmith",
+    "commit_messages": [
+      "Refactor validator",
+      "Extract helper functions",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 268,
+    "lines_deleted": 273,
+    "language": "python",
+    "metrics": {
+      "total_lines": 427,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 26,
+      "lines_added": 271,
+      "lines_deleted": 67
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0078",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "refactor/parser",
+    "branch_target": "main",
+    "title": "Optimize parser performance",
+    "description": "Performance optimization for parser.\n\nImprovements:\n- Vectorize operations using numpy\n- Vectorize operations using numpy\n- Benchmark results: 2.3x faster\n\nNo API changes.",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Optimize parser",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 287,
+    "lines_deleted": 222,
+    "language": "python",
+    "metrics": {
+      "total_lines": 101,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 16,
+      "lines_added": 113,
+      "lines_deleted": 276
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0079",
+    "repository": "numpy/numpy",
+    "branch_source": "refactor/cache",
+    "branch_target": "main",
+    "title": "Optimize cache performance",
+    "description": "Performance optimization for cache.\n\nImprovements:\n- Use lazy evaluation for expensive operations\n- Vectorize operations using numpy\n- Benchmark results: 2.8x faster\n\nNo API changes.",
+    "author": "briankim",
+    "commit_messages": [
+      "Optimize cache",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 258,
+    "lines_deleted": 47,
+    "language": "python",
+    "metrics": {
+      "total_lines": 573,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 32,
+      "lines_added": 292,
+      "lines_deleted": 111
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0080",
+    "repository": "requests/requests",
+    "branch_source": "refactor/cache",
+    "branch_target": "main",
+    "title": "Optimize cache performance",
+    "description": "Performance optimization for cache.\n\nImprovements:\n- Use lazy evaluation for expensive operations\n- Vectorize operations using numpy\n- Benchmark results: 2.5x faster\n\nNo API changes.",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Optimize cache",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 188,
+    "lines_deleted": 73,
+    "language": "python",
+    "metrics": {
+      "total_lines": 195,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 35,
+      "lines_added": 85,
+      "lines_deleted": 188
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0081",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "refactor/validator",
+    "branch_target": "main",
+    "title": "Refactor validator for better modularity",
+    "description": "This PR refactors validator to improve modularity.\n\nChanges:\n- Extract utility class into separate configuration file\n- Reduce cyclomatic complexity from 19 to 7\n- Improve code readability\n\nNo functional changes.",
+    "author": "annalee",
+    "commit_messages": [
+      "Refactor validator",
+      "Extract utility class",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 57,
+    "lines_deleted": 235,
+    "language": "python",
+    "metrics": {
+      "total_lines": 253,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 43,
+      "lines_added": 299,
+      "lines_deleted": 145
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0082",
+    "repository": "fastapi/fastapi",
+    "branch_source": "refactor/cache",
+    "branch_target": "main",
+    "title": "Optimize cache performance",
+    "description": "Performance optimization for cache.\n\nImprovements:\n- Vectorize operations using numpy\n- Vectorize operations using numpy\n- Benchmark results: 2.8x faster\n\nNo API changes.",
+    "author": "lisawang",
+    "commit_messages": [
+      "Optimize cache",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 109,
+    "lines_deleted": 99,
+    "language": "python",
+    "metrics": {
+      "total_lines": 441,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 15,
+      "lines_added": 141,
+      "lines_deleted": 60
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0083",
+    "repository": "flask/flask",
+    "branch_source": "refactor/serializer",
+    "branch_target": "main",
+    "title": "Optimize serializer performance",
+    "description": "Performance optimization for serializer.\n\nImprovements:\n- Use lazy evaluation for expensive operations\n- Use lazy evaluation for expensive operations\n- Benchmark results: 2.7x faster\n\nNo API changes.",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Optimize serializer",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 106,
+    "lines_deleted": 230,
+    "language": "python",
+    "metrics": {
+      "total_lines": 433,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 21,
+      "lines_added": 243,
+      "lines_deleted": 92
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0084",
+    "repository": "numpy/numpy",
+    "branch_source": "refactor/middleware",
+    "branch_target": "main",
+    "title": "Optimize middleware performance",
+    "description": "Performance optimization for middleware.\n\nImprovements:\n- Replace O(n\u00b2) loop with hash map lookup\n- Vectorize operations using numpy\n- Benchmark results: 4.2x faster\n\nNo API changes.",
+    "author": "lisawang",
+    "commit_messages": [
+      "Optimize middleware",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 290,
+    "lines_deleted": 230,
+    "language": "python",
+    "metrics": {
+      "total_lines": 382,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 34,
+      "lines_added": 187,
+      "lines_deleted": 174
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0085",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "refactor/database",
+    "branch_target": "main",
+    "title": "Refactor database for better readability",
+    "description": "This PR refactors database to improve readability.\n\nChanges:\n- Extract validation rules into separate module\n- Reduce cyclomatic complexity from 22 to 11\n- Improve code readability\n\nNo functional changes.",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Refactor database",
+      "Extract utility class",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 276,
+    "lines_deleted": 117,
+    "language": "python",
+    "metrics": {
+      "total_lines": 486,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 41,
+      "lines_added": 123,
+      "lines_deleted": 158
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0086",
+    "repository": "django/django",
+    "branch_source": "refactor/cache",
+    "branch_target": "main",
+    "title": "Refactor cache for better readability",
+    "description": "This PR refactors cache to improve readability.\n\nChanges:\n- Extract validation rules into separate module\n- Reduce cyclomatic complexity from 18 to 7\n- Improve code readability\n\nNo functional changes.",
+    "author": "alexchen",
+    "commit_messages": [
+      "Refactor cache",
+      "Extract configuration logic",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 166,
+    "lines_deleted": 191,
+    "language": "python",
+    "metrics": {
+      "total_lines": 549,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 37,
+      "lines_added": 279,
+      "lines_deleted": 91
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 2
+  },
+  {
+    "pr_id": "dummy-refactor-0087",
+    "repository": "numpy/numpy",
+    "branch_source": "refactor/database",
+    "branch_target": "main",
+    "title": "Refactor database for better maintainability",
+    "description": "This PR refactors database to improve maintainability.\n\nChanges:\n- Extract helper functions into separate configuration file\n- Reduce cyclomatic complexity from 26 to 6\n- Improve code readability\n\nNo functional changes.",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Refactor database",
+      "Extract constants",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 147,
+    "lines_deleted": 51,
+    "language": "python",
+    "metrics": {
+      "total_lines": 483,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 20,
+      "lines_added": 283,
+      "lines_deleted": 125
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0088",
+    "repository": "fastapi/fastapi",
+    "branch_source": "refactor/cache",
+    "branch_target": "main",
+    "title": "Refactor cache for better testability",
+    "description": "This PR refactors cache to improve testability.\n\nChanges:\n- Extract utility class into separate module\n- Reduce cyclomatic complexity from 28 to 9\n- Improve code readability\n\nNo functional changes.",
+    "author": "johndoe",
+    "commit_messages": [
+      "Refactor cache",
+      "Extract helper functions",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 209,
+    "lines_deleted": 235,
+    "language": "python",
+    "metrics": {
+      "total_lines": 219,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 15,
+      "lines_added": 167,
+      "lines_deleted": 167
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0089",
+    "repository": "pytorch/pytorch",
+    "branch_source": "refactor/middleware",
+    "branch_target": "main",
+    "title": "Refactor middleware for better testability",
+    "description": "This PR refactors middleware to improve testability.\n\nChanges:\n- Extract utility class into separate constants file\n- Reduce cyclomatic complexity from 30 to 12\n- Improve code readability\n\nNo functional changes.",
+    "author": "davidkim",
+    "commit_messages": [
+      "Refactor middleware",
+      "Extract helper functions",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 208,
+    "lines_deleted": 200,
+    "language": "python",
+    "metrics": {
+      "total_lines": 375,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 41,
+      "lines_added": 261,
+      "lines_deleted": 93
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 3
+  },
+  {
+    "pr_id": "dummy-refactor-0090",
+    "repository": "flask/flask",
+    "branch_source": "refactor/authentication",
+    "branch_target": "main",
+    "title": "Optimize authentication performance",
+    "description": "Performance optimization for authentication.\n\nImprovements:\n- Replace O(n\u00b2) loop with hash map lookup\n- Replace O(n\u00b2) loop with hash map lookup\n- Benchmark results: 2.3x faster\n\nNo API changes.",
+    "author": "lisawang",
+    "commit_messages": [
+      "Optimize authentication",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 219,
+    "lines_deleted": 217,
+    "language": "python",
+    "metrics": {
+      "total_lines": 448,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 34,
+      "lines_added": 196,
+      "lines_deleted": 241
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0091",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "refactor/authentication",
+    "branch_target": "main",
+    "title": "Optimize authentication performance",
+    "description": "Performance optimization for authentication.\n\nImprovements:\n- Replace O(n\u00b2) loop with hash map lookup\n- Reduce memory allocations\n- Benchmark results: 4.5x faster\n\nNo API changes.",
+    "author": "alexchen",
+    "commit_messages": [
+      "Optimize authentication",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 81,
+    "lines_deleted": 217,
+    "language": "python",
+    "metrics": {
+      "total_lines": 530,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 23,
+      "lines_added": 134,
+      "lines_deleted": 174
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0092",
+    "repository": "scipy/scipy",
+    "branch_source": "refactor/authentication",
+    "branch_target": "main",
+    "title": "Refactor authentication for better maintainability",
+    "description": "This PR refactors authentication to improve maintainability.\n\nChanges:\n- Extract constants into separate constants file\n- Reduce cyclomatic complexity from 17 to 12\n- Improve code readability\n\nNo functional changes.",
+    "author": "lisawang",
+    "commit_messages": [
+      "Refactor authentication",
+      "Extract configuration logic",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 140,
+    "lines_deleted": 277,
+    "language": "python",
+    "metrics": {
+      "total_lines": 156,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 34,
+      "lines_added": 194,
+      "lines_deleted": 167
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0093",
+    "repository": "scipy/scipy",
+    "branch_source": "refactor/cache",
+    "branch_target": "main",
+    "title": "Optimize cache performance",
+    "description": "Performance optimization for cache.\n\nImprovements:\n- Replace O(n\u00b2) loop with hash map lookup\n- Replace O(n\u00b2) loop with hash map lookup\n- Benchmark results: 3.4x faster\n\nNo API changes.",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Optimize cache",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 155,
+    "lines_deleted": 51,
+    "language": "python",
+    "metrics": {
+      "total_lines": 260,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 26,
+      "lines_added": 193,
+      "lines_deleted": 246
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 1
+  },
+  {
+    "pr_id": "dummy-refactor-0094",
+    "repository": "django/django",
+    "branch_source": "refactor/validator",
+    "branch_target": "main",
+    "title": "Optimize validator performance",
+    "description": "Performance optimization for validator.\n\nImprovements:\n- Replace O(n\u00b2) loop with hash map lookup\n- Cache frequently accessed data\n- Benchmark results: 3.0x faster\n\nNo API changes.",
+    "author": "rachelchen",
+    "commit_messages": [
+      "Optimize validator",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 94,
+    "lines_deleted": 89,
+    "language": "python",
+    "metrics": {
+      "total_lines": 259,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 41,
+      "lines_added": 136,
+      "lines_deleted": 276
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0095",
+    "repository": "pytorch/pytorch",
+    "branch_source": "refactor/cache",
+    "branch_target": "main",
+    "title": "Refactor cache for better readability",
+    "description": "This PR refactors cache to improve readability.\n\nChanges:\n- Extract utility class into separate configuration file\n- Reduce cyclomatic complexity from 25 to 12\n- Improve code readability\n\nNo functional changes.",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Refactor cache",
+      "Extract constants",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 54,
+    "lines_deleted": 93,
+    "language": "python",
+    "metrics": {
+      "total_lines": 385,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 36,
+      "lines_added": 134,
+      "lines_deleted": 244
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0096",
+    "repository": "requests/requests",
+    "branch_source": "refactor/cache",
+    "branch_target": "main",
+    "title": "Refactor cache for better performance",
+    "description": "This PR refactors cache to improve performance.\n\nChanges:\n- Extract helper functions into separate separate class\n- Reduce cyclomatic complexity from 27 to 7\n- Improve code readability\n\nNo functional changes.",
+    "author": "annalee",
+    "commit_messages": [
+      "Refactor cache",
+      "Extract helper functions",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 58,
+    "lines_deleted": 109,
+    "language": "python",
+    "metrics": {
+      "total_lines": 301,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 17,
+      "lines_added": 177,
+      "lines_deleted": 264
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0097",
+    "repository": "django/django",
+    "branch_source": "refactor/parser",
+    "branch_target": "main",
+    "title": "Optimize parser performance",
+    "description": "Performance optimization for parser.\n\nImprovements:\n- Replace O(n\u00b2) loop with hash map lookup\n- Use lazy evaluation for expensive operations\n- Benchmark results: 4.7x faster\n\nNo API changes.",
+    "author": "kevinpatel",
+    "commit_messages": [
+      "Optimize parser",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 173,
+    "lines_deleted": 271,
+    "language": "python",
+    "metrics": {
+      "total_lines": 346,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 19,
+      "lines_added": 98,
+      "lines_deleted": 127
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0098",
+    "repository": "django/django",
+    "branch_source": "refactor/serializer",
+    "branch_target": "main",
+    "title": "Optimize serializer performance",
+    "description": "Performance optimization for serializer.\n\nImprovements:\n- Replace O(n\u00b2) loop with hash map lookup\n- Reduce memory allocations\n- Benchmark results: 3.2x faster\n\nNo API changes.",
+    "author": "davidkim",
+    "commit_messages": [
+      "Optimize serializer",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 288,
+    "lines_deleted": 51,
+    "language": "python",
+    "metrics": {
+      "total_lines": 441,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 42,
+      "lines_added": 202,
+      "lines_deleted": 263
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0099",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "refactor/database",
+    "branch_target": "main",
+    "title": "Refactor database for better modularity",
+    "description": "This PR refactors database to improve modularity.\n\nChanges:\n- Extract configuration logic into separate module\n- Reduce cyclomatic complexity from 24 to 8\n- Improve code readability\n\nNo functional changes.",
+    "author": "tomsmith",
+    "commit_messages": [
+      "Refactor database",
+      "Extract constants",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 80,
+    "lines_deleted": 109,
+    "language": "python",
+    "metrics": {
+      "total_lines": 166,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 20,
+      "lines_added": 120,
+      "lines_deleted": 69
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0100",
+    "repository": "scipy/scipy",
+    "branch_source": "refactor/parser",
+    "branch_target": "main",
+    "title": "Refactor parser for better modularity",
+    "description": "This PR refactors parser to improve modularity.\n\nChanges:\n- Extract configuration logic into separate constants file\n- Reduce cyclomatic complexity from 25 to 9\n- Improve code readability\n\nNo functional changes.",
+    "author": "briankim",
+    "commit_messages": [
+      "Refactor parser",
+      "Extract helper functions",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 136,
+    "lines_deleted": 178,
+    "language": "python",
+    "metrics": {
+      "total_lines": 317,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 16,
+      "lines_added": 83,
+      "lines_deleted": 47
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  }
+]

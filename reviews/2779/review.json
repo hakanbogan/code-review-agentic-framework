@@ -1,0 +1,1816 @@
+{
+  "correlation_id": "820f8d3c-a56c-4156-b30d-f3a37578b626",
+  "pr_id": "2779",
+  "system_type": "multi_agent",
+  "change_summary": "Reviewed PR #2779: Cache errors for dependents\nChanged 0 files (+0/-0)\nFound 26 issues requiring attention.",
+  "findings": [
+    {
+      "id": "421ac45b-555f-4364-b52b-6212eda90c86",
+      "type": "consistency",
+      "severity": "critical",
+      "source_agent": "CCA",
+      "evidence": {
+        "tool": "change_analysis",
+        "reference": ".flake8:1-5, .github/DISCUSSION_TEMPLATE/questions.yml:1-158, .github/DISCUSSION_TEMPLATE/translations.yml:1-45",
+        "snippet": "new file mode 100644...deleted file mode 100644",
+        "metadata": {}
+      },
+      "title": "Changes unrelated to PR title",
+      "description": "The PR title 'Cache errors for dependents' suggests improvements in error handling or caching mechanism, but the diff shows changes to flake8 configuration and deletion of GitHub discussion templates, which are unrelated to the stated purpose.",
+      "has_patch": true,
+      "patch": "diff --git a/.flake8 b/.flake8\ndeleted file mode 100644\nindex 3a9f2e1..00000000\n--- a/.flake8\n+++ /dev/null\n@@ -1,5 +0,0 @@\n-[flake8]\n-max-line-length = 88\n-select = C,E,F,W,B,B9\n-ignore = E203, E501, W503\n# ... patch truncated",
+      "location": ".flake8:1-5, .github/DISCUSSION_TEMPLATE/questions.yml:1-158, .github/DISCUSSION_TEMPLATE/translations.yml:1-45",
+      "created_at": "2025-12-05T23:16:47.255495"
+    },
+    {
+      "id": "eba9c14c-ca0b-4463-a176-0f3629ae2c4b",
+      "type": "security",
+      "severity": "minor",
+      "source_agent": "SR",
+      "evidence": {
+        "tool": "semgrep",
+        "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/js/custom.js:141",
+        "snippet": "            li.innerHTML = `<a href=\"${v.html_url}\" target=\"_blank\">\u2605 ${v.stargazers_count} - ${v.full_name}</a> by <a href=\"${v.owner.html_url}\" target=\"_blank\">@${v.owner.login}</a>`",
+        "metadata": {}
+      },
+      "title": "javascript.browser.security.insecure-document-method.insecure-document-method",
+      "description": "",
+      "has_patch": false,
+      "patch": null,
+      "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/js/custom.js:141-141",
+      "created_at": "2025-12-05T23:16:47.259508"
+    },
+    {
+      "id": "b84caa0d-14b2-4754-bdad-ea3eb1a9bb1d",
+      "type": "security",
+      "severity": "minor",
+      "source_agent": "SR",
+      "evidence": {
+        "tool": "semgrep",
+        "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/js/termynal.js:226",
+        "snippet": "            div.innerHTML = `<span ${this._attributes(line)}>${line.value || ''}</span>`;",
+        "metadata": {}
+      },
+      "title": "javascript.browser.security.insecure-document-method.insecure-document-method",
+      "description": "",
+      "has_patch": false,
+      "patch": null,
+      "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/js/termynal.js:226-226",
+      "created_at": "2025-12-05T23:16:47.259537"
+    },
+    {
+      "id": "7307e24e-923f-42f9-ac6b-94f5fe542fea",
+      "type": "security",
+      "severity": "minor",
+      "source_agent": "SR",
+      "evidence": {
+        "tool": "semgrep",
+        "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/tutorial/security/oauth2-jwt.md:16",
+        "snippet": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+        "metadata": {}
+      },
+      "title": "generic.secrets.security.detected-jwt-token.detected-jwt-token",
+      "description": "",
+      "has_patch": false,
+      "patch": null,
+      "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/tutorial/security/oauth2-jwt.md:16-16",
+      "created_at": "2025-12-05T23:16:47.259561"
+    },
+    {
+      "id": "215c64bd-d4ba-4836-b31e-4dd73bf5aa10",
+      "type": "security",
+      "severity": "minor",
+      "source_agent": "SR",
+      "evidence": {
+        "tool": "semgrep",
+        "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/tutorial/security/oauth2-jwt.md:117",
+        "snippet": "    If you check the new (fake) database `fake_users_db`, you will see how the hashed password looks like now: `\"$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW\"`.",
+        "metadata": {}
+      },
+      "title": "generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash",
+      "description": "",
+      "has_patch": false,
+      "patch": null,
+      "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/tutorial/security/oauth2-jwt.md:117-117",
+      "created_at": "2025-12-05T23:16:47.259583"
+    },
+    {
+      "id": "fb02f7d3-a86e-46f8-bd3b-0be0f3af3eb0",
+      "type": "security",
+      "severity": "minor",
+      "source_agent": "SR",
+      "evidence": {
+        "tool": "semgrep",
+        "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial004.py:22",
+        "snippet": "        \"hashed_password\": \"$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW\",",
+        "metadata": {}
+      },
+      "title": "generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash",
+      "description": "",
+      "has_patch": false,
+      "patch": null,
+      "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial004.py:22-22",
+      "created_at": "2025-12-05T23:16:47.259604"
+    },
+    {
+      "id": "8007f36d-e7d2-49ca-8182-622a78593d92",
+      "type": "security",
+      "severity": "minor",
+      "source_agent": "SR",
+      "evidence": {
+        "tool": "semgrep",
+        "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial004.py:85",
+        "snippet": "    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)",
+        "metadata": {}
+      },
+      "title": "python.jwt.security.jwt-hardcode.jwt-python-hardcoded-secret",
+      "description": "",
+      "has_patch": false,
+      "patch": null,
+      "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial004.py:85-85",
+      "created_at": "2025-12-05T23:16:47.259628"
+    },
+    {
+      "id": "1ee179e3-d340-4f70-8021-79a233c20229",
+      "type": "security",
+      "severity": "minor",
+      "source_agent": "SR",
+      "evidence": {
+        "tool": "semgrep",
+        "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial005.py:26",
+        "snippet": "        \"hashed_password\": \"$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW\",",
+        "metadata": {}
+      },
+      "title": "generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash",
+      "description": "",
+      "has_patch": false,
+      "patch": null,
+      "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial005.py:26-26",
+      "created_at": "2025-12-05T23:16:47.259651"
+    },
+    {
+      "id": "414e21a6-ed32-438b-824c-07a3d2375a52",
+      "type": "security",
+      "severity": "minor",
+      "source_agent": "SR",
+      "evidence": {
+        "tool": "semgrep",
+        "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial005.py:33",
+        "snippet": "        \"hashed_password\": \"$2b$12$gSvqqUPvlXP2tfVFaWK1Be7DlH.PKZbv5H8KnzzVgXXbVxpva.pFm\",",
+        "metadata": {}
+      },
+      "title": "generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash",
+      "description": "",
+      "has_patch": false,
+      "patch": null,
+      "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial005.py:33-33",
+      "created_at": "2025-12-05T23:16:47.259672"
+    },
+    {
+      "id": "b35a1fc3-3884-498c-bc95-2c3cccdcd682",
+      "type": "security",
+      "severity": "minor",
+      "source_agent": "SR",
+      "evidence": {
+        "tool": "semgrep",
+        "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial005.py:100",
+        "snippet": "    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)",
+        "metadata": {}
+      },
+      "title": "python.jwt.security.jwt-hardcode.jwt-python-hardcoded-secret",
+      "description": "",
+      "has_patch": false,
+      "patch": null,
+      "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial005.py:100-100",
+      "created_at": "2025-12-05T23:16:47.259695"
+    },
+    {
+      "id": "8bad85e5-8b8d-48fc-a71b-64c0f3344f65",
+      "type": "security",
+      "severity": "minor",
+      "source_agent": "SR",
+      "evidence": {
+        "tool": "semgrep",
+        "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/wsgi/tutorial001.py:11",
+        "snippet": "    return f\"Hello, {escape(name)} from Flask!\"",
+        "metadata": {}
+      },
+      "title": "python.flask.security.audit.directly-returned-format-string.directly-returned-format-string",
+      "description": "",
+      "has_patch": false,
+      "patch": null,
+      "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/wsgi/tutorial001.py:11-11",
+      "created_at": "2025-12-05T23:16:47.259716"
+    },
+    {
+      "id": "c29bad18-2c83-4085-a95e-fe9f89d13b6f",
+      "type": "security",
+      "severity": "minor",
+      "source_agent": "SR",
+      "evidence": {
+        "tool": "semgrep",
+        "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/scripts/docs.py:226",
+        "snippet": "    message = template.render(sponsors=sponsors)",
+        "metadata": {}
+      },
+      "title": "python.flask.security.xss.audit.direct-use-of-jinja2.direct-use-of-jinja2",
+      "description": "",
+      "has_patch": false,
+      "patch": null,
+      "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/scripts/docs.py:226-226",
+      "created_at": "2025-12-05T23:16:47.259739"
+    },
+    {
+      "id": "f9b9ceb9-efa0-4f9d-8e0b-809be1135a41",
+      "type": "security",
+      "severity": "minor",
+      "source_agent": "SR",
+      "evidence": {
+        "tool": "semgrep",
+        "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:186",
+        "snippet": "def get_access_token(username=\"johndoe\", password=\"secret\", scope=None):\n    data = {\"username\": username, \"password\": password}\n    if scope:\n        data[\"scope\"] = scope\n    response = client.post(\"/token\", data=data)\n    content = response.json()\n    access_token = content.get(\"access_token\")\n    return access_token",
+        "metadata": {}
+      },
+      "title": "python.lang.security.audit.hardcoded-password-default-argument.hardcoded-password-default-argument",
+      "description": "",
+      "has_patch": false,
+      "patch": null,
+      "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:186-193",
+      "created_at": "2025-12-05T23:16:47.259759"
+    },
+    {
+      "id": "eec56119-0948-48a5-a66a-1b49278aa09e",
+      "type": "security",
+      "severity": "minor",
+      "source_agent": "SR",
+      "evidence": {
+        "tool": "semgrep",
+        "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:272",
+        "snippet": "            \"Authorization\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZm9vIn0.9ynBhuYb4e6aW3oJr_K_TBgwcMTDpRToQIE25L57rOE\"",
+        "metadata": {}
+      },
+      "title": "generic.secrets.security.detected-jwt-token.detected-jwt-token",
+      "description": "",
+      "has_patch": false,
+      "patch": null,
+      "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:272-272",
+      "created_at": "2025-12-05T23:16:47.259780"
+    },
+    {
+      "id": "f9c5ab53-fe28-43f6-8e89-436269d2da77",
+      "type": "security",
+      "severity": "minor",
+      "source_agent": "SR",
+      "evidence": {
+        "tool": "semgrep",
+        "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:284",
+        "snippet": "            \"Authorization\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmb28ifQ.NnExK_dlNAYyzACrXtXDrcWOgGY2JuPbI4eDaHdfK5Y\"",
+        "metadata": {}
+      },
+      "title": "generic.secrets.security.detected-jwt-token.detected-jwt-token",
+      "description": "",
+      "has_patch": false,
+      "patch": null,
+      "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:284-284",
+      "created_at": "2025-12-05T23:16:47.259800"
+    },
+    {
+      "id": "d6d65944-e014-4c12-85f9-cdf7ab762d74",
+      "type": "security",
+      "severity": "minor",
+      "source_agent": "SR",
+      "evidence": {
+        "tool": "semgrep",
+        "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:306",
+        "snippet": "            \"Authorization\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VybmFtZTpib2IifQ.HcfCW67Uda-0gz54ZWTqmtgJnZeNem0Q757eTa9EZuw\"",
+        "metadata": {}
+      },
+      "title": "generic.secrets.security.detected-jwt-token.detected-jwt-token",
+      "description": "",
+      "has_patch": false,
+      "patch": null,
+      "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:306-306",
+      "created_at": "2025-12-05T23:16:47.259820"
+    },
+    {
+      "id": "7ce411a9-c608-4f7b-8a1d-e02046162b10",
+      "type": "other",
+      "severity": "minor",
+      "source_agent": "DR",
+      "evidence": {
+        "tool": "documentation_analysis",
+        "reference": ".flake8",
+        "snippet": "[flake8]\nmax-line-length = 88\nselect = C,E,F,W,B,B9\nignore = E203, E501, W503\nexclude = __init__.py",
+        "metadata": {}
+      },
+      "title": "Configuration file added without documentation",
+      "description": "A new .flake8 configuration file has been added to the project without any documentation on the chosen configurations.",
+      "has_patch": false,
+      "patch": null,
+      "location": ".flake8:1",
+      "created_at": "2025-12-05T23:17:14.977832"
+    },
+    {
+      "id": "5e5f4464-c2cc-4fff-9ed8-1b276e565676",
+      "type": "other",
+      "severity": "minor",
+      "source_agent": "DR",
+      "evidence": {
+        "tool": "documentation_analysis",
+        "reference": ".github/DISCUSSION_TEMPLATE/questions.yml, .github/DISCUSSION_TEMPLATE/translations.yml",
+        "snippet": "Deletion of files",
+        "metadata": {}
+      },
+      "title": "Deletion of GitHub discussion templates without documentation",
+      "description": "GitHub discussion templates for questions and translations have been deleted without any documentation or reasoning provided in the PR.",
+      "has_patch": false,
+      "patch": null,
+      "location": ".github/DISCUSSION_TEMPLATE/questions.yml, .github/DISCUSSION_TEMPLATE/translations.yml",
+      "created_at": "2025-12-05T23:17:14.977876"
+    },
+    {
+      "id": "e5d712eb-3dd5-4bd5-8f48-1531dbad1420",
+      "type": "other",
+      "severity": "minor",
+      "source_agent": "DR",
+      "evidence": {
+        "tool": "documentation_analysis",
+        "reference": ".github/ISSUE_TEMPLATE/config.yml",
+        "snippet": "blank_issues_enabled: false",
+        "metadata": {}
+      },
+      "title": "Issue template configuration changes undocumented",
+      "description": "Changes to the .github/ISSUE_TEMPLATE/config.yml file, specifically disabling blank issues and removing contact links, are not documented.",
+      "has_patch": false,
+      "patch": null,
+      "location": ".github/ISSUE_TEMPLATE/config.yml",
+      "created_at": "2025-12-05T23:17:14.977911"
+    },
+    {
+      "id": "4ee8e95d-3d7a-4866-8a18-25494d557f67",
+      "type": "other",
+      "severity": "minor",
+      "source_agent": "DR",
+      "evidence": {
+        "tool": "documentation_analysis",
+        "reference": ".github/ISSUE_TEMPLATE/feature_request.md",
+        "snippet": "name: Feature request\nabout: Suggest an idea for this project",
+        "metadata": {}
+      },
+      "title": "Addition of feature request issue template without documentation",
+      "description": "A new feature request issue template has been added to the project without any accompanying documentation or update notes.",
+      "has_patch": false,
+      "patch": null,
+      "location": ".github/ISSUE_TEMPLATE/feature_request.md",
+      "created_at": "2025-12-05T23:17:14.977943"
+    },
+    {
+      "id": "67e00931-3152-4f02-b117-9def546cd882",
+      "type": "other",
+      "severity": "minor",
+      "source_agent": "TR",
+      "evidence": {
+        "tool": "test_analysis",
+        "reference": ".flake8",
+        "snippet": "[flake8]\nmax-line-length = 88\nselect = C,E,F,W,B,B9\nignore = E203, E501, W503\nexclude = __init__.py",
+        "metadata": {}
+      },
+      "title": "Configuration changes lack corresponding tests",
+      "description": "The PR introduces changes to `.flake8` configuration but does not include tests to ensure these linting rules are enforced across the codebase.",
+      "has_patch": false,
+      "patch": null,
+      "location": ".flake8",
+      "created_at": "2025-12-05T23:17:32.128187"
+    },
+    {
+      "id": "34a8bb35-3692-4050-b107-bef3779b8016",
+      "type": "performance",
+      "severity": "nit",
+      "source_agent": "PR",
+      "evidence": {
+        "tool": "static_analysis",
+        "reference": "diff:line_556",
+        "snippet": "for pr in repo.get_pulls():\n+        if pr.head.sha == event.workflow_run.head_commit.id:\n+         ",
+        "metadata": {}
+      },
+      "title": "String concatenation in loop",
+      "description": "Consider using list append and join() for better performance.",
+      "has_patch": false,
+      "patch": null,
+      "location": "diff:line_556",
+      "created_at": "2025-12-05T23:16:53.024790"
+    },
+    {
+      "id": "344f8eba-a0a2-4adb-851d-7db6039d2b67",
+      "type": "performance",
+      "severity": "nit",
+      "source_agent": "PR",
+      "evidence": {
+        "tool": "static_analysis",
+        "reference": "diff:line_960",
+        "snippet": "for edge in pr_edges:\n+            pr_nodes.append(edge.node)\n+        last_edge = pr_edges[-1]\n+   ",
+        "metadata": {}
+      },
+      "title": "String concatenation in loop",
+      "description": "Consider using list append and join() for better performance.",
+      "has_patch": false,
+      "patch": null,
+      "location": "diff:line_960",
+      "created_at": "2025-12-05T23:16:53.024901"
+    },
+    {
+      "id": "84691bfd-7576-4ba9-86ce-1e1f312d4624",
+      "type": "performance",
+      "severity": "nit",
+      "source_agent": "PR",
+      "evidence": {
+        "tool": "static_analysis",
+        "reference": "diff:line_1001",
+        "snippet": "for edge in edges:\n+            nodes.append(edge.node)\n+        last_edge = edges[-1]\n+        edge",
+        "metadata": {}
+      },
+      "title": "String concatenation in loop",
+      "description": "Consider using list append and join() for better performance.",
+      "has_patch": false,
+      "patch": null,
+      "location": "diff:line_1001",
+      "created_at": "2025-12-05T23:16:53.068643"
+    },
+    {
+      "id": "2f3cfedb-4aa6-4e05-a047-e140b58c1852",
+      "type": "performance",
+      "severity": "nit",
+      "source_agent": "PR",
+      "evidence": {
+        "tool": "static_analysis",
+        "reference": "diff:line_54971",
+        "snippet": "for programs in the directories:\n-\n-* `/usr/local/bin`\n-* `/usr/bin`\n-* `/bin`\n-* `/usr/sbin`\n-* `/s",
+        "metadata": {}
+      },
+      "title": "String concatenation in loop",
+      "description": "Consider using list append and join() for better performance.",
+      "has_patch": false,
+      "patch": null,
+      "location": "diff:line_54971",
+      "created_at": "2025-12-05T23:16:53.218470"
+    },
+    {
+      "id": "c867b05b-defd-408b-af04-f53790aefb20",
+      "type": "performance",
+      "severity": "nit",
+      "source_agent": "PR",
+      "evidence": {
+        "tool": "static_analysis",
+        "reference": "diff:line_74975",
+        "snippet": "for changes in these directories: ['/home/user/code/awesomeapp']\n-INFO:     Uvicorn running on http:",
+        "metadata": {}
+      },
+      "title": "String concatenation in loop",
+      "description": "Consider using list append and join() for better performance.",
+      "has_patch": false,
+      "patch": null,
+      "location": "diff:line_74975",
+      "created_at": "2025-12-05T23:16:53.281790"
+    }
+  ],
+  "agent_decisions": [
+    {
+      "agent_role": "CCA",
+      "task_description": "Analyze PR changes for consistency and context",
+      "findings": [
+        {
+          "id": "421ac45b-555f-4364-b52b-6212eda90c86",
+          "type": "consistency",
+          "severity": "critical",
+          "source_agent": "CCA",
+          "evidence": {
+            "tool": "change_analysis",
+            "reference": ".flake8:1-5, .github/DISCUSSION_TEMPLATE/questions.yml:1-158, .github/DISCUSSION_TEMPLATE/translations.yml:1-45",
+            "snippet": "new file mode 100644...deleted file mode 100644",
+            "metadata": {}
+          },
+          "title": "Changes unrelated to PR title",
+          "description": "The PR title 'Cache errors for dependents' suggests improvements in error handling or caching mechanism, but the diff shows changes to flake8 configuration and deletion of GitHub discussion templates, which are unrelated to the stated purpose.",
+          "has_patch": true,
+          "patch": "diff --git a/.flake8 b/.flake8\ndeleted file mode 100644\nindex 3a9f2e1..00000000\n--- a/.flake8\n+++ /dev/null\n@@ -1,5 +0,0 @@\n-[flake8]\n-max-line-length = 88\n-select = C,E,F,W,B,B9\n-ignore = E203, E501, W503\n# ... patch truncated",
+          "location": ".flake8:1-5, .github/DISCUSSION_TEMPLATE/questions.yml:1-158, .github/DISCUSSION_TEMPLATE/translations.yml:1-45",
+          "created_at": "2025-12-05T23:16:47.255495"
+        },
+        {
+          "id": "d30716ab-f604-427e-afb0-58a62c1cbce3",
+          "type": "consistency",
+          "severity": "major",
+          "source_agent": "CCA",
+          "evidence": {
+            "tool": "change_analysis",
+            "reference": ".flake8:1-5, .github/DISCUSSION_TEMPLATE/questions.yml:1-158, .github/DISCUSSION_TEMPLATE/translations.yml:1-45",
+            "snippet": "new file mode 100644...deleted file mode 100644",
+            "metadata": {}
+          },
+          "title": "PR scope includes unrelated changes",
+          "description": "The PR includes changes that span across configuration and GitHub community health files, which do not align with the scope of fixing a specific issue related to caching errors as described in the PR description.",
+          "has_patch": false,
+          "patch": null,
+          "location": ".flake8:1-5, .github/DISCUSSION_TEMPLATE/questions.yml:1-158, .github/DISCUSSION_TEMPLATE/translations.yml:1-45",
+          "created_at": "2025-12-05T23:16:47.255636"
+        }
+      ],
+      "reasoning": "Analyzed PR intent against actual changes and found critical discrepancies between the stated goal of caching errors for dependents and the actual changes made, which include configuration and template modifications unrelated to the described issue. The scope of the PR also extends beyond what would be appropriate for the described fix, indicating a lack of alignment and potential confusion for reviewers.",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 13.83707308769226,
+      "timestamp": "2025-12-05T23:16:47.257477"
+    },
+    {
+      "agent_role": "SR",
+      "task_description": "Review code for security vulnerabilities",
+      "findings": [
+        {
+          "id": "eba9c14c-ca0b-4463-a176-0f3629ae2c4b",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/js/custom.js:141",
+            "snippet": "            li.innerHTML = `<a href=\"${v.html_url}\" target=\"_blank\">\u2605 ${v.stargazers_count} - ${v.full_name}</a> by <a href=\"${v.owner.html_url}\" target=\"_blank\">@${v.owner.login}</a>`",
+            "metadata": {}
+          },
+          "title": "javascript.browser.security.insecure-document-method.insecure-document-method",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/js/custom.js:141-141",
+          "created_at": "2025-12-05T23:16:47.259508"
+        },
+        {
+          "id": "b84caa0d-14b2-4754-bdad-ea3eb1a9bb1d",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/js/termynal.js:226",
+            "snippet": "            div.innerHTML = `<span ${this._attributes(line)}>${line.value || ''}</span>`;",
+            "metadata": {}
+          },
+          "title": "javascript.browser.security.insecure-document-method.insecure-document-method",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/js/termynal.js:226-226",
+          "created_at": "2025-12-05T23:16:47.259537"
+        },
+        {
+          "id": "7307e24e-923f-42f9-ac6b-94f5fe542fea",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/tutorial/security/oauth2-jwt.md:16",
+            "snippet": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+            "metadata": {}
+          },
+          "title": "generic.secrets.security.detected-jwt-token.detected-jwt-token",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/tutorial/security/oauth2-jwt.md:16-16",
+          "created_at": "2025-12-05T23:16:47.259561"
+        },
+        {
+          "id": "215c64bd-d4ba-4836-b31e-4dd73bf5aa10",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/tutorial/security/oauth2-jwt.md:117",
+            "snippet": "    If you check the new (fake) database `fake_users_db`, you will see how the hashed password looks like now: `\"$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW\"`.",
+            "metadata": {}
+          },
+          "title": "generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/tutorial/security/oauth2-jwt.md:117-117",
+          "created_at": "2025-12-05T23:16:47.259583"
+        },
+        {
+          "id": "fb02f7d3-a86e-46f8-bd3b-0be0f3af3eb0",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial004.py:22",
+            "snippet": "        \"hashed_password\": \"$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW\",",
+            "metadata": {}
+          },
+          "title": "generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial004.py:22-22",
+          "created_at": "2025-12-05T23:16:47.259604"
+        },
+        {
+          "id": "8007f36d-e7d2-49ca-8182-622a78593d92",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial004.py:85",
+            "snippet": "    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)",
+            "metadata": {}
+          },
+          "title": "python.jwt.security.jwt-hardcode.jwt-python-hardcoded-secret",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial004.py:85-85",
+          "created_at": "2025-12-05T23:16:47.259628"
+        },
+        {
+          "id": "1ee179e3-d340-4f70-8021-79a233c20229",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial005.py:26",
+            "snippet": "        \"hashed_password\": \"$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW\",",
+            "metadata": {}
+          },
+          "title": "generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial005.py:26-26",
+          "created_at": "2025-12-05T23:16:47.259651"
+        },
+        {
+          "id": "414e21a6-ed32-438b-824c-07a3d2375a52",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial005.py:33",
+            "snippet": "        \"hashed_password\": \"$2b$12$gSvqqUPvlXP2tfVFaWK1Be7DlH.PKZbv5H8KnzzVgXXbVxpva.pFm\",",
+            "metadata": {}
+          },
+          "title": "generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial005.py:33-33",
+          "created_at": "2025-12-05T23:16:47.259672"
+        },
+        {
+          "id": "b35a1fc3-3884-498c-bc95-2c3cccdcd682",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial005.py:100",
+            "snippet": "    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)",
+            "metadata": {}
+          },
+          "title": "python.jwt.security.jwt-hardcode.jwt-python-hardcoded-secret",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial005.py:100-100",
+          "created_at": "2025-12-05T23:16:47.259695"
+        },
+        {
+          "id": "8bad85e5-8b8d-48fc-a71b-64c0f3344f65",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/wsgi/tutorial001.py:11",
+            "snippet": "    return f\"Hello, {escape(name)} from Flask!\"",
+            "metadata": {}
+          },
+          "title": "python.flask.security.audit.directly-returned-format-string.directly-returned-format-string",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/wsgi/tutorial001.py:11-11",
+          "created_at": "2025-12-05T23:16:47.259716"
+        },
+        {
+          "id": "c29bad18-2c83-4085-a95e-fe9f89d13b6f",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/scripts/docs.py:226",
+            "snippet": "    message = template.render(sponsors=sponsors)",
+            "metadata": {}
+          },
+          "title": "python.flask.security.xss.audit.direct-use-of-jinja2.direct-use-of-jinja2",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/scripts/docs.py:226-226",
+          "created_at": "2025-12-05T23:16:47.259739"
+        },
+        {
+          "id": "f9b9ceb9-efa0-4f9d-8e0b-809be1135a41",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:186",
+            "snippet": "def get_access_token(username=\"johndoe\", password=\"secret\", scope=None):\n    data = {\"username\": username, \"password\": password}\n    if scope:\n        data[\"scope\"] = scope\n    response = client.post(\"/token\", data=data)\n    content = response.json()\n    access_token = content.get(\"access_token\")\n    return access_token",
+            "metadata": {}
+          },
+          "title": "python.lang.security.audit.hardcoded-password-default-argument.hardcoded-password-default-argument",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:186-193",
+          "created_at": "2025-12-05T23:16:47.259759"
+        },
+        {
+          "id": "eec56119-0948-48a5-a66a-1b49278aa09e",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:272",
+            "snippet": "            \"Authorization\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZm9vIn0.9ynBhuYb4e6aW3oJr_K_TBgwcMTDpRToQIE25L57rOE\"",
+            "metadata": {}
+          },
+          "title": "generic.secrets.security.detected-jwt-token.detected-jwt-token",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:272-272",
+          "created_at": "2025-12-05T23:16:47.259780"
+        },
+        {
+          "id": "f9c5ab53-fe28-43f6-8e89-436269d2da77",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:284",
+            "snippet": "            \"Authorization\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmb28ifQ.NnExK_dlNAYyzACrXtXDrcWOgGY2JuPbI4eDaHdfK5Y\"",
+            "metadata": {}
+          },
+          "title": "generic.secrets.security.detected-jwt-token.detected-jwt-token",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:284-284",
+          "created_at": "2025-12-05T23:16:47.259800"
+        },
+        {
+          "id": "d6d65944-e014-4c12-85f9-cdf7ab762d74",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:306",
+            "snippet": "            \"Authorization\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VybmFtZTpib2IifQ.HcfCW67Uda-0gz54ZWTqmtgJnZeNem0Q757eTa9EZuw\"",
+            "metadata": {}
+          },
+          "title": "generic.secrets.security.detected-jwt-token.detected-jwt-token",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:306-306",
+          "created_at": "2025-12-05T23:16:47.259820"
+        }
+      ],
+      "reasoning": "Analyzed security tools output",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-05T23:16:47.261911"
+    },
+    {
+      "agent_role": "LR",
+      "task_description": "Review code for logical errors and potential bugs",
+      "findings": [],
+      "reasoning": "The provided diffs do not contain Python code or any other programming language code that could be analyzed for logical errors, edge cases, potential bugs, runtime errors, incorrect behavior, data corruption, loss, or security vulnerabilities from logic flaws. The changes are related to configuration files (.flake8 for Flake8 settings), deletion of GitHub discussion templates, and modification of GitHub issue template configurations. These changes impact project settings, community engagement, and contribution guidelines but do not directly affect the runtime behavior or logic of a software application. Therefore, no logical or bug issues can be identified from the provided diffs.",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 5.63979697227478,
+      "timestamp": "2025-12-05T23:16:52.973984"
+    },
+    {
+      "agent_role": "PR",
+      "task_description": "Review code for performance issues",
+      "findings": [
+        {
+          "id": "34a8bb35-3692-4050-b107-bef3779b8016",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "diff:line_556",
+            "snippet": "for pr in repo.get_pulls():\n+        if pr.head.sha == event.workflow_run.head_commit.id:\n+         ",
+            "metadata": {}
+          },
+          "title": "String concatenation in loop",
+          "description": "Consider using list append and join() for better performance.",
+          "has_patch": false,
+          "patch": null,
+          "location": "diff:line_556",
+          "created_at": "2025-12-05T23:16:53.024790"
+        },
+        {
+          "id": "344f8eba-a0a2-4adb-851d-7db6039d2b67",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "diff:line_960",
+            "snippet": "for edge in pr_edges:\n+            pr_nodes.append(edge.node)\n+        last_edge = pr_edges[-1]\n+   ",
+            "metadata": {}
+          },
+          "title": "String concatenation in loop",
+          "description": "Consider using list append and join() for better performance.",
+          "has_patch": false,
+          "patch": null,
+          "location": "diff:line_960",
+          "created_at": "2025-12-05T23:16:53.024901"
+        },
+        {
+          "id": "84691bfd-7576-4ba9-86ce-1e1f312d4624",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "diff:line_1001",
+            "snippet": "for edge in edges:\n+            nodes.append(edge.node)\n+        last_edge = edges[-1]\n+        edge",
+            "metadata": {}
+          },
+          "title": "String concatenation in loop",
+          "description": "Consider using list append and join() for better performance.",
+          "has_patch": false,
+          "patch": null,
+          "location": "diff:line_1001",
+          "created_at": "2025-12-05T23:16:53.068643"
+        },
+        {
+          "id": "2f3cfedb-4aa6-4e05-a047-e140b58c1852",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "diff:line_54971",
+            "snippet": "for programs in the directories:\n-\n-* `/usr/local/bin`\n-* `/usr/bin`\n-* `/bin`\n-* `/usr/sbin`\n-* `/s",
+            "metadata": {}
+          },
+          "title": "String concatenation in loop",
+          "description": "Consider using list append and join() for better performance.",
+          "has_patch": false,
+          "patch": null,
+          "location": "diff:line_54971",
+          "created_at": "2025-12-05T23:16:53.218470"
+        },
+        {
+          "id": "c867b05b-defd-408b-af04-f53790aefb20",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "diff:line_74975",
+            "snippet": "for changes in these directories: ['/home/user/code/awesomeapp']\n-INFO:     Uvicorn running on http:",
+            "metadata": {}
+          },
+          "title": "String concatenation in loop",
+          "description": "Consider using list append and join() for better performance.",
+          "has_patch": false,
+          "patch": null,
+          "location": "diff:line_74975",
+          "created_at": "2025-12-05T23:16:53.281790"
+        },
+        {
+          "id": "9933f659-28af-4835-96e5-a84b2fd683af",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "diff:line_131291",
+            "snippet": "for changes in these directories: [&apos;/home/user/code/awesomeapp&apos;]\n-<font color=\"#4E9A06\">IN",
+            "metadata": {}
+          },
+          "title": "String concatenation in loop",
+          "description": "Consider using list append and join() for better performance.",
+          "has_patch": false,
+          "patch": null,
+          "location": "diff:line_131291",
+          "created_at": "2025-12-05T23:16:53.327272"
+        },
+        {
+          "id": "2b5be560-7327-40a4-bb75-a575c3050b36",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "diff:line_148577",
+            "snippet": "for changes in these directories:\n-             <b>[</b><font color=\"#4E9A06\">&apos;/home/user/code/",
+            "metadata": {}
+          },
+          "title": "String concatenation in loop",
+          "description": "Consider using list append and join() for better performance.",
+          "has_patch": false,
+          "patch": null,
+          "location": "diff:line_148577",
+          "created_at": "2025-12-05T23:16:53.387860"
+        },
+        {
+          "id": "937cb08c-9a04-4c39-aab3-3a49d1a55091",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "diff:line_205123",
+            "snippet": "for changes in these directories:\n-             <b>[</b><font color=\"#4E9A06\">&apos;/home/user/code/",
+            "metadata": {}
+          },
+          "title": "String concatenation in loop",
+          "description": "Consider using list append and join() for better performance.",
+          "has_patch": false,
+          "patch": null,
+          "location": "diff:line_205123",
+          "created_at": "2025-12-05T23:16:53.426462"
+        },
+        {
+          "id": "6253d40d-781f-4fb4-835a-a403e0250fb2",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "diff:line_244366",
+            "snippet": "for security_dependency in flat_dependant._security_dependencies:\n+    operation_security = []\n+    ",
+            "metadata": {}
+          },
+          "title": "String concatenation in loop",
+          "description": "Consider using list append and join() for better performance.",
+          "has_patch": false,
+          "patch": null,
+          "location": "diff:line_244366",
+          "created_at": "2025-12-05T23:16:53.437942"
+        },
+        {
+          "id": "61ea0f38-843b-439e-b276-3bf3ae28ebf3",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "diff:line_244583",
+            "snippet": "for method in route.methods:\n-            operation = get_openapi_operation_metadata(\n-             ",
+            "metadata": {}
+          },
+          "title": "String concatenation in loop",
+          "description": "Consider using list append and join() for better performance.",
+          "has_patch": false,
+          "patch": null,
+          "location": "diff:line_244583",
+          "created_at": "2025-12-05T23:16:53.458573"
+        },
+        {
+          "id": "6bc2bb27-702e-49b9-88eb-b40ff0296a77",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "diff:line_256671",
+            "snippet": "for f in docs_files:\n-        match = re.match(r\"docs/([^/]+)/docs/(.*)\", f.filename)\n-        if no",
+            "metadata": {}
+          },
+          "title": "String concatenation in loop",
+          "description": "Consider using list append and join() for better performance.",
+          "has_patch": false,
+          "patch": null,
+          "location": "diff:line_256671",
+          "created_at": "2025-12-05T23:16:53.469526"
+        },
+        {
+          "id": "14abcdd2-781a-4f16-8f6a-e396404284bb",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "diff:line_256724",
+            "snippet": "for comment in comments:\n-        if (\n-            comment.body.startswith(header)\n-            and",
+            "metadata": {}
+          },
+          "title": "String concatenation in loop",
+          "description": "Consider using list append and join() for better performance.",
+          "has_patch": false,
+          "patch": null,
+          "location": "diff:line_256724",
+          "created_at": "2025-12-05T23:16:53.479449"
+        },
+        {
+          "id": "a13a950b-55d0-4898-a0a7-df9224ae91fe",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "diff:line_257058",
+            "snippet": "for line in content.split(\"\\n\"):\n-        match = header_with_permalink_pattern.match(line)\n-       ",
+            "metadata": {}
+          },
+          "title": "String concatenation in loop",
+          "description": "Consider using list append and join() for better performance.",
+          "has_patch": false,
+          "patch": null,
+          "location": "diff:line_257058",
+          "created_at": "2025-12-05T23:16:53.490105"
+        },
+        {
+          "id": "1e10595c-bdb7-4714-ac77-981a99c56b5f",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "diff:line_257485",
+            "snippet": "for md_file in pages:\n-        add_permalinks_page(md_file, update_existing=update_existing)\n-\n-\n-@a",
+            "metadata": {}
+          },
+          "title": "String concatenation in loop",
+          "description": "Consider using list append and join() for better performance.",
+          "has_patch": false,
+          "patch": null,
+          "location": "diff:line_257485",
+          "created_at": "2025-12-05T23:16:53.500731"
+        },
+        {
+          "id": "af7bf96f-0cbf-4e1c-bff0-27c080f73661",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "diff:line_258649",
+            "snippet": "for login in maintainers_logins:\n-        user = authors[login]\n-        maintainers.append(\n-      ",
+            "metadata": {}
+          },
+          "title": "String concatenation in loop",
+          "description": "Consider using list append and join() for better performance.",
+          "has_patch": false,
+          "patch": null,
+          "location": "diff:line_258649",
+          "created_at": "2025-12-05T23:16:53.511817"
+        },
+        {
+          "id": "61e64c07-4d6a-453a-b9cc-c141121d1bc8",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "diff:line_266437",
+            "snippet": "for r in app.router.routes:\n         assert isinstance(r, Route)\n         routes[r.path] = r\n-    as",
+            "metadata": {}
+          },
+          "title": "String concatenation in loop",
+          "description": "Consider using list append and join() for better performance.",
+          "has_patch": false,
+          "patch": null,
+          "location": "diff:line_266437",
+          "created_at": "2025-12-05T23:16:53.554954"
+        }
+      ],
+      "reasoning": "Static analysis: 16, LLM analysis: 0",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 5.333509922027588,
+      "timestamp": "2025-12-05T23:16:58.934056"
+    },
+    {
+      "agent_role": "DR",
+      "task_description": "Review code documentation quality",
+      "findings": [
+        {
+          "id": "7ce411a9-c608-4f7b-8a1d-e02046162b10",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": ".flake8",
+            "snippet": "[flake8]\nmax-line-length = 88\nselect = C,E,F,W,B,B9\nignore = E203, E501, W503\nexclude = __init__.py",
+            "metadata": {}
+          },
+          "title": "Configuration file added without documentation",
+          "description": "A new .flake8 configuration file has been added to the project without any documentation on the chosen configurations.",
+          "has_patch": false,
+          "patch": null,
+          "location": ".flake8:1",
+          "created_at": "2025-12-05T23:17:14.977832"
+        },
+        {
+          "id": "5e5f4464-c2cc-4fff-9ed8-1b276e565676",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": ".github/DISCUSSION_TEMPLATE/questions.yml, .github/DISCUSSION_TEMPLATE/translations.yml",
+            "snippet": "Deletion of files",
+            "metadata": {}
+          },
+          "title": "Deletion of GitHub discussion templates without documentation",
+          "description": "GitHub discussion templates for questions and translations have been deleted without any documentation or reasoning provided in the PR.",
+          "has_patch": false,
+          "patch": null,
+          "location": ".github/DISCUSSION_TEMPLATE/questions.yml, .github/DISCUSSION_TEMPLATE/translations.yml",
+          "created_at": "2025-12-05T23:17:14.977876"
+        },
+        {
+          "id": "e5d712eb-3dd5-4bd5-8f48-1531dbad1420",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": ".github/ISSUE_TEMPLATE/config.yml",
+            "snippet": "blank_issues_enabled: false",
+            "metadata": {}
+          },
+          "title": "Issue template configuration changes undocumented",
+          "description": "Changes to the .github/ISSUE_TEMPLATE/config.yml file, specifically disabling blank issues and removing contact links, are not documented.",
+          "has_patch": false,
+          "patch": null,
+          "location": ".github/ISSUE_TEMPLATE/config.yml",
+          "created_at": "2025-12-05T23:17:14.977911"
+        },
+        {
+          "id": "4ee8e95d-3d7a-4866-8a18-25494d557f67",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": ".github/ISSUE_TEMPLATE/feature_request.md",
+            "snippet": "name: Feature request\nabout: Suggest an idea for this project",
+            "metadata": {}
+          },
+          "title": "Addition of feature request issue template without documentation",
+          "description": "A new feature request issue template has been added to the project without any accompanying documentation or update notes.",
+          "has_patch": false,
+          "patch": null,
+          "location": ".github/ISSUE_TEMPLATE/feature_request.md",
+          "created_at": "2025-12-05T23:17:14.977943"
+        }
+      ],
+      "reasoning": "Reviewed documentation completeness for the provided PR. The changes include configuration adjustments, deletion of discussion templates, and the addition of a new issue template. These changes impact project maintainability and contributor guidelines but were not accompanied by updates to documentation or comments explaining the rationale behind these decisions. Ensuring that such changes are well-documented is crucial for future project contributors and maintainers.",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 15.993198871612549,
+      "timestamp": "2025-12-05T23:17:14.979932"
+    },
+    {
+      "agent_role": "TR",
+      "task_description": "Review test coverage and quality",
+      "findings": [
+        {
+          "id": "67e00931-3152-4f02-b117-9def546cd882",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": ".flake8",
+            "snippet": "[flake8]\nmax-line-length = 88\nselect = C,E,F,W,B,B9\nignore = E203, E501, W503\nexclude = __init__.py",
+            "metadata": {}
+          },
+          "title": "Configuration changes lack corresponding tests",
+          "description": "The PR introduces changes to `.flake8` configuration but does not include tests to ensure these linting rules are enforced across the codebase.",
+          "has_patch": false,
+          "patch": null,
+          "location": ".flake8",
+          "created_at": "2025-12-05T23:17:32.128187"
+        },
+        {
+          "id": "ff4bb3be-563b-44fa-96bb-1a7fa0d8c8cb",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": ".github/DISCUSSION_TEMPLATE/questions.yml, .github/DISCUSSION_TEMPLATE/translations.yml",
+            "snippet": "Deletion of files",
+            "metadata": {}
+          },
+          "title": "Deletion of GitHub discussion templates without verification",
+          "description": "GitHub discussion templates were removed. It's crucial to verify that this change doesn't impact community engagement negatively or if alternative mechanisms are provided.",
+          "has_patch": false,
+          "patch": null,
+          "location": ".github/DISCUSSION_TEMPLATE/questions.yml, .github/DISCUSSION_TEMPLATE/translations.yml",
+          "created_at": "2025-12-05T23:17:32.128247"
+        },
+        {
+          "id": "261b01b3-4e75-4aa2-ab08-4639617d30e5",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": ".github/ISSUE_TEMPLATE/config.yml",
+            "snippet": "blank_issues_enabled: false",
+            "metadata": {}
+          },
+          "title": "Removal of ISSUE_TEMPLATE config without replacement",
+          "description": "The PR removes ISSUE_TEMPLATE config which could affect how issues are reported and triaged. Ensure there's a new workflow or tool in place to handle this.",
+          "has_patch": false,
+          "patch": null,
+          "location": ".github/ISSUE_TEMPLATE/config.yml",
+          "created_at": "2025-12-05T23:17:32.128293"
+        },
+        {
+          "id": "292ee1df-3edd-43f6-b9e2-34267c9409b7",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": ".github/ISSUE_TEMPLATE/feature_request.md",
+            "snippet": "name: Feature request\nabout: Suggest an idea for this project",
+            "metadata": {}
+          },
+          "title": "Introduction of new ISSUE_TEMPLATE without tests for adherence",
+          "description": "A new ISSUE_TEMPLATE for feature requests is introduced without guidelines or tests to ensure submissions follow the new format.",
+          "has_patch": false,
+          "patch": null,
+          "location": ".github/ISSUE_TEMPLATE/feature_request.md",
+          "created_at": "2025-12-05T23:17:32.128336"
+        }
+      ],
+      "reasoning": "Static: 0, LLM: 4",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 16.98319101333618,
+      "timestamp": "2025-12-05T23:17:32.130642"
+    },
+    {
+      "agent_role": "RP",
+      "task_description": "Generate code revision proposals",
+      "findings": [
+        {
+          "id": "421ac45b-555f-4364-b52b-6212eda90c86",
+          "type": "consistency",
+          "severity": "critical",
+          "source_agent": "CCA",
+          "evidence": {
+            "tool": "change_analysis",
+            "reference": ".flake8:1-5, .github/DISCUSSION_TEMPLATE/questions.yml:1-158, .github/DISCUSSION_TEMPLATE/translations.yml:1-45",
+            "snippet": "new file mode 100644...deleted file mode 100644",
+            "metadata": {}
+          },
+          "title": "Changes unrelated to PR title",
+          "description": "The PR title 'Cache errors for dependents' suggests improvements in error handling or caching mechanism, but the diff shows changes to flake8 configuration and deletion of GitHub discussion templates, which are unrelated to the stated purpose.",
+          "has_patch": true,
+          "patch": "diff --git a/.flake8 b/.flake8\ndeleted file mode 100644\nindex 3a9f2e1..00000000\n--- a/.flake8\n+++ /dev/null\n@@ -1,5 +0,0 @@\n-[flake8]\n-max-line-length = 88\n-select = C,E,F,W,B,B9\n-ignore = E203, E501, W503\n# ... patch truncated",
+          "location": ".flake8:1-5, .github/DISCUSSION_TEMPLATE/questions.yml:1-158, .github/DISCUSSION_TEMPLATE/translations.yml:1-45",
+          "created_at": "2025-12-05T23:16:47.255495"
+        }
+      ],
+      "reasoning": "Generated patches for 1 high-priority findings",
+      "prompt_version": "v1",
+      "llm_calls": 2,
+      "tokens_used": 0,
+      "execution_time_s": 12.01080322265625,
+      "timestamp": "2025-12-05T23:17:44.331864"
+    },
+    {
+      "agent_role": "Supervisor",
+      "task_description": "Consolidate and validate all findings",
+      "findings": [
+        {
+          "id": "421ac45b-555f-4364-b52b-6212eda90c86",
+          "type": "consistency",
+          "severity": "critical",
+          "source_agent": "CCA",
+          "evidence": {
+            "tool": "change_analysis",
+            "reference": ".flake8:1-5, .github/DISCUSSION_TEMPLATE/questions.yml:1-158, .github/DISCUSSION_TEMPLATE/translations.yml:1-45",
+            "snippet": "new file mode 100644...deleted file mode 100644",
+            "metadata": {}
+          },
+          "title": "Changes unrelated to PR title",
+          "description": "The PR title 'Cache errors for dependents' suggests improvements in error handling or caching mechanism, but the diff shows changes to flake8 configuration and deletion of GitHub discussion templates, which are unrelated to the stated purpose.",
+          "has_patch": true,
+          "patch": "diff --git a/.flake8 b/.flake8\ndeleted file mode 100644\nindex 3a9f2e1..00000000\n--- a/.flake8\n+++ /dev/null\n@@ -1,5 +0,0 @@\n-[flake8]\n-max-line-length = 88\n-select = C,E,F,W,B,B9\n-ignore = E203, E501, W503\n# ... patch truncated",
+          "location": ".flake8:1-5, .github/DISCUSSION_TEMPLATE/questions.yml:1-158, .github/DISCUSSION_TEMPLATE/translations.yml:1-45",
+          "created_at": "2025-12-05T23:16:47.255495"
+        },
+        {
+          "id": "eba9c14c-ca0b-4463-a176-0f3629ae2c4b",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/js/custom.js:141",
+            "snippet": "            li.innerHTML = `<a href=\"${v.html_url}\" target=\"_blank\">\u2605 ${v.stargazers_count} - ${v.full_name}</a> by <a href=\"${v.owner.html_url}\" target=\"_blank\">@${v.owner.login}</a>`",
+            "metadata": {}
+          },
+          "title": "javascript.browser.security.insecure-document-method.insecure-document-method",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/js/custom.js:141-141",
+          "created_at": "2025-12-05T23:16:47.259508"
+        },
+        {
+          "id": "b84caa0d-14b2-4754-bdad-ea3eb1a9bb1d",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/js/termynal.js:226",
+            "snippet": "            div.innerHTML = `<span ${this._attributes(line)}>${line.value || ''}</span>`;",
+            "metadata": {}
+          },
+          "title": "javascript.browser.security.insecure-document-method.insecure-document-method",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/js/termynal.js:226-226",
+          "created_at": "2025-12-05T23:16:47.259537"
+        },
+        {
+          "id": "7307e24e-923f-42f9-ac6b-94f5fe542fea",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/tutorial/security/oauth2-jwt.md:16",
+            "snippet": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+            "metadata": {}
+          },
+          "title": "generic.secrets.security.detected-jwt-token.detected-jwt-token",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/tutorial/security/oauth2-jwt.md:16-16",
+          "created_at": "2025-12-05T23:16:47.259561"
+        },
+        {
+          "id": "215c64bd-d4ba-4836-b31e-4dd73bf5aa10",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/tutorial/security/oauth2-jwt.md:117",
+            "snippet": "    If you check the new (fake) database `fake_users_db`, you will see how the hashed password looks like now: `\"$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW\"`.",
+            "metadata": {}
+          },
+          "title": "generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/tutorial/security/oauth2-jwt.md:117-117",
+          "created_at": "2025-12-05T23:16:47.259583"
+        },
+        {
+          "id": "fb02f7d3-a86e-46f8-bd3b-0be0f3af3eb0",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial004.py:22",
+            "snippet": "        \"hashed_password\": \"$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW\",",
+            "metadata": {}
+          },
+          "title": "generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial004.py:22-22",
+          "created_at": "2025-12-05T23:16:47.259604"
+        },
+        {
+          "id": "8007f36d-e7d2-49ca-8182-622a78593d92",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial004.py:85",
+            "snippet": "    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)",
+            "metadata": {}
+          },
+          "title": "python.jwt.security.jwt-hardcode.jwt-python-hardcoded-secret",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial004.py:85-85",
+          "created_at": "2025-12-05T23:16:47.259628"
+        },
+        {
+          "id": "1ee179e3-d340-4f70-8021-79a233c20229",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial005.py:26",
+            "snippet": "        \"hashed_password\": \"$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW\",",
+            "metadata": {}
+          },
+          "title": "generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial005.py:26-26",
+          "created_at": "2025-12-05T23:16:47.259651"
+        },
+        {
+          "id": "414e21a6-ed32-438b-824c-07a3d2375a52",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial005.py:33",
+            "snippet": "        \"hashed_password\": \"$2b$12$gSvqqUPvlXP2tfVFaWK1Be7DlH.PKZbv5H8KnzzVgXXbVxpva.pFm\",",
+            "metadata": {}
+          },
+          "title": "generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial005.py:33-33",
+          "created_at": "2025-12-05T23:16:47.259672"
+        },
+        {
+          "id": "b35a1fc3-3884-498c-bc95-2c3cccdcd682",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial005.py:100",
+            "snippet": "    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)",
+            "metadata": {}
+          },
+          "title": "python.jwt.security.jwt-hardcode.jwt-python-hardcoded-secret",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial005.py:100-100",
+          "created_at": "2025-12-05T23:16:47.259695"
+        },
+        {
+          "id": "8bad85e5-8b8d-48fc-a71b-64c0f3344f65",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/wsgi/tutorial001.py:11",
+            "snippet": "    return f\"Hello, {escape(name)} from Flask!\"",
+            "metadata": {}
+          },
+          "title": "python.flask.security.audit.directly-returned-format-string.directly-returned-format-string",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/wsgi/tutorial001.py:11-11",
+          "created_at": "2025-12-05T23:16:47.259716"
+        },
+        {
+          "id": "c29bad18-2c83-4085-a95e-fe9f89d13b6f",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/scripts/docs.py:226",
+            "snippet": "    message = template.render(sponsors=sponsors)",
+            "metadata": {}
+          },
+          "title": "python.flask.security.xss.audit.direct-use-of-jinja2.direct-use-of-jinja2",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/scripts/docs.py:226-226",
+          "created_at": "2025-12-05T23:16:47.259739"
+        },
+        {
+          "id": "f9b9ceb9-efa0-4f9d-8e0b-809be1135a41",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:186",
+            "snippet": "def get_access_token(username=\"johndoe\", password=\"secret\", scope=None):\n    data = {\"username\": username, \"password\": password}\n    if scope:\n        data[\"scope\"] = scope\n    response = client.post(\"/token\", data=data)\n    content = response.json()\n    access_token = content.get(\"access_token\")\n    return access_token",
+            "metadata": {}
+          },
+          "title": "python.lang.security.audit.hardcoded-password-default-argument.hardcoded-password-default-argument",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:186-193",
+          "created_at": "2025-12-05T23:16:47.259759"
+        },
+        {
+          "id": "eec56119-0948-48a5-a66a-1b49278aa09e",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:272",
+            "snippet": "            \"Authorization\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZm9vIn0.9ynBhuYb4e6aW3oJr_K_TBgwcMTDpRToQIE25L57rOE\"",
+            "metadata": {}
+          },
+          "title": "generic.secrets.security.detected-jwt-token.detected-jwt-token",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:272-272",
+          "created_at": "2025-12-05T23:16:47.259780"
+        },
+        {
+          "id": "f9c5ab53-fe28-43f6-8e89-436269d2da77",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:284",
+            "snippet": "            \"Authorization\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmb28ifQ.NnExK_dlNAYyzACrXtXDrcWOgGY2JuPbI4eDaHdfK5Y\"",
+            "metadata": {}
+          },
+          "title": "generic.secrets.security.detected-jwt-token.detected-jwt-token",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:284-284",
+          "created_at": "2025-12-05T23:16:47.259800"
+        },
+        {
+          "id": "d6d65944-e014-4c12-85f9-cdf7ab762d74",
+          "type": "security",
+          "severity": "minor",
+          "source_agent": "SR",
+          "evidence": {
+            "tool": "semgrep",
+            "reference": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:306",
+            "snippet": "            \"Authorization\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VybmFtZTpib2IifQ.HcfCW67Uda-0gz54ZWTqmtgJnZeNem0Q757eTa9EZuw\"",
+            "metadata": {}
+          },
+          "title": "generic.secrets.security.detected-jwt-token.detected-jwt-token",
+          "description": "",
+          "has_patch": false,
+          "patch": null,
+          "location": "/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:306-306",
+          "created_at": "2025-12-05T23:16:47.259820"
+        },
+        {
+          "id": "7ce411a9-c608-4f7b-8a1d-e02046162b10",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": ".flake8",
+            "snippet": "[flake8]\nmax-line-length = 88\nselect = C,E,F,W,B,B9\nignore = E203, E501, W503\nexclude = __init__.py",
+            "metadata": {}
+          },
+          "title": "Configuration file added without documentation",
+          "description": "A new .flake8 configuration file has been added to the project without any documentation on the chosen configurations.",
+          "has_patch": false,
+          "patch": null,
+          "location": ".flake8:1",
+          "created_at": "2025-12-05T23:17:14.977832"
+        },
+        {
+          "id": "5e5f4464-c2cc-4fff-9ed8-1b276e565676",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": ".github/DISCUSSION_TEMPLATE/questions.yml, .github/DISCUSSION_TEMPLATE/translations.yml",
+            "snippet": "Deletion of files",
+            "metadata": {}
+          },
+          "title": "Deletion of GitHub discussion templates without documentation",
+          "description": "GitHub discussion templates for questions and translations have been deleted without any documentation or reasoning provided in the PR.",
+          "has_patch": false,
+          "patch": null,
+          "location": ".github/DISCUSSION_TEMPLATE/questions.yml, .github/DISCUSSION_TEMPLATE/translations.yml",
+          "created_at": "2025-12-05T23:17:14.977876"
+        },
+        {
+          "id": "e5d712eb-3dd5-4bd5-8f48-1531dbad1420",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": ".github/ISSUE_TEMPLATE/config.yml",
+            "snippet": "blank_issues_enabled: false",
+            "metadata": {}
+          },
+          "title": "Issue template configuration changes undocumented",
+          "description": "Changes to the .github/ISSUE_TEMPLATE/config.yml file, specifically disabling blank issues and removing contact links, are not documented.",
+          "has_patch": false,
+          "patch": null,
+          "location": ".github/ISSUE_TEMPLATE/config.yml",
+          "created_at": "2025-12-05T23:17:14.977911"
+        },
+        {
+          "id": "4ee8e95d-3d7a-4866-8a18-25494d557f67",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": ".github/ISSUE_TEMPLATE/feature_request.md",
+            "snippet": "name: Feature request\nabout: Suggest an idea for this project",
+            "metadata": {}
+          },
+          "title": "Addition of feature request issue template without documentation",
+          "description": "A new feature request issue template has been added to the project without any accompanying documentation or update notes.",
+          "has_patch": false,
+          "patch": null,
+          "location": ".github/ISSUE_TEMPLATE/feature_request.md",
+          "created_at": "2025-12-05T23:17:14.977943"
+        },
+        {
+          "id": "67e00931-3152-4f02-b117-9def546cd882",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": ".flake8",
+            "snippet": "[flake8]\nmax-line-length = 88\nselect = C,E,F,W,B,B9\nignore = E203, E501, W503\nexclude = __init__.py",
+            "metadata": {}
+          },
+          "title": "Configuration changes lack corresponding tests",
+          "description": "The PR introduces changes to `.flake8` configuration but does not include tests to ensure these linting rules are enforced across the codebase.",
+          "has_patch": false,
+          "patch": null,
+          "location": ".flake8",
+          "created_at": "2025-12-05T23:17:32.128187"
+        },
+        {
+          "id": "34a8bb35-3692-4050-b107-bef3779b8016",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "diff:line_556",
+            "snippet": "for pr in repo.get_pulls():\n+        if pr.head.sha == event.workflow_run.head_commit.id:\n+         ",
+            "metadata": {}
+          },
+          "title": "String concatenation in loop",
+          "description": "Consider using list append and join() for better performance.",
+          "has_patch": false,
+          "patch": null,
+          "location": "diff:line_556",
+          "created_at": "2025-12-05T23:16:53.024790"
+        },
+        {
+          "id": "344f8eba-a0a2-4adb-851d-7db6039d2b67",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "diff:line_960",
+            "snippet": "for edge in pr_edges:\n+            pr_nodes.append(edge.node)\n+        last_edge = pr_edges[-1]\n+   ",
+            "metadata": {}
+          },
+          "title": "String concatenation in loop",
+          "description": "Consider using list append and join() for better performance.",
+          "has_patch": false,
+          "patch": null,
+          "location": "diff:line_960",
+          "created_at": "2025-12-05T23:16:53.024901"
+        },
+        {
+          "id": "84691bfd-7576-4ba9-86ce-1e1f312d4624",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "diff:line_1001",
+            "snippet": "for edge in edges:\n+            nodes.append(edge.node)\n+        last_edge = edges[-1]\n+        edge",
+            "metadata": {}
+          },
+          "title": "String concatenation in loop",
+          "description": "Consider using list append and join() for better performance.",
+          "has_patch": false,
+          "patch": null,
+          "location": "diff:line_1001",
+          "created_at": "2025-12-05T23:16:53.068643"
+        },
+        {
+          "id": "2f3cfedb-4aa6-4e05-a047-e140b58c1852",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "diff:line_54971",
+            "snippet": "for programs in the directories:\n-\n-* `/usr/local/bin`\n-* `/usr/bin`\n-* `/bin`\n-* `/usr/sbin`\n-* `/s",
+            "metadata": {}
+          },
+          "title": "String concatenation in loop",
+          "description": "Consider using list append and join() for better performance.",
+          "has_patch": false,
+          "patch": null,
+          "location": "diff:line_54971",
+          "created_at": "2025-12-05T23:16:53.218470"
+        },
+        {
+          "id": "c867b05b-defd-408b-af04-f53790aefb20",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "diff:line_74975",
+            "snippet": "for changes in these directories: ['/home/user/code/awesomeapp']\n-INFO:     Uvicorn running on http:",
+            "metadata": {}
+          },
+          "title": "String concatenation in loop",
+          "description": "Consider using list append and join() for better performance.",
+          "has_patch": false,
+          "patch": null,
+          "location": "diff:line_74975",
+          "created_at": "2025-12-05T23:16:53.281790"
+        }
+      ],
+      "reasoning": "Consolidated 42 findings from 7 agents.",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-05T23:17:44.341341"
+    }
+  ],
+  "final_comment_md": "# Code Review\n\n## Summary\nReviewed PR #2779: Cache errors for dependents\nChanged 0 files (+0/-0)\nFound 26 issues requiring attention.\n\n## \ud83d\udd34 Critical Issues\n\n### Changes unrelated to PR title\n\n**Location:** `.flake8:1-5, .github/DISCUSSION_TEMPLATE/questions.yml:1-158, .github/DISCUSSION_TEMPLATE/translations.yml:1-45`  \n**Type:** consistency  \n**Source:** change_analysis  \n\nThe PR title 'Cache errors for dependents' suggests improvements in error handling or caching mechanism, but the diff shows changes to flake8 configuration and deletion of GitHub discussion templates, which are unrelated to the stated purpose.\n\n**Suggested fix:**\n```\ndiff --git a/.flake8 b/.flake8\ndeleted file mode 100644\nindex 3a9f2e1..00000000\n--- a/.flake8\n+++ /dev/null\n@@ -1,5 +0,0 @@\n-[flake8]\n-max-line-length = 88\n-select = C,E,F,W,B,B9\n-ignore = E203, E501, W503\n# ... patch truncated\n```\n\n\n## \ud83d\udfe1 Minor Issues\n\n### javascript.browser.security.insecure-document-method.insecure-document-method\n\n**Location:** `/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/js/custom.js:141-141`  \n**Type:** security  \n**Source:** semgrep  \n\n\n\n### javascript.browser.security.insecure-document-method.insecure-document-method\n\n**Location:** `/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/js/termynal.js:226-226`  \n**Type:** security  \n**Source:** semgrep  \n\n\n\n### generic.secrets.security.detected-jwt-token.detected-jwt-token\n\n**Location:** `/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/tutorial/security/oauth2-jwt.md:16-16`  \n**Type:** security  \n**Source:** semgrep  \n\n\n\n### generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash\n\n**Location:** `/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs/en/docs/tutorial/security/oauth2-jwt.md:117-117`  \n**Type:** security  \n**Source:** semgrep  \n\n\n\n### generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash\n\n**Location:** `/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial004.py:22-22`  \n**Type:** security  \n**Source:** semgrep  \n\n\n\n### python.jwt.security.jwt-hardcode.jwt-python-hardcoded-secret\n\n**Location:** `/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial004.py:85-85`  \n**Type:** security  \n**Source:** semgrep  \n\n\n\n### generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash\n\n**Location:** `/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial005.py:26-26`  \n**Type:** security  \n**Source:** semgrep  \n\n\n\n### generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash\n\n**Location:** `/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial005.py:33-33`  \n**Type:** security  \n**Source:** semgrep  \n\n\n\n### python.jwt.security.jwt-hardcode.jwt-python-hardcoded-secret\n\n**Location:** `/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/security/tutorial005.py:100-100`  \n**Type:** security  \n**Source:** semgrep  \n\n\n\n### python.flask.security.audit.directly-returned-format-string.directly-returned-format-string\n\n**Location:** `/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/docs_src/wsgi/tutorial001.py:11-11`  \n**Type:** security  \n**Source:** semgrep  \n\n\n\n### python.flask.security.xss.audit.direct-use-of-jinja2.direct-use-of-jinja2\n\n**Location:** `/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/scripts/docs.py:226-226`  \n**Type:** security  \n**Source:** semgrep  \n\n\n\n### python.lang.security.audit.hardcoded-password-default-argument.hardcoded-password-default-argument\n\n**Location:** `/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:186-193`  \n**Type:** security  \n**Source:** semgrep  \n\n\n\n### generic.secrets.security.detected-jwt-token.detected-jwt-token\n\n**Location:** `/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:272-272`  \n**Type:** security  \n**Source:** semgrep  \n\n\n\n### generic.secrets.security.detected-jwt-token.detected-jwt-token\n\n**Location:** `/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:284-284`  \n**Type:** security  \n**Source:** semgrep  \n\n\n\n### generic.secrets.security.detected-jwt-token.detected-jwt-token\n\n**Location:** `/var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/fastap/tests/test_tutorial/test_security/test_tutorial005.py:306-306`  \n**Type:** security  \n**Source:** semgrep  \n\n\n\n### Configuration file added without documentation\n\n**Location:** `.flake8:1`  \n**Type:** other  \n**Source:** documentation_analysis  \n\nA new .flake8 configuration file has been added to the project without any documentation on the chosen configurations.\n\n### Deletion of GitHub discussion templates without documentation\n\n**Location:** `.github/DISCUSSION_TEMPLATE/questions.yml, .github/DISCUSSION_TEMPLATE/translations.yml`  \n**Type:** other  \n**Source:** documentation_analysis  \n\nGitHub discussion templates for questions and translations have been deleted without any documentation or reasoning provided in the PR.\n\n### Issue template configuration changes undocumented\n\n**Location:** `.github/ISSUE_TEMPLATE/config.yml`  \n**Type:** other  \n**Source:** documentation_analysis  \n\nChanges to the .github/ISSUE_TEMPLATE/config.yml file, specifically disabling blank issues and removing contact links, are not documented.\n\n### Addition of feature request issue template without documentation\n\n**Location:** `.github/ISSUE_TEMPLATE/feature_request.md`  \n**Type:** other  \n**Source:** documentation_analysis  \n\nA new feature request issue template has been added to the project without any accompanying documentation or update notes.\n\n### Configuration changes lack corresponding tests\n\n**Location:** `.flake8`  \n**Type:** other  \n**Source:** test_analysis  \n\nThe PR introduces changes to `.flake8` configuration but does not include tests to ensure these linting rules are enforced across the codebase.\n\n\n## \ud83d\udcac Nits\n\n### String concatenation in loop\n\n**Location:** `diff:line_556`  \n**Type:** performance  \n**Source:** static_analysis  \n\nConsider using list append and join() for better performance.\n\n### String concatenation in loop\n\n**Location:** `diff:line_960`  \n**Type:** performance  \n**Source:** static_analysis  \n\nConsider using list append and join() for better performance.\n\n### String concatenation in loop\n\n**Location:** `diff:line_1001`  \n**Type:** performance  \n**Source:** static_analysis  \n\nConsider using list append and join() for better performance.\n\n### String concatenation in loop\n\n**Location:** `diff:line_54971`  \n**Type:** performance  \n**Source:** static_analysis  \n\nConsider using list append and join() for better performance.\n\n### String concatenation in loop\n\n**Location:** `diff:line_74975`  \n**Type:** performance  \n**Source:** static_analysis  \n\nConsider using list append and join() for better performance.\n\n",
+  "review_time_s": 96.98409104347229,
+  "token_cost_estimate": 0.0,
+  "prompt_versions": {
+    "CCA": "v1",
+    "SR": "v1",
+    "LR": "v1",
+    "PR": "v1",
+    "DR": "v1",
+    "TR": "v1",
+    "RP": "v1",
+    "Supervisor": "v1"
+  },
+  "metadata": {
+    "repository": "fastap",
+    "title": "Cache errors for dependents",
+    "author": "unknown"
+  },
+  "created_at": "2025-12-05T23:17:44.341738"
+}

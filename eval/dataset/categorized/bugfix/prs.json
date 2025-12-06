@@ -1,0 +1,2702 @@
+[
+  {
+    "pr_id": "dummy-bugfix-0001",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "fix/authentication-1",
+    "branch_target": "main",
+    "title": "Fix connection timeout in authentication",
+    "description": "This PR fixes a TypeError that occurs when network fails.\n\nThe root cause was missing null check.\n\nChanges:\n- Fixed mutex usage\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "mariaperez",
+    "commit_messages": [
+      "Fix connection timeout in authentication",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 69,
+    "lines_deleted": 69,
+    "language": "python",
+    "metrics": {
+      "total_lines": 169,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 10,
+      "lines_added": 60,
+      "lines_deleted": 96
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0002",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "fix/middleware-2",
+    "branch_target": "main",
+    "title": "Fix race condition in middleware",
+    "description": "This PR fixes a ValueError that occurs when network fails.\n\nThe root cause was buffer overflow.\n\nChanges:\n- Fixed proper synchronization\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Fix race condition in middleware",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 34,
+    "lines_deleted": 50,
+    "language": "python",
+    "metrics": {
+      "total_lines": 231,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 21,
+      "lines_added": 77,
+      "lines_deleted": 10
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0003",
+    "repository": "fastapi/fastapi",
+    "branch_source": "fix/database-3",
+    "branch_target": "main",
+    "title": "Resolve AttributeError when calling database",
+    "description": "Fixes #2139\n\nWhen users calling database, a IndexError was raised due to missing null check.\n\nThis PR:\n- Adds proper type checking\n- Updates documentation\n- Includes regression test",
+    "author": "rachelchen",
+    "commit_messages": [
+      "Resolve AttributeError in database",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 35,
+    "lines_deleted": 53,
+    "language": "python",
+    "metrics": {
+      "total_lines": 86,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 24,
+      "lines_added": 103,
+      "lines_deleted": 25
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 3
+  },
+  {
+    "pr_id": "dummy-bugfix-0004",
+    "repository": "requests/requests",
+    "branch_source": "fix/cache-4",
+    "branch_target": "main",
+    "title": "Fix race condition in cache",
+    "description": "This PR fixes a TypeError that occurs when data is invalid.\n\nThe root cause was buffer overflow.\n\nChanges:\n- Fixed proper synchronization\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Fix race condition in cache",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 78,
+    "lines_deleted": 13,
+    "language": "python",
+    "metrics": {
+      "total_lines": 69,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 39,
+      "lines_added": 90,
+      "lines_deleted": 32
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0005",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "fix/cache-5",
+    "branch_target": "main",
+    "title": "Resolve TypeError when calling cache",
+    "description": "Fixes #8019\n\nWhen users calling cache, a TypeError was raised due to improper locking.\n\nThis PR:\n- Adds proper buffer size validation\n- Updates documentation\n- Includes regression test",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Resolve AttributeError in cache",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 136,
+    "lines_deleted": 16,
+    "language": "python",
+    "metrics": {
+      "total_lines": 208,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 11,
+      "lines_added": 38,
+      "lines_deleted": 24
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0006",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "fix/database-6",
+    "branch_target": "main",
+    "title": "Resolve KeyError when calling database",
+    "description": "Fixes #1188\n\nWhen users calling database, a IndexError was raised due to missing null check.\n\nThis PR:\n- Adds proper mutex usage\n- Updates documentation\n- Includes regression test",
+    "author": "davidkim",
+    "commit_messages": [
+      "Resolve AttributeError in database",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 121,
+    "lines_deleted": 25,
+    "language": "python",
+    "metrics": {
+      "total_lines": 131,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 10,
+      "lines_added": 77,
+      "lines_deleted": 69
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0007",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "fix/validator-7",
+    "branch_target": "main",
+    "title": "Fix race condition in validator",
+    "description": "This PR fixes a TypeError that occurs when network fails.\n\nThe root cause was race condition.\n\nChanges:\n- Fixed type checking\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "johndoe",
+    "commit_messages": [
+      "Fix race condition in validator",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 38,
+    "lines_deleted": 51,
+    "language": "python",
+    "metrics": {
+      "total_lines": 239,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 36,
+      "lines_added": 88,
+      "lines_deleted": 35
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0008",
+    "repository": "fastapi/fastapi",
+    "branch_source": "fix/database-8",
+    "branch_target": "main",
+    "title": "Fix memory leak in database",
+    "description": "This PR fixes a IndexError that occurs when network fails.\n\nThe root cause was incorrect type casting.\n\nChanges:\n- Fixed buffer size validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "briankim",
+    "commit_messages": [
+      "Fix memory leak in database",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 148,
+    "lines_deleted": 98,
+    "language": "python",
+    "metrics": {
+      "total_lines": 191,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 16,
+      "lines_added": 89,
+      "lines_deleted": 56
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0009",
+    "repository": "django/django",
+    "branch_source": "fix/middleware-9",
+    "branch_target": "main",
+    "title": "Resolve TypeError when calling middleware",
+    "description": "Fixes #4770\n\nWhen users calling middleware, a TypeError was raised due to improper locking.\n\nThis PR:\n- Adds proper type checking\n- Updates documentation\n- Includes regression test",
+    "author": "mariaperez",
+    "commit_messages": [
+      "Resolve ValueError in middleware",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 27,
+    "lines_deleted": 9,
+    "language": "python",
+    "metrics": {
+      "total_lines": 235,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 20,
+      "lines_added": 28,
+      "lines_deleted": 70
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0010",
+    "repository": "numpy/numpy",
+    "branch_source": "fix/cache-10",
+    "branch_target": "main",
+    "title": "Fix race condition in cache",
+    "description": "This PR fixes a KeyError that occurs when network fails.\n\nThe root cause was buffer overflow.\n\nChanges:\n- Fixed buffer size validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Fix race condition in cache",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 129,
+    "lines_deleted": 98,
+    "language": "python",
+    "metrics": {
+      "total_lines": 28,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 31,
+      "lines_added": 35,
+      "lines_deleted": 12
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0011",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "fix/parser-11",
+    "branch_target": "main",
+    "title": "Fix validation error in parser",
+    "description": "This PR fixes a IndexError that occurs when data is invalid.\n\nThe root cause was incorrect type casting.\n\nChanges:\n- Fixed buffer size validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "kevinpatel",
+    "commit_messages": [
+      "Fix validation error in parser",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 150,
+    "lines_deleted": 17,
+    "language": "python",
+    "metrics": {
+      "total_lines": 27,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 30,
+      "lines_added": 148,
+      "lines_deleted": 6
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0012",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "fix/cache-12",
+    "branch_target": "main",
+    "title": "Fix memory leak in cache",
+    "description": "This PR fixes a KeyError that occurs when network fails.\n\nThe root cause was buffer overflow.\n\nChanges:\n- Fixed null validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "davidkim",
+    "commit_messages": [
+      "Fix memory leak in cache",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 118,
+    "lines_deleted": 94,
+    "language": "python",
+    "metrics": {
+      "total_lines": 202,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 35,
+      "lines_added": 134,
+      "lines_deleted": 24
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 1
+  },
+  {
+    "pr_id": "dummy-bugfix-0013",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "fix/serializer-13",
+    "branch_target": "main",
+    "title": "Fix null pointer exception in serializer",
+    "description": "This PR fixes a IndexError that occurs when data is invalid.\n\nThe root cause was improper locking.\n\nChanges:\n- Fixed mutex usage\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "lisawang",
+    "commit_messages": [
+      "Fix null pointer exception in serializer",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 27,
+    "lines_deleted": 91,
+    "language": "python",
+    "metrics": {
+      "total_lines": 235,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 17,
+      "lines_added": 113,
+      "lines_deleted": 20
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0014",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "fix/database-14",
+    "branch_target": "main",
+    "title": "Fix memory leak in database",
+    "description": "This PR fixes a IndexError that occurs when concurrent access happens.\n\nThe root cause was race condition.\n\nChanges:\n- Fixed proper synchronization\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "tomsmith",
+    "commit_messages": [
+      "Fix memory leak in database",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 86,
+    "lines_deleted": 63,
+    "language": "python",
+    "metrics": {
+      "total_lines": 95,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 39,
+      "lines_added": 28,
+      "lines_deleted": 6
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0015",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "fix/database-15",
+    "branch_target": "main",
+    "title": "Fix race condition in database",
+    "description": "This PR fixes a IndexError that occurs when timeout occurs.\n\nThe root cause was incorrect type casting.\n\nChanges:\n- Fixed proper synchronization\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "rachelchen",
+    "commit_messages": [
+      "Fix race condition in database",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 149,
+    "lines_deleted": 95,
+    "language": "python",
+    "metrics": {
+      "total_lines": 92,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 29,
+      "lines_added": 145,
+      "lines_deleted": 6
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0016",
+    "repository": "flask/flask",
+    "branch_source": "fix/cache-16",
+    "branch_target": "main",
+    "title": "Fix connection timeout in cache",
+    "description": "This PR fixes a ValueError that occurs when concurrent access happens.\n\nThe root cause was incorrect type casting.\n\nChanges:\n- Fixed proper synchronization\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Fix connection timeout in cache",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 135,
+    "lines_deleted": 37,
+    "language": "python",
+    "metrics": {
+      "total_lines": 246,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 39,
+      "lines_added": 23,
+      "lines_deleted": 16
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0017",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "fix/authentication-17",
+    "branch_target": "main",
+    "title": "Fix connection timeout in authentication",
+    "description": "This PR fixes a AttributeError that occurs when network fails.\n\nThe root cause was buffer overflow.\n\nChanges:\n- Fixed mutex usage\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Fix connection timeout in authentication",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 19,
+    "lines_deleted": 52,
+    "language": "python",
+    "metrics": {
+      "total_lines": 164,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 27,
+      "lines_added": 47,
+      "lines_deleted": 60
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0018",
+    "repository": "django/django",
+    "branch_source": "fix/serializer-18",
+    "branch_target": "main",
+    "title": "Fix validation error in serializer",
+    "description": "This PR fixes a ValueError that occurs when timeout occurs.\n\nThe root cause was improper locking.\n\nChanges:\n- Fixed buffer size validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "alexchen",
+    "commit_messages": [
+      "Fix validation error in serializer",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 95,
+    "lines_deleted": 57,
+    "language": "python",
+    "metrics": {
+      "total_lines": 220,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 31,
+      "lines_added": 73,
+      "lines_deleted": 39
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0019",
+    "repository": "requests/requests",
+    "branch_source": "fix/authentication-19",
+    "branch_target": "main",
+    "title": "Resolve TypeError when calling authentication",
+    "description": "Fixes #4728\n\nWhen users calling authentication, a TypeError was raised due to incorrect type casting.\n\nThis PR:\n- Adds proper null validation\n- Updates documentation\n- Includes regression test",
+    "author": "davidkim",
+    "commit_messages": [
+      "Resolve TypeError in authentication",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 27,
+    "lines_deleted": 40,
+    "language": "python",
+    "metrics": {
+      "total_lines": 104,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 30,
+      "lines_added": 140,
+      "lines_deleted": 56
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0020",
+    "repository": "numpy/numpy",
+    "branch_source": "fix/authentication-20",
+    "branch_target": "main",
+    "title": "Resolve AttributeError when calling authentication",
+    "description": "Fixes #2776\n\nWhen users calling authentication, a TypeError was raised due to improper locking.\n\nThis PR:\n- Adds proper buffer size validation\n- Updates documentation\n- Includes regression test",
+    "author": "lisawang",
+    "commit_messages": [
+      "Resolve AttributeError in authentication",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 140,
+    "lines_deleted": 19,
+    "language": "python",
+    "metrics": {
+      "total_lines": 113,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 38,
+      "lines_added": 58,
+      "lines_deleted": 37
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0021",
+    "repository": "numpy/numpy",
+    "branch_source": "fix/serializer-21",
+    "branch_target": "main",
+    "title": "Fix memory leak in serializer",
+    "description": "This PR fixes a AttributeError that occurs when concurrent access happens.\n\nThe root cause was race condition.\n\nChanges:\n- Fixed null validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "annalee",
+    "commit_messages": [
+      "Fix memory leak in serializer",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 85,
+    "lines_deleted": 75,
+    "language": "python",
+    "metrics": {
+      "total_lines": 47,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 16,
+      "lines_added": 117,
+      "lines_deleted": 90
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0022",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "fix/validator-22",
+    "branch_target": "main",
+    "title": "Fix memory leak in validator",
+    "description": "This PR fixes a ValueError that occurs when timeout occurs.\n\nThe root cause was race condition.\n\nChanges:\n- Fixed type checking\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Fix memory leak in validator",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 64,
+    "lines_deleted": 70,
+    "language": "python",
+    "metrics": {
+      "total_lines": 136,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 35,
+      "lines_added": 53,
+      "lines_deleted": 89
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0023",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "fix/database-23",
+    "branch_target": "main",
+    "title": "Resolve AttributeError when calling database",
+    "description": "Fixes #1757\n\nWhen users calling database, a TypeError was raised due to incorrect type casting.\n\nThis PR:\n- Adds proper buffer size validation\n- Updates documentation\n- Includes regression test",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Resolve IndexError in database",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 59,
+    "lines_deleted": 96,
+    "language": "python",
+    "metrics": {
+      "total_lines": 193,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 22,
+      "lines_added": 136,
+      "lines_deleted": 56
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0024",
+    "repository": "pytorch/pytorch",
+    "branch_source": "fix/database-24",
+    "branch_target": "main",
+    "title": "Fix memory leak in database",
+    "description": "This PR fixes a TypeError that occurs when concurrent access happens.\n\nThe root cause was buffer overflow.\n\nChanges:\n- Fixed null validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Fix memory leak in database",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 91,
+    "lines_deleted": 61,
+    "language": "python",
+    "metrics": {
+      "total_lines": 171,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 36,
+      "lines_added": 139,
+      "lines_deleted": 59
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0025",
+    "repository": "fastapi/fastapi",
+    "branch_source": "fix/middleware-25",
+    "branch_target": "main",
+    "title": "Fix memory leak in middleware",
+    "description": "This PR fixes a TypeError that occurs when timeout occurs.\n\nThe root cause was improper locking.\n\nChanges:\n- Fixed buffer size validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "davidkim",
+    "commit_messages": [
+      "Fix memory leak in middleware",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 95,
+    "lines_deleted": 45,
+    "language": "python",
+    "metrics": {
+      "total_lines": 243,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 27,
+      "lines_added": 30,
+      "lines_deleted": 22
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0026",
+    "repository": "scipy/scipy",
+    "branch_source": "fix/parser-26",
+    "branch_target": "main",
+    "title": "Fix null pointer exception in parser",
+    "description": "This PR fixes a KeyError that occurs when timeout occurs.\n\nThe root cause was improper locking.\n\nChanges:\n- Fixed buffer size validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "annalee",
+    "commit_messages": [
+      "Fix null pointer exception in parser",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 15,
+    "lines_deleted": 78,
+    "language": "python",
+    "metrics": {
+      "total_lines": 112,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 25,
+      "lines_added": 11,
+      "lines_deleted": 50
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0027",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "fix/parser-27",
+    "branch_target": "main",
+    "title": "Resolve TypeError when calling parser",
+    "description": "Fixes #7371\n\nWhen users calling parser, a AttributeError was raised due to race condition.\n\nThis PR:\n- Adds proper buffer size validation\n- Updates documentation\n- Includes regression test",
+    "author": "lisawang",
+    "commit_messages": [
+      "Resolve TypeError in parser",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 146,
+    "lines_deleted": 8,
+    "language": "python",
+    "metrics": {
+      "total_lines": 247,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 22,
+      "lines_added": 16,
+      "lines_deleted": 15
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 4
+  },
+  {
+    "pr_id": "dummy-bugfix-0028",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "fix/authentication-28",
+    "branch_target": "main",
+    "title": "Fix connection timeout in authentication",
+    "description": "This PR fixes a AttributeError that occurs when network fails.\n\nThe root cause was buffer overflow.\n\nChanges:\n- Fixed proper synchronization\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Fix connection timeout in authentication",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 14,
+    "lines_deleted": 100,
+    "language": "python",
+    "metrics": {
+      "total_lines": 153,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 11,
+      "lines_added": 99,
+      "lines_deleted": 33
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0029",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "fix/authentication-29",
+    "branch_target": "main",
+    "title": "Fix validation error in authentication",
+    "description": "This PR fixes a ValueError that occurs when concurrent access happens.\n\nThe root cause was incorrect type casting.\n\nChanges:\n- Fixed type checking\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "annalee",
+    "commit_messages": [
+      "Fix validation error in authentication",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 75,
+    "lines_deleted": 52,
+    "language": "python",
+    "metrics": {
+      "total_lines": 57,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 29,
+      "lines_added": 39,
+      "lines_deleted": 25
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 1
+  },
+  {
+    "pr_id": "dummy-bugfix-0030",
+    "repository": "requests/requests",
+    "branch_source": "fix/router-30",
+    "branch_target": "main",
+    "title": "Resolve TypeError when calling router",
+    "description": "Fixes #5941\n\nWhen users calling router, a ValueError was raised due to improper locking.\n\nThis PR:\n- Adds proper null validation\n- Updates documentation\n- Includes regression test",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Resolve IndexError in router",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 119,
+    "lines_deleted": 89,
+    "language": "python",
+    "metrics": {
+      "total_lines": 109,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 12,
+      "lines_added": 139,
+      "lines_deleted": 87
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0031",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "fix/database-31",
+    "branch_target": "main",
+    "title": "Resolve AttributeError when calling database",
+    "description": "Fixes #9548\n\nWhen users calling database, a KeyError was raised due to race condition.\n\nThis PR:\n- Adds proper mutex usage\n- Updates documentation\n- Includes regression test",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Resolve IndexError in database",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 78,
+    "lines_deleted": 46,
+    "language": "python",
+    "metrics": {
+      "total_lines": 233,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 17,
+      "lines_added": 32,
+      "lines_deleted": 40
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 4
+  },
+  {
+    "pr_id": "dummy-bugfix-0032",
+    "repository": "flask/flask",
+    "branch_source": "fix/serializer-32",
+    "branch_target": "main",
+    "title": "Resolve KeyError when calling serializer",
+    "description": "Fixes #6813\n\nWhen users calling serializer, a AttributeError was raised due to race condition.\n\nThis PR:\n- Adds proper proper synchronization\n- Updates documentation\n- Includes regression test",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Resolve AttributeError in serializer",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 12,
+    "lines_deleted": 71,
+    "language": "python",
+    "metrics": {
+      "total_lines": 63,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 12,
+      "lines_added": 71,
+      "lines_deleted": 97
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0033",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "fix/middleware-33",
+    "branch_target": "main",
+    "title": "Fix memory leak in middleware",
+    "description": "This PR fixes a ValueError that occurs when input is empty.\n\nThe root cause was race condition.\n\nChanges:\n- Fixed type checking\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Fix memory leak in middleware",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 145,
+    "lines_deleted": 49,
+    "language": "python",
+    "metrics": {
+      "total_lines": 123,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 33,
+      "lines_added": 150,
+      "lines_deleted": 47
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0034",
+    "repository": "scipy/scipy",
+    "branch_source": "fix/validator-34",
+    "branch_target": "main",
+    "title": "Resolve ValueError when calling validator",
+    "description": "Fixes #4033\n\nWhen users calling validator, a TypeError was raised due to incorrect type casting.\n\nThis PR:\n- Adds proper type checking\n- Updates documentation\n- Includes regression test",
+    "author": "kevinpatel",
+    "commit_messages": [
+      "Resolve KeyError in validator",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 144,
+    "lines_deleted": 81,
+    "language": "python",
+    "metrics": {
+      "total_lines": 87,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 13,
+      "lines_added": 59,
+      "lines_deleted": 42
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 1
+  },
+  {
+    "pr_id": "dummy-bugfix-0035",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "fix/validator-35",
+    "branch_target": "main",
+    "title": "Fix null pointer exception in validator",
+    "description": "This PR fixes a IndexError that occurs when timeout occurs.\n\nThe root cause was incorrect type casting.\n\nChanges:\n- Fixed buffer size validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Fix null pointer exception in validator",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 97,
+    "lines_deleted": 28,
+    "language": "python",
+    "metrics": {
+      "total_lines": 28,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 18,
+      "lines_added": 132,
+      "lines_deleted": 19
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0036",
+    "repository": "scipy/scipy",
+    "branch_source": "fix/authentication-36",
+    "branch_target": "main",
+    "title": "Fix validation error in authentication",
+    "description": "This PR fixes a IndexError that occurs when timeout occurs.\n\nThe root cause was missing null check.\n\nChanges:\n- Fixed type checking\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "mariaperez",
+    "commit_messages": [
+      "Fix validation error in authentication",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 143,
+    "lines_deleted": 53,
+    "language": "python",
+    "metrics": {
+      "total_lines": 130,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 39,
+      "lines_added": 123,
+      "lines_deleted": 43
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0037",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "fix/authentication-37",
+    "branch_target": "main",
+    "title": "Resolve ValueError when calling authentication",
+    "description": "Fixes #3573\n\nWhen users calling authentication, a TypeError was raised due to incorrect type casting.\n\nThis PR:\n- Adds proper type checking\n- Updates documentation\n- Includes regression test",
+    "author": "johndoe",
+    "commit_messages": [
+      "Resolve IndexError in authentication",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 114,
+    "lines_deleted": 62,
+    "language": "python",
+    "metrics": {
+      "total_lines": 191,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 29,
+      "lines_added": 130,
+      "lines_deleted": 42
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 3
+  },
+  {
+    "pr_id": "dummy-bugfix-0038",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "fix/database-38",
+    "branch_target": "main",
+    "title": "Resolve AttributeError when calling database",
+    "description": "Fixes #9922\n\nWhen users calling database, a IndexError was raised due to incorrect type casting.\n\nThis PR:\n- Adds proper type checking\n- Updates documentation\n- Includes regression test",
+    "author": "johndoe",
+    "commit_messages": [
+      "Resolve AttributeError in database",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 52,
+    "lines_deleted": 44,
+    "language": "python",
+    "metrics": {
+      "total_lines": 167,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 33,
+      "lines_added": 83,
+      "lines_deleted": 61
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0039",
+    "repository": "django/django",
+    "branch_source": "fix/validator-39",
+    "branch_target": "main",
+    "title": "Resolve IndexError when calling validator",
+    "description": "Fixes #1653\n\nWhen users calling validator, a KeyError was raised due to buffer overflow.\n\nThis PR:\n- Adds proper proper synchronization\n- Updates documentation\n- Includes regression test",
+    "author": "janesmit",
+    "commit_messages": [
+      "Resolve IndexError in validator",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 68,
+    "lines_deleted": 91,
+    "language": "python",
+    "metrics": {
+      "total_lines": 229,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 37,
+      "lines_added": 15,
+      "lines_deleted": 91
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0040",
+    "repository": "requests/requests",
+    "branch_source": "fix/middleware-40",
+    "branch_target": "main",
+    "title": "Fix race condition in middleware",
+    "description": "This PR fixes a AttributeError that occurs when network fails.\n\nThe root cause was improper locking.\n\nChanges:\n- Fixed buffer size validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Fix race condition in middleware",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 36,
+    "lines_deleted": 25,
+    "language": "python",
+    "metrics": {
+      "total_lines": 99,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 23,
+      "lines_added": 136,
+      "lines_deleted": 41
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0041",
+    "repository": "django/django",
+    "branch_source": "fix/middleware-41",
+    "branch_target": "main",
+    "title": "Fix null pointer exception in middleware",
+    "description": "This PR fixes a AttributeError that occurs when timeout occurs.\n\nThe root cause was missing null check.\n\nChanges:\n- Fixed buffer size validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "mariaperez",
+    "commit_messages": [
+      "Fix null pointer exception in middleware",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 142,
+    "lines_deleted": 51,
+    "language": "python",
+    "metrics": {
+      "total_lines": 174,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 34,
+      "lines_added": 137,
+      "lines_deleted": 85
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 3
+  },
+  {
+    "pr_id": "dummy-bugfix-0042",
+    "repository": "numpy/numpy",
+    "branch_source": "fix/validator-42",
+    "branch_target": "main",
+    "title": "Fix memory leak in validator",
+    "description": "This PR fixes a ValueError that occurs when input is empty.\n\nThe root cause was improper locking.\n\nChanges:\n- Fixed type checking\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "janesmit",
+    "commit_messages": [
+      "Fix memory leak in validator",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 67,
+    "lines_deleted": 19,
+    "language": "python",
+    "metrics": {
+      "total_lines": 133,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 40,
+      "lines_added": 40,
+      "lines_deleted": 87
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0043",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "fix/validator-43",
+    "branch_target": "main",
+    "title": "Resolve KeyError when calling validator",
+    "description": "Fixes #3369\n\nWhen users calling validator, a KeyError was raised due to buffer overflow.\n\nThis PR:\n- Adds proper type checking\n- Updates documentation\n- Includes regression test",
+    "author": "rachelchen",
+    "commit_messages": [
+      "Resolve IndexError in validator",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 27,
+    "lines_deleted": 40,
+    "language": "python",
+    "metrics": {
+      "total_lines": 212,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 35,
+      "lines_added": 116,
+      "lines_deleted": 48
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0044",
+    "repository": "pytorch/pytorch",
+    "branch_source": "fix/validator-44",
+    "branch_target": "main",
+    "title": "Fix connection timeout in validator",
+    "description": "This PR fixes a IndexError that occurs when data is invalid.\n\nThe root cause was incorrect type casting.\n\nChanges:\n- Fixed buffer size validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Fix connection timeout in validator",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 126,
+    "lines_deleted": 46,
+    "language": "python",
+    "metrics": {
+      "total_lines": 237,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 16,
+      "lines_added": 71,
+      "lines_deleted": 78
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0045",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "fix/authentication-45",
+    "branch_target": "main",
+    "title": "Resolve KeyError when calling authentication",
+    "description": "Fixes #1606\n\nWhen users calling authentication, a KeyError was raised due to incorrect type casting.\n\nThis PR:\n- Adds proper mutex usage\n- Updates documentation\n- Includes regression test",
+    "author": "rachelchen",
+    "commit_messages": [
+      "Resolve IndexError in authentication",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 122,
+    "lines_deleted": 17,
+    "language": "python",
+    "metrics": {
+      "total_lines": 149,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 39,
+      "lines_added": 126,
+      "lines_deleted": 6
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0046",
+    "repository": "pytorch/pytorch",
+    "branch_source": "fix/database-46",
+    "branch_target": "main",
+    "title": "Fix memory leak in database",
+    "description": "This PR fixes a AttributeError that occurs when concurrent access happens.\n\nThe root cause was buffer overflow.\n\nChanges:\n- Fixed null validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "johndoe",
+    "commit_messages": [
+      "Fix memory leak in database",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 27,
+    "lines_deleted": 35,
+    "language": "python",
+    "metrics": {
+      "total_lines": 176,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 31,
+      "lines_added": 83,
+      "lines_deleted": 34
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0047",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "fix/database-47",
+    "branch_target": "main",
+    "title": "Fix memory leak in database",
+    "description": "This PR fixes a AttributeError that occurs when input is empty.\n\nThe root cause was missing null check.\n\nChanges:\n- Fixed proper synchronization\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "mariaperez",
+    "commit_messages": [
+      "Fix memory leak in database",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 145,
+    "lines_deleted": 57,
+    "language": "python",
+    "metrics": {
+      "total_lines": 159,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 31,
+      "lines_added": 56,
+      "lines_deleted": 26
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0048",
+    "repository": "pytorch/pytorch",
+    "branch_source": "fix/parser-48",
+    "branch_target": "main",
+    "title": "Resolve IndexError when calling parser",
+    "description": "Fixes #8529\n\nWhen users calling parser, a TypeError was raised due to race condition.\n\nThis PR:\n- Adds proper null validation\n- Updates documentation\n- Includes regression test",
+    "author": "alexchen",
+    "commit_messages": [
+      "Resolve KeyError in parser",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 28,
+    "lines_deleted": 61,
+    "language": "python",
+    "metrics": {
+      "total_lines": 103,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 28,
+      "lines_added": 86,
+      "lines_deleted": 86
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0049",
+    "repository": "numpy/numpy",
+    "branch_source": "fix/validator-49",
+    "branch_target": "main",
+    "title": "Resolve KeyError when calling validator",
+    "description": "Fixes #6881\n\nWhen users calling validator, a KeyError was raised due to improper locking.\n\nThis PR:\n- Adds proper proper synchronization\n- Updates documentation\n- Includes regression test",
+    "author": "davidkim",
+    "commit_messages": [
+      "Resolve AttributeError in validator",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 12,
+    "lines_deleted": 77,
+    "language": "python",
+    "metrics": {
+      "total_lines": 236,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 31,
+      "lines_added": 22,
+      "lines_deleted": 82
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0050",
+    "repository": "django/django",
+    "branch_source": "fix/parser-50",
+    "branch_target": "main",
+    "title": "Resolve AttributeError when calling parser",
+    "description": "Fixes #3240\n\nWhen users calling parser, a TypeError was raised due to missing null check.\n\nThis PR:\n- Adds proper null validation\n- Updates documentation\n- Includes regression test",
+    "author": "lisawang",
+    "commit_messages": [
+      "Resolve AttributeError in parser",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 103,
+    "lines_deleted": 98,
+    "language": "python",
+    "metrics": {
+      "total_lines": 48,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 12,
+      "lines_added": 85,
+      "lines_deleted": 46
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 2
+  },
+  {
+    "pr_id": "dummy-bugfix-0051",
+    "repository": "pytorch/pytorch",
+    "branch_source": "fix/validator-51",
+    "branch_target": "main",
+    "title": "Resolve AttributeError when calling validator",
+    "description": "Fixes #8673\n\nWhen users calling validator, a KeyError was raised due to missing null check.\n\nThis PR:\n- Adds proper type checking\n- Updates documentation\n- Includes regression test",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Resolve TypeError in validator",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 33,
+    "lines_deleted": 55,
+    "language": "python",
+    "metrics": {
+      "total_lines": 18,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 18,
+      "lines_added": 147,
+      "lines_deleted": 20
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0052",
+    "repository": "flask/flask",
+    "branch_source": "fix/router-52",
+    "branch_target": "main",
+    "title": "Resolve ValueError when calling router",
+    "description": "Fixes #6374\n\nWhen users calling router, a TypeError was raised due to improper locking.\n\nThis PR:\n- Adds proper type checking\n- Updates documentation\n- Includes regression test",
+    "author": "tomsmith",
+    "commit_messages": [
+      "Resolve ValueError in router",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 114,
+    "lines_deleted": 19,
+    "language": "python",
+    "metrics": {
+      "total_lines": 50,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 11,
+      "lines_added": 19,
+      "lines_deleted": 43
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 2
+  },
+  {
+    "pr_id": "dummy-bugfix-0053",
+    "repository": "flask/flask",
+    "branch_source": "fix/router-53",
+    "branch_target": "main",
+    "title": "Fix memory leak in router",
+    "description": "This PR fixes a IndexError that occurs when data is invalid.\n\nThe root cause was improper locking.\n\nChanges:\n- Fixed type checking\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "johndoe",
+    "commit_messages": [
+      "Fix memory leak in router",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 104,
+    "lines_deleted": 32,
+    "language": "python",
+    "metrics": {
+      "total_lines": 128,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 24,
+      "lines_added": 70,
+      "lines_deleted": 51
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0054",
+    "repository": "fastapi/fastapi",
+    "branch_source": "fix/authentication-54",
+    "branch_target": "main",
+    "title": "Resolve AttributeError when calling authentication",
+    "description": "Fixes #4475\n\nWhen users calling authentication, a TypeError was raised due to improper locking.\n\nThis PR:\n- Adds proper null validation\n- Updates documentation\n- Includes regression test",
+    "author": "alexchen",
+    "commit_messages": [
+      "Resolve ValueError in authentication",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 62,
+    "lines_deleted": 13,
+    "language": "python",
+    "metrics": {
+      "total_lines": 227,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 34,
+      "lines_added": 63,
+      "lines_deleted": 80
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0055",
+    "repository": "django/django",
+    "branch_source": "fix/cache-55",
+    "branch_target": "main",
+    "title": "Resolve ValueError when calling cache",
+    "description": "Fixes #5106\n\nWhen users calling cache, a AttributeError was raised due to incorrect type casting.\n\nThis PR:\n- Adds proper null validation\n- Updates documentation\n- Includes regression test",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Resolve ValueError in cache",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 70,
+    "lines_deleted": 80,
+    "language": "python",
+    "metrics": {
+      "total_lines": 97,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 10,
+      "lines_added": 54,
+      "lines_deleted": 38
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0056",
+    "repository": "pytorch/pytorch",
+    "branch_source": "fix/database-56",
+    "branch_target": "main",
+    "title": "Fix memory leak in database",
+    "description": "This PR fixes a AttributeError that occurs when concurrent access happens.\n\nThe root cause was improper locking.\n\nChanges:\n- Fixed null validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "davidkim",
+    "commit_messages": [
+      "Fix memory leak in database",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 127,
+    "lines_deleted": 87,
+    "language": "python",
+    "metrics": {
+      "total_lines": 22,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 11,
+      "lines_added": 132,
+      "lines_deleted": 56
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 4
+  },
+  {
+    "pr_id": "dummy-bugfix-0057",
+    "repository": "flask/flask",
+    "branch_source": "fix/database-57",
+    "branch_target": "main",
+    "title": "Fix connection timeout in database",
+    "description": "This PR fixes a TypeError that occurs when input is empty.\n\nThe root cause was incorrect type casting.\n\nChanges:\n- Fixed proper synchronization\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Fix connection timeout in database",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 139,
+    "lines_deleted": 82,
+    "language": "python",
+    "metrics": {
+      "total_lines": 125,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 13,
+      "lines_added": 39,
+      "lines_deleted": 88
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0058",
+    "repository": "flask/flask",
+    "branch_source": "fix/router-58",
+    "branch_target": "main",
+    "title": "Fix memory leak in router",
+    "description": "This PR fixes a KeyError that occurs when timeout occurs.\n\nThe root cause was buffer overflow.\n\nChanges:\n- Fixed buffer size validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Fix memory leak in router",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 49,
+    "lines_deleted": 92,
+    "language": "python",
+    "metrics": {
+      "total_lines": 136,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 12,
+      "lines_added": 33,
+      "lines_deleted": 15
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 3
+  },
+  {
+    "pr_id": "dummy-bugfix-0059",
+    "repository": "flask/flask",
+    "branch_source": "fix/authentication-59",
+    "branch_target": "main",
+    "title": "Fix race condition in authentication",
+    "description": "This PR fixes a IndexError that occurs when timeout occurs.\n\nThe root cause was missing null check.\n\nChanges:\n- Fixed buffer size validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Fix race condition in authentication",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 36,
+    "lines_deleted": 78,
+    "language": "python",
+    "metrics": {
+      "total_lines": 144,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 16,
+      "lines_added": 49,
+      "lines_deleted": 89
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0060",
+    "repository": "flask/flask",
+    "branch_source": "fix/serializer-60",
+    "branch_target": "main",
+    "title": "Resolve AttributeError when calling serializer",
+    "description": "Fixes #1430\n\nWhen users calling serializer, a IndexError was raised due to improper locking.\n\nThis PR:\n- Adds proper proper synchronization\n- Updates documentation\n- Includes regression test",
+    "author": "annalee",
+    "commit_messages": [
+      "Resolve ValueError in serializer",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 89,
+    "lines_deleted": 48,
+    "language": "python",
+    "metrics": {
+      "total_lines": 104,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 10,
+      "lines_added": 56,
+      "lines_deleted": 23
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0061",
+    "repository": "scipy/scipy",
+    "branch_source": "fix/authentication-61",
+    "branch_target": "main",
+    "title": "Fix null pointer exception in authentication",
+    "description": "This PR fixes a TypeError that occurs when data is invalid.\n\nThe root cause was buffer overflow.\n\nChanges:\n- Fixed buffer size validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "lisawang",
+    "commit_messages": [
+      "Fix null pointer exception in authentication",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 31,
+    "lines_deleted": 11,
+    "language": "python",
+    "metrics": {
+      "total_lines": 54,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 15,
+      "lines_added": 22,
+      "lines_deleted": 91
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0062",
+    "repository": "scipy/scipy",
+    "branch_source": "fix/middleware-62",
+    "branch_target": "main",
+    "title": "Resolve KeyError when calling middleware",
+    "description": "Fixes #2864\n\nWhen users calling middleware, a KeyError was raised due to race condition.\n\nThis PR:\n- Adds proper buffer size validation\n- Updates documentation\n- Includes regression test",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Resolve ValueError in middleware",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 144,
+    "lines_deleted": 90,
+    "language": "python",
+    "metrics": {
+      "total_lines": 93,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 11,
+      "lines_added": 66,
+      "lines_deleted": 55
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 2
+  },
+  {
+    "pr_id": "dummy-bugfix-0063",
+    "repository": "pytorch/pytorch",
+    "branch_source": "fix/parser-63",
+    "branch_target": "main",
+    "title": "Resolve AttributeError when calling parser",
+    "description": "Fixes #9149\n\nWhen users calling parser, a AttributeError was raised due to buffer overflow.\n\nThis PR:\n- Adds proper type checking\n- Updates documentation\n- Includes regression test",
+    "author": "annalee",
+    "commit_messages": [
+      "Resolve TypeError in parser",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 68,
+    "lines_deleted": 69,
+    "language": "python",
+    "metrics": {
+      "total_lines": 158,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 36,
+      "lines_added": 100,
+      "lines_deleted": 14
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0064",
+    "repository": "django/django",
+    "branch_source": "fix/authentication-64",
+    "branch_target": "main",
+    "title": "Resolve ValueError when calling authentication",
+    "description": "Fixes #7626\n\nWhen users calling authentication, a AttributeError was raised due to buffer overflow.\n\nThis PR:\n- Adds proper proper synchronization\n- Updates documentation\n- Includes regression test",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Resolve ValueError in authentication",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 53,
+    "lines_deleted": 84,
+    "language": "python",
+    "metrics": {
+      "total_lines": 132,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 36,
+      "lines_added": 102,
+      "lines_deleted": 16
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 4
+  },
+  {
+    "pr_id": "dummy-bugfix-0065",
+    "repository": "fastapi/fastapi",
+    "branch_source": "fix/database-65",
+    "branch_target": "main",
+    "title": "Resolve AttributeError when calling database",
+    "description": "Fixes #2251\n\nWhen users calling database, a AttributeError was raised due to improper locking.\n\nThis PR:\n- Adds proper null validation\n- Updates documentation\n- Includes regression test",
+    "author": "briankim",
+    "commit_messages": [
+      "Resolve IndexError in database",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 99,
+    "lines_deleted": 49,
+    "language": "python",
+    "metrics": {
+      "total_lines": 201,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 40,
+      "lines_added": 47,
+      "lines_deleted": 35
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 2
+  },
+  {
+    "pr_id": "dummy-bugfix-0066",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "fix/database-66",
+    "branch_target": "main",
+    "title": "Fix validation error in database",
+    "description": "This PR fixes a KeyError that occurs when concurrent access happens.\n\nThe root cause was improper locking.\n\nChanges:\n- Fixed buffer size validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Fix validation error in database",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 87,
+    "lines_deleted": 40,
+    "language": "python",
+    "metrics": {
+      "total_lines": 166,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 11,
+      "lines_added": 100,
+      "lines_deleted": 69
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0067",
+    "repository": "django/django",
+    "branch_source": "fix/authentication-67",
+    "branch_target": "main",
+    "title": "Fix connection timeout in authentication",
+    "description": "This PR fixes a ValueError that occurs when input is empty.\n\nThe root cause was improper locking.\n\nChanges:\n- Fixed mutex usage\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Fix connection timeout in authentication",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 58,
+    "lines_deleted": 46,
+    "language": "python",
+    "metrics": {
+      "total_lines": 169,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 25,
+      "lines_added": 138,
+      "lines_deleted": 24
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0068",
+    "repository": "requests/requests",
+    "branch_source": "fix/database-68",
+    "branch_target": "main",
+    "title": "Resolve TypeError when calling database",
+    "description": "Fixes #9586\n\nWhen users calling database, a ValueError was raised due to improper locking.\n\nThis PR:\n- Adds proper mutex usage\n- Updates documentation\n- Includes regression test",
+    "author": "briankim",
+    "commit_messages": [
+      "Resolve TypeError in database",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 82,
+    "lines_deleted": 54,
+    "language": "python",
+    "metrics": {
+      "total_lines": 119,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 34,
+      "lines_added": 96,
+      "lines_deleted": 91
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0069",
+    "repository": "requests/requests",
+    "branch_source": "fix/database-69",
+    "branch_target": "main",
+    "title": "Resolve ValueError when calling database",
+    "description": "Fixes #3463\n\nWhen users calling database, a IndexError was raised due to race condition.\n\nThis PR:\n- Adds proper null validation\n- Updates documentation\n- Includes regression test",
+    "author": "davidkim",
+    "commit_messages": [
+      "Resolve IndexError in database",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 110,
+    "lines_deleted": 21,
+    "language": "python",
+    "metrics": {
+      "total_lines": 167,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 32,
+      "lines_added": 31,
+      "lines_deleted": 44
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0070",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "fix/cache-70",
+    "branch_target": "main",
+    "title": "Resolve ValueError when calling cache",
+    "description": "Fixes #6940\n\nWhen users calling cache, a KeyError was raised due to race condition.\n\nThis PR:\n- Adds proper type checking\n- Updates documentation\n- Includes regression test",
+    "author": "mariaperez",
+    "commit_messages": [
+      "Resolve TypeError in cache",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 67,
+    "lines_deleted": 22,
+    "language": "python",
+    "metrics": {
+      "total_lines": 54,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 12,
+      "lines_added": 85,
+      "lines_deleted": 17
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0071",
+    "repository": "numpy/numpy",
+    "branch_source": "fix/serializer-71",
+    "branch_target": "main",
+    "title": "Fix race condition in serializer",
+    "description": "This PR fixes a IndexError that occurs when data is invalid.\n\nThe root cause was incorrect type casting.\n\nChanges:\n- Fixed type checking\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Fix race condition in serializer",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 70,
+    "lines_deleted": 61,
+    "language": "python",
+    "metrics": {
+      "total_lines": 171,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 19,
+      "lines_added": 124,
+      "lines_deleted": 34
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0072",
+    "repository": "scipy/scipy",
+    "branch_source": "fix/parser-72",
+    "branch_target": "main",
+    "title": "Resolve IndexError when calling parser",
+    "description": "Fixes #9239\n\nWhen users calling parser, a KeyError was raised due to improper locking.\n\nThis PR:\n- Adds proper buffer size validation\n- Updates documentation\n- Includes regression test",
+    "author": "alexchen",
+    "commit_messages": [
+      "Resolve TypeError in parser",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 74,
+    "lines_deleted": 11,
+    "language": "python",
+    "metrics": {
+      "total_lines": 179,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 25,
+      "lines_added": 105,
+      "lines_deleted": 75
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0073",
+    "repository": "django/django",
+    "branch_source": "fix/validator-73",
+    "branch_target": "main",
+    "title": "Fix null pointer exception in validator",
+    "description": "This PR fixes a AttributeError that occurs when data is invalid.\n\nThe root cause was improper locking.\n\nChanges:\n- Fixed type checking\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "michaelwu",
+    "commit_messages": [
+      "Fix null pointer exception in validator",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 23,
+    "lines_deleted": 55,
+    "language": "python",
+    "metrics": {
+      "total_lines": 143,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 21,
+      "lines_added": 70,
+      "lines_deleted": 54
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0074",
+    "repository": "django/django",
+    "branch_source": "fix/serializer-74",
+    "branch_target": "main",
+    "title": "Fix null pointer exception in serializer",
+    "description": "This PR fixes a TypeError that occurs when network fails.\n\nThe root cause was missing null check.\n\nChanges:\n- Fixed proper synchronization\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "briankim",
+    "commit_messages": [
+      "Fix null pointer exception in serializer",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 30,
+    "lines_deleted": 7,
+    "language": "python",
+    "metrics": {
+      "total_lines": 80,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 16,
+      "lines_added": 48,
+      "lines_deleted": 75
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0075",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "fix/database-75",
+    "branch_target": "main",
+    "title": "Resolve TypeError when calling database",
+    "description": "Fixes #7878\n\nWhen users calling database, a AttributeError was raised due to improper locking.\n\nThis PR:\n- Adds proper buffer size validation\n- Updates documentation\n- Includes regression test",
+    "author": "lisawang",
+    "commit_messages": [
+      "Resolve ValueError in database",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 147,
+    "lines_deleted": 7,
+    "language": "python",
+    "metrics": {
+      "total_lines": 176,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 26,
+      "lines_added": 71,
+      "lines_deleted": 96
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0076",
+    "repository": "pytorch/pytorch",
+    "branch_source": "fix/parser-76",
+    "branch_target": "main",
+    "title": "Resolve KeyError when calling parser",
+    "description": "Fixes #2108\n\nWhen users calling parser, a TypeError was raised due to improper locking.\n\nThis PR:\n- Adds proper mutex usage\n- Updates documentation\n- Includes regression test",
+    "author": "johndoe",
+    "commit_messages": [
+      "Resolve IndexError in parser",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 109,
+    "lines_deleted": 65,
+    "language": "python",
+    "metrics": {
+      "total_lines": 26,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 30,
+      "lines_added": 109,
+      "lines_deleted": 52
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 1
+  },
+  {
+    "pr_id": "dummy-bugfix-0077",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "fix/parser-77",
+    "branch_target": "main",
+    "title": "Resolve IndexError when calling parser",
+    "description": "Fixes #9945\n\nWhen users calling parser, a AttributeError was raised due to race condition.\n\nThis PR:\n- Adds proper type checking\n- Updates documentation\n- Includes regression test",
+    "author": "kevinpatel",
+    "commit_messages": [
+      "Resolve KeyError in parser",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 44,
+    "lines_deleted": 13,
+    "language": "python",
+    "metrics": {
+      "total_lines": 198,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 34,
+      "lines_added": 127,
+      "lines_deleted": 9
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 2
+  },
+  {
+    "pr_id": "dummy-bugfix-0078",
+    "repository": "requests/requests",
+    "branch_source": "fix/serializer-78",
+    "branch_target": "main",
+    "title": "Fix connection timeout in serializer",
+    "description": "This PR fixes a KeyError that occurs when concurrent access happens.\n\nThe root cause was buffer overflow.\n\nChanges:\n- Fixed proper synchronization\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "davidkim",
+    "commit_messages": [
+      "Fix connection timeout in serializer",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 41,
+    "lines_deleted": 52,
+    "language": "python",
+    "metrics": {
+      "total_lines": 126,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 38,
+      "lines_added": 112,
+      "lines_deleted": 100
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0079",
+    "repository": "pytorch/pytorch",
+    "branch_source": "fix/cache-79",
+    "branch_target": "main",
+    "title": "Resolve KeyError when calling cache",
+    "description": "Fixes #7955\n\nWhen users calling cache, a AttributeError was raised due to missing null check.\n\nThis PR:\n- Adds proper buffer size validation\n- Updates documentation\n- Includes regression test",
+    "author": "davidkim",
+    "commit_messages": [
+      "Resolve IndexError in cache",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 92,
+    "lines_deleted": 18,
+    "language": "python",
+    "metrics": {
+      "total_lines": 35,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 20,
+      "lines_added": 85,
+      "lines_deleted": 44
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0080",
+    "repository": "pytorch/pytorch",
+    "branch_source": "fix/middleware-80",
+    "branch_target": "main",
+    "title": "Fix connection timeout in middleware",
+    "description": "This PR fixes a ValueError that occurs when timeout occurs.\n\nThe root cause was improper locking.\n\nChanges:\n- Fixed buffer size validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "kevinpatel",
+    "commit_messages": [
+      "Fix connection timeout in middleware",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 50,
+    "lines_deleted": 8,
+    "language": "python",
+    "metrics": {
+      "total_lines": 51,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 37,
+      "lines_added": 122,
+      "lines_deleted": 9
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 3
+  },
+  {
+    "pr_id": "dummy-bugfix-0081",
+    "repository": "pytorch/pytorch",
+    "branch_source": "fix/router-81",
+    "branch_target": "main",
+    "title": "Resolve ValueError when calling router",
+    "description": "Fixes #7095\n\nWhen users calling router, a IndexError was raised due to buffer overflow.\n\nThis PR:\n- Adds proper null validation\n- Updates documentation\n- Includes regression test",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Resolve IndexError in router",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 111,
+    "lines_deleted": 45,
+    "language": "python",
+    "metrics": {
+      "total_lines": 181,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 18,
+      "lines_added": 73,
+      "lines_deleted": 19
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 4
+  },
+  {
+    "pr_id": "dummy-bugfix-0082",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "fix/validator-82",
+    "branch_target": "main",
+    "title": "Fix connection timeout in validator",
+    "description": "This PR fixes a TypeError that occurs when concurrent access happens.\n\nThe root cause was race condition.\n\nChanges:\n- Fixed buffer size validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "briankim",
+    "commit_messages": [
+      "Fix connection timeout in validator",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 123,
+    "lines_deleted": 16,
+    "language": "python",
+    "metrics": {
+      "total_lines": 222,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 31,
+      "lines_added": 91,
+      "lines_deleted": 90
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 3
+  },
+  {
+    "pr_id": "dummy-bugfix-0083",
+    "repository": "pytorch/pytorch",
+    "branch_source": "fix/cache-83",
+    "branch_target": "main",
+    "title": "Resolve AttributeError when calling cache",
+    "description": "Fixes #3275\n\nWhen users calling cache, a IndexError was raised due to incorrect type casting.\n\nThis PR:\n- Adds proper buffer size validation\n- Updates documentation\n- Includes regression test",
+    "author": "lisawang",
+    "commit_messages": [
+      "Resolve ValueError in cache",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 104,
+    "lines_deleted": 64,
+    "language": "python",
+    "metrics": {
+      "total_lines": 220,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 27,
+      "lines_added": 43,
+      "lines_deleted": 83
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 4
+  },
+  {
+    "pr_id": "dummy-bugfix-0084",
+    "repository": "pytorch/pytorch",
+    "branch_source": "fix/router-84",
+    "branch_target": "main",
+    "title": "Resolve IndexError when calling router",
+    "description": "Fixes #8372\n\nWhen users calling router, a ValueError was raised due to buffer overflow.\n\nThis PR:\n- Adds proper mutex usage\n- Updates documentation\n- Includes regression test",
+    "author": "tomsmith",
+    "commit_messages": [
+      "Resolve AttributeError in router",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 56,
+    "lines_deleted": 21,
+    "language": "python",
+    "metrics": {
+      "total_lines": 125,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 26,
+      "lines_added": 24,
+      "lines_deleted": 20
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0085",
+    "repository": "scipy/scipy",
+    "branch_source": "fix/serializer-85",
+    "branch_target": "main",
+    "title": "Fix validation error in serializer",
+    "description": "This PR fixes a IndexError that occurs when timeout occurs.\n\nThe root cause was missing null check.\n\nChanges:\n- Fixed proper synchronization\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "robertbrown",
+    "commit_messages": [
+      "Fix validation error in serializer",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 33,
+    "lines_deleted": 69,
+    "language": "python",
+    "metrics": {
+      "total_lines": 179,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 15,
+      "lines_added": 49,
+      "lines_deleted": 26
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0086",
+    "repository": "flask/flask",
+    "branch_source": "fix/authentication-86",
+    "branch_target": "main",
+    "title": "Resolve ValueError when calling authentication",
+    "description": "Fixes #7825\n\nWhen users calling authentication, a ValueError was raised due to improper locking.\n\nThis PR:\n- Adds proper null validation\n- Updates documentation\n- Includes regression test",
+    "author": "tomsmith",
+    "commit_messages": [
+      "Resolve KeyError in authentication",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 87,
+    "lines_deleted": 66,
+    "language": "python",
+    "metrics": {
+      "total_lines": 77,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 35,
+      "lines_added": 113,
+      "lines_deleted": 43
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0087",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "fix/middleware-87",
+    "branch_target": "main",
+    "title": "Fix memory leak in middleware",
+    "description": "This PR fixes a KeyError that occurs when network fails.\n\nThe root cause was race condition.\n\nChanges:\n- Fixed mutex usage\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "kevinpatel",
+    "commit_messages": [
+      "Fix memory leak in middleware",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 104,
+    "lines_deleted": 70,
+    "language": "python",
+    "metrics": {
+      "total_lines": 158,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 13,
+      "lines_added": 91,
+      "lines_deleted": 35
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 2
+  },
+  {
+    "pr_id": "dummy-bugfix-0088",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "fix/database-88",
+    "branch_target": "main",
+    "title": "Fix null pointer exception in database",
+    "description": "This PR fixes a KeyError that occurs when concurrent access happens.\n\nThe root cause was buffer overflow.\n\nChanges:\n- Fixed type checking\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "emilywhite",
+    "commit_messages": [
+      "Fix null pointer exception in database",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 141,
+    "lines_deleted": 64,
+    "language": "python",
+    "metrics": {
+      "total_lines": 142,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 38,
+      "lines_added": 88,
+      "lines_deleted": 68
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0089",
+    "repository": "django/django",
+    "branch_source": "fix/parser-89",
+    "branch_target": "main",
+    "title": "Resolve IndexError when calling parser",
+    "description": "Fixes #9108\n\nWhen users calling parser, a AttributeError was raised due to improper locking.\n\nThis PR:\n- Adds proper buffer size validation\n- Updates documentation\n- Includes regression test",
+    "author": "rachelchen",
+    "commit_messages": [
+      "Resolve AttributeError in parser",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 37,
+    "lines_deleted": 60,
+    "language": "python",
+    "metrics": {
+      "total_lines": 49,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 38,
+      "lines_added": 77,
+      "lines_deleted": 98
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0090",
+    "repository": "pytorch/pytorch",
+    "branch_source": "fix/router-90",
+    "branch_target": "main",
+    "title": "Fix null pointer exception in router",
+    "description": "This PR fixes a IndexError that occurs when network fails.\n\nThe root cause was race condition.\n\nChanges:\n- Fixed mutex usage\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "davidkim",
+    "commit_messages": [
+      "Fix null pointer exception in router",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 40,
+    "lines_deleted": 21,
+    "language": "python",
+    "metrics": {
+      "total_lines": 39,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 22,
+      "lines_added": 105,
+      "lines_deleted": 48
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0091",
+    "repository": "tensorflow/tensorflow",
+    "branch_source": "fix/parser-91",
+    "branch_target": "main",
+    "title": "Fix race condition in parser",
+    "description": "This PR fixes a KeyError that occurs when concurrent access happens.\n\nThe root cause was missing null check.\n\nChanges:\n- Fixed null validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "alexchen",
+    "commit_messages": [
+      "Fix race condition in parser",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 141,
+    "lines_deleted": 22,
+    "language": "python",
+    "metrics": {
+      "total_lines": 98,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 39,
+      "lines_added": 91,
+      "lines_deleted": 25
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0092",
+    "repository": "numpy/numpy",
+    "branch_source": "fix/serializer-92",
+    "branch_target": "main",
+    "title": "Resolve IndexError when calling serializer",
+    "description": "Fixes #8780\n\nWhen users calling serializer, a IndexError was raised due to missing null check.\n\nThis PR:\n- Adds proper proper synchronization\n- Updates documentation\n- Includes regression test",
+    "author": "lisawang",
+    "commit_messages": [
+      "Resolve AttributeError in serializer",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 88,
+    "lines_deleted": 97,
+    "language": "python",
+    "metrics": {
+      "total_lines": 238,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 32,
+      "lines_added": 16,
+      "lines_deleted": 81
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0093",
+    "repository": "fastapi/fastapi",
+    "branch_source": "fix/authentication-93",
+    "branch_target": "main",
+    "title": "Fix race condition in authentication",
+    "description": "This PR fixes a TypeError that occurs when concurrent access happens.\n\nThe root cause was improper locking.\n\nChanges:\n- Fixed buffer size validation\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "johndoe",
+    "commit_messages": [
+      "Fix race condition in authentication",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 122,
+    "lines_deleted": 45,
+    "language": "python",
+    "metrics": {
+      "total_lines": 122,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 14,
+      "lines_added": 115,
+      "lines_deleted": 93
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0094",
+    "repository": "pytorch/pytorch",
+    "branch_source": "fix/authentication-94",
+    "branch_target": "main",
+    "title": "Resolve IndexError when calling authentication",
+    "description": "Fixes #9609\n\nWhen users calling authentication, a TypeError was raised due to buffer overflow.\n\nThis PR:\n- Adds proper proper synchronization\n- Updates documentation\n- Includes regression test",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Resolve TypeError in authentication",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 149,
+    "lines_deleted": 50,
+    "language": "python",
+    "metrics": {
+      "total_lines": 188,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 34,
+      "lines_added": 77,
+      "lines_deleted": 83
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0095",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "fix/validator-95",
+    "branch_target": "main",
+    "title": "Resolve AttributeError when calling validator",
+    "description": "Fixes #8861\n\nWhen users calling validator, a AttributeError was raised due to race condition.\n\nThis PR:\n- Adds proper mutex usage\n- Updates documentation\n- Includes regression test",
+    "author": "lisawang",
+    "commit_messages": [
+      "Resolve AttributeError in validator",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 149,
+    "lines_deleted": 53,
+    "language": "python",
+    "metrics": {
+      "total_lines": 244,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 22,
+      "lines_added": 98,
+      "lines_deleted": 23
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 1
+  },
+  {
+    "pr_id": "dummy-bugfix-0096",
+    "repository": "fastapi/fastapi",
+    "branch_source": "fix/middleware-96",
+    "branch_target": "main",
+    "title": "Resolve KeyError when calling middleware",
+    "description": "Fixes #5450\n\nWhen users calling middleware, a TypeError was raised due to incorrect type casting.\n\nThis PR:\n- Adds proper null validation\n- Updates documentation\n- Includes regression test",
+    "author": "mariaperez",
+    "commit_messages": [
+      "Resolve IndexError in middleware",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 22,
+    "lines_deleted": 90,
+    "language": "python",
+    "metrics": {
+      "total_lines": 246,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 26,
+      "lines_added": 67,
+      "lines_deleted": 86
+    },
+    "has_ground_truth": true,
+    "ground_truth_issues_count": 3
+  },
+  {
+    "pr_id": "dummy-bugfix-0097",
+    "repository": "django/django",
+    "branch_source": "fix/database-97",
+    "branch_target": "main",
+    "title": "Resolve ValueError when calling database",
+    "description": "Fixes #8822\n\nWhen users calling database, a IndexError was raised due to incorrect type casting.\n\nThis PR:\n- Adds proper proper synchronization\n- Updates documentation\n- Includes regression test",
+    "author": "briankim",
+    "commit_messages": [
+      "Resolve AttributeError in database",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 32,
+    "lines_deleted": 88,
+    "language": "python",
+    "metrics": {
+      "total_lines": 161,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 17,
+      "lines_added": 146,
+      "lines_deleted": 99
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0098",
+    "repository": "scikit-learn/scikit-learn",
+    "branch_source": "fix/router-98",
+    "branch_target": "main",
+    "title": "Fix validation error in router",
+    "description": "This PR fixes a KeyError that occurs when data is invalid.\n\nThe root cause was incorrect type casting.\n\nChanges:\n- Fixed proper synchronization\n- Added test coverage for edge case\n- Updated error messages",
+    "author": "briankim",
+    "commit_messages": [
+      "Fix validation error in router",
+      "Add test coverage"
+    ],
+    "files_changed": 2,
+    "lines_added": 95,
+    "lines_deleted": 41,
+    "language": "python",
+    "metrics": {
+      "total_lines": 131,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 30,
+      "lines_added": 149,
+      "lines_deleted": 72
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-bugfix-0099",
+    "repository": "fastapi/fastapi",
+    "branch_source": "fix/validator-99",
+    "branch_target": "main",
+    "title": "Resolve ValueError when calling validator",
+    "description": "Fixes #4050\n\nWhen users calling validator, a AttributeError was raised due to missing null check.\n\nThis PR:\n- Adds proper proper synchronization\n- Updates documentation\n- Includes regression test",
+    "author": "alexchen",
+    "commit_messages": [
+      "Resolve AttributeError in validator",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 113,
+    "lines_deleted": 59,
+    "language": "python",
+    "metrics": {
+      "total_lines": 146,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 20,
+      "lines_added": 32,
+      "lines_deleted": 56
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 2
+  },
+  {
+    "pr_id": "dummy-bugfix-0100",
+    "repository": "django/django",
+    "branch_source": "fix/serializer-100",
+    "branch_target": "main",
+    "title": "Resolve ValueError when calling serializer",
+    "description": "Fixes #5374\n\nWhen users calling serializer, a AttributeError was raised due to race condition.\n\nThis PR:\n- Adds proper proper synchronization\n- Updates documentation\n- Includes regression test",
+    "author": "davidkim",
+    "commit_messages": [
+      "Resolve IndexError in serializer",
+      "Update docs and tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 102,
+    "lines_deleted": 93,
+    "language": "python",
+    "metrics": {
+      "total_lines": 75,
+      "files_changed": 3,
+      "commits": 2,
+      "complexity_score": 11,
+      "lines_added": 40,
+      "lines_deleted": 64
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  }
+]

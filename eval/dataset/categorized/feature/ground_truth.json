@@ -1,0 +1,26 @@
+[
+  {
+    "pr_id": "62641",
+    "important_issues": [],
+    "false_positive_tolerance": 2,
+    "labeler_id": "github_reviewers",
+    "labeled_at": "2025-11-30T12:55:20.081355",
+    "notes": "Extracted from 6 review comments"
+  },
+  {
+    "pr_id": "32582",
+    "important_issues": [
+      "Yes, you are right that only NumPy supports string arrays.\r\n\r\nHere, I'm considering the case where `... @ sklearn/preprocessing/_label.py:574",
+      "I don't understand in which context one would expect integer valued `y` and `str` valued `classes`. ... @ sklearn/preprocessing/tests/test_label.py:751",
+      "I realised that we have to convert `classes` into an array anyway, since the `_isin` function doesn’... @ sklearn/preprocessing/_label.py:588",
+      "Suggestion to remove the additional newline before except\r\n```suggestion\r\n    try:\r\n        classes ... @ sklearn/preprocessing/_label.py:584",
+      "```suggestion\r\n            # Numeric class labels should not raise any errors for non-NumPy namespac... @ sklearn/preprocessing/tests/test_label.py:791",
+      "For the helper functions `_inverse_binarize_multiclass` and `_inverse_binarize_thresholding`, the `c... @ sklearn/preprocessing/_label.py:748",
+      "Do you think it would be informative to add `from e` here? (e.g., would the original error say what ... @ sklearn/preprocessing/_label.py:588"
+    ],
+    "false_positive_tolerance": 5,
+    "labeler_id": "github_reviewers",
+    "labeled_at": "2025-11-30T12:58:11.649506",
+    "notes": "Extracted from 30 review comments"
+  }
+]

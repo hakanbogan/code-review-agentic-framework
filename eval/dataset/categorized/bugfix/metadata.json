@@ -1,0 +1,23 @@
+{
+  "category": "bugfix",
+  "pr_count": 100,
+  "ground_truth_count": 30,
+  "statistics": {
+    "avg_lines_changed": 136.4,
+    "avg_complexity_score": 25.0,
+    "total_important_issues": 64,
+    "avg_issues_per_pr": 2.1
+  },
+  "repositories": [
+    "scikit-learn/scikit-learn",
+    "pandas-dev/pandas",
+    "django/django",
+    "requests/requests",
+    "tensorflow/tensorflow",
+    "numpy/numpy",
+    "scipy/scipy",
+    "fastapi/fastapi",
+    "flask/flask",
+    "pytorch/pytorch"
+  ]
+}

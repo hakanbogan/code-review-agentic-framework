@@ -1,0 +1,32 @@
+[
+  {
+    "pr_id": "63015",
+    "repository": "pandas-dev/pandas",
+    "branch_source": "ref-array_to_timedelta64",
+    "branch_target": "main",
+    "title": "REF: inline array_to_datetime64 cases, update tests",
+    "description": "This is a logic-neutral refactor to trim the diff in an upcoming PR implementing resolution inference in array_to_timedelta64.",
+    "author": "jbrockmendel",
+    "commit_messages": [
+      "REF: prepare array_to_timedelta64 for inference",
+      "make dtype explicit in tests",
+      "REF: move cases out of convert_to_timedelta64",
+      "REF: move cases out of convert_to_timedelta64",
+      "REF: move cases out of convert_to_timedelta64"
+    ],
+    "files_changed": 10,
+    "lines_added": 0,
+    "lines_deleted": 0,
+    "language": "python",
+    "metrics": {
+      "total_lines": 0,
+      "files_changed": 10,
+      "commits": 5,
+      "complexity_score": 40,
+      "lines_added": 0,
+      "lines_deleted": 0
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  }
+]
