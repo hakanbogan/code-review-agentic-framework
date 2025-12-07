@@ -2,7 +2,7 @@
 
 import json
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from domain import EvaluationResult, GroundTruthLabel, PRMetadata, PRReviewResult, SystemType
 from eval.metrics import (
@@ -16,6 +16,7 @@ from eval.metrics import (
 from flows import ReviewFlow
 from app.config import Settings
 from app.logging import get_logger
+from app.review_storage import ReviewStorage
 
 logger = get_logger(__name__)
 
@@ -29,27 +30,27 @@ class DatasetLoader:
     def load_pr_list(self) -> List[PRMetadata]:
         """Load list of PRs to evaluate."""
         pr_list_file = self.dataset_path / "pr_list.json"
-        
+
         if not pr_list_file.exists():
             logger.warning(f"PR list not found: {pr_list_file}")
             return []
-        
+
         with open(pr_list_file) as f:
             data = json.load(f)
-        
+
         return [PRMetadata(**pr) for pr in data]
 
     def load_ground_truth(self) -> Dict[str, GroundTruthLabel]:
         """Load ground truth labels."""
         gt_file = self.dataset_path / "ground_truth.json"
-        
+
         if not gt_file.exists():
             logger.warning(f"Ground truth not found: {gt_file}")
             return {}
-        
+
         with open(gt_file) as f:
             data = json.load(f)
-        
+
         return {
             label["pr_id"]: GroundTruthLabel(**label)
             for label in data
@@ -63,74 +64,136 @@ class EvaluationRunner:
         self.settings = settings
         self.review_flow = ReviewFlow(settings)
         self.dataset_loader = DatasetLoader(settings.eval_dataset_path)
+        self.review_storage = ReviewStorage(settings)
+
+    def load_stored_reviews(self, pr_ids: Optional[List[str]] = None) -> List[PRReviewResult]:
+        """Load stored review results.
+
+        Args:
+            pr_ids: List of PR IDs to load. If None, loads all from reviews/
+
+        Returns:
+            List of review results
+        """
+        if pr_ids:
+            results = []
+            for pr_id in pr_ids:
+                review = self.review_storage.get_review(pr_id)
+                if review:
+                    results.append(review)
+                else:
+                    logger.warning(f"Review not found for PR {pr_id}")
+            return results
+        else:
+            # Load all reviews from index
+            index_entries = self.review_storage.list_reviews()
+            results = []
+            for entry in index_entries:
+                pr_id = entry["pr_id"]
+                review = self.review_storage.get_review(pr_id)
+                if review:
+                    results.append(review)
+            return results
 
     def run_evaluation(
         self,
         system_type: SystemType,
-        repo_path: Path,
+        repo_path: Optional[Path] = None,
+        use_stored_reviews: bool = True,
+        pr_ids: Optional[List[str]] = None,
+        aggregate: bool = False,
     ) -> EvaluationResult:
         """Run evaluation for a system type.
-        
+
         Args:
             system_type: Type of system to evaluate
-            repo_path: Path to repository
-            
+            repo_path: Path to repository (required if use_stored_reviews=False)
+            use_stored_reviews: If True, load from reviews/ directory. If False, run reviews.
+            pr_ids: Optional list of PR IDs to filter evaluation
+
         Returns:
             EvaluationResult with metrics
         """
         logger.info(f"Starting evaluation for {system_type.value}")
-        
-        # Load dataset
-        pr_list = self.dataset_loader.load_pr_list()
+
+        # Load ground truth
         ground_truth = self.dataset_loader.load_ground_truth()
-        
-        if not pr_list:
-            raise ValueError("No PRs in dataset")
-        
-        # Run reviews
-        results: List[PRReviewResult] = []
-        
-        for pr_metadata in pr_list:
-            logger.info(f"Reviewing PR {pr_metadata.pr_id}")
-            
-            try:
-                if system_type == SystemType.SINGLE_AGENT:
-                    result = self.review_flow.run_single_agent_review(
-                        pr_metadata,
-                        repo_path
-                    )
-                elif system_type == SystemType.MULTI_AGENT:
-                    result = self.review_flow.run_multi_agent_review(
-                        pr_metadata,
-                        repo_path
-                    )
-                else:
-                    raise ValueError(f"Unsupported system type: {system_type}")
-                
-                results.append(result)
-                
-                # Save individual result
-                self._save_result(result)
-                
-            except Exception as e:
-                logger.error(f"Failed to review PR {pr_metadata.pr_id}: {e}")
-                continue
-        
+
+        # Get review results
+        if use_stored_reviews:
+            logger.info("Loading stored review results...")
+            results = self.load_stored_reviews(pr_ids)
+
+            if not results:
+                raise ValueError("No stored reviews found")
+
+            # Filter by system type
+            results = [r for r in results if r.system_type == system_type]
+
+            if not results:
+                raise ValueError(f"No stored reviews found for system type: {system_type.value}")
+
+            logger.info(f"Loaded {len(results)} stored reviews")
+        else:
+            # Original behavior: run reviews
+            if not repo_path:
+                raise ValueError("repo_path required when use_stored_reviews=False")
+
+            # Load dataset
+            pr_list = self.dataset_loader.load_pr_list()
+
+            if not pr_list:
+                raise ValueError("No PRs in dataset")
+
+            # Filter by PR IDs if specified
+            if pr_ids:
+                pr_list = [pr for pr in pr_list if pr.pr_id in pr_ids]
+
+            # Run reviews
+            results: List[PRReviewResult] = []
+
+            for pr_metadata in pr_list:
+                logger.info(f"Reviewing PR {pr_metadata.pr_id}")
+
+                try:
+                    if system_type == SystemType.SINGLE_AGENT:
+                        result = self.review_flow.run_single_agent_review(
+                            pr_metadata,
+                            repo_path
+                        )
+                    elif system_type == SystemType.MULTI_AGENT:
+                        result = self.review_flow.run_multi_agent_review(
+                            pr_metadata,
+                            repo_path
+                        )
+                    else:
+                        raise ValueError(f"Unsupported system type: {system_type}")
+
+                    results.append(result)
+
+                    # Save individual result
+                    self._save_result(result)
+
+                except Exception as e:
+                    logger.error(f"Failed to review PR {pr_metadata.pr_id}: {e}")
+                    continue
+
         # Calculate metrics
         evaluation_result = self._calculate_metrics(
             results,
             ground_truth,
             system_type
         )
-        
-        # Save evaluation result
-        self._save_evaluation(evaluation_result)
-        
+
+        # Save evaluation result with PR IDs
+        pr_ids_evaluated = [r.pr_id for r in results]
+        self._save_evaluation(evaluation_result, pr_ids_evaluated, aggregate)
+
         logger.info(
             f"Evaluation completed: {len(results)} PRs, "
             f"actionability={evaluation_result.actionability_rate:.2%}"
         )
-        
+
         return evaluation_result
 
     def _calculate_metrics(
@@ -141,32 +204,58 @@ class EvaluationRunner:
     ) -> EvaluationResult:
         """Calculate all metrics."""
         aggregator = MetricsAggregator()
-        
+
         # Register metrics
         aggregator.register(ActionabilityMetric())
         aggregator.register(NoiseMetric())
         aggregator.register(CoverageMetric())
         aggregator.register(PerformanceMetric())
         aggregator.register(ThesisMetrics())
-        
+
         return aggregator.evaluate(results, ground_truth, system_type)
 
     def _save_result(self, result: PRReviewResult) -> None:
         """Save individual review result."""
         results_dir = self.settings.eval_results_path / result.system_type.value
         results_dir.mkdir(parents=True, exist_ok=True)
-        
+
         result_file = results_dir / f"{result.pr_id}.json"
-        
+
         with open(result_file, "w") as f:
             json.dump(result.model_dump(mode="json"), f, indent=2)
 
-    def _save_evaluation(self, evaluation: EvaluationResult) -> None:
-        """Save evaluation result."""
-        eval_file = self.settings.eval_results_path / f"evaluation_{evaluation.system_type.value}.json"
-        
-        with open(eval_file, "w") as f:
-            json.dump(evaluation.model_dump(mode="json"), f, indent=2)
+    def _save_evaluation(self, evaluation: EvaluationResult, pr_ids: List[str], aggregate: bool = False) -> None:
+        """Save evaluation result with PR IDs.
+
+        Args:
+            evaluation: Evaluation result
+            pr_ids: List of PR IDs evaluated
+            aggregate: If True, save in single file. If False, save per-PR in separate directories.
+        """
+        eval_data = evaluation.model_dump(mode="json")
+        eval_data["pr_ids"] = pr_ids
+
+        if aggregate:
+            # Save in single aggregated file
+            pr_ids_str = "_".join(sorted(pr_ids))
+            eval_file = self.settings.eval_results_path / \
+                f"evaluation_{evaluation.system_type.value}_aggregated_{pr_ids_str}.json"
+            with open(eval_file, "w") as f:
+                json.dump(eval_data, f, indent=2)
+        else:
+            # Save aggregated result (general)
+            eval_file = self.settings.eval_results_path / f"evaluation_{evaluation.system_type.value}.json"
+            with open(eval_file, "w") as f:
+                json.dump(eval_data, f, indent=2)
+
+            # Save per-PR result in PR-specific directories
+            for pr_id in pr_ids:
+                pr_dir = self.settings.eval_results_path / pr_id
+                pr_dir.mkdir(parents=True, exist_ok=True)
+
+                pr_eval_file = pr_dir / f"evaluation_{evaluation.system_type.value}.json"
+                with open(pr_eval_file, "w") as f:
+                    json.dump(eval_data, f, indent=2)
 
 
 class ComparisonAnalyzer:
@@ -181,16 +270,15 @@ class ComparisonAnalyzer:
         proposed: EvaluationResult,
     ) -> Dict[str, any]:
         """Compare two systems statistically.
-        
+
         Args:
             baseline: Baseline system results
             proposed: Proposed system results
-            
+
         Returns:
             Comparison statistics
         """
-        from eval.metrics.statistical import effect_size_cohens_d
-        
+
         comparison = {
             "baseline": baseline.system_type.value,
             "proposed": proposed.system_type.value,
@@ -212,7 +300,7 @@ class ComparisonAnalyzer:
                 },
             },
         }
-        
+
         return comparison
 
     def export_latex_table(
@@ -221,7 +309,7 @@ class ComparisonAnalyzer:
         output_file: Path,
     ) -> None:
         """Export results as LaTeX table for thesis.
-        
+
         Args:
             evaluations: List of evaluation results
             output_file: Output LaTeX file
@@ -235,7 +323,7 @@ class ComparisonAnalyzer:
             "System & Actionability & Noise Rate & Coverage & Avg Time (s) \\\\",
             "\\hline",
         ]
-        
+
         for eval_result in evaluations:
             lines.append(
                 f"{eval_result.system_type.value} & "
@@ -244,13 +332,12 @@ class ComparisonAnalyzer:
                 f"{eval_result.important_issue_coverage:.2%} & "
                 f"{eval_result.avg_review_time_s:.1f} \\\\"
             )
-        
+
         lines.extend([
             "\\hline",
             "\\end{tabular}",
             "\\end{table}",
         ])
-        
+
         output_file.write_text("\n".join(lines))
         logger.info(f"Exported LaTeX table to {output_file}")
-

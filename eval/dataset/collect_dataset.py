@@ -11,6 +11,7 @@ from rich.progress import Progress, SpinnerColumn, TextColumn
 
 from eval.dataset.collectors import DataTransformer, GitHubPRCollector, PRSelector
 from app.logging import get_logger, setup_logging
+from app.config import get_settings
 
 app = typer.Typer()
 console = Console()
@@ -117,18 +118,21 @@ def collect(
         export GITHUB_TOKEN=ghp_...
         poetry run python eval/dataset/collect_dataset.py --repos 5 --prs-per-repo 5
     """
-    # Setup logging (optional - don't fail if settings not configured)
+    # Setup logging and load settings
     try:
         setup_logging()
-    except Exception:
-        # Use basic logging if settings not available
+        settings = get_settings()
+        token = settings.github_token
+    except Exception as e:
+        # Fallback to environment variable if settings not available
+        console.print(f"[yellow]Warning: Could not load settings ({e}), using environment variable[/yellow]")
         import logging
         logging.basicConfig(level=logging.INFO)
+        token = os.getenv("GITHUB_TOKEN")
 
-    # Check token
-    token = os.getenv("GITHUB_TOKEN")
     if not token:
-        console.print("[red]Error: GITHUB_TOKEN environment variable not set[/red]")
+        console.print("[red]Error: GitHub token not configured[/red]")
+        console.print("Set GITHUB_TOKEN in .env file or as environment variable")
         console.print("Create token at: https://github.com/settings/tokens")
         console.print("Required scopes: public_repo")
         raise typer.Exit(1)

@@ -267,23 +267,62 @@ def review(
 
 @app.command()
 def evaluate(
-    repo_path: Path = typer.Argument(..., help="Path to repository"),
-    system: SystemType = typer.Option(SystemType.MULTI_AGENT, "--system", help="System type to evaluate"),
+    system: str = typer.Option("multi_agent", "--system", help="System to evaluate (single_agent or multi_agent)"),
+    use_stored: bool = typer.Option(True, "--use-stored/--rerun", help="Use stored reviews or rerun"),
+    pr_ids: Optional[str] = typer.Option(None, "--pr-ids", help="PR IDs to evaluate (comma-separated)"),
+    all_reviews: bool = typer.Option(False, "--all-reviews", help="Evaluate all stored reviews"),
+    aggregate: bool = typer.Option(False, "--aggregate", help="Save results in single aggregated file"),
+    repo_path: Optional[Path] = typer.Option(None, "--repo-path", help="Repository path (required if --rerun)"),
 ):
-    """Run evaluation on dataset."""
+    """Evaluate review system performance."""
     settings = get_settings()
+    setup_logging()
 
-    console.print(f"[bold]Running evaluation for {system.value}[/bold]")
+    console.print(f"[bold]Evaluating {system} system[/bold]")
+
+    if not use_stored and not repo_path:
+        console.print("[red]Error: --repo-path required when using --rerun[/red]")
+        raise typer.Exit(1)
+
+    if all_reviews and pr_ids:
+        console.print("[red]Error: Cannot use --all-reviews with --pr-ids[/red]")
+        raise typer.Exit(1)
+
+    # Parse PR IDs
+    pr_id_list = None
+    if all_reviews:
+        console.print("[cyan]Evaluating all stored reviews...[/cyan]")
+    elif pr_ids:
+        pr_id_list = [pid.strip() for pid in pr_ids.split(",")]
+        console.print(f"Filtering to PRs: {', '.join(pr_id_list)}")
+
+    # Determine system type
+    sys_type = SystemType.SINGLE_AGENT if system == "single_agent" else SystemType.MULTI_AGENT
 
     runner = EvaluationRunner(settings)
 
     try:
-        result = runner.run_evaluation(system, repo_path)
+        if use_stored:
+            console.print("[cyan]Loading stored review results...[/cyan]")
+        else:
+            console.print("[cyan]Running reviews (this may take a while)...[/cyan]")
+
+        result = runner.run_evaluation(
+            system_type=sys_type,
+            repo_path=repo_path,
+            use_stored_reviews=use_stored,
+            pr_ids=pr_id_list,
+            aggregate=aggregate,
+        )
 
         # Display results
         _display_evaluation_result(result)
 
-        console.print(f"[green]Evaluation complete. Results saved to {settings.eval_results_path}[/green]")
+        if aggregate:
+            console.print(f"[green]Evaluation complete. Aggregated results saved to {
+                          settings.eval_results_path}[/green]")
+        else:
+            console.print(f"[green]Evaluation complete. Results saved to {settings.eval_results_path}[/green]")
 
     except Exception as e:
         console.print(f"[red]Error: {e}[/red]")

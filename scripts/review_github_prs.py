@@ -112,24 +112,38 @@ def review_pr(
 def main():
     """Main function."""
     import argparse
+    from app.config import get_settings
+    from app.review_storage import ReviewStorage
 
     parser = argparse.ArgumentParser(description="Review open PRs from GitHub")
     parser.add_argument("owner", help="Repository owner")
     parser.add_argument("repo", help="Repository name")
-    parser.add_argument("--token", default=os.getenv("GITHUB_TOKEN"), help="GitHub token")
+    parser.add_argument("--token", help="GitHub token (overrides settings)")
     parser.add_argument("--limit", type=int, default=5, help="Number of PRs to review")
     parser.add_argument("--repo-path", type=Path, default=Path("/tmp") / "Python", help="Local repo path")
     parser.add_argument("--language", default="python", help="Primary language")
 
     args = parser.parse_args()
 
-    if not args.token:
-        console.print("[red]Error: GITHUB_TOKEN environment variable not set[/red]")
+    # Get token from args, settings, or environment
+    token = args.token
+    if not token:
+        try:
+            settings = get_settings()
+            token = settings.github_token
+        except Exception:
+            pass
+    if not token:
+        token = os.getenv("GITHUB_TOKEN")
+
+    if not token:
+        console.print("[red]Error: GitHub token not configured[/red]")
+        console.print("Set GITHUB_TOKEN in .env file, environment variable, or use --token flag")
         sys.exit(1)
 
     # Get open PRs
     console.print(f"[bold]Fetching open PRs from {args.owner}/{args.repo}...[/bold]")
-    prs = get_open_prs(args.owner, args.repo, args.token, args.limit)
+    prs = get_open_prs(args.owner, args.repo, token, args.limit)
 
     if not prs:
         console.print("[yellow]No open PRs found[/yellow]")
@@ -160,17 +174,17 @@ def main():
     console.print(f"[cyan]Review files saved in: {Path.cwd()}/reviews/[/cyan]")
 
     # Show summary
-    from app.config import get_settings
-    from app.review_storage import ReviewStorage
+    try:
+        settings = get_settings()
+        storage = ReviewStorage(settings)
+        summary = storage.get_summary()
 
-    settings = get_settings()
-    storage = ReviewStorage(settings)
-    summary = storage.get_summary()
-
-    console.print(f"\n[bold]Review Summary:[/bold]")
-    console.print(f"Total reviews: {summary['total_reviews']}")
-    console.print(f"Total findings: {summary['total_findings']}")
-    console.print(f"Average review time: {summary['avg_review_time']:.2f}s")
+        console.print(f"\n[bold]Review Summary:[/bold]")
+        console.print(f"Total reviews: {summary['total_reviews']}")
+        console.print(f"Total findings: {summary['total_findings']}")
+        console.print(f"Average review time: {summary['avg_review_time']:.2f}s")
+    except Exception as e:
+        console.print(f"[yellow]Could not load review summary: {e}[/yellow]")
 
 
 if __name__ == "__main__":

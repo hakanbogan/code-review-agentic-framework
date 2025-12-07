@@ -24,6 +24,9 @@ class Settings(BaseSettings):
     openai_temperature: float = Field(default=0.0, ge=0.0, le=2.0, description="LLM temperature")
     openai_seed: int = Field(default=42, description="Seed for deterministic outputs")
 
+    # GitHub Configuration
+    github_token: str | None = Field(default=None, description="GitHub personal access token")
+
     # Alternative providers (optional)
     anthropic_api_key: str | None = Field(default=None, description="Anthropic API key")
     anthropic_model: str = Field(

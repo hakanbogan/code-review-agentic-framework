@@ -60,5 +60,25 @@
     "labeler_id": "github_reviewers",
     "labeled_at": "2025-11-30T12:58:11.649506",
     "notes": "Extracted from 30 review comments"
+  },
+  {
+    "pr_id": "14468",
+    "important_issues": [
+      "Incomplete implementation of file size check",
+      "Potential infinite loop in file reading",
+      "Content variable not used correctly"
+    ],
+    "false_positive_tolerance": 3,
+    "labeler_id": "manual_review",
+    "notes": "Based on review findings"
+  },
+  {
+    "pr_id": "2779",
+    "important_issues": [
+      "Changes unrelated to PR title"
+    ],
+    "false_positive_tolerance": 2,
+    "labeler_id": "manual_review",
+    "notes": "Based on review findings"
   }
 ]

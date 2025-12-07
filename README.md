@@ -8,9 +8,11 @@ A master's thesis project implementing a multi-agent system for automated code r
 # Install dependencies
 poetry install
 
-# Configure
+# Configure environment variables
 cp .env.example .env
-# Edit .env with your API keys
+# Edit .env and add your API keys:
+#   - OPENAI_API_KEY (required)
+#   - GITHUB_TOKEN (required for dataset collection)
 
 # Run a review (local path)
 poetry run python -m app.cli review \
@@ -145,8 +147,11 @@ Creates final `PRReviewResult` with:
 Key settings in `.env`:
 
 ```env
-# LLM
-OPENAI_API_KEY=your-key
+# Required
+OPENAI_API_KEY=sk-proj-...
+GITHUB_TOKEN=ghp_...
+
+# LLM Settings
 OPENAI_MODEL=gpt-4-turbo-preview
 OPENAI_TEMPERATURE=0.0
 OPENAI_SEED=42
@@ -162,16 +167,18 @@ EVAL_RESULTS_PATH=./eval/results
 SEED_FOR_EXPERIMENTS=42
 ```
 
+See `.env.example` for all available configuration options.
+
 ## Dataset Collection
 
 Collect real PRs from GitHub for evaluation:
 
 ```bash
-# Set GitHub token
-export GITHUB_TOKEN=ghp_your_token_here
+# Configure GitHub token in .env
+# GITHUB_TOKEN=ghp_your_token_here
 
 # Collect balanced dataset
-poetry run python eval/dataset/collect_dataset.py \
+poetry run python eval/dataset/collect_dataset.py collect \
   --repos 5 \
   --prs-per-repo 5 \
   --balanced
