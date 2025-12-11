@@ -27,6 +27,7 @@ class BaseAgent(ABC):
     def _create_llm(self, settings: Settings) -> ChatOpenAI:
         """Create LLM instance with consistent configuration."""
         return ChatOpenAI(
+            api_key=settings.openai_api_key,
             model=settings.openai_model,
             temperature=settings.openai_temperature,
             seed=settings.openai_seed,

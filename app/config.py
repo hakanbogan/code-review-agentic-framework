@@ -8,11 +8,34 @@ from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
+def _find_project_root() -> Path:
+    """Find project root directory by looking for .env file or pyproject.toml."""
+    current = Path(__file__).resolve().parent
+
+    # Look for project root markers
+    markers = [".env", "pyproject.toml", ".git"]
+
+    # Go up the directory tree
+    for parent in [current] + list(current.parents):
+        if any((parent / marker).exists() for marker in markers):
+            return parent
+
+    # Fallback to current directory
+    return Path.cwd()
+
+
+def _get_env_file_path() -> Path:
+    """Get absolute path to .env file."""
+    project_root = _find_project_root()
+    env_file = project_root / ".env"
+    return env_file
+
+
 class Settings(BaseSettings):
     """Application settings loaded from environment variables."""
 
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=str(_get_env_file_path()),
         env_file_encoding="utf-8",
         case_sensitive=False,
         extra="ignore",
@@ -145,4 +168,13 @@ class Settings(BaseSettings):
 @lru_cache
 def get_settings() -> Settings:
     """Get cached settings instance."""
-    return Settings()
+    import os
+
+    settings = Settings()
+
+    # Set OpenAI API key as environment variable for CrewAI compatibility
+    # CrewAI checks environment variable even when LLM object is provided
+    if settings.openai_api_key:
+        os.environ["OPENAI_API_KEY"] = settings.openai_api_key
+
+    return settings
