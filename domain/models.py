@@ -224,20 +224,6 @@ class EvaluationResult(BaseModel):
     avg_review_time_s: float = Field(..., description="Average review time")
     avg_token_cost: float = Field(..., description="Average token cost in USD")
 
-    # CTR/CL/SI scores (thesis-specific)
-    change_type_recognition_score: float = Field(
-        ..., ge=0.0, le=1.0,
-        description="Accuracy in understanding change type"
-    )
-    change_location_score: float = Field(
-        ..., ge=0.0, le=1.0,
-        description="Accuracy in pinpointing issues"
-    )
-    solution_logic_score: float = Field(
-        ..., ge=0.0, le=1.0,
-        description="Quality of proposed solutions"
-    )
-
     # Statistical data
     confidence_interval_95: Dict[str, tuple[float, float]] = Field(
         default_factory=dict,

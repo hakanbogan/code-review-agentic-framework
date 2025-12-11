@@ -1,26 +1,79 @@
 [
   {
-    "pr_id": "62641",
-    "important_issues": [],
-    "false_positive_tolerance": 2,
-    "labeler_id": "github_reviewers",
-    "labeled_at": "2025-11-30T12:55:20.081355",
-    "notes": "Extracted from 6 review comments"
+    "pr_id": "dummy-feature-0005",
+    "important_issues": [
+      "Test coverage insufficient for new feature",
+      "Missing validation for user inputs",
+      "Backward compatibility not addressed",
+      "Performance impact not evaluated",
+      "API design needs review - parameter naming unclear",
+      "Missing documentation for new feature"
+    ],
+    "false_positive_tolerance": 3,
+    "labeler_id": "synthetic_expert_review",
+    "labeled_at": "2025-12-07T18:37:25.743231",
+    "notes": "Synthetic ground truth for feature PR based on common review patterns"
   },
   {
-    "pr_id": "32582",
+    "pr_id": "dummy-feature-0048",
     "important_issues": [
-      "Yes, you are right that only NumPy supports string arrays.\r\n\r\nHere, I'm considering the case where `... @ sklearn/preprocessing/_label.py:574",
-      "I don't understand in which context one would expect integer valued `y` and `str` valued `classes`. ... @ sklearn/preprocessing/tests/test_label.py:751",
-      "I realised that we have to convert `classes` into an array anyway, since the `_isin` function doesn’... @ sklearn/preprocessing/_label.py:588",
-      "Suggestion to remove the additional newline before except\r\n```suggestion\r\n    try:\r\n        classes ... @ sklearn/preprocessing/_label.py:584",
-      "```suggestion\r\n            # Numeric class labels should not raise any errors for non-NumPy namespac... @ sklearn/preprocessing/tests/test_label.py:791",
-      "For the helper functions `_inverse_binarize_multiclass` and `_inverse_binarize_thresholding`, the `c... @ sklearn/preprocessing/_label.py:748",
-      "Do you think it would be informative to add `from e` here? (e.g., would the original error say what ... @ sklearn/preprocessing/_label.py:588"
+      "Test coverage insufficient for new feature",
+      "Missing validation for user inputs"
     ],
-    "false_positive_tolerance": 5,
-    "labeler_id": "github_reviewers",
-    "labeled_at": "2025-11-30T12:58:11.649506",
-    "notes": "Extracted from 30 review comments"
+    "false_positive_tolerance": 2,
+    "labeler_id": "synthetic_expert_review",
+    "labeled_at": "2025-12-07T18:37:25.743253",
+    "notes": "Synthetic ground truth for feature PR based on common review patterns"
+  },
+  {
+    "pr_id": "dummy-feature-0053",
+    "important_issues": [
+      "API design needs review - parameter naming unclear",
+      "Missing documentation for new feature",
+      "Backward compatibility not addressed",
+      "Missing validation for user inputs"
+    ],
+    "false_positive_tolerance": 3,
+    "labeler_id": "synthetic_expert_review",
+    "labeled_at": "2025-12-07T18:37:25.743259",
+    "notes": "Synthetic ground truth for feature PR based on common review patterns"
+  },
+  {
+    "pr_id": "dummy-feature-0058",
+    "important_issues": [
+      "Backward compatibility not addressed",
+      "Test coverage insufficient for new feature",
+      "Missing validation for user inputs",
+      "Performance impact not evaluated",
+      "API design needs review - parameter naming unclear"
+    ],
+    "false_positive_tolerance": 2,
+    "labeler_id": "synthetic_expert_review",
+    "labeled_at": "2025-12-07T18:37:25.743266",
+    "notes": "Synthetic ground truth for feature PR based on common review patterns"
+  },
+  {
+    "pr_id": "dummy-feature-0062",
+    "important_issues": [
+      "Backward compatibility not addressed",
+      "API design needs review - parameter naming unclear",
+      "Missing documentation for new feature"
+    ],
+    "false_positive_tolerance": 3,
+    "labeler_id": "synthetic_expert_review",
+    "labeled_at": "2025-12-07T18:37:25.743271",
+    "notes": "Synthetic ground truth for feature PR based on common review patterns"
+  },
+  {
+    "pr_id": "dummy-feature-0100",
+    "important_issues": [
+      "API design needs review - parameter naming unclear",
+      "Missing documentation for new feature",
+      "Missing validation for user inputs"
+    ],
+    "false_positive_tolerance": 2,
+    "labeler_id": "synthetic_expert_review",
+    "labeled_at": "2025-12-07T18:37:25.743278",
+    "notes": "Synthetic ground truth for feature PR based on common review patterns"
   }
 ]

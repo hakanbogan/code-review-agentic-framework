@@ -1,23 +1,23 @@
 {
   "category": "refactor",
   "pr_count": 100,
-  "ground_truth_count": 12,
+  "ground_truth_count": 1,
   "statistics": {
-    "avg_lines_changed": 349.4,
+    "avg_lines_changed": 348.1,
     "avg_complexity_score": 29.4,
-    "total_important_issues": 22,
-    "avg_issues_per_pr": 1.8
+    "total_important_issues": 3,
+    "avg_issues_per_pr": 3.0
   },
   "repositories": [
-    "scikit-learn/scikit-learn",
-    "django/django",
-    "pandas-dev/pandas",
+    "flask/flask",
     "requests/requests",
-    "tensorflow/tensorflow",
+    "django/django",
+    "fastapi/fastapi",
+    "scikit-learn/scikit-learn",
+    "pandas-dev/pandas",
+    "pytorch/pytorch",
     "numpy/numpy",
     "scipy/scipy",
-    "fastapi/fastapi",
-    "flask/flask",
-    "pytorch/pytorch"
+    "tensorflow/tensorflow"
   ]
 }

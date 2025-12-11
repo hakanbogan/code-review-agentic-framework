@@ -1,23 +1,23 @@
 {
   "category": "feature",
   "pr_count": 100,
-  "ground_truth_count": 26,
+  "ground_truth_count": 6,
   "statistics": {
-    "avg_lines_changed": 366.3,
-    "avg_complexity_score": 38.1,
-    "total_important_issues": 83,
-    "avg_issues_per_pr": 3.2
+    "avg_lines_changed": 370.5,
+    "avg_complexity_score": 38.5,
+    "total_important_issues": 23,
+    "avg_issues_per_pr": 3.8
   },
   "repositories": [
-    "django/django",
-    "scikit-learn/scikit-learn",
-    "pandas-dev/pandas",
+    "flask/flask",
     "requests/requests",
-    "tensorflow/tensorflow",
+    "django/django",
+    "fastapi/fastapi",
+    "pandas-dev/pandas",
+    "scikit-learn/scikit-learn",
+    "pytorch/pytorch",
     "numpy/numpy",
     "scipy/scipy",
-    "fastapi/fastapi",
-    "flask/flask",
-    "pytorch/pytorch"
+    "tensorflow/tensorflow"
   ]
 }

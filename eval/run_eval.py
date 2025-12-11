@@ -2,7 +2,7 @@
 
 import json
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 
 from domain import EvaluationResult, GroundTruthLabel, PRMetadata, PRReviewResult, SystemType
 from eval.metrics import (
@@ -11,7 +11,6 @@ from eval.metrics import (
     MetricsAggregator,
     NoiseMetric,
     PerformanceMetric,
-    ThesisMetrics,
 )
 from flows import ReviewFlow
 from app.config import Settings
@@ -21,11 +20,62 @@ from app.review_storage import ReviewStorage
 logger = get_logger(__name__)
 
 
+def categorize_pr(pr_metadata: PRMetadata) -> str:
+    """Categorize PR by analyzing title and metadata.
+
+    Args:
+        pr_metadata: PR metadata
+
+    Returns:
+        Category string (bugfix, feature, refactor, other)
+    """
+    title = pr_metadata.title.lower()
+    description = pr_metadata.description.lower()
+
+    # Bug fix
+    if any(word in title for word in ["fix", "bug", "issue", "error", "bugfix"]):
+        return "bugfix"
+
+    # Refactor
+    if any(word in title for word in ["refactor", "cleanup", "reorganize", "simplify"]):
+        return "refactor"
+
+    # Feature
+    if any(word in title for word in ["add", "implement", "feature", "new", "support"]):
+        return "feature"
+
+    # Fallback to description
+    if any(word in description for word in ["fix", "bug", "error"]):
+        return "bugfix"
+    if any(word in description for word in ["refactor", "cleanup"]):
+        return "refactor"
+    if any(word in description for word in ["feature", "new"]):
+        return "feature"
+
+    return "other"
+
+
 class DatasetLoader:
     """Loads evaluation dataset."""
 
     def __init__(self, dataset_path: Path):
         self.dataset_path = dataset_path
+        self._category_benchmarks = None
+
+    def load_category_benchmarks(self) -> Dict[str, Dict]:
+        """Load benchmark statistics for each category."""
+        if self._category_benchmarks is not None:
+            return self._category_benchmarks
+
+        index_file = self.dataset_path / "categorized" / "index.json"
+        if not index_file.exists():
+            return {}
+
+        with open(index_file) as f:
+            data = json.load(f)
+
+        self._category_benchmarks = data.get("categories", {})
+        return self._category_benchmarks
 
     def load_pr_list(self) -> List[PRMetadata]:
         """Load list of PRs to evaluate."""
@@ -41,20 +91,18 @@ class DatasetLoader:
         return [PRMetadata(**pr) for pr in data]
 
     def load_ground_truth(self) -> Dict[str, GroundTruthLabel]:
-        """Load ground truth labels."""
-        gt_file = self.dataset_path / "ground_truth.json"
+        """Load ground truth labels.
 
-        if not gt_file.exists():
-            logger.warning(f"Ground truth not found: {gt_file}")
-            return {}
+        NOTE: For new reviewed PRs, ground truth should NOT exist.
+        Dataset ground truth is only for benchmarking purposes and should
+        not be used for evaluation of new reviews.
 
-        with open(gt_file) as f:
-            data = json.load(f)
-
-        return {
-            label["pr_id"]: GroundTruthLabel(**label)
-            for label in data
-        }
+        Returns empty dict to ensure new reviews don't have ground truth.
+        """
+        # Return empty dict - new reviews should not have ground truth
+        # Dataset is only for benchmarking (category statistics)
+        logger.info("Ground truth: Using empty dict (new reviews have no ground truth)")
+        return {}
 
 
 class EvaluationRunner:
@@ -110,6 +158,7 @@ class EvaluationRunner:
             repo_path: Path to repository (required if use_stored_reviews=False)
             use_stored_reviews: If True, load from reviews/ directory. If False, run reviews.
             pr_ids: Optional list of PR IDs to filter evaluation
+            aggregate: Save results in aggregated file
 
         Returns:
             EvaluationResult with metrics
@@ -118,6 +167,9 @@ class EvaluationRunner:
 
         # Load ground truth
         ground_truth = self.dataset_loader.load_ground_truth()
+
+        # Load category benchmarks for comparison
+        category_benchmarks = self.dataset_loader.load_category_benchmarks()
 
         # Get review results
         if use_stored_reviews:
@@ -182,8 +234,13 @@ class EvaluationRunner:
         evaluation_result = self._calculate_metrics(
             results,
             ground_truth,
-            system_type
+            system_type,
+            category_benchmarks
         )
+
+        # Add benchmark comparison to metadata
+        if category_benchmarks:
+            evaluation_result.metadata["category_benchmarks"] = category_benchmarks
 
         # Save evaluation result with PR IDs
         pr_ids_evaluated = [r.pr_id for r in results]
@@ -201,16 +258,30 @@ class EvaluationRunner:
         results: List[PRReviewResult],
         ground_truth: Dict[str, GroundTruthLabel],
         system_type: SystemType,
+        category_benchmarks: Optional[Dict[str, Any]] = None,
     ) -> EvaluationResult:
         """Calculate all metrics."""
         aggregator = MetricsAggregator()
 
-        # Register metrics
+        # Register core metrics (pass categorizer for NoiseMetric)
         aggregator.register(ActionabilityMetric())
-        aggregator.register(NoiseMetric())
+        aggregator.register(NoiseMetric(categorizer_fn=categorize_pr))
         aggregator.register(CoverageMetric())
         aggregator.register(PerformanceMetric())
-        aggregator.register(ThesisMetrics())
+
+        # Register benchmark and advanced metrics if available
+        if category_benchmarks:
+            from eval.metrics import (
+                BenchmarkComparisonMetric,
+                PrecisionRecallMetric,
+                AnomalyDetectionMetric,
+                CategoryThresholdMetric,
+            )
+
+            aggregator.register(BenchmarkComparisonMetric(category_benchmarks, categorize_pr))
+            aggregator.register(PrecisionRecallMetric(categorize_pr))
+            aggregator.register(AnomalyDetectionMetric(category_benchmarks, categorize_pr))
+            aggregator.register(CategoryThresholdMetric(category_benchmarks, categorize_pr))
 
         return aggregator.evaluate(results, ground_truth, system_type)
 
@@ -237,7 +308,9 @@ class EvaluationRunner:
 
         if aggregate:
             # Save in single aggregated file
-            pr_ids_str = "_".join(sorted(pr_ids))
+            pr_ids_str = "_".join(sorted(pr_ids)[:5])
+            if len(pr_ids) > 5:
+                pr_ids_str += f"_and_{len(pr_ids)-5}_more"
             eval_file = self.settings.eval_results_path / \
                 f"evaluation_{evaluation.system_type.value}_aggregated_{pr_ids_str}.json"
             with open(eval_file, "w") as f:

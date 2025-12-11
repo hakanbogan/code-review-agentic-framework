@@ -1,23 +1,23 @@
 {
   "category": "bugfix",
   "pr_count": 100,
-  "ground_truth_count": 30,
+  "ground_truth_count": 11,
   "statistics": {
     "avg_lines_changed": 136.4,
     "avg_complexity_score": 25.0,
-    "total_important_issues": 64,
-    "avg_issues_per_pr": 2.1
+    "total_important_issues": 24,
+    "avg_issues_per_pr": 2.2
   },
   "repositories": [
-    "scikit-learn/scikit-learn",
-    "pandas-dev/pandas",
-    "django/django",
+    "flask/flask",
     "requests/requests",
-    "tensorflow/tensorflow",
+    "django/django",
+    "fastapi/fastapi",
+    "pandas-dev/pandas",
+    "scikit-learn/scikit-learn",
+    "pytorch/pytorch",
     "numpy/numpy",
     "scipy/scipy",
-    "fastapi/fastapi",
-    "flask/flask",
-    "pytorch/pytorch"
+    "tensorflow/tensorflow"
   ]
 }

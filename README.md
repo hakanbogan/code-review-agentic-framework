@@ -191,15 +191,22 @@ See [eval/dataset/README.md](eval/dataset/README.md) for detailed instructions.
 Run evaluation on collected dataset:
 
 ```bash
-# Single-agent baseline
-poetry run python -m app.cli evaluate \
-  --system single_agent \
-  /path/to/repo
-
-# Multi-agent (proposed)
+# Evaluate using stored reviews (recommended)
 poetry run python -m app.cli evaluate \
   --system multi_agent \
-  /path/to/repo
+  --use-stored
+
+# Evaluate specific PRs
+poetry run python -m app.cli evaluate \
+  --system multi_agent \
+  --pr-ids "14468,2779" \
+  --use-stored
+
+# Re-run reviews and evaluate
+poetry run python -m app.cli evaluate \
+  --system single_agent \
+  --rerun \
+  --repo-path /path/to/repo
 
 # Compare systems
 poetry run python -m app.cli compare \

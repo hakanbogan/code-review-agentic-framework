@@ -72,11 +72,14 @@ class MetricsAggregator:
         avg_time = all_metrics.get("avg_review_time_s", 0.0)
         avg_cost = all_metrics.get("avg_token_cost", 0.0)
 
-        ctr_score = all_metrics.get("change_type_recognition_score", 0.0)
-        cl_score = all_metrics.get("change_location_score", 0.0)
-        sl_score = all_metrics.get("solution_logic_score", 0.0)
-
-        confidence_intervals = all_metrics.get("confidence_intervals", {})
+        # Build confidence intervals
+        confidence_intervals = {}
+        if "actionability_ci_95" in all_metrics:
+            confidence_intervals["actionability_rate"] = all_metrics["actionability_ci_95"]
+        if "noise_ci_95" in all_metrics:
+            confidence_intervals["noise_rate"] = all_metrics["noise_ci_95"]
+        if "coverage_ci_95" in all_metrics:
+            confidence_intervals["important_issue_coverage"] = all_metrics["coverage_ci_95"]
 
         return EvaluationResult(
             system_type=system_type,
@@ -87,9 +90,6 @@ class MetricsAggregator:
             avg_findings_per_pr=avg_findings,
             avg_review_time_s=avg_time,
             avg_token_cost=avg_cost,
-            change_type_recognition_score=ctr_score,
-            change_location_score=cl_score,
-            solution_logic_score=sl_score,
             confidence_interval_95=confidence_intervals,
             metadata=all_metrics,
         )

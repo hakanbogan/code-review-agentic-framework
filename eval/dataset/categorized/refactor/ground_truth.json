@@ -1,0 +1,14 @@
+[
+  {
+    "pr_id": "dummy-refactor-0086",
+    "important_issues": [
+      "Refactoring changes behavior - not safe",
+      "Code duplication still exists",
+      "Complexity not actually reduced"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "synthetic_expert_review",
+    "labeled_at": "2025-12-07T18:37:25.749354",
+    "notes": "Synthetic ground truth for refactor PR based on common review patterns"
+  }
+]

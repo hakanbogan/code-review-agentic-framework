@@ -1,40 +1,125 @@
 [
   {
-    "pr_id": "20273",
-    "important_issues": [],
-    "false_positive_tolerance": 0,
-    "labeler_id": "github_reviewers",
-    "labeled_at": "2025-11-30T12:44:49.315322",
-    "notes": "Extracted from 1 review comments"
+    "pr_id": "dummy-bugfix-0012",
+    "important_issues": [
+      "Need to verify fix doesn't break existing behavior"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "synthetic_expert_review",
+    "labeled_at": "2025-12-07T18:37:25.737460",
+    "notes": "Synthetic ground truth for bugfix PR based on common review patterns"
   },
   {
-    "pr_id": "62699",
+    "pr_id": "dummy-bugfix-0034",
     "important_issues": [
-      "since this was a bug in development code, you don't need to update whatsnew... @ doc/source/whatsnew/v3.0.0.rst:1099"
+      "Error handling incomplete"
     ],
     "false_positive_tolerance": 2,
-    "labeler_id": "github_reviewers",
-    "labeled_at": "2025-11-30T12:55:20.078731",
-    "notes": "Extracted from 8 review comments"
+    "labeler_id": "synthetic_expert_review",
+    "labeled_at": "2025-12-07T18:37:25.737574",
+    "notes": "Synthetic ground truth for bugfix PR based on common review patterns"
   },
   {
-    "pr_id": "61920",
+    "pr_id": "dummy-bugfix-0037",
     "important_issues": [
-      "The reason I kept this is because [this test](https://github.com/pandas-dev/pandas/blob/e72c8a1e0ad4... @ pandas/core/arrays/interval.py:1995",
-      "removing ravel here causes a failure in the _shallow_copy() call, with the error: “Index data must b... @ pandas/core/arrays/interval.py:1992",
-      "@rhshadrach I added this check to handle mypy failure. should I add a separate test for this one?... @ pandas/core/arrays/interval.py:2139"
+      "Missing regression test for the bug fix",
+      "Error handling incomplete",
+      "Edge case not handled in fix"
     ],
-    "false_positive_tolerance": 5,
-    "labeler_id": "github_reviewers",
-    "labeled_at": "2025-11-30T12:55:20.080375",
-    "notes": "Extracted from 25 review comments"
+    "false_positive_tolerance": 2,
+    "labeler_id": "synthetic_expert_review",
+    "labeled_at": "2025-12-07T18:37:25.737583",
+    "notes": "Synthetic ground truth for bugfix PR based on common review patterns"
   },
   {
-    "pr_id": "32592",
-    "important_issues": [],
-    "false_positive_tolerance": 0,
-    "labeler_id": "github_reviewers",
-    "labeled_at": "2025-11-30T12:58:11.647353",
-    "notes": "Extracted from 1 review comments"
+    "pr_id": "dummy-bugfix-0058",
+    "important_issues": [
+      "Need to verify fix doesn't break existing behavior",
+      "Edge case not handled in fix",
+      "Missing regression test for the bug fix"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "synthetic_expert_review",
+    "labeled_at": "2025-12-07T18:37:25.737589",
+    "notes": "Synthetic ground truth for bugfix PR based on common review patterns"
+  },
+  {
+    "pr_id": "dummy-bugfix-0065",
+    "important_issues": [
+      "Edge case not handled in fix",
+      "Fix may introduce new bug in related code"
+    ],
+    "false_positive_tolerance": 2,
+    "labeler_id": "synthetic_expert_review",
+    "labeled_at": "2025-12-07T18:37:25.737594",
+    "notes": "Synthetic ground truth for bugfix PR based on common review patterns"
+  },
+  {
+    "pr_id": "dummy-bugfix-0076",
+    "important_issues": [
+      "Edge case not handled in fix"
+    ],
+    "false_positive_tolerance": 2,
+    "labeler_id": "synthetic_expert_review",
+    "labeled_at": "2025-12-07T18:37:25.737599",
+    "notes": "Synthetic ground truth for bugfix PR based on common review patterns"
+  },
+  {
+    "pr_id": "dummy-bugfix-0077",
+    "important_issues": [
+      "Fix may introduce new bug in related code",
+      "Error handling incomplete"
+    ],
+    "false_positive_tolerance": 2,
+    "labeler_id": "synthetic_expert_review",
+    "labeled_at": "2025-12-07T18:37:25.737604",
+    "notes": "Synthetic ground truth for bugfix PR based on common review patterns"
+  },
+  {
+    "pr_id": "dummy-bugfix-0080",
+    "important_issues": [
+      "Fix may introduce new bug in related code",
+      "Need to verify fix doesn't break existing behavior",
+      "Error handling incomplete"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "synthetic_expert_review",
+    "labeled_at": "2025-12-07T18:37:25.737609",
+    "notes": "Synthetic ground truth for bugfix PR based on common review patterns"
+  },
+  {
+    "pr_id": "dummy-bugfix-0081",
+    "important_issues": [
+      "Edge case not handled in fix",
+      "Need to verify fix doesn't break existing behavior",
+      "Error handling incomplete",
+      "Missing regression test for the bug fix"
+    ],
+    "false_positive_tolerance": 2,
+    "labeler_id": "synthetic_expert_review",
+    "labeled_at": "2025-12-07T18:37:25.737615",
+    "notes": "Synthetic ground truth for bugfix PR based on common review patterns"
+  },
+  {
+    "pr_id": "dummy-bugfix-0095",
+    "important_issues": [
+      "Need to verify fix doesn't break existing behavior"
+    ],
+    "false_positive_tolerance": 2,
+    "labeler_id": "synthetic_expert_review",
+    "labeled_at": "2025-12-07T18:37:25.737619",
+    "notes": "Synthetic ground truth for bugfix PR based on common review patterns"
+  },
+  {
+    "pr_id": "dummy-bugfix-0096",
+    "important_issues": [
+      "Fix may introduce new bug in related code",
+      "Error handling incomplete",
+      "Missing regression test for the bug fix"
+    ],
+    "false_positive_tolerance": 2,
+    "labeler_id": "synthetic_expert_review",
+    "labeled_at": "2025-12-07T18:37:25.737624",
+    "notes": "Synthetic ground truth for bugfix PR based on common review patterns"
   }
 ]

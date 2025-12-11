@@ -1,74 +1,74 @@
 {
   "total_prs": 300,
-  "total_ground_truth": 68,
+  "total_ground_truth": 18,
   "categories": {
     "bugfix": {
       "category": "bugfix",
       "pr_count": 100,
-      "ground_truth_count": 30,
+      "ground_truth_count": 11,
       "statistics": {
         "avg_lines_changed": 136.4,
         "avg_complexity_score": 25.0,
-        "total_important_issues": 64,
-        "avg_issues_per_pr": 2.1
+        "total_important_issues": 24,
+        "avg_issues_per_pr": 2.2
       },
       "repositories": [
-        "scikit-learn/scikit-learn",
-        "pandas-dev/pandas",
-        "django/django",
+        "flask/flask",
         "requests/requests",
-        "tensorflow/tensorflow",
+        "django/django",
+        "fastapi/fastapi",
+        "pandas-dev/pandas",
+        "scikit-learn/scikit-learn",
+        "pytorch/pytorch",
         "numpy/numpy",
         "scipy/scipy",
-        "fastapi/fastapi",
-        "flask/flask",
-        "pytorch/pytorch"
+        "tensorflow/tensorflow"
       ]
     },
     "feature": {
       "category": "feature",
       "pr_count": 100,
-      "ground_truth_count": 26,
+      "ground_truth_count": 6,
       "statistics": {
-        "avg_lines_changed": 366.3,
-        "avg_complexity_score": 38.1,
-        "total_important_issues": 83,
-        "avg_issues_per_pr": 3.2
+        "avg_lines_changed": 370.5,
+        "avg_complexity_score": 38.5,
+        "total_important_issues": 23,
+        "avg_issues_per_pr": 3.8
       },
       "repositories": [
-        "django/django",
-        "scikit-learn/scikit-learn",
-        "pandas-dev/pandas",
+        "flask/flask",
         "requests/requests",
-        "tensorflow/tensorflow",
+        "django/django",
+        "fastapi/fastapi",
+        "pandas-dev/pandas",
+        "scikit-learn/scikit-learn",
+        "pytorch/pytorch",
         "numpy/numpy",
         "scipy/scipy",
-        "fastapi/fastapi",
-        "flask/flask",
-        "pytorch/pytorch"
+        "tensorflow/tensorflow"
       ]
     },
     "refactor": {
       "category": "refactor",
       "pr_count": 100,
-      "ground_truth_count": 12,
+      "ground_truth_count": 1,
       "statistics": {
-        "avg_lines_changed": 349.4,
+        "avg_lines_changed": 348.1,
         "avg_complexity_score": 29.4,
-        "total_important_issues": 22,
-        "avg_issues_per_pr": 1.8
+        "total_important_issues": 3,
+        "avg_issues_per_pr": 3.0
       },
       "repositories": [
-        "scikit-learn/scikit-learn",
-        "django/django",
-        "pandas-dev/pandas",
+        "flask/flask",
         "requests/requests",
-        "tensorflow/tensorflow",
+        "django/django",
+        "fastapi/fastapi",
+        "scikit-learn/scikit-learn",
+        "pandas-dev/pandas",
+        "pytorch/pytorch",
         "numpy/numpy",
         "scipy/scipy",
-        "fastapi/fastapi",
-        "flask/flask",
-        "pytorch/pytorch"
+        "tensorflow/tensorflow"
       ]
     }
   },
@@ -86,5 +86,5 @@
       "percentage": 33.3
     }
   },
-  "generated_at": "2025-12-05T22:33:33.973499"
+  "generated_at": "2025-12-07T18:37:25.749999"
 }

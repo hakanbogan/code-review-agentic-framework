@@ -2,7 +2,13 @@
 
 from eval.metrics.base import BaseMetric, MetricsAggregator
 from eval.metrics.core_metrics import ActionabilityMetric, CoverageMetric, NoiseMetric
-from eval.metrics.performance_metrics import PerformanceMetric, ThesisMetrics
+from eval.metrics.performance_metrics import PerformanceMetric
+from eval.metrics.benchmark_metrics import BenchmarkComparisonMetric
+from eval.metrics.advanced_metrics import (
+    PrecisionRecallMetric,
+    AnomalyDetectionMetric,
+    CategoryThresholdMetric,
+)
 from eval.metrics.statistical import (
     calculate_confidence_interval,
     cohens_kappa,
@@ -19,7 +25,10 @@ __all__ = [
     "NoiseMetric",
     "CoverageMetric",
     "PerformanceMetric",
-    "ThesisMetrics",
+    "BenchmarkComparisonMetric",
+    "PrecisionRecallMetric",
+    "AnomalyDetectionMetric",
+    "CategoryThresholdMetric",
     "calculate_confidence_interval",
     "proportion_test",
     "wilcoxon_test",
@@ -27,4 +36,3 @@ __all__ = [
     "cohens_kappa",
     "effect_size_cohens_d",
 ]
-

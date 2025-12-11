@@ -106,6 +106,97 @@ OPTIMIZATIONS = [
 ]
 
 
+def generate_ground_truth_for_category(prs: List[Dict], category: str) -> List[Dict]:
+    """Generate realistic ground truth labels for a category.
+
+    Based on real GitHub review patterns:
+    - Bugfix: Focus on regression, edge cases, testing
+    - Feature: Focus on API design, documentation, tests
+    - Refactor: Focus on code quality, performance, maintainability
+    """
+    ground_truths = []
+
+    # Ground truth templates by category
+    bugfix_issues = [
+        "Missing regression test for the bug fix",
+        "Edge case not handled in fix",
+        "Error handling incomplete",
+        "Fix may introduce new bug in related code",
+        "Need to verify fix doesn't break existing behavior",
+    ]
+
+    feature_issues = [
+        "Missing documentation for new feature",
+        "API design needs review - parameter naming unclear",
+        "Test coverage insufficient for new feature",
+        "Backward compatibility not addressed",
+        "Performance impact not evaluated",
+        "Missing validation for user inputs",
+    ]
+
+    refactor_issues = [
+        "Refactoring changes behavior - not safe",
+        "Performance regression in refactored code",
+        "Code duplication still exists",
+        "Complexity not actually reduced",
+        "Missing tests after refactoring",
+    ]
+
+    issue_pool = {
+        "bugfix": bugfix_issues,
+        "feature": feature_issues,
+        "refactor": refactor_issues,
+    }
+
+    issues = issue_pool.get(category, feature_issues)
+
+    # Generate GT for PRs with ground truth
+    for pr in prs:
+        if not pr["has_ground_truth"]:
+            continue
+
+        num_issues = pr["ground_truth_issues_count"]
+        if num_issues == 0:
+            continue
+
+        # Select random issues for this PR
+        selected_issues = random.sample(issues, min(num_issues, len(issues)))
+
+        # Calculate tolerance based on PR size and category
+        base_tolerance = 1
+        if category == "bugfix":
+            tolerance = base_tolerance + (pr["files_changed"] // 3)
+        elif category == "feature":
+            tolerance = base_tolerance + (pr["files_changed"] // 2)
+        else:  # refactor
+            tolerance = base_tolerance + (pr["files_changed"] // 4)
+
+        tolerance = min(tolerance, 8)  # Cap at 8
+
+        ground_truths.append({
+            "pr_id": pr["pr_id"],
+            "important_issues": selected_issues,
+            "false_positive_tolerance": tolerance,
+            "labeler_id": "synthetic_expert_review",
+            "labeled_at": datetime.now().isoformat(),
+            "notes": f"Synthetic ground truth for {category} PR based on common review patterns"
+        })
+
+    return ground_truths
+
+
+def save_ground_truth(ground_truths: List[Dict], category_dir: Path):
+    """Save ground truth for a category."""
+    if not ground_truths:
+        return
+
+    gt_file = category_dir / "ground_truth.json"
+    with open(gt_file, "w") as f:
+        json.dump(ground_truths, f, indent=2)
+
+    print(f"  └─ Generated {len(ground_truths)} ground truth entries")
+
+
 def generate_bugfix(pr_id: int) -> Dict:
     """Generate realistic bugfix PR."""
     template = random.choice(BUGFIX_TEMPLATES)
@@ -302,11 +393,15 @@ def save_category(category: str, prs: List[Dict], output_dir: Path):
     with open(prs_file, "w") as f:
         json.dump(prs, f, indent=2)
 
+    # Generate and save ground truth
+    ground_truths = generate_ground_truth_for_category(prs, category)
+    save_ground_truth(ground_truths, category_dir)
+
     # Calculate metadata
-    total_ground_truth = sum(1 for pr in prs if pr["has_ground_truth"])
+    total_ground_truth = len(ground_truths)
     avg_lines = sum(pr["lines_added"] + pr["lines_deleted"] for pr in prs) / len(prs)
     avg_complexity = sum(pr["metrics"]["complexity_score"] for pr in prs) / len(prs)
-    total_issues = sum(pr["ground_truth_issues_count"] for pr in prs)
+    total_issues = sum(len(gt["important_issues"]) for gt in ground_truths)
 
     metadata = {
         "category": category,

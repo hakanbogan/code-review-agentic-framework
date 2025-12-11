@@ -36,28 +36,3 @@ class PerformanceMetric(BaseMetric):
             "total_review_time_s": total_time,
             "total_cost": total_cost,
         }
-
-
-class ThesisMetrics(BaseMetric):
-    """Calculates thesis-specific CTR/CL/SI scores."""
-
-    def __init__(self):
-        super().__init__("thesis_metrics")
-
-    def calculate(
-        self,
-        results: List[PRReviewResult],
-        ground_truth: Dict[str, GroundTruthLabel],
-    ) -> Dict[str, float]:
-        """Calculate CTR, CL, SI scores.
-
-        These require manual evaluation, so we provide placeholders
-        for the evaluation framework to fill in.
-        """
-        # These would be calculated from manual evaluation data
-        # For now, return placeholders
-        return {
-            "change_type_recognition_score": 0.0,
-            "change_location_score": 0.0,
-            "solution_logic_score": 0.0,
-        }

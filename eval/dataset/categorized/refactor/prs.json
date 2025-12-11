@@ -1,95 +1,14 @@
 [
   {
     "pr_id": "dummy-refactor-0001",
-    "repository": "scikit-learn/scikit-learn",
-    "branch_source": "refactor/serializer",
-    "branch_target": "main",
-    "title": "Optimize serializer performance",
-    "description": "Performance optimization for serializer.\n\nImprovements:\n- Vectorize operations using numpy\n- Reduce memory allocations\n- Benchmark results: 2.4x faster\n\nNo API changes.",
-    "author": "annalee",
-    "commit_messages": [
-      "Optimize serializer",
-      "Add performance benchmarks"
-    ],
-    "files_changed": 2,
-    "lines_added": 235,
-    "lines_deleted": 65,
-    "language": "python",
-    "metrics": {
-      "total_lines": 553,
-      "files_changed": 2,
-      "commits": 2,
-      "complexity_score": 23,
-      "lines_added": 214,
-      "lines_deleted": 99
-    },
-    "has_ground_truth": false,
-    "ground_truth_issues_count": 0
-  },
-  {
-    "pr_id": "dummy-refactor-0002",
-    "repository": "django/django",
-    "branch_source": "refactor/middleware",
-    "branch_target": "main",
-    "title": "Optimize middleware performance",
-    "description": "Performance optimization for middleware.\n\nImprovements:\n- Cache frequently accessed data\n- Cache frequently accessed data\n- Benchmark results: 3.3x faster\n\nNo API changes.",
-    "author": "johndoe",
-    "commit_messages": [
-      "Optimize middleware",
-      "Add performance benchmarks"
-    ],
-    "files_changed": 2,
-    "lines_added": 268,
-    "lines_deleted": 75,
-    "language": "python",
-    "metrics": {
-      "total_lines": 429,
-      "files_changed": 2,
-      "commits": 2,
-      "complexity_score": 35,
-      "lines_added": 93,
-      "lines_deleted": 124
-    },
-    "has_ground_truth": false,
-    "ground_truth_issues_count": 0
-  },
-  {
-    "pr_id": "dummy-refactor-0003",
-    "repository": "numpy/numpy",
-    "branch_source": "refactor/database",
-    "branch_target": "main",
-    "title": "Optimize database performance",
-    "description": "Performance optimization for database.\n\nImprovements:\n- Reduce memory allocations\n- Reduce memory allocations\n- Benchmark results: 2.8x faster\n\nNo API changes.",
-    "author": "tomsmith",
-    "commit_messages": [
-      "Optimize database",
-      "Add performance benchmarks"
-    ],
-    "files_changed": 2,
-    "lines_added": 276,
-    "lines_deleted": 244,
-    "language": "python",
-    "metrics": {
-      "total_lines": 175,
-      "files_changed": 2,
-      "commits": 2,
-      "complexity_score": 18,
-      "lines_added": 83,
-      "lines_deleted": 218
-    },
-    "has_ground_truth": false,
-    "ground_truth_issues_count": 0
-  },
-  {
-    "pr_id": "dummy-refactor-0004",
     "repository": "tensorflow/tensorflow",
-    "branch_source": "refactor/database",
+    "branch_source": "refactor/router",
     "branch_target": "main",
-    "title": "Refactor database for better readability",
-    "description": "This PR refactors database to improve readability.\n\nChanges:\n- Extract constants into separate configuration file\n- Reduce cyclomatic complexity from 29 to 7\n- Improve code readability\n\nNo functional changes.",
+    "title": "Refactor router for better modularity",
+    "description": "This PR refactors router to improve modularity.\n\nChanges:\n- Extract validation rules into separate constants file\n- Reduce cyclomatic complexity from 29 to 7\n- Improve code readability\n\nNo functional changes.",
     "author": "briankim",
     "commit_messages": [
-      "Refactor database",
+      "Refactor router",
       "Extract helper functions",
       "Update tests"
     ],
@@ -109,7 +28,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0005",
+    "pr_id": "dummy-refactor-0002",
     "repository": "scipy/scipy",
     "branch_source": "refactor/parser",
     "branch_target": "main",
@@ -137,7 +56,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0006",
+    "pr_id": "dummy-refactor-0003",
     "repository": "scikit-learn/scikit-learn",
     "branch_source": "refactor/database",
     "branch_target": "main",
@@ -165,7 +84,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0007",
+    "pr_id": "dummy-refactor-0004",
     "repository": "pytorch/pytorch",
     "branch_source": "refactor/authentication",
     "branch_target": "main",
@@ -192,7 +111,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0008",
+    "pr_id": "dummy-refactor-0005",
     "repository": "requests/requests",
     "branch_source": "refactor/serializer",
     "branch_target": "main",
@@ -219,7 +138,7 @@
     "ground_truth_issues_count": 1
   },
   {
-    "pr_id": "dummy-refactor-0009",
+    "pr_id": "dummy-refactor-0006",
     "repository": "scikit-learn/scikit-learn",
     "branch_source": "refactor/cache",
     "branch_target": "main",
@@ -246,7 +165,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0010",
+    "pr_id": "dummy-refactor-0007",
     "repository": "tensorflow/tensorflow",
     "branch_source": "refactor/middleware",
     "branch_target": "main",
@@ -273,7 +192,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0011",
+    "pr_id": "dummy-refactor-0008",
     "repository": "requests/requests",
     "branch_source": "refactor/database",
     "branch_target": "main",
@@ -301,7 +220,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0012",
+    "pr_id": "dummy-refactor-0009",
     "repository": "pytorch/pytorch",
     "branch_source": "refactor/serializer",
     "branch_target": "main",
@@ -328,7 +247,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0013",
+    "pr_id": "dummy-refactor-0010",
     "repository": "flask/flask",
     "branch_source": "refactor/validator",
     "branch_target": "main",
@@ -355,7 +274,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0014",
+    "pr_id": "dummy-refactor-0011",
     "repository": "fastapi/fastapi",
     "branch_source": "refactor/parser",
     "branch_target": "main",
@@ -382,7 +301,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0015",
+    "pr_id": "dummy-refactor-0012",
     "repository": "requests/requests",
     "branch_source": "refactor/router",
     "branch_target": "main",
@@ -409,7 +328,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0016",
+    "pr_id": "dummy-refactor-0013",
     "repository": "pandas-dev/pandas",
     "branch_source": "refactor/cache",
     "branch_target": "main",
@@ -436,7 +355,7 @@
     "ground_truth_issues_count": 2
   },
   {
-    "pr_id": "dummy-refactor-0017",
+    "pr_id": "dummy-refactor-0014",
     "repository": "pytorch/pytorch",
     "branch_source": "refactor/validator",
     "branch_target": "main",
@@ -464,7 +383,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0018",
+    "pr_id": "dummy-refactor-0015",
     "repository": "fastapi/fastapi",
     "branch_source": "refactor/serializer",
     "branch_target": "main",
@@ -491,7 +410,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0019",
+    "pr_id": "dummy-refactor-0016",
     "repository": "pytorch/pytorch",
     "branch_source": "refactor/authentication",
     "branch_target": "main",
@@ -518,7 +437,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0020",
+    "pr_id": "dummy-refactor-0017",
     "repository": "scikit-learn/scikit-learn",
     "branch_source": "refactor/parser",
     "branch_target": "main",
@@ -546,7 +465,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0021",
+    "pr_id": "dummy-refactor-0018",
     "repository": "scipy/scipy",
     "branch_source": "refactor/router",
     "branch_target": "main",
@@ -573,7 +492,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0022",
+    "pr_id": "dummy-refactor-0019",
     "repository": "pytorch/pytorch",
     "branch_source": "refactor/database",
     "branch_target": "main",
@@ -600,7 +519,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0023",
+    "pr_id": "dummy-refactor-0020",
     "repository": "scikit-learn/scikit-learn",
     "branch_source": "refactor/authentication",
     "branch_target": "main",
@@ -627,7 +546,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0024",
+    "pr_id": "dummy-refactor-0021",
     "repository": "tensorflow/tensorflow",
     "branch_source": "refactor/cache",
     "branch_target": "main",
@@ -655,7 +574,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0025",
+    "pr_id": "dummy-refactor-0022",
     "repository": "tensorflow/tensorflow",
     "branch_source": "refactor/serializer",
     "branch_target": "main",
@@ -682,7 +601,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0026",
+    "pr_id": "dummy-refactor-0023",
     "repository": "tensorflow/tensorflow",
     "branch_source": "refactor/router",
     "branch_target": "main",
@@ -709,7 +628,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0027",
+    "pr_id": "dummy-refactor-0024",
     "repository": "numpy/numpy",
     "branch_source": "refactor/validator",
     "branch_target": "main",
@@ -737,7 +656,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0028",
+    "pr_id": "dummy-refactor-0025",
     "repository": "pytorch/pytorch",
     "branch_source": "refactor/cache",
     "branch_target": "main",
@@ -764,7 +683,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0029",
+    "pr_id": "dummy-refactor-0026",
     "repository": "flask/flask",
     "branch_source": "refactor/middleware",
     "branch_target": "main",
@@ -792,7 +711,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0030",
+    "pr_id": "dummy-refactor-0027",
     "repository": "requests/requests",
     "branch_source": "refactor/authentication",
     "branch_target": "main",
@@ -819,7 +738,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0031",
+    "pr_id": "dummy-refactor-0028",
     "repository": "fastapi/fastapi",
     "branch_source": "refactor/serializer",
     "branch_target": "main",
@@ -846,7 +765,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0032",
+    "pr_id": "dummy-refactor-0029",
     "repository": "scipy/scipy",
     "branch_source": "refactor/database",
     "branch_target": "main",
@@ -873,7 +792,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0033",
+    "pr_id": "dummy-refactor-0030",
     "repository": "fastapi/fastapi",
     "branch_source": "refactor/router",
     "branch_target": "main",
@@ -901,7 +820,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0034",
+    "pr_id": "dummy-refactor-0031",
     "repository": "pytorch/pytorch",
     "branch_source": "refactor/cache",
     "branch_target": "main",
@@ -928,7 +847,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0035",
+    "pr_id": "dummy-refactor-0032",
     "repository": "fastapi/fastapi",
     "branch_source": "refactor/database",
     "branch_target": "main",
@@ -956,7 +875,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0036",
+    "pr_id": "dummy-refactor-0033",
     "repository": "django/django",
     "branch_source": "refactor/router",
     "branch_target": "main",
@@ -984,7 +903,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0037",
+    "pr_id": "dummy-refactor-0034",
     "repository": "requests/requests",
     "branch_source": "refactor/serializer",
     "branch_target": "main",
@@ -1012,7 +931,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0038",
+    "pr_id": "dummy-refactor-0035",
     "repository": "fastapi/fastapi",
     "branch_source": "refactor/serializer",
     "branch_target": "main",
@@ -1040,7 +959,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0039",
+    "pr_id": "dummy-refactor-0036",
     "repository": "scikit-learn/scikit-learn",
     "branch_source": "refactor/cache",
     "branch_target": "main",
@@ -1068,7 +987,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0040",
+    "pr_id": "dummy-refactor-0037",
     "repository": "scipy/scipy",
     "branch_source": "refactor/cache",
     "branch_target": "main",
@@ -1096,7 +1015,7 @@
     "ground_truth_issues_count": 2
   },
   {
-    "pr_id": "dummy-refactor-0041",
+    "pr_id": "dummy-refactor-0038",
     "repository": "requests/requests",
     "branch_source": "refactor/serializer",
     "branch_target": "main",
@@ -1123,7 +1042,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0042",
+    "pr_id": "dummy-refactor-0039",
     "repository": "pytorch/pytorch",
     "branch_source": "refactor/validator",
     "branch_target": "main",
@@ -1151,7 +1070,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0043",
+    "pr_id": "dummy-refactor-0040",
     "repository": "requests/requests",
     "branch_source": "refactor/middleware",
     "branch_target": "main",
@@ -1178,7 +1097,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0044",
+    "pr_id": "dummy-refactor-0041",
     "repository": "fastapi/fastapi",
     "branch_source": "refactor/router",
     "branch_target": "main",
@@ -1206,7 +1125,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0045",
+    "pr_id": "dummy-refactor-0042",
     "repository": "requests/requests",
     "branch_source": "refactor/serializer",
     "branch_target": "main",
@@ -1234,7 +1153,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0046",
+    "pr_id": "dummy-refactor-0043",
     "repository": "pandas-dev/pandas",
     "branch_source": "refactor/router",
     "branch_target": "main",
@@ -1261,7 +1180,7 @@
     "ground_truth_issues_count": 1
   },
   {
-    "pr_id": "dummy-refactor-0047",
+    "pr_id": "dummy-refactor-0044",
     "repository": "requests/requests",
     "branch_source": "refactor/database",
     "branch_target": "main",
@@ -1288,7 +1207,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0048",
+    "pr_id": "dummy-refactor-0045",
     "repository": "numpy/numpy",
     "branch_source": "refactor/validator",
     "branch_target": "main",
@@ -1315,7 +1234,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0049",
+    "pr_id": "dummy-refactor-0046",
     "repository": "tensorflow/tensorflow",
     "branch_source": "refactor/serializer",
     "branch_target": "main",
@@ -1343,7 +1262,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0050",
+    "pr_id": "dummy-refactor-0047",
     "repository": "scikit-learn/scikit-learn",
     "branch_source": "refactor/router",
     "branch_target": "main",
@@ -1371,7 +1290,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0051",
+    "pr_id": "dummy-refactor-0048",
     "repository": "flask/flask",
     "branch_source": "refactor/router",
     "branch_target": "main",
@@ -1398,7 +1317,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0052",
+    "pr_id": "dummy-refactor-0049",
     "repository": "scikit-learn/scikit-learn",
     "branch_source": "refactor/router",
     "branch_target": "main",
@@ -1425,7 +1344,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0053",
+    "pr_id": "dummy-refactor-0050",
     "repository": "pandas-dev/pandas",
     "branch_source": "refactor/database",
     "branch_target": "main",
@@ -1453,7 +1372,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0054",
+    "pr_id": "dummy-refactor-0051",
     "repository": "numpy/numpy",
     "branch_source": "refactor/middleware",
     "branch_target": "main",
@@ -1480,7 +1399,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0055",
+    "pr_id": "dummy-refactor-0052",
     "repository": "tensorflow/tensorflow",
     "branch_source": "refactor/middleware",
     "branch_target": "main",
@@ -1508,7 +1427,7 @@
     "ground_truth_issues_count": 2
   },
   {
-    "pr_id": "dummy-refactor-0056",
+    "pr_id": "dummy-refactor-0053",
     "repository": "numpy/numpy",
     "branch_source": "refactor/parser",
     "branch_target": "main",
@@ -1535,7 +1454,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0057",
+    "pr_id": "dummy-refactor-0054",
     "repository": "tensorflow/tensorflow",
     "branch_source": "refactor/validator",
     "branch_target": "main",
@@ -1562,7 +1481,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0058",
+    "pr_id": "dummy-refactor-0055",
     "repository": "requests/requests",
     "branch_source": "refactor/cache",
     "branch_target": "main",
@@ -1590,7 +1509,7 @@
     "ground_truth_issues_count": 1
   },
   {
-    "pr_id": "dummy-refactor-0059",
+    "pr_id": "dummy-refactor-0056",
     "repository": "numpy/numpy",
     "branch_source": "refactor/authentication",
     "branch_target": "main",
@@ -1618,7 +1537,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0060",
+    "pr_id": "dummy-refactor-0057",
     "repository": "requests/requests",
     "branch_source": "refactor/middleware",
     "branch_target": "main",
@@ -1646,7 +1565,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0061",
+    "pr_id": "dummy-refactor-0058",
     "repository": "requests/requests",
     "branch_source": "refactor/cache",
     "branch_target": "main",
@@ -1674,7 +1593,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0062",
+    "pr_id": "dummy-refactor-0059",
     "repository": "fastapi/fastapi",
     "branch_source": "refactor/authentication",
     "branch_target": "main",
@@ -1702,7 +1621,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0063",
+    "pr_id": "dummy-refactor-0060",
     "repository": "pandas-dev/pandas",
     "branch_source": "refactor/validator",
     "branch_target": "main",
@@ -1729,7 +1648,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0064",
+    "pr_id": "dummy-refactor-0061",
     "repository": "tensorflow/tensorflow",
     "branch_source": "refactor/cache",
     "branch_target": "main",
@@ -1756,7 +1675,7 @@
     "ground_truth_issues_count": 3
   },
   {
-    "pr_id": "dummy-refactor-0065",
+    "pr_id": "dummy-refactor-0062",
     "repository": "pytorch/pytorch",
     "branch_source": "refactor/authentication",
     "branch_target": "main",
@@ -1784,7 +1703,7 @@
     "ground_truth_issues_count": 1
   },
   {
-    "pr_id": "dummy-refactor-0066",
+    "pr_id": "dummy-refactor-0063",
     "repository": "flask/flask",
     "branch_source": "refactor/database",
     "branch_target": "main",
@@ -1811,7 +1730,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0067",
+    "pr_id": "dummy-refactor-0064",
     "repository": "pandas-dev/pandas",
     "branch_source": "refactor/parser",
     "branch_target": "main",
@@ -1839,7 +1758,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0068",
+    "pr_id": "dummy-refactor-0065",
     "repository": "numpy/numpy",
     "branch_source": "refactor/serializer",
     "branch_target": "main",
@@ -1866,7 +1785,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0069",
+    "pr_id": "dummy-refactor-0066",
     "repository": "flask/flask",
     "branch_source": "refactor/validator",
     "branch_target": "main",
@@ -1894,7 +1813,7 @@
     "ground_truth_issues_count": 2
   },
   {
-    "pr_id": "dummy-refactor-0070",
+    "pr_id": "dummy-refactor-0067",
     "repository": "scikit-learn/scikit-learn",
     "branch_source": "refactor/cache",
     "branch_target": "main",
@@ -1922,7 +1841,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0071",
+    "pr_id": "dummy-refactor-0068",
     "repository": "fastapi/fastapi",
     "branch_source": "refactor/validator",
     "branch_target": "main",
@@ -1950,7 +1869,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0072",
+    "pr_id": "dummy-refactor-0069",
     "repository": "scipy/scipy",
     "branch_source": "refactor/authentication",
     "branch_target": "main",
@@ -1977,7 +1896,7 @@
     "ground_truth_issues_count": 1
   },
   {
-    "pr_id": "dummy-refactor-0073",
+    "pr_id": "dummy-refactor-0070",
     "repository": "tensorflow/tensorflow",
     "branch_source": "refactor/authentication",
     "branch_target": "main",
@@ -2004,7 +1923,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0074",
+    "pr_id": "dummy-refactor-0071",
     "repository": "requests/requests",
     "branch_source": "refactor/parser",
     "branch_target": "main",
@@ -2032,7 +1951,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0075",
+    "pr_id": "dummy-refactor-0072",
     "repository": "scipy/scipy",
     "branch_source": "refactor/cache",
     "branch_target": "main",
@@ -2059,7 +1978,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0076",
+    "pr_id": "dummy-refactor-0073",
     "repository": "tensorflow/tensorflow",
     "branch_source": "refactor/middleware",
     "branch_target": "main",
@@ -2086,7 +2005,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0077",
+    "pr_id": "dummy-refactor-0074",
     "repository": "flask/flask",
     "branch_source": "refactor/validator",
     "branch_target": "main",
@@ -2114,7 +2033,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0078",
+    "pr_id": "dummy-refactor-0075",
     "repository": "tensorflow/tensorflow",
     "branch_source": "refactor/parser",
     "branch_target": "main",
@@ -2141,7 +2060,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0079",
+    "pr_id": "dummy-refactor-0076",
     "repository": "numpy/numpy",
     "branch_source": "refactor/cache",
     "branch_target": "main",
@@ -2168,7 +2087,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0080",
+    "pr_id": "dummy-refactor-0077",
     "repository": "requests/requests",
     "branch_source": "refactor/cache",
     "branch_target": "main",
@@ -2195,7 +2114,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0081",
+    "pr_id": "dummy-refactor-0078",
     "repository": "pandas-dev/pandas",
     "branch_source": "refactor/validator",
     "branch_target": "main",
@@ -2223,7 +2142,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0082",
+    "pr_id": "dummy-refactor-0079",
     "repository": "fastapi/fastapi",
     "branch_source": "refactor/cache",
     "branch_target": "main",
@@ -2250,7 +2169,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0083",
+    "pr_id": "dummy-refactor-0080",
     "repository": "flask/flask",
     "branch_source": "refactor/serializer",
     "branch_target": "main",
@@ -2277,7 +2196,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0084",
+    "pr_id": "dummy-refactor-0081",
     "repository": "numpy/numpy",
     "branch_source": "refactor/middleware",
     "branch_target": "main",
@@ -2304,7 +2223,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0085",
+    "pr_id": "dummy-refactor-0082",
     "repository": "tensorflow/tensorflow",
     "branch_source": "refactor/database",
     "branch_target": "main",
@@ -2332,7 +2251,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0086",
+    "pr_id": "dummy-refactor-0083",
     "repository": "django/django",
     "branch_source": "refactor/cache",
     "branch_target": "main",
@@ -2360,7 +2279,7 @@
     "ground_truth_issues_count": 2
   },
   {
-    "pr_id": "dummy-refactor-0087",
+    "pr_id": "dummy-refactor-0084",
     "repository": "numpy/numpy",
     "branch_source": "refactor/database",
     "branch_target": "main",
@@ -2388,7 +2307,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0088",
+    "pr_id": "dummy-refactor-0085",
     "repository": "fastapi/fastapi",
     "branch_source": "refactor/cache",
     "branch_target": "main",
@@ -2416,7 +2335,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0089",
+    "pr_id": "dummy-refactor-0086",
     "repository": "pytorch/pytorch",
     "branch_source": "refactor/middleware",
     "branch_target": "main",
@@ -2444,7 +2363,7 @@
     "ground_truth_issues_count": 3
   },
   {
-    "pr_id": "dummy-refactor-0090",
+    "pr_id": "dummy-refactor-0087",
     "repository": "flask/flask",
     "branch_source": "refactor/authentication",
     "branch_target": "main",
@@ -2471,7 +2390,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0091",
+    "pr_id": "dummy-refactor-0088",
     "repository": "tensorflow/tensorflow",
     "branch_source": "refactor/authentication",
     "branch_target": "main",
@@ -2498,7 +2417,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0092",
+    "pr_id": "dummy-refactor-0089",
     "repository": "scipy/scipy",
     "branch_source": "refactor/authentication",
     "branch_target": "main",
@@ -2526,7 +2445,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0093",
+    "pr_id": "dummy-refactor-0090",
     "repository": "scipy/scipy",
     "branch_source": "refactor/cache",
     "branch_target": "main",
@@ -2553,7 +2472,7 @@
     "ground_truth_issues_count": 1
   },
   {
-    "pr_id": "dummy-refactor-0094",
+    "pr_id": "dummy-refactor-0091",
     "repository": "django/django",
     "branch_source": "refactor/validator",
     "branch_target": "main",
@@ -2580,7 +2499,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0095",
+    "pr_id": "dummy-refactor-0092",
     "repository": "pytorch/pytorch",
     "branch_source": "refactor/cache",
     "branch_target": "main",
@@ -2608,7 +2527,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0096",
+    "pr_id": "dummy-refactor-0093",
     "repository": "requests/requests",
     "branch_source": "refactor/cache",
     "branch_target": "main",
@@ -2636,7 +2555,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0097",
+    "pr_id": "dummy-refactor-0094",
     "repository": "django/django",
     "branch_source": "refactor/parser",
     "branch_target": "main",
@@ -2663,7 +2582,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0098",
+    "pr_id": "dummy-refactor-0095",
     "repository": "django/django",
     "branch_source": "refactor/serializer",
     "branch_target": "main",
@@ -2690,7 +2609,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0099",
+    "pr_id": "dummy-refactor-0096",
     "repository": "tensorflow/tensorflow",
     "branch_source": "refactor/database",
     "branch_target": "main",
@@ -2718,7 +2637,7 @@
     "ground_truth_issues_count": 0
   },
   {
-    "pr_id": "dummy-refactor-0100",
+    "pr_id": "dummy-refactor-0097",
     "repository": "scipy/scipy",
     "branch_source": "refactor/parser",
     "branch_target": "main",
@@ -2744,5 +2663,87 @@
     },
     "has_ground_truth": false,
     "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0098",
+    "repository": "flask/flask",
+    "branch_source": "refactor/router",
+    "branch_target": "main",
+    "title": "Refactor router for better maintainability",
+    "description": "This PR refactors router to improve maintainability.\n\nChanges:\n- Extract helper functions into separate configuration file\n- Reduce cyclomatic complexity from 27 to 7\n- Improve code readability\n\nNo functional changes.",
+    "author": "sarahjones",
+    "commit_messages": [
+      "Refactor router",
+      "Extract constants",
+      "Update tests"
+    ],
+    "files_changed": 3,
+    "lines_added": 259,
+    "lines_deleted": 90,
+    "language": "python",
+    "metrics": {
+      "total_lines": 455,
+      "files_changed": 3,
+      "commits": 3,
+      "complexity_score": 39,
+      "lines_added": 221,
+      "lines_deleted": 247
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0099",
+    "repository": "scipy/scipy",
+    "branch_source": "refactor/cache",
+    "branch_target": "main",
+    "title": "Optimize cache performance",
+    "description": "Performance optimization for cache.\n\nImprovements:\n- Reduce memory allocations\n- Reduce memory allocations\n- Benchmark results: 2.7x faster\n\nNo API changes.",
+    "author": "davidkim",
+    "commit_messages": [
+      "Optimize cache",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 283,
+    "lines_deleted": 133,
+    "language": "python",
+    "metrics": {
+      "total_lines": 290,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 20,
+      "lines_added": 229,
+      "lines_deleted": 274
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 0
+  },
+  {
+    "pr_id": "dummy-refactor-0100",
+    "repository": "requests/requests",
+    "branch_source": "refactor/middleware",
+    "branch_target": "main",
+    "title": "Optimize middleware performance",
+    "description": "Performance optimization for middleware.\n\nImprovements:\n- Cache frequently accessed data\n- Reduce memory allocations\n- Benchmark results: 3.4x faster\n\nNo API changes.",
+    "author": "lisawang",
+    "commit_messages": [
+      "Optimize middleware",
+      "Add performance benchmarks"
+    ],
+    "files_changed": 2,
+    "lines_added": 197,
+    "lines_deleted": 72,
+    "language": "python",
+    "metrics": {
+      "total_lines": 350,
+      "files_changed": 2,
+      "commits": 2,
+      "complexity_score": 18,
+      "lines_added": 153,
+      "lines_deleted": 249
+    },
+    "has_ground_truth": false,
+    "ground_truth_issues_count": 3
   }
 ]
