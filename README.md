@@ -21,10 +21,9 @@ poetry run python -m app.cli review \
   --language python \
   /path/to/repo
 
-# Or use GitHub URL directly
+# Or use GitHub URL directly (title/description auto-fetched)
 poetry run python -m app.cli review \
   --pr-id "14468" \
-  --title "Add upload file size limit" \
   --language python \
   "https://github.com/fastapi/fastapi"
 ```
