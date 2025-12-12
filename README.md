@@ -1,6 +1,6 @@
 # Multi-Agent Code Review Framework
 
-A master's thesis project implementing a multi-agent system for automated code review using CrewAI.
+A project implementing a multi-agent system for automated code review using CrewAI.
 
 ## Quick Start
 
@@ -32,7 +32,7 @@ poetry run python -m app.cli review \
 
 - 🤖 **Multi-Agent System**: 7 specialized agents (context, security, style, logic, performance, docs, tests)
 - 🔍 **Evidence-Based**: All findings require tool output or code references
-- 📊 **Evaluation Framework**: Statistical analysis and thesis-ready LaTeX export
+- 📊 **Evaluation Framework**: Statistical analysis and LaTeX export
 - ⚡ **Tool Integration**: Git, Ruff, ESLint, Semgrep, Bandit, Coverage.py
 - 🎯 **Actionable**: Auto-patches for simple fixes, detailed guidance for complex issues
 
@@ -211,7 +211,7 @@ poetry run python -m app.cli evaluate \
 poetry run python -m app.cli compare \
   ./eval/results/evaluation_single_agent.json \
   ./eval/results/evaluation_multi_agent.json \
-  --latex thesis_results.tex
+  --latex results.tex
 ```
 
 ## Research Goals
