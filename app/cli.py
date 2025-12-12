@@ -1,7 +1,11 @@
 """Command-line interface for code review framework."""
 
+import json
+import re
 import subprocess
 import tempfile
+import urllib.error
+import urllib.request
 from pathlib import Path
 from typing import Optional
 
@@ -184,19 +188,92 @@ def callback():
     setup_logging()
 
 
+def _fetch_pr_info_from_github(repo_url: str, pr_id: str, github_token: str | None) -> dict:
+    """Fetch PR information from GitHub API.
+
+    Args:
+        repo_url: GitHub repository URL (e.g., https://github.com/owner/repo)
+        pr_id: PR number
+        github_token: GitHub personal access token (optional)
+
+    Returns:
+        Dictionary with title, description, author, branch_source, branch_target
+    """
+    # Extract owner/repo from URL
+    match = re.match(r"https://github\.com/([^/]+)/([^/]+)", repo_url)
+    if not match:
+        raise ValueError(f"Invalid GitHub URL: {repo_url}")
+
+    owner, repo = match.groups()
+
+    # Build API URL
+    api_url = f"https://api.github.com/repos/{owner}/{repo}/pulls/{pr_id}"
+
+    # Create request with optional authentication
+    headers = {"Accept": "application/vnd.github.v3+json"}
+    if github_token:
+        headers["Authorization"] = f"token {github_token}"
+
+    try:
+        req = urllib.request.Request(api_url, headers=headers)
+        with urllib.request.urlopen(req, timeout=10) as response:
+            data = json.loads(response.read().decode())
+
+            return {
+                "title": data.get("title", ""),
+                "description": data.get("body") or "",
+                "author": data.get("user", {}).get("login", "unknown"),
+                "branch_source": data.get("head", {}).get("ref", "feature"),
+                "branch_target": data.get("base", {}).get("ref", "main"),
+            }
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            raise ValueError(f"PR #{pr_id} not found in {owner}/{repo}")
+        elif e.code == 401:
+            # Try without token for public repos
+            if github_token:
+                # Token might be invalid, try without it for public repos
+                headers_no_auth = {"Accept": "application/vnd.github.v3+json"}
+                req = urllib.request.Request(api_url, headers=headers_no_auth)
+                try:
+                    with urllib.request.urlopen(req, timeout=10) as response:
+                        data = json.loads(response.read().decode())
+                        return {
+                            "title": data.get("title", ""),
+                            "description": data.get("body") or "",
+                            "author": data.get("user", {}).get("login", "unknown"),
+                            "branch_source": data.get("head", {}).get("ref", "feature"),
+                            "branch_target": data.get("base", {}).get("ref", "main"),
+                        }
+                except urllib.error.HTTPError:
+                    raise ValueError(
+                        "GitHub authentication failed. Check your GITHUB_TOKEN in .env or ensure repo is public")
+            else:
+                raise ValueError("GitHub authentication required. Set GITHUB_TOKEN in .env")
+        else:
+            raise ValueError(f"GitHub API error: {e.code} - {e.reason}")
+    except Exception as e:
+        raise ValueError(f"Failed to fetch PR info: {e}")
+
+
 @app.command()
 def review(
     repo_path_or_url: str = typer.Argument(..., help="Local path or GitHub URL (https://github.com/owner/repo)"),
     pr_id: str = typer.Option(..., "--pr-id", help="PR identifier"),
-    title: str = typer.Option(..., "--title", help="PR title"),
-    description: str = typer.Option("", "--description", help="PR description"),
+    title: Optional[str] = typer.Option(None, "--title", help="PR title (auto-fetched from GitHub if not provided)"),
+    description: Optional[str] = typer.Option(
+        None, "--description", help="PR description (auto-fetched from GitHub if not provided)"),
     language: str = typer.Option("python", "--language", help="Primary language"),
     multi_agent: bool = typer.Option(True, "--multi-agent/--single-agent", help="Use multi-agent system"),
     output: Optional[Path] = typer.Option(None, "--output", "-o", help="Output file path"),
     checkout_pr: bool = typer.Option(True, "--checkout-pr/--no-checkout-pr",
                                      help="Checkout PR branch if GitHub URL provided"),
 ):
-    """Run code review on a repository."""
+    """Run code review on a repository.
+
+    If GitHub URL is provided and title/description are not specified,
+    they will be automatically fetched from GitHub API.
+    """
     settings = get_settings()
 
     console.print(f"[bold]Starting review for PR {pr_id}[/bold]")
@@ -204,9 +281,38 @@ def review(
     # Resolve repository path (handle both local paths and GitHub URLs)
     repo_path = _resolve_repo_path(repo_path_or_url)
 
+    # Auto-fetch PR info from GitHub if URL provided and title/description missing
+    is_github_url = repo_path_or_url.startswith(("https://github.com/", "git@github.com:"))
+    if is_github_url and (title is None or description is None):
+        try:
+            console.print("[cyan]Fetching PR information from GitHub...[/cyan]")
+            pr_info = _fetch_pr_info_from_github(repo_path_or_url, pr_id, settings.github_token)
+            title = title or pr_info["title"]
+            description = description or pr_info["description"]
+            author = pr_info["author"]
+            branch_source = pr_info["branch_source"]
+            branch_target = pr_info["branch_target"]
+            console.print(f"[green]✓[/green] Fetched PR: {title[:60]}...")
+        except Exception as e:
+            console.print(f"[yellow]Warning: Could not fetch PR info from GitHub: {e}[/yellow]")
+            if title is None:
+                title = f"PR #{pr_id}"
+            if description is None:
+                description = ""
+            author = "unknown"
+            branch_source = "feature"
+            branch_target = "main"
+    else:
+        # Use provided values or defaults
+        title = title or f"PR #{pr_id}"
+        description = description or ""
+        author = "unknown"
+        branch_source = "feature"
+        branch_target = "main"
+
     # If GitHub URL and checkout_pr enabled, try to checkout PR branch
     base_ref = None
-    if checkout_pr and repo_path_or_url.startswith(("https://github.com/", "git@github.com:")):
+    if checkout_pr and is_github_url:
         try:
             merge_base, pr_branch = _checkout_pr_branch(repo_path, pr_id)
             # Use merge base as base_ref for accurate diff
@@ -219,11 +325,11 @@ def review(
     pr_metadata = PRMetadata(
         pr_id=pr_id,
         repository=repo_path.name,
-        branch_source="feature",
-        branch_target="main",
+        branch_source=branch_source,
+        branch_target=branch_target,
         title=title,
         description=description,
-        author="unknown",
+        author=author,
         language=language,
     )
 
