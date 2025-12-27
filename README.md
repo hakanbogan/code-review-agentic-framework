@@ -11,7 +11,9 @@ poetry install
 # Configure environment variables
 cp .env.example .env
 # Edit .env and add your API keys:
-#   - OPENAI_API_KEY (required)
+#   - LLM_PROVIDER (openai or anthropic)
+#   - OPENAI_API_KEY (required if LLM_PROVIDER=openai)
+#   - ANTHROPIC_API_KEY (required if LLM_PROVIDER=anthropic)
 #   - GITHUB_TOKEN (required for dataset collection)
 
 # Run a review (local path)
@@ -26,6 +28,8 @@ poetry run python -m app.cli review \
   --pr-id "14468" \
   --language python \
   "https://github.com/fastapi/fastapi"
+
+# Supported languages: python, javascript, typescript, java, go, rust, cpp, csharp, ruby, php
 ```
 
 ## Features
@@ -33,8 +37,10 @@ poetry run python -m app.cli review \
 - 🤖 **Multi-Agent System**: 7 specialized agents (context, security, style, logic, performance, docs, tests)
 - 🔍 **Evidence-Based**: All findings require tool output or code references
 - 📊 **Evaluation Framework**: Statistical analysis and LaTeX export
-- ⚡ **Tool Integration**: Git, Ruff, ESLint, Semgrep, Bandit, Coverage.py
+- ⚡ **Tool Integration**: Git, Ruff (Python), ESLint (JS/TS), Semgrep, Bandit, Coverage.py
 - 🎯 **Actionable**: Auto-patches for simple fixes, detailed guidance for complex issues
+- 💰 **Cost Tracking**: Real-time token usage and cost estimation for OpenAI and Anthropic
+- 🌐 **Multi-Provider**: Support for both OpenAI and Anthropic LLMs
 
 ## System Architecture
 
@@ -70,8 +76,10 @@ poetry run python -m app.cli review \
 
 ### Phase 1: Context Building
 - Extract git diff between PR branch and base branch
-- Run language-specific tools (Ruff, ESLint)
-- Run security tools (Semgrep, Bandit)
+- Run language-specific tools (automatically selected based on `--language` parameter):
+  - **Python**: Ruff (linting), Bandit (security)
+  - **JavaScript/TypeScript**: ESLint (linting)
+  - **All languages**: Semgrep (security, language-agnostic)
 - Build `PRContext` with all information
 
 ### Phase 2: Analysis Agents
@@ -99,6 +107,7 @@ Creates final `PRReviewResult` with:
 - Markdown review comment
 - JSON output for evaluation
 - Metrics (time, cost, token usage)
+- Real-time cost estimation based on provider and model
 
 ## Project Structure
 
@@ -116,7 +125,8 @@ Creates final `PRReviewResult` with:
 │   ├── revision_proposer.py
 │   └── supervisor.py
 ├── domain/             # Domain models (Pydantic)
-│   └── models.py
+│   ├── models.py       # PRMetadata, Finding, Language enum, LLMProvider enum
+│   └── __init__.py
 ├── tools/              # Analysis tool integrations
 │   ├── base.py         # Tool base class
 │   ├── git_diff.py
@@ -146,14 +156,23 @@ Creates final `PRReviewResult` with:
 Key settings in `.env`:
 
 ```env
-# Required
-OPENAI_API_KEY=sk-proj-...
-GITHUB_TOKEN=ghp_...
+# LLM Provider Selection
+LLM_PROVIDER=anthropic  # or "openai"
 
-# LLM Settings
+# OpenAI Configuration (if LLM_PROVIDER=openai)
+OPENAI_API_KEY=sk-proj-...
 OPENAI_MODEL=gpt-4-turbo-preview
 OPENAI_TEMPERATURE=0.0
 OPENAI_SEED=42
+
+# Anthropic Configuration (if LLM_PROVIDER=anthropic)
+# Recommended: claude-3-5-haiku-20241022 (best price-performance)
+# Alternatives: claude-3-5-sonnet-20241022 (balanced), claude-3-opus-20240229 (highest quality)
+ANTHROPIC_API_KEY=sk-ant-api03-...
+ANTHROPIC_MODEL=claude-3-5-haiku-20241022
+
+# GitHub (required for dataset collection and PR fetching)
+GITHUB_TOKEN=ghp_...
 
 # Review Configuration
 MAX_NITS_PER_REVIEW=5
@@ -165,6 +184,18 @@ EVAL_DATASET_PATH=./eval/dataset
 EVAL_RESULTS_PATH=./eval/results
 SEED_FOR_EXPERIMENTS=42
 ```
+
+### LLM Provider Selection
+
+The framework supports both **OpenAI** and **Anthropic** LLM providers:
+
+- **OpenAI**: GPT-4 Turbo, GPT-4, GPT-3.5 Turbo
+- **Anthropic**: 
+  - **Claude 3.5 Haiku** (recommended): Best price-performance ratio ($0.80-1.00/1M input, $4-5/1M output)
+  - **Claude 3.5 Sonnet**: Balanced performance ($3/1M input, $15/1M output)
+  - **Claude 3 Opus**: Highest quality ($15/1M input, $75/1M output)
+
+Set `LLM_PROVIDER=anthropic` or `LLM_PROVIDER=openai` in your `.env` file.
 
 See `.env.example` for all available configuration options.
 
@@ -229,6 +260,8 @@ Compared to single-agent LLM baselines.
 - **DRY**: Shared base classes, reusable components
 - **Evidence-Based**: Every finding must cite tool output or code reference
 - **Reproducible**: Deterministic settings, versioned prompts, pinned tools
+- **Type-Safe**: Enum-based language and provider selection
+- **Cost-Aware**: Real-time token tracking and cost estimation
 
 ## Development
 
