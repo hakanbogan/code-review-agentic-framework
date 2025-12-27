@@ -76,12 +76,24 @@ class ChangeContextAnalyst(BaseAgent):
     def _execute_task(self, agent: Agent, task: Task) -> dict:
         """Execute CrewAI task and extract results."""
         try:
-            crew = Crew(agents=[agent], tasks=[task], verbose=False)
+            self._reset_token_tracking()
+            # Pass callback to Crew to track token usage
+            crew = Crew(
+                agents=[agent],
+                tasks=[task],
+                verbose=False,
+                callbacks=[self.token_callback]
+            )
             result = crew.kickoff()
             output = str(result) if result else ""
+            tokens = self._get_token_count()
+            # Fallback: if callback didn't capture tokens, try to get from result
+            if tokens == 0 and hasattr(result, 'usage_metadata'):
+                if hasattr(result.usage_metadata, 'total_tokens'):
+                    tokens = result.usage_metadata.total_tokens
             return {
                 "reasoning": output[:500] or "Analysis completed",
-                "tokens": 0,
+                "tokens": tokens,
                 "raw_output": output,
             }
         except Exception as e:

@@ -8,6 +8,8 @@ from domain.models import (
     Finding,
     FindingType,
     GroundTruthLabel,
+    Language,
+    LLMProvider,
     PRContext,
     PRMetadata,
     PRReviewResult,
@@ -24,6 +26,8 @@ __all__ = [
     "Finding",
     "FindingType",
     "GroundTruthLabel",
+    "Language",
+    "LLMProvider",
     "PRContext",
     "PRMetadata",
     "PRReviewResult",
@@ -31,4 +35,3 @@ __all__ = [
     "SystemType",
     "ToolResult",
 ]
-

@@ -17,7 +17,7 @@ from agents import (
 )
 from app.config import Settings
 from app.logging import LogContext, get_logger
-from domain import AgentDecision, Finding, PRContext, PRMetadata, PRReviewResult, Severity, SystemType
+from domain import AgentDecision, Finding, Language, PRContext, PRMetadata, PRReviewResult, Severity, SystemType
 from flows.context_builder import ContextBuilder
 from tools.factory import create_tool_registry
 
@@ -27,9 +27,10 @@ logger = get_logger(__name__)
 class ReviewFlow:
     """Orchestrates the multi-agent review process."""
 
-    def __init__(self, settings: Settings):
+    def __init__(self, settings: Settings, language: Language = Language.PYTHON):
         self.settings = settings
-        self.tool_registry = create_tool_registry(settings)
+        self.language = language
+        self.tool_registry = create_tool_registry(settings, language)
         self.context_builder = ContextBuilder(self.tool_registry)
         self.base_branch = None  # Will be set if PR branch is checked out
 
@@ -121,6 +122,9 @@ class ReviewFlow:
 
         total_tokens = sum(d.tokens_used for d in decisions)
 
+        # Store decisions for cost estimation
+        self._last_decisions = decisions
+
         return PRReviewResult(
             correlation_id=context.correlation_id,
             pr_id=context.pr_metadata.pr_id,
@@ -186,7 +190,67 @@ class ReviewFlow:
         return lines
 
     def _estimate_cost(self, total_tokens: int) -> float:
-        """Estimate cost in USD (GPT-4-turbo pricing, 70/30 input/output split)."""
-        input_tokens = int(total_tokens * 0.7)
-        output_tokens = int(total_tokens * 0.3)
-        return round((input_tokens / 1000 * 0.01) + (output_tokens / 1000 * 0.03), 4)
+        """Estimate cost in USD based on provider and model."""
+        if total_tokens == 0:
+            return 0.0
+
+        # Get actual token split from decisions if available
+        decisions = getattr(self, '_last_decisions', [])
+        if decisions:
+            total_input = sum(getattr(d, 'input_tokens', 0) for d in decisions)
+            total_output = sum(getattr(d, 'output_tokens', 0) for d in decisions)
+            if total_input + total_output > 0:
+                input_tokens = total_input
+                output_tokens = total_output
+            else:
+                # Fallback to 70/30 split
+                input_tokens = int(total_tokens * 0.7)
+                output_tokens = int(total_tokens * 0.3)
+        else:
+            # Fallback to 70/30 split
+            input_tokens = int(total_tokens * 0.7)
+            output_tokens = int(total_tokens * 0.3)
+
+        provider = self.settings.llm_provider
+        model = self.settings.openai_model if provider.value == "openai" else self.settings.anthropic_model
+
+        # Pricing per 1M tokens (as of 2024-2025)
+        if provider.value == "openai":
+            # OpenAI pricing
+            if "gpt-4o" in model.lower():
+                input_price = 2.50  # $2.50 per 1M input tokens
+                output_price = 10.00  # $10.00 per 1M output tokens
+            elif "gpt-4-turbo" in model.lower() or "gpt-4o-mini" in model.lower():
+                input_price = 2.50
+                output_price = 10.00
+            elif "gpt-4" in model.lower():
+                input_price = 10.00
+                output_price = 30.00
+            elif "gpt-3.5-turbo" in model.lower():
+                input_price = 0.50
+                output_price = 1.50
+            else:
+                # Default to GPT-4o pricing
+                input_price = 2.50
+                output_price = 10.00
+        else:
+            # Anthropic pricing
+            if "claude-3-5-sonnet" in model.lower():
+                input_price = 3.00  # $3.00 per 1M input tokens
+                output_price = 15.00  # $15.00 per 1M output tokens
+            elif "claude-3-opus" in model.lower():
+                input_price = 15.00
+                output_price = 75.00
+            elif "claude-3-sonnet" in model.lower():
+                input_price = 3.00
+                output_price = 15.00
+            elif "claude-3-haiku" in model.lower():
+                input_price = 0.25
+                output_price = 1.25
+            else:
+                # Default to Claude 3.5 Sonnet pricing
+                input_price = 3.00
+                output_price = 15.00
+
+        cost = (input_tokens / 1_000_000 * input_price) + (output_tokens / 1_000_000 * output_price)
+        return round(cost, 4)

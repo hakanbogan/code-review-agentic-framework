@@ -54,6 +54,28 @@ class SystemType(str, Enum):
     TOOLS_ONLY = "tools_only"
 
 
+class LLMProvider(str, Enum):
+    """Supported LLM providers."""
+
+    OPENAI = "openai"
+    ANTHROPIC = "anthropic"
+
+
+class Language(str, Enum):
+    """Supported programming languages."""
+
+    PYTHON = "python"
+    JAVASCRIPT = "javascript"
+    TYPESCRIPT = "typescript"
+    JAVA = "java"
+    GO = "go"
+    RUST = "rust"
+    CPP = "cpp"
+    CSHARP = "csharp"
+    RUBY = "ruby"
+    PHP = "php"
+
+
 class Evidence(BaseModel):
     """Evidence supporting a finding."""
 
@@ -103,7 +125,7 @@ class PRMetadata(BaseModel):
     files_changed: int = Field(default=0, description="Number of files changed")
     lines_added: int = Field(default=0, description="Lines added")
     lines_deleted: int = Field(default=0, description="Lines deleted")
-    language: str = Field(..., description="Primary language (python, javascript, etc.)")
+    language: Language = Field(..., description="Primary programming language")
 
 
 class ToolResult(BaseModel):

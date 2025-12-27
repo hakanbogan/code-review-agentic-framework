@@ -5,7 +5,7 @@ from typing import Dict
 from uuid import uuid4
 
 from app.logging import get_logger
-from domain import PRContext, PRMetadata, ToolResult
+from domain import Language, PRContext, PRMetadata, ToolResult
 from tools import ToolRegistry
 
 logger = get_logger(__name__)
@@ -46,15 +46,15 @@ class ContextBuilder:
             tool_results=tool_results,
         )
 
-    def _run_language_tools(self, language: str, repo_path: Path) -> Dict[str, ToolResult]:
+    def _run_language_tools(self, language: Language, repo_path: Path) -> Dict[str, ToolResult]:
         """Run language-specific and security tools."""
         results = {}
 
         # Language-specific tools
         language_tools = {
-            "python": ["ruff", "bandit"],
-            "javascript": ["eslint"],
-            "typescript": ["eslint"],
+            Language.PYTHON: ["ruff", "bandit"],
+            Language.JAVASCRIPT: ["eslint"],
+            Language.TYPESCRIPT: ["eslint"],
         }
 
         for tool_name in language_tools.get(language, []):

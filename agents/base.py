@@ -6,13 +6,42 @@ from abc import ABC, abstractmethod
 from time import time
 from typing import Any, Dict, List
 
+from langchain_core.callbacks import BaseCallbackHandler
+from langchain_anthropic import ChatAnthropic
 from langchain_openai import ChatOpenAI
 
 from app.config import Settings
 from app.logging import get_logger
-from domain import AgentDecision, AgentRole, Evidence, Finding, FindingType, PRContext, Severity
+from domain import AgentDecision, AgentRole, Evidence, Finding, FindingType, LLMProvider, PRContext, Severity
 
 logger = get_logger(__name__)
+
+
+class TokenUsageCallback(BaseCallbackHandler):
+    """Callback to track token usage from LLM calls."""
+
+    def __init__(self):
+        super().__init__()
+        self.total_input_tokens = 0
+        self.total_output_tokens = 0
+
+    def on_llm_end(self, response, **kwargs):
+        """Capture token usage from LLM response."""
+        if hasattr(response, "llm_output") and response.llm_output:
+            usage = response.llm_output.get("token_usage", {})
+            self.total_input_tokens += usage.get("prompt_tokens", 0)
+            self.total_output_tokens += usage.get("completion_tokens", 0)
+        # Also check response.usage_metadata for newer LangChain versions
+        elif hasattr(response, "usage_metadata"):
+            if hasattr(response.usage_metadata, "input_tokens"):
+                self.total_input_tokens += response.usage_metadata.input_tokens
+            if hasattr(response.usage_metadata, "output_tokens"):
+                self.total_output_tokens += response.usage_metadata.output_tokens
+
+    @property
+    def total_tokens(self) -> int:
+        """Get total tokens used."""
+        return self.total_input_tokens + self.total_output_tokens
 
 
 class BaseAgent(ABC):
@@ -22,15 +51,24 @@ class BaseAgent(ABC):
         self.role = role
         self.settings = settings
         self.prompt_version = settings.default_prompt_version
+        self.token_callback = TokenUsageCallback()
         self.llm = self._create_llm(settings)
 
-    def _create_llm(self, settings: Settings) -> ChatOpenAI:
-        """Create LLM instance with consistent configuration."""
+    def _create_llm(self, settings: Settings) -> ChatOpenAI | ChatAnthropic:
+        """Create LLM instance with consistent configuration based on provider."""
+        if settings.llm_provider == LLMProvider.ANTHROPIC:
+            return ChatAnthropic(
+                api_key=settings.anthropic_api_key,
+                model=settings.anthropic_model,
+                temperature=settings.openai_temperature,
+                callbacks=[self.token_callback],
+            )
         return ChatOpenAI(
             api_key=settings.openai_api_key,
             model=settings.openai_model,
             temperature=settings.openai_temperature,
             seed=settings.openai_seed,
+            callbacks=[self.token_callback],
         )
 
     @abstractmethod
@@ -71,6 +109,15 @@ class BaseAgent(ABC):
         start = time()
         result = func(*args, **kwargs)
         return result, time() - start
+
+    def _reset_token_tracking(self) -> None:
+        """Reset token callback counters."""
+        self.token_callback.total_input_tokens = 0
+        self.token_callback.total_output_tokens = 0
+
+    def _get_token_count(self) -> int:
+        """Get total tokens used from callback."""
+        return self.token_callback.total_tokens
 
     def _validate_findings(self, findings: List[Finding]) -> List[Finding]:
         """Validate findings meet evidence requirements."""

@@ -1,22 +1,17 @@
 """Unit tests for domain models."""
 
-from datetime import datetime
 from uuid import uuid4
 
-import pytest
-
 from domain import (
-    AgentDecision,
     AgentRole,
     Evidence,
     Finding,
     FindingType,
-    PRContext,
     PRMetadata,
     PRReviewResult,
     Severity,
     SystemType,
-    ToolResult,
+    Language
 )
 
 
@@ -28,7 +23,7 @@ def test_evidence_creation():
         snippet="def foo():",
         metadata={"severity": "high"},
     )
-    
+
     assert evidence.tool == "ruff"
     assert evidence.reference == "file.py:10"
     assert evidence.metadata["severity"] == "high"
@@ -37,7 +32,7 @@ def test_evidence_creation():
 def test_finding_creation():
     """Test Finding model creation."""
     evidence = Evidence(tool="semgrep", reference="auth.py:42")
-    
+
     finding = Finding(
         type=FindingType.SECURITY,
         severity=Severity.CRITICAL,
@@ -47,7 +42,7 @@ def test_finding_creation():
         description="Unsafe SQL query construction",
         location="auth.py:42-45",
     )
-    
+
     assert finding.type == FindingType.SECURITY
     assert finding.severity == Severity.CRITICAL
     assert finding.source_agent == AgentRole.SECURITY_REVIEWER
@@ -57,7 +52,7 @@ def test_finding_creation():
 def test_finding_patch_validation():
     """Test patch size validation."""
     evidence = Evidence(tool="ruff", reference="file.py:1")
-    
+
     # Should pass - small patch
     finding = Finding(
         type=FindingType.STYLE,
@@ -70,7 +65,7 @@ def test_finding_patch_validation():
         has_patch=True,
         patch="def foo():\n    pass",
     )
-    
+
     assert finding.patch is not None
 
 
@@ -83,17 +78,17 @@ def test_pr_metadata_creation():
         branch_target="main",
         title="Add feature",
         author="developer",
-        language="python",
+        language=Language.PYTHON,
     )
-    
+
     assert metadata.pr_id == "123"
-    assert metadata.language == "python"
+    assert metadata.language == Language.PYTHON
 
 
 def test_pr_review_result_findings_grouping():
     """Test findings grouping in PRReviewResult."""
     correlation_id = uuid4()
-    
+
     findings = [
         Finding(
             type=FindingType.SECURITY,
@@ -114,7 +109,7 @@ def test_pr_review_result_findings_grouping():
             location="file.py:10",
         ),
     ]
-    
+
     result = PRReviewResult(
         correlation_id=correlation_id,
         pr_id="123",
@@ -124,11 +119,11 @@ def test_pr_review_result_findings_grouping():
         final_comment_md="# Review",
         review_time_s=5.0,
     )
-    
+
     by_severity = result.findings_by_severity
     assert len(by_severity[Severity.CRITICAL]) == 1
     assert len(by_severity[Severity.NIT]) == 1
-    
+
     by_type = result.findings_by_type
     assert len(by_type[FindingType.SECURITY]) == 1
     assert len(by_type[FindingType.STYLE]) == 1
@@ -137,7 +132,7 @@ def test_pr_review_result_findings_grouping():
 def test_actionable_findings():
     """Test actionable findings property."""
     correlation_id = uuid4()
-    
+
     findings = [
         Finding(
             type=FindingType.SECURITY,
@@ -159,7 +154,7 @@ def test_actionable_findings():
             has_patch=True,
         ),
     ]
-    
+
     result = PRReviewResult(
         correlation_id=correlation_id,
         pr_id="123",
@@ -169,7 +164,6 @@ def test_actionable_findings():
         final_comment_md="# Review",
         review_time_s=5.0,
     )
-    
+
     actionable = result.actionable_findings
     assert len(actionable) == 2  # Critical + nit with patch
-

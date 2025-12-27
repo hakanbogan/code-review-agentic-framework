@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from domain import EvaluationResult, GroundTruthLabel, PRMetadata, PRReviewResult, SystemType
+from domain import EvaluationResult, GroundTruthLabel, PRMetadata, PRReviewResult, SystemType, Language
 from eval.metrics import (
     ActionabilityMetric,
     CoverageMetric,
@@ -110,7 +110,7 @@ class EvaluationRunner:
 
     def __init__(self, settings: Settings):
         self.settings = settings
-        self.review_flow = ReviewFlow(settings)
+        self.review_flow = ReviewFlow(settings, language=Language.PYTHON)
         self.dataset_loader = DatasetLoader(settings.eval_dataset_path)
         self.review_storage = ReviewStorage(settings)
 

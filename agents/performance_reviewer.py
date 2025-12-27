@@ -164,10 +164,20 @@ class PerformanceReviewer(BaseAgent):
     def _execute_task(self, agent: Agent, task: Task) -> dict:
         """Execute CrewAI task."""
         try:
-            crew = Crew(agents=[agent], tasks=[task], verbose=False)
+            self._reset_token_tracking()
+            crew = Crew(
+                agents=[agent],
+                tasks=[task],
+                verbose=False,
+                callbacks=[self.token_callback]
+            )
             result = crew.kickoff()
             output = str(result) if result else ""
-            return {"reasoning": output[:500], "tokens": 0, "raw_output": output}
+            tokens = self._get_token_count()
+            if tokens == 0 and hasattr(result, 'usage_metadata'):
+                if hasattr(result.usage_metadata, 'total_tokens'):
+                    tokens = result.usage_metadata.total_tokens
+            return {"reasoning": output[:500], "tokens": tokens, "raw_output": output}
         except Exception as e:
             logger.error(f"Error executing CrewAI task: {e}")
             return {"reasoning": f"Analysis error: {e}", "tokens": 0, "raw_output": ""}

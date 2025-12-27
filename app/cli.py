@@ -16,7 +16,7 @@ from rich.table import Table
 from app.config import get_settings
 from app.logging import setup_logging
 from app.review_storage import ReviewStorage
-from domain import PRMetadata, SystemType
+from domain import Language, PRMetadata, SystemType
 from eval import ComparisonAnalyzer, EvaluationRunner
 from flows import ReviewFlow
 
@@ -263,7 +263,8 @@ def review(
     title: Optional[str] = typer.Option(None, "--title", help="PR title (auto-fetched from GitHub if not provided)"),
     description: Optional[str] = typer.Option(
         None, "--description", help="PR description (auto-fetched from GitHub if not provided)"),
-    language: str = typer.Option("python", "--language", help="Primary language"),
+    language: str = typer.Option("python", "--language",
+                                 help="Primary language (python, javascript, typescript, etc.)"),
     multi_agent: bool = typer.Option(True, "--multi-agent/--single-agent", help="Use multi-agent system"),
     output: Optional[Path] = typer.Option(None, "--output", "-o", help="Output file path"),
     checkout_pr: bool = typer.Option(True, "--checkout-pr/--no-checkout-pr",
@@ -321,6 +322,20 @@ def review(
             console.print(f"[yellow]Warning: Could not checkout PR branch: {e}[/yellow]")
             console.print("[yellow]Continuing with current branch...[/yellow]")
 
+    # Convert language string to Language enum
+    try:
+        language_enum = Language(language.lower())
+    except ValueError:
+        # Try to map common aliases
+        language_map = {
+            "js": Language.JAVASCRIPT,
+            "ts": Language.TYPESCRIPT,
+            "c++": Language.CPP,
+            "c#": Language.CSHARP,
+        }
+        language_enum = language_map.get(language.lower(), Language.PYTHON)
+        console.print(f"[yellow]Warning: Unknown language '{language}', defaulting to {language_enum.value}[/yellow]")
+
     # Create PR metadata
     pr_metadata = PRMetadata(
         pr_id=pr_id,
@@ -330,11 +345,11 @@ def review(
         title=title,
         description=description,
         author=author,
-        language=language,
+        language=language_enum,
     )
 
     # Run review
-    flow = ReviewFlow(settings)
+    flow = ReviewFlow(settings, language=language_enum)
 
     try:
         if multi_agent:

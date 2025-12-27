@@ -4,8 +4,10 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Literal
 
-from pydantic import Field, field_validator
+from pydantic import Field, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+from domain import LLMProvider
 
 
 def _find_project_root() -> Path:
@@ -42,7 +44,11 @@ class Settings(BaseSettings):
     )
 
     # LLM Configuration
-    openai_api_key: str = Field(..., description="OpenAI API key")
+    llm_provider: LLMProvider = Field(
+        default=LLMProvider.OPENAI,
+        description="LLM provider to use"
+    )
+    openai_api_key: str | None = Field(default=None, description="OpenAI API key")
     openai_model: str = Field(default="gpt-4-turbo-preview", description="OpenAI model")
     openai_temperature: float = Field(default=0.0, ge=0.0, le=2.0, description="LLM temperature")
     openai_seed: int = Field(default=42, description="Seed for deterministic outputs")
@@ -154,6 +160,15 @@ class Settings(BaseSettings):
                 )
         return v
 
+    @model_validator(mode="after")
+    def validate_llm_provider_config(self) -> "Settings":
+        """Validate that the appropriate API key exists for the selected provider."""
+        if self.llm_provider == LLMProvider.OPENAI and not self.openai_api_key:
+            raise ValueError("OpenAI provider requires OPENAI_API_KEY")
+        if self.llm_provider == LLMProvider.ANTHROPIC and not self.anthropic_api_key:
+            raise ValueError("Anthropic provider requires ANTHROPIC_API_KEY")
+        return self
+
     @property
     def is_production(self) -> bool:
         """Check if running in production mode."""
@@ -172,9 +187,11 @@ def get_settings() -> Settings:
 
     settings = Settings()
 
-    # Set OpenAI API key as environment variable for CrewAI compatibility
+    # Set API keys as environment variables for CrewAI compatibility
     # CrewAI checks environment variable even when LLM object is provided
     if settings.openai_api_key:
         os.environ["OPENAI_API_KEY"] = settings.openai_api_key
+    if settings.anthropic_api_key:
+        os.environ["ANTHROPIC_API_KEY"] = settings.anthropic_api_key
 
     return settings
