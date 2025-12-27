@@ -42,7 +42,7 @@ def test_pr_metadata():
 def test_single_agent_review(mock_analyze, mock_build_context, mock_settings, test_pr_metadata):
     """Test single-agent review flow."""
     from domain import AgentDecision, AgentRole, PRContext, ToolResult
-
+    
     # Mock context
     mock_context = PRContext(
         correlation_id=uuid4(),
@@ -58,7 +58,7 @@ def test_single_agent_review(mock_analyze, mock_build_context, mock_settings, te
         },
     )
     mock_build_context.return_value = mock_context
-
+    
     # Mock agent decision
     mock_decision = AgentDecision(
         agent_role=AgentRole.CHANGE_CONTEXT_ANALYST,
@@ -71,14 +71,14 @@ def test_single_agent_review(mock_analyze, mock_build_context, mock_settings, te
         execution_time_s=1.0,
     )
     mock_analyze.return_value = mock_decision
-
+    
     # Run review
     flow = ReviewFlow(mock_settings, language=Language.PYTHON)
     result = flow.run_single_agent_review(
         test_pr_metadata,
         Path("/tmp/test-repo"),
     )
-
+    
     assert result.pr_id == "test-001"
     assert result.system_type.value == "single_agent"
     assert len(result.agent_decisions) >= 1
@@ -102,7 +102,7 @@ def test_multi_agent_review(
 ):
     """Test multi-agent review flow."""
     from domain import AgentDecision, AgentRole, PRContext, ToolResult
-
+    
     # Mock context
     mock_context = PRContext(
         correlation_id=uuid4(),
@@ -111,7 +111,7 @@ def test_multi_agent_review(
         tool_results={},
     )
     mock_build_context.return_value = mock_context
-
+    
     # Mock all agent decisions
     def create_mock_decision(role):
         return AgentDecision(
@@ -124,20 +124,20 @@ def test_multi_agent_review(
             tokens_used=100,
             execution_time_s=1.0,
         )
-
+    
     mock_cca.return_value = create_mock_decision(AgentRole.CHANGE_CONTEXT_ANALYST)
     mock_security.return_value = create_mock_decision(AgentRole.SECURITY_REVIEWER)
     mock_style.return_value = create_mock_decision(AgentRole.STYLE_FORMATTER_REVIEWER)
     mock_proposer.return_value = create_mock_decision(AgentRole.REVISION_PROPOSER)
     mock_supervisor.return_value = create_mock_decision(AgentRole.SUPERVISOR)
-
+    
     # Run review
     flow = ReviewFlow(mock_settings, language=Language.PYTHON)
     result = flow.run_multi_agent_review(
         test_pr_metadata,
         Path("/tmp/test-repo"),
     )
-
+    
     assert result.pr_id == "test-001"
     assert result.system_type.value == "multi_agent"
     assert len(result.agent_decisions) >= 5  # All agents ran
