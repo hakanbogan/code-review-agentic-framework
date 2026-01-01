@@ -190,7 +190,7 @@ class CoverageMetric(BaseMetric):
         """
         # Try GT-based coverage first
         if ground_truth:
-            return self._calculate_gt_coverage(results, ground_truth)
+            return self.r43_calculate_gt_coverage(results, ground_truth)
 
         # Fallback: Severity-based coverage
         return self._calculate_severity_coverage(results)

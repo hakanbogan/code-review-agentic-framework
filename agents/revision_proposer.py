@@ -28,11 +28,21 @@ class RevisionProposer(BaseAgent):
         upstream_findings = [f for d in self.upstream_decisions for f in d.findings]
         findings_needing_patches = [
             f for f in upstream_findings
-            if not f.has_patch and f.severity in [Severity.MAJOR, Severity.CRITICAL]
+            if not f.has_patch and f.severity in [Severity.MAJOR, Severity.CRITICAL, Severity.MINOR]
         ]
+        
+        # Prioritize: Critical > Major > Minor, and prioritize by type
+        findings_needing_patches.sort(
+            key=lambda f: (
+                f.severity == Severity.CRITICAL,
+                f.severity == Severity.MAJOR,
+                self.type_priority(f.type),
+            ),
+            reverse=True
+        )
 
-        # Generate patches for high-priority findings (limited to 5)
-        patched, elapsed, tokens = self._generate_patches(context, findings_needing_patches[:5])
+        # Generate patches for high-priority findings (increased limit to 10 for better actionability)
+        patched, elapsed, tokens = self._generate_patches(context, findings_needing_patches[:10])
         validated = self._validate_findings(patched)
 
         logger.info(f"Revision Proposer completed: {len(validated)} patches")
@@ -41,7 +51,7 @@ class RevisionProposer(BaseAgent):
             task_description="Generate code revision proposals",
             findings=validated,
             reasoning=f"Generated patches for {len(validated)} high-priority findings",
-            llm_calls=len(findings_needing_patches[:5]),
+            llm_calls=len(findings_needing_patches[:10]),
             tokens_used=tokens,
             execution_time=elapsed,
         )

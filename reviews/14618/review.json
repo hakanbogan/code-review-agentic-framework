@@ -1,0 +1,116 @@
+{
+  "correlation_id": "68c78b70-fa50-4a8f-b100-93e4984d4995",
+  "pr_id": "14618",
+  "system_type": "multi_agent",
+  "change_summary": "Reviewed PR #14618: \ud83c\udf10 Update LLM prompt instructions file for French\nChanged 0 files (+0/-0)\nFound 0 issues requiring attention.",
+  "findings": [],
+  "agent_decisions": [
+    {
+      "agent_role": "SR",
+      "task_description": "Review code for security vulnerabilities",
+      "findings": [],
+      "reasoning": "Analyzed security tools output",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:11:40.674647"
+    },
+    {
+      "agent_role": "SFR",
+      "task_description": "Review code style and formatting",
+      "findings": [],
+      "reasoning": "Analyzed linter output and applied nit limits",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:11:40.676378"
+    },
+    {
+      "agent_role": "LR",
+      "task_description": "Review code for logical errors and potential bugs",
+      "findings": [],
+      "reasoning": "The review cannot be completed as the code diff necessary for identifying specific issues is not provided. Without the actual code changes, it's impossible to assess the presence of runtime errors, incorrect behavior, data corruption, or security vulnerabilities. A thorough review requires access to the modified code to evaluate it against the listed focus areas.",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 7.015612840652466,
+      "timestamp": "2025-12-29T19:11:47.992747"
+    },
+    {
+      "agent_role": "PR",
+      "task_description": "Review code for performance issues",
+      "findings": [],
+      "reasoning": "Static analysis: 0, LLM analysis: 0",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 5.06413722038269,
+      "timestamp": "2025-12-29T19:11:53.358779"
+    },
+    {
+      "agent_role": "DR",
+      "task_description": "Review code documentation quality",
+      "findings": [],
+      "reasoning": "I now can give a great answer",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 1.1770317554473877,
+      "timestamp": "2025-12-29T19:11:54.845804"
+    },
+    {
+      "agent_role": "TR",
+      "task_description": "Review test coverage and quality",
+      "findings": [],
+      "reasoning": "Static: 0, LLM: 0",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 2.1598238945007324,
+      "timestamp": "2025-12-29T19:11:57.341734"
+    },
+    {
+      "agent_role": "RP",
+      "task_description": "Generate code revision proposals",
+      "findings": [],
+      "reasoning": "Generated patches for 0 high-priority findings",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:11:57.343754"
+    },
+    {
+      "agent_role": "Supervisor",
+      "task_description": "Consolidate and validate all findings",
+      "findings": [],
+      "reasoning": "Consolidated 0 findings from 7 agents.",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:11:57.347260"
+    }
+  ],
+  "final_comment_md": "# Code Review\n\n## Summary\nReviewed PR #14618: \ud83c\udf10 Update LLM prompt instructions file for French\nChanged 0 files (+0/-0)\nFound 0 issues requiring attention.\n",
+  "review_time_s": 17.58087921142578,
+  "token_cost_estimate": 0.0,
+  "prompt_versions": {
+    "SR": "v1",
+    "SFR": "v1",
+    "LR": "v1",
+    "PR": "v1",
+    "DR": "v1",
+    "TR": "v1",
+    "RP": "v1",
+    "Supervisor": "v1"
+  },
+  "metadata": {
+    "repository": "fastapi",
+    "title": "\ud83c\udf10 Update LLM prompt instructions file for French",
+    "author": "tiangolo"
+  },
+  "created_at": "2025-12-29T19:11:57.347317"
+}

@@ -1,0 +1,44 @@
+{
+  "correlation_id": "3f1ae7ce-544f-48e6-be8f-b5b0f60f4c9b",
+  "pr_id": "20449",
+  "system_type": "comprehensive_agent",
+  "change_summary": "Reviewed PR #20449: Replaced individual linter calls in CI with the existing pre-commit hooks setup.\nChanged 0 files (+0/-0)\nFound 0 issues requiring attention.",
+  "findings": [],
+  "agent_decisions": [
+    {
+      "agent_role": "CCA",
+      "task_description": "Comprehensive code review covering all dimensions",
+      "findings": [],
+      "reasoning": "No output from LLM",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 0.8248100280761719,
+      "timestamp": "2026-01-01T11:07:10.966072"
+    },
+    {
+      "agent_role": "Supervisor",
+      "task_description": "Consolidate and validate all findings",
+      "findings": [],
+      "reasoning": "Consolidated 0 findings from 1 agents.",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2026-01-01T11:07:10.971591"
+    }
+  ],
+  "final_comment_md": "# Code Review\n\n## Summary\nReviewed PR #20449: Replaced individual linter calls in CI with the existing pre-commit hooks setup.\nChanged 0 files (+0/-0)\nFound 0 issues requiring attention.\n",
+  "review_time_s": 1.427515983581543,
+  "token_cost_estimate": 0.0,
+  "prompt_versions": {
+    "CCA": "v1",
+    "Supervisor": "v1"
+  },
+  "metadata": {
+    "repository": "django",
+    "title": "Replaced individual linter calls in CI with the existing pre-commit hooks setup.",
+    "author": "ulgens"
+  },
+  "created_at": "2026-01-01T11:07:10.971640"
+}

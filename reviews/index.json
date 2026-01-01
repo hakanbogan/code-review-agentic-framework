@@ -102,20 +102,1040 @@
     "token_cost": 0.0
   },
   "14468": {
-    "created_at": "2025-12-06T14:01:03.423531",
+    "created_at": "2025-12-29T19:04:42.408766",
     "findings_by_severity": {
-      "critical": 1,
+      "critical": 0,
+      "major": 10,
+      "minor": 6,
+      "nit": 3
+    },
+    "findings_count": 19,
+    "pr_id": "14468",
+    "repository": "fastapi",
+    "review_time_s": 103.63990569114685,
+    "reviewed_at": "2025-12-29T19:04:42.413758",
+    "system_type": "multi_agent",
+    "title": "Add upload file size limit",
+    "token_cost": 0.0
+  },
+  "14584": {
+    "created_at": "2026-01-01T11:07:57.840559",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "14584",
+    "repository": "fastapi",
+    "review_time_s": 1.5151028633117676,
+    "reviewed_at": "2026-01-01T11:07:57.843195",
+    "system_type": "comprehensive_agent",
+    "title": "Update tutorials pydantic v1 to v2",
+    "token_cost": 0.0
+  },
+  "14585": {
+    "created_at": "2026-01-01T11:07:52.482313",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "14585",
+    "repository": "fastapi",
+    "review_time_s": 1.3689136505126953,
+    "reviewed_at": "2026-01-01T11:07:52.484504",
+    "system_type": "comprehensive_agent",
+    "title": "\ud83d\udd28 Update scripts and pre-commit to autofix files",
+    "token_cost": 0.0
+  },
+  "14586": {
+    "created_at": "2026-01-01T11:07:48.641272",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "14586",
+    "repository": "fastapi",
+    "review_time_s": 1.3932526111602783,
+    "reviewed_at": "2026-01-01T11:07:48.643510",
+    "system_type": "comprehensive_agent",
+    "title": "\ud83d\udc77 Run CodSpeed tests in parallel to other tests to speed up CI",
+    "token_cost": 0.0
+  },
+  "14587": {
+    "created_at": "2026-01-01T11:07:44.813032",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "14587",
+    "repository": "fastapi",
+    "review_time_s": 1.4247207641601562,
+    "reviewed_at": "2026-01-01T11:07:44.815288",
+    "system_type": "comprehensive_agent",
+    "title": "\ud83c\udf10 Update translations for uk (update-outdated)",
+    "token_cost": 0.0
+  },
+  "14588": {
+    "created_at": "2026-01-01T11:07:41.261402",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "14588",
+    "repository": "fastapi",
+    "review_time_s": 1.4475047588348389,
+    "reviewed_at": "2026-01-01T11:07:41.264097",
+    "system_type": "comprehensive_agent",
+    "title": "\ud83c\udf10 Update translations for ja (update-outdated)",
+    "token_cost": 0.0
+  },
+  "14589": {
+    "created_at": "2026-01-01T11:07:37.605688",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "14589",
+    "repository": "fastapi",
+    "review_time_s": 1.3473200798034668,
+    "reviewed_at": "2026-01-01T11:07:37.608567",
+    "system_type": "comprehensive_agent",
+    "title": "\ud83c\udf10 Update translations for ko (update-outdated)",
+    "token_cost": 0.0
+  },
+  "14591": {
+    "created_at": "2026-01-01T11:07:34.221378",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "14591",
+    "repository": "fastapi",
+    "review_time_s": 1.3530924320220947,
+    "reviewed_at": "2026-01-01T11:07:34.223841",
+    "system_type": "comprehensive_agent",
+    "title": "Improve quote formatting and language clarity",
+    "token_cost": 0.0
+  },
+  "14592": {
+    "created_at": "2026-01-01T11:07:30.147808",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "14592",
+    "repository": "fastapi",
+    "review_time_s": 1.3393664360046387,
+    "reviewed_at": "2026-01-01T11:07:30.150210",
+    "system_type": "comprehensive_agent",
+    "title": "\ud83d\udc77 Update secrets check",
+    "token_cost": 0.0
+  },
+  "14593": {
+    "created_at": "2026-01-01T11:07:26.338490",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "14593",
+    "repository": "fastapi",
+    "review_time_s": 1.353165626525879,
+    "reviewed_at": "2026-01-01T11:07:26.341033",
+    "system_type": "comprehensive_agent",
+    "title": "\ud83d\udc77 Remove `lint` job from `test` CI workflow",
+    "token_cost": 0.0
+  },
+  "14594": {
+    "created_at": "2026-01-01T11:01:54.290916",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "14594",
+    "repository": "fastap",
+    "review_time_s": 1.469219446182251,
+    "reviewed_at": "2026-01-01T11:01:54.297001",
+    "system_type": "comprehensive_agent",
+    "title": "Minor clarification suggestion for the \u201cParallel Burgers\u201d analogy in \u2026",
+    "token_cost": 0.0
+  },
+  "14595": {
+    "created_at": "2025-12-29T19:25:13.089269",
+    "findings_by_severity": {
+      "critical": 0,
       "major": 1,
+      "minor": 1,
+      "nit": 0
+    },
+    "findings_count": 2,
+    "pr_id": "14595",
+    "repository": "fastapi",
+    "review_time_s": 36.83030605316162,
+    "reviewed_at": "2025-12-29T19:25:13.092120",
+    "system_type": "multi_agent",
+    "title": "Fix: Require realm in HTTPBasic to comply with RFC 7617",
+    "token_cost": 0.0
+  },
+  "14597": {
+    "created_at": "2025-12-29T19:24:32.607046",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "14597",
+    "repository": "fastapi",
+    "review_time_s": 18.5102059841156,
+    "reviewed_at": "2025-12-29T19:24:32.609880",
+    "system_type": "multi_agent",
+    "title": "Fix broken anchor link in Japanese Docker deployment docs",
+    "token_cost": 0.0
+  },
+  "14598": {
+    "created_at": "2025-12-29T19:24:10.702896",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 1
+    },
+    "findings_count": 1,
+    "pr_id": "14598",
+    "repository": "fastapi",
+    "review_time_s": 22.274035215377808,
+    "reviewed_at": "2025-12-29T19:24:10.705464",
+    "system_type": "multi_agent",
+    "title": "\ud83d\udcdd Fix grammar in `docs/en/docs/tutorial/body.md`",
+    "token_cost": 0.0
+  },
+  "14599": {
+    "created_at": "2025-12-29T19:23:44.537964",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 1,
+      "minor": 5,
+      "nit": 0
+    },
+    "findings_count": 6,
+    "pr_id": "14599",
+    "repository": "fastapi",
+    "review_time_s": 50.127532958984375,
+    "reviewed_at": "2025-12-29T19:23:44.541137",
+    "system_type": "multi_agent",
+    "title": "docs: Add exception handling guidance for BackgroundTasks",
+    "token_cost": 0.0
+  },
+  "14600": {
+    "created_at": "2025-12-29T19:22:50.346132",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 1,
+      "nit": 1
+    },
+    "findings_count": 2,
+    "pr_id": "14600",
+    "repository": "fastapi",
+    "review_time_s": 25.576658248901367,
+    "reviewed_at": "2025-12-29T19:22:50.348826",
+    "system_type": "multi_agent",
+    "title": "\ud83d\udcdd Add documentary to website",
+    "token_cost": 0.0
+  },
+  "14602": {
+    "created_at": "2025-12-29T19:22:21.211903",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "14602",
+    "repository": "fastapi",
+    "review_time_s": 19.66166853904724,
+    "reviewed_at": "2025-12-29T19:22:21.214743",
+    "system_type": "multi_agent",
+    "title": "\ud83c\udf10 Update translations for de (update-outdated)",
+    "token_cost": 0.0
+  },
+  "14604": {
+    "created_at": "2025-12-29T19:21:57.794114",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 2,
+      "minor": 1,
+      "nit": 0
+    },
+    "findings_count": 3,
+    "pr_id": "14604",
+    "repository": "fastapi",
+    "review_time_s": 59.02346920967102,
+    "reviewed_at": "2025-12-29T19:21:57.797075",
+    "system_type": "multi_agent",
+    "title": "\ud83d\udd27 Update pre-commit to use local Ruff instead of hook",
+    "token_cost": 0.0
+  },
+  "14605": {
+    "created_at": "2025-12-29T19:20:55.459258",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 1,
+      "nit": 0
+    },
+    "findings_count": 1,
+    "pr_id": "14605",
+    "repository": "fastapi",
+    "review_time_s": 12.42303991317749,
+    "reviewed_at": "2025-12-29T19:20:55.462321",
+    "system_type": "multi_agent",
+    "title": "\ud83d\udd0a Add a custom `FastAPIDeprecationWarning`",
+    "token_cost": 0.0
+  },
+  "14606": {
+    "created_at": "2025-12-29T19:20:39.519860",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 1,
+      "nit": 0
+    },
+    "findings_count": 1,
+    "pr_id": "14606",
+    "repository": "fastapi",
+    "review_time_s": 25.68678116798401,
+    "reviewed_at": "2025-12-29T19:20:39.523511",
+    "system_type": "multi_agent",
+    "title": "docs: Basic auth `realm` is REQUIRED but handled as optional",
+    "token_cost": 0.0
+  },
+  "14608": {
+    "created_at": "2025-12-29T19:20:09.658464",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 3,
+      "minor": 1,
+      "nit": 0
+    },
+    "findings_count": 4,
+    "pr_id": "14608",
+    "repository": "fastapi",
+    "review_time_s": 71.37912774085999,
+    "reviewed_at": "2025-12-29T19:20:09.661673",
+    "system_type": "multi_agent",
+    "title": "\u2705 Run performance tests only on Pydantic v2",
+    "token_cost": 0.0
+  },
+  "14609": {
+    "created_at": "2025-12-29T19:18:55.091738",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 2,
+      "minor": 1,
+      "nit": 0
+    },
+    "findings_count": 3,
+    "pr_id": "14609",
+    "repository": "fastapi",
+    "review_time_s": 47.855401277542114,
+    "reviewed_at": "2025-12-29T19:18:55.094488",
+    "system_type": "multi_agent",
+    "title": "\u2796 Drop support for `pydantic.v1`",
+    "token_cost": 0.0
+  },
+  "14610": {
+    "created_at": "2025-12-29T19:18:03.676049",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 1,
+      "minor": 11,
+      "nit": 2
+    },
+    "findings_count": 14,
+    "pr_id": "14610",
+    "repository": "fastapi",
+    "review_time_s": 55.28713059425354,
+    "reviewed_at": "2025-12-29T19:18:03.679616",
+    "system_type": "multi_agent",
+    "title": "docs: Add streaming inference example using StreamingResponse",
+    "token_cost": 0.0
+  },
+  "14611": {
+    "created_at": "2025-12-29T19:17:05.105410",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 2,
+      "minor": 1,
+      "nit": 0
+    },
+    "findings_count": 3,
+    "pr_id": "14611",
+    "repository": "fastapi",
+    "review_time_s": 41.658130168914795,
+    "reviewed_at": "2025-12-29T19:17:05.108863",
+    "system_type": "multi_agent",
+    "title": "\ud83d\udd25 Remove Pydantic v1  specific test variants",
+    "token_cost": 0.0
+  },
+  "14612": {
+    "created_at": "2025-12-29T19:16:20.496145",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 1,
+      "minor": 1,
+      "nit": 0
+    },
+    "findings_count": 2,
+    "pr_id": "14612",
+    "repository": "fastapi",
+    "review_time_s": 47.247859716415405,
+    "reviewed_at": "2025-12-29T19:16:20.499564",
+    "system_type": "multi_agent",
+    "title": "\ud83d\udd25 Remove test variants for Pydantic v1 in test_request_params",
+    "token_cost": 0.0
+  },
+  "14613": {
+    "created_at": "2025-12-29T19:15:30.508482",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "14613",
+    "repository": "fastapi",
+    "review_time_s": 21.365301847457886,
+    "reviewed_at": "2025-12-29T19:15:30.510544",
+    "system_type": "multi_agent",
+    "title": "\ud83d\udc77 Do not run translations on cron while finishing updating existing languages",
+    "token_cost": 0.0
+  },
+  "14614": {
+    "created_at": "2025-12-29T19:15:06.415625",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
       "minor": 3,
       "nit": 0
     },
+    "findings_count": 3,
+    "pr_id": "14614",
+    "repository": "fastapi",
+    "review_time_s": 41.5996618270874,
+    "reviewed_at": "2025-12-29T19:15:06.418412",
+    "system_type": "multi_agent",
+    "title": "\ud83d\udd28 Update LLM translation script to guide reviewers to change the prompt",
+    "token_cost": 0.0
+  },
+  "14615": {
+    "created_at": "2025-12-29T19:14:21.941505",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 3,
+      "minor": 2,
+      "nit": 0
+    },
     "findings_count": 5,
-    "pr_id": "14468",
-    "repository": "fastap",
-    "review_time_s": 59.968024015426636,
-    "reviewed_at": "2025-12-06T14:01:03.433961",
-    "system_type": "single_agent",
-    "title": "Add upload file size limit",
+    "pr_id": "14615",
+    "repository": "fastapi",
+    "review_time_s": 64.62567901611328,
+    "reviewed_at": "2025-12-29T19:14:21.943983",
+    "system_type": "multi_agent",
+    "title": "add typing for dependency_overrides_provider",
+    "token_cost": 0.0
+  },
+  "14616": {
+    "created_at": "2025-12-29T19:13:13.783451",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 5,
+      "minor": 4,
+      "nit": 1
+    },
+    "findings_count": 10,
+    "pr_id": "14616",
+    "repository": "fastapi",
+    "review_time_s": 73.0244026184082,
+    "reviewed_at": "2025-12-29T19:13:13.787557",
+    "system_type": "multi_agent",
+    "title": "Fix Form() with Pydantic Json[T] type (#10997)",
+    "token_cost": 0.0
+  },
+  "14618": {
+    "created_at": "2025-12-29T19:11:57.347317",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "14618",
+    "repository": "fastapi",
+    "review_time_s": 17.58087921142578,
+    "reviewed_at": "2025-12-29T19:11:57.349721",
+    "system_type": "multi_agent",
+    "title": "\ud83c\udf10 Update LLM prompt instructions file for French",
+    "token_cost": 0.0
+  },
+  "14619": {
+    "created_at": "2025-12-29T19:09:59.993246",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "14619",
+    "repository": "fastapi",
+    "review_time_s": 14.779898166656494,
+    "reviewed_at": "2025-12-29T19:09:59.996398",
+    "system_type": "multi_agent",
+    "title": "\ud83c\udf10 Update translation prompts",
+    "token_cost": 0.0
+  },
+  "20446": {
+    "created_at": "2026-01-01T11:07:22.456670",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "20446",
+    "repository": "django",
+    "review_time_s": 1.4789433479309082,
+    "reviewed_at": "2026-01-01T11:07:22.459408",
+    "system_type": "comprehensive_agent",
+    "title": "Refs #27100 -- Removed obsolete message from tutorial and migrations topic.",
+    "token_cost": 0.0
+  },
+  "20447": {
+    "created_at": "2026-01-01T11:07:18.703607",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "20447",
+    "repository": "django",
+    "review_time_s": 1.6163759231567383,
+    "reviewed_at": "2026-01-01T11:07:18.706352",
+    "system_type": "comprehensive_agent",
+    "title": "Refs #36806 -- Removed unnecessary null=True from GeneratedField in test models.",
+    "token_cost": 0.0
+  },
+  "20448": {
+    "created_at": "2026-01-01T11:07:14.882019",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "20448",
+    "repository": "django",
+    "review_time_s": 1.3568665981292725,
+    "reviewed_at": "2026-01-01T11:07:14.884198",
+    "system_type": "comprehensive_agent",
+    "title": "Bumped linter dependencies",
+    "token_cost": 0.0
+  },
+  "20449": {
+    "created_at": "2026-01-01T11:07:10.971640",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "20449",
+    "repository": "django",
+    "review_time_s": 1.427515983581543,
+    "reviewed_at": "2026-01-01T11:07:10.974283",
+    "system_type": "comprehensive_agent",
+    "title": "Replaced individual linter calls in CI with the existing pre-commit hooks setup.",
+    "token_cost": 0.0
+  },
+  "20450": {
+    "created_at": "2026-01-01T11:07:06.104588",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "20450",
+    "repository": "django",
+    "review_time_s": 1.4548301696777344,
+    "reviewed_at": "2026-01-01T11:07:06.106881",
+    "system_type": "comprehensive_agent",
+    "title": "Added the missing sentence period in tutorial02.txt.",
+    "token_cost": 0.0
+  },
+  "20451": {
+    "created_at": "2026-01-01T11:07:02.067658",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "20451",
+    "repository": "django",
+    "review_time_s": 1.4550251960754395,
+    "reviewed_at": "2026-01-01T11:07:02.070401",
+    "system_type": "comprehensive_agent",
+    "title": "Docs: improve clarity in Django overview",
+    "token_cost": 0.0
+  },
+  "20452": {
+    "created_at": "2026-01-01T11:06:56.560627",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "20452",
+    "repository": "django",
+    "review_time_s": 1.4280903339385986,
+    "reviewed_at": "2026-01-01T11:06:56.563476",
+    "system_type": "comprehensive_agent",
+    "title": "fix(servers): suppress HEAD bodies in runserver",
+    "token_cost": 0.0
+  },
+  "20453": {
+    "created_at": "2026-01-01T11:06:50.039049",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "20453",
+    "repository": "django",
+    "review_time_s": 1.352449893951416,
+    "reviewed_at": "2026-01-01T11:06:50.042229",
+    "system_type": "comprehensive_agent",
+    "title": "Refs #36787 -- Fixed lookup test crash on Oracle.",
+    "token_cost": 0.0
+  },
+  "20454": {
+    "created_at": "2026-01-01T11:06:46.383459",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "20454",
+    "repository": "django",
+    "review_time_s": 1.4142212867736816,
+    "reviewed_at": "2026-01-01T11:06:46.386049",
+    "system_type": "comprehensive_agent",
+    "title": "Added some skips to GIS tests",
+    "token_cost": 0.0
+  },
+  "20455": {
+    "created_at": "2026-01-01T11:06:41.479697",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "20455",
+    "repository": "django",
+    "review_time_s": 1.5482916831970215,
+    "reviewed_at": "2026-01-01T11:06:41.482461",
+    "system_type": "comprehensive_agent",
+    "title": "Added DatabaseFeatures.supports_inspectdb.",
+    "token_cost": 0.0
+  },
+  "20457": {
+    "created_at": "2025-12-29T19:54:52.991243",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 1,
+      "minor": 6,
+      "nit": 0
+    },
+    "findings_count": 7,
+    "pr_id": "20457",
+    "repository": "django",
+    "review_time_s": 49.793474435806274,
+    "reviewed_at": "2025-12-29T19:54:52.994736",
+    "system_type": "multi_agent",
+    "title": "fixed #2399",
+    "token_cost": 0.0
+  },
+  "20458": {
+    "created_at": "2025-12-29T19:53:59.221065",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 4,
+      "minor": 3,
+      "nit": 0
+    },
+    "findings_count": 7,
+    "pr_id": "20458",
+    "repository": "django",
+    "review_time_s": 68.44791197776794,
+    "reviewed_at": "2025-12-29T19:53:59.224531",
+    "system_type": "multi_agent",
+    "title": "Fixed #36644 \u2014 Add deprecation warning for order_by() without arguments used with first()/last().",
+    "token_cost": 0.0
+  },
+  "20459": {
+    "created_at": "2025-12-29T19:52:47.217924",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 2,
+      "minor": 2,
+      "nit": 0
+    },
+    "findings_count": 4,
+    "pr_id": "20459",
+    "repository": "django",
+    "review_time_s": 54.226988315582275,
+    "reviewed_at": "2025-12-29T19:52:47.221213",
+    "system_type": "multi_agent",
+    "title": "Fixed #36796 -- Handled lazy routes correctly in RoutePattern.match().",
+    "token_cost": 0.0
+  },
+  "20460": {
+    "created_at": "2025-12-29T19:51:49.899760",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 2,
+      "minor": 1,
+      "nit": 0
+    },
+    "findings_count": 3,
+    "pr_id": "20460",
+    "repository": "django",
+    "review_time_s": 45.053950548172,
+    "reviewed_at": "2025-12-29T19:51:49.902608",
+    "system_type": "multi_agent",
+    "title": "Fixed #36821 -- Treated empty strings as NULL for iexact lookups on Oracle.",
+    "token_cost": 0.0
+  },
+  "20461": {
+    "created_at": "2025-12-29T19:51:01.176720",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 4,
+      "minor": 6,
+      "nit": 0
+    },
+    "findings_count": 10,
+    "pr_id": "20461",
+    "repository": "django",
+    "review_time_s": 95.30431032180786,
+    "reviewed_at": "2025-12-29T19:51:01.180056",
+    "system_type": "multi_agent",
+    "title": "Fixed #36822 -- Added parameter limit for PostgreSQL with server-side binding.",
+    "token_cost": 0.0
+  },
+  "20462": {
+    "created_at": "2025-12-29T19:49:22.332300",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "20462",
+    "repository": "django",
+    "review_time_s": 14.862221479415894,
+    "reviewed_at": "2025-12-29T19:49:22.335088",
+    "system_type": "multi_agent",
+    "title": "Fixed #36827 -- Added hash index support for exclusion constraint in PostgreSQL",
+    "token_cost": 0.0
+  },
+  "20463": {
+    "created_at": "2025-12-29T19:49:02.839398",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 2,
+      "minor": 2,
+      "nit": 0
+    },
+    "findings_count": 4,
+    "pr_id": "20463",
+    "repository": "django",
+    "review_time_s": 38.694424867630005,
+    "reviewed_at": "2025-12-29T19:49:02.842868",
+    "system_type": "multi_agent",
+    "title": "Fixed #36355 -- Included applied cross-app migrations in sqlmigrate state.",
+    "token_cost": 0.0
+  },
+  "20464": {
+    "created_at": "2025-12-29T19:48:20.800244",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 1,
+      "minor": 1,
+      "nit": 0
+    },
+    "findings_count": 2,
+    "pr_id": "20464",
+    "repository": "django",
+    "review_time_s": 27.519612789154053,
+    "reviewed_at": "2025-12-29T19:48:20.803116",
+    "system_type": "multi_agent",
+    "title": "Fixed #28872 -- Fixed JSONField key __in lookup with values_list() subquery on PostgreSQL.",
+    "token_cost": 0.0
+  },
+  "20465": {
+    "created_at": "2025-12-29T19:47:49.817954",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 2
+    },
+    "findings_count": 2,
+    "pr_id": "20465",
+    "repository": "django",
+    "review_time_s": 25.014200448989868,
+    "reviewed_at": "2025-12-29T19:47:49.820759",
+    "system_type": "multi_agent",
+    "title": "Docs: clarify URLconf explanation in tutorial part 3",
+    "token_cost": 0.0
+  },
+  "20466": {
+    "created_at": "2025-12-29T19:47:21.442371",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 4,
+      "minor": 7,
+      "nit": 0
+    },
+    "findings_count": 11,
+    "pr_id": "20466",
+    "repository": "django",
+    "review_time_s": 60.64501476287842,
+    "reviewed_at": "2025-12-29T19:47:21.445525",
+    "system_type": "multi_agent",
+    "title": "Fixed #36639 -- Added CI step to run makemigrations --check against t...",
+    "token_cost": 0.0
+  },
+  "20467": {
+    "created_at": "2025-12-29T19:46:16.988603",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "20467",
+    "repository": "django",
+    "review_time_s": 18.503933668136597,
+    "reviewed_at": "2025-12-29T19:46:16.991286",
+    "system_type": "multi_agent",
+    "title": "Docs: #36600 -- Clarified dispatch_uid usage for signal receivers.",
+    "token_cost": 0.0
+  },
+  "20468": {
+    "created_at": "2025-12-29T19:45:53.662295",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 2,
+      "minor": 10,
+      "nit": 1
+    },
+    "findings_count": 13,
+    "pr_id": "20468",
+    "repository": "django",
+    "review_time_s": 80.26941204071045,
+    "reviewed_at": "2025-12-29T19:45:53.666651",
+    "system_type": "multi_agent",
+    "title": "Fixed #36831 -- Added validation for CSP directive names and values.",
+    "token_cost": 0.0
+  },
+  "20469": {
+    "created_at": "2025-12-29T19:44:30.110663",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 4,
+      "minor": 7,
+      "nit": 0
+    },
+    "findings_count": 11,
+    "pr_id": "20469",
+    "repository": "django",
+    "review_time_s": 103.52890968322754,
+    "reviewed_at": "2025-12-29T19:44:30.114153",
+    "system_type": "multi_agent",
+    "title": "Fixed #36830 -- store the cache alias on cache backend instances",
+    "token_cost": 0.0
+  },
+  "20470": {
+    "created_at": "2025-12-29T19:42:41.437206",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 1,
+      "nit": 0
+    },
+    "findings_count": 1,
+    "pr_id": "20470",
+    "repository": "django",
+    "review_time_s": 36.22584390640259,
+    "reviewed_at": "2025-12-29T19:42:41.440201",
+    "system_type": "multi_agent",
+    "title": "Fixed #36391 -- Doc'd RawSQL usage on \u201cPerforming raw SQL queries\u201d page.",
+    "token_cost": 0.0
+  },
+  "20471": {
+    "created_at": "2025-12-29T19:42:00.504526",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 4,
+      "minor": 4,
+      "nit": 0
+    },
+    "findings_count": 8,
+    "pr_id": "20471",
+    "repository": "django",
+    "review_time_s": 54.39345693588257,
+    "reviewed_at": "2025-12-29T19:42:00.507486",
+    "system_type": "multi_agent",
+    "title": "Fixed #36829 -- Revert unintended ClearableFileInput.use_fieldset change",
+    "token_cost": 0.0
+  },
+  "20472": {
+    "created_at": "2025-12-29T19:41:02.838859",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 4,
+      "minor": 7,
+      "nit": 0
+    },
+    "findings_count": 11,
+    "pr_id": "20472",
+    "repository": "django",
+    "review_time_s": 65.33754515647888,
+    "reviewed_at": "2025-12-29T19:41:02.842253",
+    "system_type": "multi_agent",
+    "title": "Fixed #36833 -- Fixed Accept header parsing for commas in quoted params.",
+    "token_cost": 0.0
+  },
+  "20473": {
+    "created_at": "2025-12-29T19:39:52.513189",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 4,
+      "minor": 2,
+      "nit": 0
+    },
+    "findings_count": 6,
+    "pr_id": "20473",
+    "repository": "django",
+    "review_time_s": 45.393903493881226,
+    "reviewed_at": "2025-12-29T19:39:52.516372",
+    "system_type": "multi_agent",
+    "title": "Fixed #2750 \u2014 Prevent ManyToManyField default from being used.",
+    "token_cost": 0.0
+  },
+  "20474": {
+    "created_at": "2025-12-29T19:39:01.673876",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "20474",
+    "repository": "django",
+    "review_time_s": 21.419293880462646,
+    "reviewed_at": "2025-12-29T19:39:01.676701",
+    "system_type": "multi_agent",
+    "title": "[6.0.x] Fixed #36834 -- Fixed a bug with User instead of get_user_model",
+    "token_cost": 0.0
+  },
+  "20475": {
+    "created_at": "2025-12-29T19:38:36.503441",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "nit": 0
+    },
+    "findings_count": 0,
+    "pr_id": "20475",
+    "repository": "django",
+    "review_time_s": 17.07280421257019,
+    "reviewed_at": "2025-12-29T19:38:36.506245",
+    "system_type": "multi_agent",
+    "title": "[6.0.x] Fixed #36835 -- [template] Adding `Library` to `__all__`",
+    "token_cost": 0.0
+  },
+  "20476": {
+    "created_at": "2025-12-29T19:38:15.898896",
+    "findings_by_severity": {
+      "critical": 0,
+      "major": 4,
+      "minor": 6,
+      "nit": 0
+    },
+    "findings_count": 10,
+    "pr_id": "20476",
+    "repository": "django",
+    "review_time_s": 72.6450686454773,
+    "reviewed_at": "2025-12-29T19:38:15.902429",
+    "system_type": "multi_agent",
+    "title": "Fixed #36836 -- Added version identification to Redis cache backend.",
     "token_cost": 0.0
   },
   "2779": {

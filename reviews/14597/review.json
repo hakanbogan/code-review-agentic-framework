@@ -1,0 +1,116 @@
+{
+  "correlation_id": "bce5ac92-9c9d-45e2-80b5-2586d9bf620c",
+  "pr_id": "14597",
+  "system_type": "multi_agent",
+  "change_summary": "Reviewed PR #14597: Fix broken anchor link in Japanese Docker deployment docs\nChanged 0 files (+0/-0)\nFound 0 issues requiring attention.",
+  "findings": [],
+  "agent_decisions": [
+    {
+      "agent_role": "SR",
+      "task_description": "Review code for security vulnerabilities",
+      "findings": [],
+      "reasoning": "Analyzed security tools output",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:24:14.241050"
+    },
+    {
+      "agent_role": "SFR",
+      "task_description": "Review code style and formatting",
+      "findings": [],
+      "reasoning": "Analyzed linter output and applied nit limits",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:24:14.242796"
+    },
+    {
+      "agent_role": "LR",
+      "task_description": "Review code for logical errors and potential bugs",
+      "findings": [],
+      "reasoning": "The provided task does not include any code diff to analyze for potential logical errors, edge cases, or bugs. Without a code diff, it's impossible to identify specific issues according to the focus areas outlined. The task mentions a PR aimed at fixing a broken anchor link in Japanese Docker deployment docs, which suggests the changes might be related to documentation rather than executable code. Therefore, without actual code changes to review, no findings can be reported.",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 3.726104974746704,
+      "timestamp": "2025-12-29T19:24:18.296874"
+    },
+    {
+      "agent_role": "PR",
+      "task_description": "Review code for performance issues",
+      "findings": [],
+      "reasoning": "Static analysis: 0, LLM analysis: 0",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 5.463192701339722,
+      "timestamp": "2025-12-29T19:24:24.084693"
+    },
+    {
+      "agent_role": "DR",
+      "task_description": "Review code documentation quality",
+      "findings": [],
+      "reasoning": "The provided task does not include any code changes or diffs to review for documentation quality. Without specific code changes, it's not possible to assess the completeness of docstrings, the accuracy of type hints, the clarity of comments, or the adequacy of API documentation. The task mentions a PR titled 'Fix broken anchor link in Japanese Docker deployment docs,' which suggests the changes are related to documentation in markdown or similar, rather than Python code. Therefore, the focus areas related to Python code documentation, such as docstrings, type hints, and comments, are not applicable in this context. It's recommended to review the actual content changes in the documentation files if available, to ensure the broken anchor link is correctly fixed and the documentation is accurate and up-to-date.",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 6.156394958496094,
+      "timestamp": "2025-12-29T19:24:30.573031"
+    },
+    {
+      "agent_role": "TR",
+      "task_description": "Review test coverage and quality",
+      "findings": [],
+      "reasoning": "Static: 0, LLM: 0",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 1.7063210010528564,
+      "timestamp": "2025-12-29T19:24:32.600793"
+    },
+    {
+      "agent_role": "RP",
+      "task_description": "Generate code revision proposals",
+      "findings": [],
+      "reasoning": "Generated patches for 0 high-priority findings",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:24:32.603493"
+    },
+    {
+      "agent_role": "Supervisor",
+      "task_description": "Consolidate and validate all findings",
+      "findings": [],
+      "reasoning": "Consolidated 0 findings from 7 agents.",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:24:32.607000"
+    }
+  ],
+  "final_comment_md": "# Code Review\n\n## Summary\nReviewed PR #14597: Fix broken anchor link in Japanese Docker deployment docs\nChanged 0 files (+0/-0)\nFound 0 issues requiring attention.\n",
+  "review_time_s": 18.5102059841156,
+  "token_cost_estimate": 0.0,
+  "prompt_versions": {
+    "SR": "v1",
+    "SFR": "v1",
+    "LR": "v1",
+    "PR": "v1",
+    "DR": "v1",
+    "TR": "v1",
+    "RP": "v1",
+    "Supervisor": "v1"
+  },
+  "metadata": {
+    "repository": "fastapi",
+    "title": "Fix broken anchor link in Japanese Docker deployment docs",
+    "author": "PRAJUN-V-ZILMONEY"
+  },
+  "created_at": "2025-12-29T19:24:32.607046"
+}

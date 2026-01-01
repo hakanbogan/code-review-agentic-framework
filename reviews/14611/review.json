@@ -1,0 +1,337 @@
+{
+  "correlation_id": "597c5ea2-cc54-4671-934d-a8326ae14f3a",
+  "pr_id": "14611",
+  "system_type": "multi_agent",
+  "change_summary": "Reviewed PR #14611: \ud83d\udd25 Remove Pydantic v1  specific test variants\nChanged 0 files (+0/-0)\nFound 3 issues requiring attention.",
+  "findings": [
+    {
+      "id": "cf68b093-c7b3-45c0-959f-481f7a94eb7a",
+      "type": "logic",
+      "severity": "major",
+      "source_agent": "LR",
+      "evidence": {
+        "tool": "logic_analysis",
+        "reference": "Multiple locations",
+        "snippet": "Removal of IsDict and Pydantic v1 specific checks",
+        "metadata": {}
+      },
+      "title": "Removal of Pydantic v1 Compatibility Checks",
+      "description": "The removal of Pydantic v1 specific test variants and compatibility checks could lead to potential issues with backward compatibility and unexpected behavior in systems still relying on Pydantic v1.",
+      "has_patch": true,
+      "patch": "diff --git a/tests/test_additional_properties_bool.py b/tests/test_additional_properties_bool.py\nindex 063297a3..3756b7d7 100644\n--- a/tests/test_additional_properties_bool.py\n+++ b/tests/test_additional_properties_bool.py\n@@ -1,5 +1,6 @@\n from typing import Union\n \n+from dirty_equals import IsDict\n from fastapi import FastAPI\n from fastapi.testclient import TestClient\n# ... patch truncated",
+      "location": "test_additional_properties_bool.py and test_additional_responses_custom_model_in_callback.py",
+      "created_at": "2025-12-29T19:16:38.795135"
+    },
+    {
+      "id": "251d7e58-da38-4114-bc6d-54bd8973005b",
+      "type": "logic",
+      "severity": "major",
+      "source_agent": "LR",
+      "evidence": {
+        "tool": "logic_analysis",
+        "reference": "test_additional_responses_custom_model_in_callback.py:32",
+        "snippet": "assert response.json() == snapshot(...)",
+        "metadata": {}
+      },
+      "title": "Use of inline_snapshot without validation",
+      "description": "The use of inline_snapshot for asserting the response in tests without visible validation logic or snapshot comparison could lead to tests passing incorrectly if the snapshot does not match the expected output.",
+      "has_patch": true,
+      "patch": "--- a/tests/test_additional_responses_custom_model_in_callback.py\n+++ b/tests/test_additional_responses_custom_model_in_callback.py\n@@ -1,5 +1,5 @@\n-import pytest\n+from pytest import approx, raises\n \n-def test_response_model():\n+def test_response_model(snapshot):\n     # Test logic here\n-    assert response == inline_snapshot\n# ... patch truncated",
+      "location": "test_additional_responses_custom_model_in_callback.py",
+      "created_at": "2025-12-29T19:16:38.795170"
+    },
+    {
+      "id": "50b344fb-c26f-41e8-9cd2-63210b48bda3",
+      "type": "other",
+      "severity": "minor",
+      "source_agent": "TR",
+      "evidence": {
+        "tool": "static_analysis",
+        "reference": "tests/test_additional_properties_bool.py",
+        "snippet": "No assertions found in test changes",
+        "metadata": {}
+      },
+      "title": "Test file modified without assertions",
+      "description": "Test file changes don't include assertions. Tests should verify expected behavior.",
+      "has_patch": false,
+      "patch": null,
+      "location": "tests/test_additional_properties_bool.py",
+      "created_at": "2025-12-29T19:16:51.057724"
+    }
+  ],
+  "agent_decisions": [
+    {
+      "agent_role": "SR",
+      "task_description": "Review code for security vulnerabilities",
+      "findings": [],
+      "reasoning": "Analyzed security tools output",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:16:23.623774"
+    },
+    {
+      "agent_role": "SFR",
+      "task_description": "Review code style and formatting",
+      "findings": [],
+      "reasoning": "Analyzed linter output and applied nit limits",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:16:23.625632"
+    },
+    {
+      "agent_role": "LR",
+      "task_description": "Review code for logical errors and potential bugs",
+      "findings": [
+        {
+          "id": "cf68b093-c7b3-45c0-959f-481f7a94eb7a",
+          "type": "logic",
+          "severity": "major",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "Multiple locations",
+            "snippet": "Removal of IsDict and Pydantic v1 specific checks",
+            "metadata": {}
+          },
+          "title": "Removal of Pydantic v1 Compatibility Checks",
+          "description": "The removal of Pydantic v1 specific test variants and compatibility checks could lead to potential issues with backward compatibility and unexpected behavior in systems still relying on Pydantic v1.",
+          "has_patch": true,
+          "patch": "diff --git a/tests/test_additional_properties_bool.py b/tests/test_additional_properties_bool.py\nindex 063297a3..3756b7d7 100644\n--- a/tests/test_additional_properties_bool.py\n+++ b/tests/test_additional_properties_bool.py\n@@ -1,5 +1,6 @@\n from typing import Union\n \n+from dirty_equals import IsDict\n from fastapi import FastAPI\n from fastapi.testclient import TestClient\n# ... patch truncated",
+          "location": "test_additional_properties_bool.py and test_additional_responses_custom_model_in_callback.py",
+          "created_at": "2025-12-29T19:16:38.795135"
+        },
+        {
+          "id": "251d7e58-da38-4114-bc6d-54bd8973005b",
+          "type": "logic",
+          "severity": "major",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "test_additional_responses_custom_model_in_callback.py:32",
+            "snippet": "assert response.json() == snapshot(...)",
+            "metadata": {}
+          },
+          "title": "Use of inline_snapshot without validation",
+          "description": "The use of inline_snapshot for asserting the response in tests without visible validation logic or snapshot comparison could lead to tests passing incorrectly if the snapshot does not match the expected output.",
+          "has_patch": true,
+          "patch": "--- a/tests/test_additional_responses_custom_model_in_callback.py\n+++ b/tests/test_additional_responses_custom_model_in_callback.py\n@@ -1,5 +1,5 @@\n-import pytest\n+from pytest import approx, raises\n \n-def test_response_model():\n+def test_response_model(snapshot):\n     # Test logic here\n-    assert response == inline_snapshot\n# ... patch truncated",
+          "location": "test_additional_responses_custom_model_in_callback.py",
+          "created_at": "2025-12-29T19:16:38.795170"
+        },
+        {
+          "id": "03daeef7-7a67-4fd1-861a-114098fb6624",
+          "type": "logic",
+          "severity": "minor",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "Multiple locations",
+            "snippet": "Simplified test assertions",
+            "metadata": {}
+          },
+          "title": "Potential Unhandled Edge Cases",
+          "description": "The changes simplify the test assertions but may not fully account for all edge cases previously covered by the more complex logic, potentially missing subtle bugs or regressions.",
+          "has_patch": false,
+          "patch": null,
+          "location": "test_additional_properties_bool.py and test_additional_responses_custom_model_in_callback.py",
+          "created_at": "2025-12-29T19:16:38.795189"
+        }
+      ],
+      "reasoning": "Analyzed code for logical errors, focusing on the removal of compatibility checks for Pydantic v1, the introduction of inline_snapshot without clear validation, and the potential for missed edge cases due to simplified assertions. These changes could lead to backward compatibility issues, incorrect test validations, and overlooked edge cases.",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 14.841483354568481,
+      "timestamp": "2025-12-29T19:16:38.797028"
+    },
+    {
+      "agent_role": "PR",
+      "task_description": "Review code for performance issues",
+      "findings": [],
+      "reasoning": "Static analysis: 0, LLM analysis: 0",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 10.07305908203125,
+      "timestamp": "2025-12-29T19:16:49.207775"
+    },
+    {
+      "agent_role": "DR",
+      "task_description": "Review code documentation quality",
+      "findings": [],
+      "reasoning": "I now can give a great answer",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 1.5125086307525635,
+      "timestamp": "2025-12-29T19:16:51.053556"
+    },
+    {
+      "agent_role": "TR",
+      "task_description": "Review test coverage and quality",
+      "findings": [
+        {
+          "id": "50b344fb-c26f-41e8-9cd2-63210b48bda3",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "tests/test_additional_properties_bool.py",
+            "snippet": "No assertions found in test changes",
+            "metadata": {}
+          },
+          "title": "Test file modified without assertions",
+          "description": "Test file changes don't include assertions. Tests should verify expected behavior.",
+          "has_patch": false,
+          "patch": null,
+          "location": "tests/test_additional_properties_bool.py",
+          "created_at": "2025-12-29T19:16:51.057724"
+        }
+      ],
+      "reasoning": "Static: 1, LLM: 0",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 1.3907155990600586,
+      "timestamp": "2025-12-29T19:16:52.793797"
+    },
+    {
+      "agent_role": "RP",
+      "task_description": "Generate code revision proposals",
+      "findings": [
+        {
+          "id": "cf68b093-c7b3-45c0-959f-481f7a94eb7a",
+          "type": "logic",
+          "severity": "major",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "Multiple locations",
+            "snippet": "Removal of IsDict and Pydantic v1 specific checks",
+            "metadata": {}
+          },
+          "title": "Removal of Pydantic v1 Compatibility Checks",
+          "description": "The removal of Pydantic v1 specific test variants and compatibility checks could lead to potential issues with backward compatibility and unexpected behavior in systems still relying on Pydantic v1.",
+          "has_patch": true,
+          "patch": "diff --git a/tests/test_additional_properties_bool.py b/tests/test_additional_properties_bool.py\nindex 063297a3..3756b7d7 100644\n--- a/tests/test_additional_properties_bool.py\n+++ b/tests/test_additional_properties_bool.py\n@@ -1,5 +1,6 @@\n from typing import Union\n \n+from dirty_equals import IsDict\n from fastapi import FastAPI\n from fastapi.testclient import TestClient\n# ... patch truncated",
+          "location": "test_additional_properties_bool.py and test_additional_responses_custom_model_in_callback.py",
+          "created_at": "2025-12-29T19:16:38.795135"
+        },
+        {
+          "id": "251d7e58-da38-4114-bc6d-54bd8973005b",
+          "type": "logic",
+          "severity": "major",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "test_additional_responses_custom_model_in_callback.py:32",
+            "snippet": "assert response.json() == snapshot(...)",
+            "metadata": {}
+          },
+          "title": "Use of inline_snapshot without validation",
+          "description": "The use of inline_snapshot for asserting the response in tests without visible validation logic or snapshot comparison could lead to tests passing incorrectly if the snapshot does not match the expected output.",
+          "has_patch": true,
+          "patch": "--- a/tests/test_additional_responses_custom_model_in_callback.py\n+++ b/tests/test_additional_responses_custom_model_in_callback.py\n@@ -1,5 +1,5 @@\n-import pytest\n+from pytest import approx, raises\n \n-def test_response_model():\n+def test_response_model(snapshot):\n     # Test logic here\n-    assert response == inline_snapshot\n# ... patch truncated",
+          "location": "test_additional_responses_custom_model_in_callback.py",
+          "created_at": "2025-12-29T19:16:38.795170"
+        }
+      ],
+      "reasoning": "Generated patches for 2 high-priority findings",
+      "prompt_version": "v1",
+      "llm_calls": 2,
+      "tokens_used": 0,
+      "execution_time_s": 11.626413345336914,
+      "timestamp": "2025-12-29T19:17:05.099464"
+    },
+    {
+      "agent_role": "Supervisor",
+      "task_description": "Consolidate and validate all findings",
+      "findings": [
+        {
+          "id": "cf68b093-c7b3-45c0-959f-481f7a94eb7a",
+          "type": "logic",
+          "severity": "major",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "Multiple locations",
+            "snippet": "Removal of IsDict and Pydantic v1 specific checks",
+            "metadata": {}
+          },
+          "title": "Removal of Pydantic v1 Compatibility Checks",
+          "description": "The removal of Pydantic v1 specific test variants and compatibility checks could lead to potential issues with backward compatibility and unexpected behavior in systems still relying on Pydantic v1.",
+          "has_patch": true,
+          "patch": "diff --git a/tests/test_additional_properties_bool.py b/tests/test_additional_properties_bool.py\nindex 063297a3..3756b7d7 100644\n--- a/tests/test_additional_properties_bool.py\n+++ b/tests/test_additional_properties_bool.py\n@@ -1,5 +1,6 @@\n from typing import Union\n \n+from dirty_equals import IsDict\n from fastapi import FastAPI\n from fastapi.testclient import TestClient\n# ... patch truncated",
+          "location": "test_additional_properties_bool.py and test_additional_responses_custom_model_in_callback.py",
+          "created_at": "2025-12-29T19:16:38.795135"
+        },
+        {
+          "id": "251d7e58-da38-4114-bc6d-54bd8973005b",
+          "type": "logic",
+          "severity": "major",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "test_additional_responses_custom_model_in_callback.py:32",
+            "snippet": "assert response.json() == snapshot(...)",
+            "metadata": {}
+          },
+          "title": "Use of inline_snapshot without validation",
+          "description": "The use of inline_snapshot for asserting the response in tests without visible validation logic or snapshot comparison could lead to tests passing incorrectly if the snapshot does not match the expected output.",
+          "has_patch": true,
+          "patch": "--- a/tests/test_additional_responses_custom_model_in_callback.py\n+++ b/tests/test_additional_responses_custom_model_in_callback.py\n@@ -1,5 +1,5 @@\n-import pytest\n+from pytest import approx, raises\n \n-def test_response_model():\n+def test_response_model(snapshot):\n     # Test logic here\n-    assert response == inline_snapshot\n# ... patch truncated",
+          "location": "test_additional_responses_custom_model_in_callback.py",
+          "created_at": "2025-12-29T19:16:38.795170"
+        },
+        {
+          "id": "50b344fb-c26f-41e8-9cd2-63210b48bda3",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "tests/test_additional_properties_bool.py",
+            "snippet": "No assertions found in test changes",
+            "metadata": {}
+          },
+          "title": "Test file modified without assertions",
+          "description": "Test file changes don't include assertions. Tests should verify expected behavior.",
+          "has_patch": false,
+          "patch": null,
+          "location": "tests/test_additional_properties_bool.py",
+          "created_at": "2025-12-29T19:16:51.057724"
+        }
+      ],
+      "reasoning": "Consolidated 6 findings from 7 agents.",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:17:05.105332"
+    }
+  ],
+  "final_comment_md": "# Code Review\n\n## Summary\nReviewed PR #14611: \ud83d\udd25 Remove Pydantic v1  specific test variants\nChanged 0 files (+0/-0)\nFound 3 issues requiring attention.\n\n## \ud83d\udfe0 Major Issues\n\n### Removal of Pydantic v1 Compatibility Checks\n\n**Location:** `test_additional_properties_bool.py and test_additional_responses_custom_model_in_callback.py`  \n**Type:** logic  \n**Source:** logic_analysis  \n\nThe removal of Pydantic v1 specific test variants and compatibility checks could lead to potential issues with backward compatibility and unexpected behavior in systems still relying on Pydantic v1.\n\n**Suggested fix:**\n```\ndiff --git a/tests/test_additional_properties_bool.py b/tests/test_additional_properties_bool.py\nindex 063297a3..3756b7d7 100644\n--- a/tests/test_additional_properties_bool.py\n+++ b/tests/test_additional_properties_bool.py\n@@ -1,5 +1,6 @@\n from typing import Union\n \n+from dirty_equals import IsDict\n from fastapi import FastAPI\n from fastapi.testclient import TestClient\n# ... patch truncated\n```\n\n### Use of inline_snapshot without validation\n\n**Location:** `test_additional_responses_custom_model_in_callback.py`  \n**Type:** logic  \n**Source:** logic_analysis  \n\nThe use of inline_snapshot for asserting the response in tests without visible validation logic or snapshot comparison could lead to tests passing incorrectly if the snapshot does not match the expected output.\n\n**Suggested fix:**\n```\n--- a/tests/test_additional_responses_custom_model_in_callback.py\n+++ b/tests/test_additional_responses_custom_model_in_callback.py\n@@ -1,5 +1,5 @@\n-import pytest\n+from pytest import approx, raises\n \n-def test_response_model():\n+def test_response_model(snapshot):\n     # Test logic here\n-    assert response == inline_snapshot\n# ... patch truncated\n```\n\n\n## \ud83d\udfe1 Minor Issues\n\n### Test file modified without assertions\n\n**Location:** `tests/test_additional_properties_bool.py`  \n**Type:** other  \n**Source:** static_analysis  \n\nTest file changes don't include assertions. Tests should verify expected behavior.\n\n",
+  "review_time_s": 41.658130168914795,
+  "token_cost_estimate": 0.0,
+  "prompt_versions": {
+    "SR": "v1",
+    "SFR": "v1",
+    "LR": "v1",
+    "PR": "v1",
+    "DR": "v1",
+    "TR": "v1",
+    "RP": "v1",
+    "Supervisor": "v1"
+  },
+  "metadata": {
+    "repository": "fastapi",
+    "title": "\ud83d\udd25 Remove Pydantic v1  specific test variants",
+    "author": "tiangolo"
+  },
+  "created_at": "2025-12-29T19:17:05.105410"
+}

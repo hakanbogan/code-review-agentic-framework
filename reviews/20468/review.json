@@ -1,0 +1,969 @@
+{
+  "correlation_id": "7753b736-c64f-4326-9a40-56baf835b07e",
+  "pr_id": "20468",
+  "system_type": "multi_agent",
+  "change_summary": "Reviewed PR #20468: Fixed #36831 -- Added validation for CSP directive names and values.\nChanged 0 files (+0/-0)\nFound 13 issues requiring attention.",
+  "findings": [
+    {
+      "id": "a6e4c5f8-0867-4d13-ae0b-74f5b14bc0da",
+      "type": "logic",
+      "severity": "major",
+      "source_agent": "LR",
+      "evidence": {
+        "tool": "logic_analysis",
+        "reference": "django/utils/csp.py:134",
+        "snippet": "if value != CSP.NONCE:  # Skip validation for the sentinel.",
+        "metadata": {}
+      },
+      "title": "Potential for bypassing nonce validation",
+      "description": "The validation for CSP values skips the nonce sentinel, which could lead to bypassing the validation if a malicious value is set as the nonce.",
+      "has_patch": false,
+      "patch": null,
+      "location": "django/utils/csp.py:134",
+      "created_at": "2025-12-29T19:44:45.820055"
+    },
+    {
+      "id": "31f7e939-5830-43f1-b8f7-bb97cd2f4168",
+      "type": "logic",
+      "severity": "minor",
+      "source_agent": "LR",
+      "evidence": {
+        "tool": "logic_analysis",
+        "reference": "django/utils/csp.py:87, django/utils/csp.py:100",
+        "snippet": "_validate_csp_directive(directive), _validate_csp_value(value, directive)",
+        "metadata": {}
+      },
+      "title": "Inconsistent validation for directive names and values",
+      "description": "Directive names are validated against a set of characters {\";\", \"\\r\", \"\\n\"}, but values are only validated for the presence of semicolons. This inconsistency might not fully prevent malformed CSP policies.",
+      "has_patch": false,
+      "patch": null,
+      "location": "django/utils/csp.py:87",
+      "created_at": "2025-12-29T19:44:45.820086"
+    },
+    {
+      "id": "4a60df04-5e61-444e-baf5-e5035b13c1bc",
+      "type": "logic",
+      "severity": "minor",
+      "source_agent": "LR",
+      "evidence": {
+        "tool": "logic_analysis",
+        "reference": "django/utils/csp.py:100",
+        "snippet": "if \";\" in str(value):",
+        "metadata": {}
+      },
+      "title": "Missing validation for newline characters in CSP values",
+      "description": "While directive names are validated for newline characters, CSP values are not, potentially allowing for injection attacks or misconfigurations.",
+      "has_patch": false,
+      "patch": null,
+      "location": "django/utils/csp.py:100",
+      "created_at": "2025-12-29T19:44:45.820112"
+    },
+    {
+      "id": "1c2f758e-bdfe-4668-9d35-d7d3f9d1ddf3",
+      "type": "performance",
+      "severity": "minor",
+      "source_agent": "PR",
+      "evidence": {
+        "tool": "performance_analysis",
+        "reference": "django/utils/csp.py:134",
+        "snippet": "for directive, values in config.items():\\n    _validate_csp_directive(directive)",
+        "metadata": {}
+      },
+      "title": "Inefficient Validation Checks in Loops",
+      "description": "The validation functions `_validate_csp_directive` and `_validate_csp_value` are called inside loops, which could lead to performance issues with large configurations.",
+      "has_patch": false,
+      "patch": null,
+      "location": "django/utils/csp.py:134-140",
+      "created_at": "2025-12-29T19:44:57.748153"
+    },
+    {
+      "id": "d70f190b-1f2b-42b8-a0cc-d2ce737f577f",
+      "type": "performance",
+      "severity": "minor",
+      "source_agent": "PR",
+      "evidence": {
+        "tool": "performance_analysis",
+        "reference": "django/utils/csp.py:85",
+        "snippet": "if any(char in directive for char in invalid_chars):",
+        "metadata": {}
+      },
+      "title": "Repeated String Operations",
+      "description": "String operations like `in` checks within `_validate_csp_directive` and `_validate_csp_value` could be optimized for large directive names or values.",
+      "has_patch": false,
+      "patch": null,
+      "location": "django/utils/csp.py:85-95",
+      "created_at": "2025-12-29T19:44:57.748175"
+    },
+    {
+      "id": "9001c5da-0e1f-44cd-b4e1-00c3b82b5569",
+      "type": "performance",
+      "severity": "nit",
+      "source_agent": "PR",
+      "evidence": {
+        "tool": "performance_analysis",
+        "reference": "django/utils/csp.py:81",
+        "snippet": "def _validate_csp_directive(directive):",
+        "metadata": {}
+      },
+      "title": "Potential for Caching Validation Results",
+      "description": "Caching the results of directive and value validations could avoid redundant checks, especially for repeated values across different directives.",
+      "has_patch": false,
+      "patch": null,
+      "location": "django/utils/csp.py:81-134",
+      "created_at": "2025-12-29T19:44:57.748192"
+    },
+    {
+      "id": "3d66beaa-ee3a-44e2-b5cf-b70e39406fb7",
+      "type": "other",
+      "severity": "minor",
+      "source_agent": "DR",
+      "evidence": {
+        "tool": "documentation_analysis",
+        "reference": "django/utils/csp.py:_validate_csp_directive",
+        "snippet": "def _validate_csp_directive(directive):",
+        "metadata": {}
+      },
+      "title": "Incomplete parameter documentation in _validate_csp_directive",
+      "description": "The function '_validate_csp_directive' lacks a detailed parameter description in its docstring.",
+      "has_patch": false,
+      "patch": null,
+      "location": "django/utils/csp.py:_validate_csp_directive",
+      "created_at": "2025-12-29T19:45:21.412337"
+    },
+    {
+      "id": "c2709a4d-4db8-4b71-8b45-e1b37d5bed47",
+      "type": "other",
+      "severity": "minor",
+      "source_agent": "DR",
+      "evidence": {
+        "tool": "documentation_analysis",
+        "reference": "django/utils/csp.py:_validate_csp_value",
+        "snippet": "def _validate_csp_value(value, directive):",
+        "metadata": {}
+      },
+      "title": "Incomplete parameter documentation in _validate_csp_value",
+      "description": "The function '_validate_csp_value' lacks a detailed parameter description in its docstring.",
+      "has_patch": false,
+      "patch": null,
+      "location": "django/utils/csp.py:_validate_csp_value",
+      "created_at": "2025-12-29T19:45:21.412360"
+    },
+    {
+      "id": "40143cfc-3736-4877-b93b-95f7af76fbd6",
+      "type": "other",
+      "severity": "minor",
+      "source_agent": "DR",
+      "evidence": {
+        "tool": "documentation_analysis",
+        "reference": "django/utils/csp.py:_validate_csp_directive, _validate_csp_value",
+        "snippet": "def _validate_csp_directive(directive):\ndef _validate_csp_value(value, directive):",
+        "metadata": {}
+      },
+      "title": "Missing function parameter types",
+      "description": "The functions '_validate_csp_directive' and '_validate_csp_value' are missing type hints for their parameters.",
+      "has_patch": false,
+      "patch": null,
+      "location": "django/utils/csp.py:_validate_csp_directive, _validate_csp_value",
+      "created_at": "2025-12-29T19:45:21.412375"
+    },
+    {
+      "id": "a411f351-ab68-4228-9328-fdcd07a6622e",
+      "type": "other",
+      "severity": "minor",
+      "source_agent": "DR",
+      "evidence": {
+        "tool": "documentation_analysis",
+        "reference": "django/utils/csp.py:_validate_csp_directive, _validate_csp_value, build_policy",
+        "snippet": "def _validate_csp_directive(directive):\ndef _validate_csp_value(value, directive):\ndef build_policy(config, nonce=None):",
+        "metadata": {}
+      },
+      "title": "Missing return type annotations",
+      "description": "The functions '_validate_csp_directive', '_validate_csp_value', and 'build_policy' are missing return type annotations.",
+      "has_patch": false,
+      "patch": null,
+      "location": "django/utils/csp.py:_validate_csp_directive, _validate_csp_value, build_policy",
+      "created_at": "2025-12-29T19:45:21.412389"
+    },
+    {
+      "id": "095de9b2-a76f-4061-97ee-6a3f2c9b9a53",
+      "type": "other",
+      "severity": "minor",
+      "source_agent": "DR",
+      "evidence": {
+        "tool": "documentation_analysis",
+        "reference": "django/utils/csp.py:build_policy",
+        "snippet": "if (has_sentinel := CSP.NONCE in values) and nonce:",
+        "metadata": {}
+      },
+      "title": "Complex logic without explanation",
+      "description": "The logic within 'build_policy' for handling nonces and sentinel values lacks explanatory comments.",
+      "has_patch": false,
+      "patch": null,
+      "location": "django/utils/csp.py:build_policy",
+      "created_at": "2025-12-29T19:45:21.412416"
+    },
+    {
+      "id": "51f9289d-8ec4-4fbc-9924-ba8aec7dda5d",
+      "type": "other",
+      "severity": "minor",
+      "source_agent": "DR",
+      "evidence": {
+        "tool": "documentation_analysis",
+        "reference": "docs/releases/6.1.txt",
+        "snippet": "* The CSP policy builder now validates that directive names and values do not contain semicolons or newlines, raising :exc:`ValueError` with a helpful message if invalid characters are detected.",
+        "metadata": {}
+      },
+      "title": "Undocumented breaking changes",
+      "description": "The PR introduces validation that could raise new exceptions for existing configurations, which might be considered a breaking change. This change is not documented in the release notes.",
+      "has_patch": false,
+      "patch": null,
+      "location": "docs/releases/6.1.txt",
+      "created_at": "2025-12-29T19:45:21.412432"
+    },
+    {
+      "id": "c16730c8-ec8c-47b4-ba16-1a6b1a3ad164",
+      "type": "other",
+      "severity": "major",
+      "source_agent": "TR",
+      "evidence": {
+        "tool": "test_analysis",
+        "reference": "django/utils/csp.py:81-134",
+        "snippet": "def _validate_csp_directive(directive):... def _validate_csp_value(value, directive):...",
+        "metadata": {}
+      },
+      "title": "Missing tests for empty or null directive names and values",
+      "description": "There are no tests covering scenarios where directive names or values are empty strings or null, which could lead to unexpected behavior or errors in policy generation.",
+      "has_patch": true,
+      "patch": "diff --git a/tests/utils_tests/test_csp.py b/tests/utils_tests/test_csp.py\nindex e2f3c1a..4c5d7b2 100644\n--- a/tests/utils_tests/test_csp.py\n+++ b/tests/utils_tests/test_csp.py\n@@ -100,6 +100,22 @@ class CSPTests(TestCase):\n             self.assertIn(\"script-src 'self'\", policy)\n             self.assertIn(f\"style-src 'nonce-{nonce}'\", policy)\n \n+    def test_empty_directive_name(self):\n+        with self.assertRaises(ValueError):\n# ... patch truncated",
+      "location": "tests/utils_tests/test_csp.py",
+      "created_at": "2025-12-29T19:45:43.040108"
+    }
+  ],
+  "agent_decisions": [
+    {
+      "agent_role": "SR",
+      "task_description": "Review code for security vulnerabilities",
+      "findings": [],
+      "reasoning": "Analyzed security tools output",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:44:33.534599"
+    },
+    {
+      "agent_role": "SFR",
+      "task_description": "Review code style and formatting",
+      "findings": [],
+      "reasoning": "Analyzed linter output and applied nit limits",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:44:33.536709"
+    },
+    {
+      "agent_role": "LR",
+      "task_description": "Review code for logical errors and potential bugs",
+      "findings": [
+        {
+          "id": "a6e4c5f8-0867-4d13-ae0b-74f5b14bc0da",
+          "type": "logic",
+          "severity": "major",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "django/utils/csp.py:134",
+            "snippet": "if value != CSP.NONCE:  # Skip validation for the sentinel.",
+            "metadata": {}
+          },
+          "title": "Potential for bypassing nonce validation",
+          "description": "The validation for CSP values skips the nonce sentinel, which could lead to bypassing the validation if a malicious value is set as the nonce.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:134",
+          "created_at": "2025-12-29T19:44:45.820055"
+        },
+        {
+          "id": "31f7e939-5830-43f1-b8f7-bb97cd2f4168",
+          "type": "logic",
+          "severity": "minor",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "django/utils/csp.py:87, django/utils/csp.py:100",
+            "snippet": "_validate_csp_directive(directive), _validate_csp_value(value, directive)",
+            "metadata": {}
+          },
+          "title": "Inconsistent validation for directive names and values",
+          "description": "Directive names are validated against a set of characters {\";\", \"\\r\", \"\\n\"}, but values are only validated for the presence of semicolons. This inconsistency might not fully prevent malformed CSP policies.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:87",
+          "created_at": "2025-12-29T19:44:45.820086"
+        },
+        {
+          "id": "4a60df04-5e61-444e-baf5-e5035b13c1bc",
+          "type": "logic",
+          "severity": "minor",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "django/utils/csp.py:100",
+            "snippet": "if \";\" in str(value):",
+            "metadata": {}
+          },
+          "title": "Missing validation for newline characters in CSP values",
+          "description": "While directive names are validated for newline characters, CSP values are not, potentially allowing for injection attacks or misconfigurations.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:100",
+          "created_at": "2025-12-29T19:44:45.820112"
+        }
+      ],
+      "reasoning": "Analyzed code for logical errors, focusing on validation mechanisms for CSP directives and values. Identified potential security and consistency issues in the validation logic, particularly around nonce handling and character checks. Recommendations include extending value validation to include newline checks and reconsidering the approach to nonce validation to ensure security.",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 11.955232858657837,
+      "timestamp": "2025-12-29T19:44:45.821888"
+    },
+    {
+      "agent_role": "PR",
+      "task_description": "Review code for performance issues",
+      "findings": [
+        {
+          "id": "1c2f758e-bdfe-4668-9d35-d7d3f9d1ddf3",
+          "type": "performance",
+          "severity": "minor",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "performance_analysis",
+            "reference": "django/utils/csp.py:134",
+            "snippet": "for directive, values in config.items():\\n    _validate_csp_directive(directive)",
+            "metadata": {}
+          },
+          "title": "Inefficient Validation Checks in Loops",
+          "description": "The validation functions `_validate_csp_directive` and `_validate_csp_value` are called inside loops, which could lead to performance issues with large configurations.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:134-140",
+          "created_at": "2025-12-29T19:44:57.748153"
+        },
+        {
+          "id": "d70f190b-1f2b-42b8-a0cc-d2ce737f577f",
+          "type": "performance",
+          "severity": "minor",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "performance_analysis",
+            "reference": "django/utils/csp.py:85",
+            "snippet": "if any(char in directive for char in invalid_chars):",
+            "metadata": {}
+          },
+          "title": "Repeated String Operations",
+          "description": "String operations like `in` checks within `_validate_csp_directive` and `_validate_csp_value` could be optimized for large directive names or values.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:85-95",
+          "created_at": "2025-12-29T19:44:57.748175"
+        },
+        {
+          "id": "9001c5da-0e1f-44cd-b4e1-00c3b82b5569",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "performance_analysis",
+            "reference": "django/utils/csp.py:81",
+            "snippet": "def _validate_csp_directive(directive):",
+            "metadata": {}
+          },
+          "title": "Potential for Caching Validation Results",
+          "description": "Caching the results of directive and value validations could avoid redundant checks, especially for repeated values across different directives.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:81-134",
+          "created_at": "2025-12-29T19:44:57.748192"
+        }
+      ],
+      "reasoning": "Static analysis: 0, LLM analysis: 3",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 11.591427564620972,
+      "timestamp": "2025-12-29T19:44:57.749516"
+    },
+    {
+      "agent_role": "DR",
+      "task_description": "Review code documentation quality",
+      "findings": [
+        {
+          "id": "3d66beaa-ee3a-44e2-b5cf-b70e39406fb7",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "django/utils/csp.py:_validate_csp_directive",
+            "snippet": "def _validate_csp_directive(directive):",
+            "metadata": {}
+          },
+          "title": "Incomplete parameter documentation in _validate_csp_directive",
+          "description": "The function '_validate_csp_directive' lacks a detailed parameter description in its docstring.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:_validate_csp_directive",
+          "created_at": "2025-12-29T19:45:21.412337"
+        },
+        {
+          "id": "c2709a4d-4db8-4b71-8b45-e1b37d5bed47",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "django/utils/csp.py:_validate_csp_value",
+            "snippet": "def _validate_csp_value(value, directive):",
+            "metadata": {}
+          },
+          "title": "Incomplete parameter documentation in _validate_csp_value",
+          "description": "The function '_validate_csp_value' lacks a detailed parameter description in its docstring.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:_validate_csp_value",
+          "created_at": "2025-12-29T19:45:21.412360"
+        },
+        {
+          "id": "40143cfc-3736-4877-b93b-95f7af76fbd6",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "django/utils/csp.py:_validate_csp_directive, _validate_csp_value",
+            "snippet": "def _validate_csp_directive(directive):\ndef _validate_csp_value(value, directive):",
+            "metadata": {}
+          },
+          "title": "Missing function parameter types",
+          "description": "The functions '_validate_csp_directive' and '_validate_csp_value' are missing type hints for their parameters.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:_validate_csp_directive, _validate_csp_value",
+          "created_at": "2025-12-29T19:45:21.412375"
+        },
+        {
+          "id": "a411f351-ab68-4228-9328-fdcd07a6622e",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "django/utils/csp.py:_validate_csp_directive, _validate_csp_value, build_policy",
+            "snippet": "def _validate_csp_directive(directive):\ndef _validate_csp_value(value, directive):\ndef build_policy(config, nonce=None):",
+            "metadata": {}
+          },
+          "title": "Missing return type annotations",
+          "description": "The functions '_validate_csp_directive', '_validate_csp_value', and 'build_policy' are missing return type annotations.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:_validate_csp_directive, _validate_csp_value, build_policy",
+          "created_at": "2025-12-29T19:45:21.412389"
+        },
+        {
+          "id": "b520d1c7-3233-4964-b132-c84e20fa0873",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "django/utils/csp.py:_validate_csp_directive, _validate_csp_value",
+            "snippet": "def _validate_csp_directive(directive):\ndef _validate_csp_value(value, directive):",
+            "metadata": {}
+          },
+          "title": "Missing docstring for public functions",
+          "description": "Public functions '_validate_csp_directive' and '_validate_csp_value' are missing docstrings.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:_validate_csp_directive, _validate_csp_value",
+          "created_at": "2025-12-29T19:45:21.412402"
+        },
+        {
+          "id": "095de9b2-a76f-4061-97ee-6a3f2c9b9a53",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "django/utils/csp.py:build_policy",
+            "snippet": "if (has_sentinel := CSP.NONCE in values) and nonce:",
+            "metadata": {}
+          },
+          "title": "Complex logic without explanation",
+          "description": "The logic within 'build_policy' for handling nonces and sentinel values lacks explanatory comments.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:build_policy",
+          "created_at": "2025-12-29T19:45:21.412416"
+        },
+        {
+          "id": "51f9289d-8ec4-4fbc-9924-ba8aec7dda5d",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "docs/releases/6.1.txt",
+            "snippet": "* The CSP policy builder now validates that directive names and values do not contain semicolons or newlines, raising :exc:`ValueError` with a helpful message if invalid characters are detected.",
+            "metadata": {}
+          },
+          "title": "Undocumented breaking changes",
+          "description": "The PR introduces validation that could raise new exceptions for existing configurations, which might be considered a breaking change. This change is not documented in the release notes.",
+          "has_patch": false,
+          "patch": null,
+          "location": "docs/releases/6.1.txt",
+          "created_at": "2025-12-29T19:45:21.412432"
+        }
+      ],
+      "reasoning": "Reviewed documentation completeness for the PR titled 'Fixed #36831 -- Added validation for CSP directive names and values.' The review focused on ensuring that all public APIs are documented, complex logic is accompanied by explanatory comments, type hints are complete, and the documentation is accurate and up-to-date. The findings highlight areas where the documentation could be improved to meet these goals, including missing docstrings, incomplete type hints, and the need for additional comments to explain complex logic. Additionally, the potential impact of the changes on existing configurations is not fully documented in the release notes, which could lead to unexpected issues for users upgrading to this version.",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 23.326934576034546,
+      "timestamp": "2025-12-29T19:45:21.413887"
+    },
+    {
+      "agent_role": "TR",
+      "task_description": "Review test coverage and quality",
+      "findings": [
+        {
+          "id": "99e34fc5-a502-4846-9f1b-19de027c9118",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "tests/utils_tests/test_csp.py",
+            "snippet": "No assertions found in test changes",
+            "metadata": {}
+          },
+          "title": "Test file modified without assertions",
+          "description": "Test file changes don't include assertions. Tests should verify expected behavior.",
+          "has_patch": false,
+          "patch": null,
+          "location": "tests/utils_tests/test_csp.py",
+          "created_at": "2025-12-29T19:45:21.414801"
+        },
+        {
+          "id": "c16730c8-ec8c-47b4-ba16-1a6b1a3ad164",
+          "type": "other",
+          "severity": "major",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": "django/utils/csp.py:81-134",
+            "snippet": "def _validate_csp_directive(directive):... def _validate_csp_value(value, directive):...",
+            "metadata": {}
+          },
+          "title": "Missing tests for empty or null directive names and values",
+          "description": "There are no tests covering scenarios where directive names or values are empty strings or null, which could lead to unexpected behavior or errors in policy generation.",
+          "has_patch": true,
+          "patch": "diff --git a/tests/utils_tests/test_csp.py b/tests/utils_tests/test_csp.py\nindex e2f3c1a..4c5d7b2 100644\n--- a/tests/utils_tests/test_csp.py\n+++ b/tests/utils_tests/test_csp.py\n@@ -100,6 +100,22 @@ class CSPTests(TestCase):\n             self.assertIn(\"script-src 'self'\", policy)\n             self.assertIn(f\"style-src 'nonce-{nonce}'\", policy)\n \n+    def test_empty_directive_name(self):\n+        with self.assertRaises(ValueError):\n# ... patch truncated",
+          "location": "tests/utils_tests/test_csp.py",
+          "created_at": "2025-12-29T19:45:43.040108"
+        },
+        {
+          "id": "dad51593-5192-43df-afde-1a35c7186d35",
+          "type": "other",
+          "severity": "major",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": "django/utils/csp.py:81-134",
+            "snippet": "def _validate_csp_directive(directive):... def _validate_csp_value(value, directive):...",
+            "metadata": {}
+          },
+          "title": "Missing tests for handling of non-string values",
+          "description": "The current test suite does not cover scenarios where directive names or values are of non-string types, which could potentially lead to type errors or incorrect behavior.",
+          "has_patch": false,
+          "patch": null,
+          "location": "tests/utils_tests/test_csp.py",
+          "created_at": "2025-12-29T19:45:43.040131"
+        },
+        {
+          "id": "a2c9d548-e88f-4184-b9d0-d5669e0e6fa5",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": "tests/utils_tests/test_csp.py:135-188",
+            "snippet": "def test_invalid_directive_with_semicolon(self):... def test_invalid_value_with_semicolon(self):...",
+            "metadata": {}
+          },
+          "title": "Lack of test isolation",
+          "description": "The tests for invalid directive names and values are not isolated to single assertions, which could make debugging failures more difficult.",
+          "has_patch": false,
+          "patch": null,
+          "location": "tests/utils_tests/test_csp.py",
+          "created_at": "2025-12-29T19:45:43.040149"
+        },
+        {
+          "id": "4292c304-1f1e-4f7e-b485-d0284e39116c",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": "tests/utils_tests/test_csp.py:135-188",
+            "snippet": "def test_invalid_directive_with_semicolon(self):... def test_invalid_directive_with_newline(self):...",
+            "metadata": {}
+          },
+          "title": "Tests do not cover all invalid characters",
+          "description": "The tests for validating directive names and values do not explicitly cover all invalid characters (e.g., newline characters in values), potentially missing some edge cases.",
+          "has_patch": false,
+          "patch": null,
+          "location": "tests/utils_tests/test_csp.py",
+          "created_at": "2025-12-29T19:45:43.040165"
+        },
+        {
+          "id": "11fddca7-c88f-4443-9536-5e68aeee5379",
+          "type": "other",
+          "severity": "nit",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": "tests/utils_tests/test_csp.py:135-188",
+            "snippet": "policy = {'script-src; report-uri https://evil.com': [CSP.SELF]}...",
+            "metadata": {}
+          },
+          "title": "Potential for flaky tests due to hardcoded values",
+          "description": "The tests rely on hardcoded directive names and values, which could lead to flakiness if the underlying implementation changes. Consider using more dynamic values or setup methods.",
+          "has_patch": false,
+          "patch": null,
+          "location": "tests/utils_tests/test_csp.py",
+          "created_at": "2025-12-29T19:45:43.040180"
+        },
+        {
+          "id": "be2d9138-0ef3-4f5c-970c-5dfabb330249",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": "django/utils/csp.py:81-134",
+            "snippet": "def build_policy(config, nonce=None):...",
+            "metadata": {}
+          },
+          "title": "Missing integration tests for CSP policy application",
+          "description": "There are no integration tests verifying that the CSP policy, once built, is correctly applied to HTTP responses, ensuring end-to-end security compliance.",
+          "has_patch": false,
+          "patch": null,
+          "location": "tests/utils_tests/test_csp.py",
+          "created_at": "2025-12-29T19:45:43.040194"
+        }
+      ],
+      "reasoning": "Static: 1, LLM: 6",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 21.290435552597046,
+      "timestamp": "2025-12-29T19:45:43.042015"
+    },
+    {
+      "agent_role": "RP",
+      "task_description": "Generate code revision proposals",
+      "findings": [
+        {
+          "id": "c16730c8-ec8c-47b4-ba16-1a6b1a3ad164",
+          "type": "other",
+          "severity": "major",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": "django/utils/csp.py:81-134",
+            "snippet": "def _validate_csp_directive(directive):... def _validate_csp_value(value, directive):...",
+            "metadata": {}
+          },
+          "title": "Missing tests for empty or null directive names and values",
+          "description": "There are no tests covering scenarios where directive names or values are empty strings or null, which could lead to unexpected behavior or errors in policy generation.",
+          "has_patch": true,
+          "patch": "diff --git a/tests/utils_tests/test_csp.py b/tests/utils_tests/test_csp.py\nindex e2f3c1a..4c5d7b2 100644\n--- a/tests/utils_tests/test_csp.py\n+++ b/tests/utils_tests/test_csp.py\n@@ -100,6 +100,22 @@ class CSPTests(TestCase):\n             self.assertIn(\"script-src 'self'\", policy)\n             self.assertIn(f\"style-src 'nonce-{nonce}'\", policy)\n \n+    def test_empty_directive_name(self):\n+        with self.assertRaises(ValueError):\n# ... patch truncated",
+          "location": "tests/utils_tests/test_csp.py",
+          "created_at": "2025-12-29T19:45:43.040108"
+        }
+      ],
+      "reasoning": "Generated patches for 1 high-priority findings",
+      "prompt_version": "v1",
+      "llm_calls": 3,
+      "tokens_used": 0,
+      "execution_time_s": 9.621166706085205,
+      "timestamp": "2025-12-29T19:45:53.656503"
+    },
+    {
+      "agent_role": "Supervisor",
+      "task_description": "Consolidate and validate all findings",
+      "findings": [
+        {
+          "id": "a6e4c5f8-0867-4d13-ae0b-74f5b14bc0da",
+          "type": "logic",
+          "severity": "major",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "django/utils/csp.py:134",
+            "snippet": "if value != CSP.NONCE:  # Skip validation for the sentinel.",
+            "metadata": {}
+          },
+          "title": "Potential for bypassing nonce validation",
+          "description": "The validation for CSP values skips the nonce sentinel, which could lead to bypassing the validation if a malicious value is set as the nonce.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:134",
+          "created_at": "2025-12-29T19:44:45.820055"
+        },
+        {
+          "id": "31f7e939-5830-43f1-b8f7-bb97cd2f4168",
+          "type": "logic",
+          "severity": "minor",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "django/utils/csp.py:87, django/utils/csp.py:100",
+            "snippet": "_validate_csp_directive(directive), _validate_csp_value(value, directive)",
+            "metadata": {}
+          },
+          "title": "Inconsistent validation for directive names and values",
+          "description": "Directive names are validated against a set of characters {\";\", \"\\r\", \"\\n\"}, but values are only validated for the presence of semicolons. This inconsistency might not fully prevent malformed CSP policies.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:87",
+          "created_at": "2025-12-29T19:44:45.820086"
+        },
+        {
+          "id": "4a60df04-5e61-444e-baf5-e5035b13c1bc",
+          "type": "logic",
+          "severity": "minor",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "django/utils/csp.py:100",
+            "snippet": "if \";\" in str(value):",
+            "metadata": {}
+          },
+          "title": "Missing validation for newline characters in CSP values",
+          "description": "While directive names are validated for newline characters, CSP values are not, potentially allowing for injection attacks or misconfigurations.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:100",
+          "created_at": "2025-12-29T19:44:45.820112"
+        },
+        {
+          "id": "1c2f758e-bdfe-4668-9d35-d7d3f9d1ddf3",
+          "type": "performance",
+          "severity": "minor",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "performance_analysis",
+            "reference": "django/utils/csp.py:134",
+            "snippet": "for directive, values in config.items():\\n    _validate_csp_directive(directive)",
+            "metadata": {}
+          },
+          "title": "Inefficient Validation Checks in Loops",
+          "description": "The validation functions `_validate_csp_directive` and `_validate_csp_value` are called inside loops, which could lead to performance issues with large configurations.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:134-140",
+          "created_at": "2025-12-29T19:44:57.748153"
+        },
+        {
+          "id": "d70f190b-1f2b-42b8-a0cc-d2ce737f577f",
+          "type": "performance",
+          "severity": "minor",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "performance_analysis",
+            "reference": "django/utils/csp.py:85",
+            "snippet": "if any(char in directive for char in invalid_chars):",
+            "metadata": {}
+          },
+          "title": "Repeated String Operations",
+          "description": "String operations like `in` checks within `_validate_csp_directive` and `_validate_csp_value` could be optimized for large directive names or values.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:85-95",
+          "created_at": "2025-12-29T19:44:57.748175"
+        },
+        {
+          "id": "9001c5da-0e1f-44cd-b4e1-00c3b82b5569",
+          "type": "performance",
+          "severity": "nit",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "performance_analysis",
+            "reference": "django/utils/csp.py:81",
+            "snippet": "def _validate_csp_directive(directive):",
+            "metadata": {}
+          },
+          "title": "Potential for Caching Validation Results",
+          "description": "Caching the results of directive and value validations could avoid redundant checks, especially for repeated values across different directives.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:81-134",
+          "created_at": "2025-12-29T19:44:57.748192"
+        },
+        {
+          "id": "3d66beaa-ee3a-44e2-b5cf-b70e39406fb7",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "django/utils/csp.py:_validate_csp_directive",
+            "snippet": "def _validate_csp_directive(directive):",
+            "metadata": {}
+          },
+          "title": "Incomplete parameter documentation in _validate_csp_directive",
+          "description": "The function '_validate_csp_directive' lacks a detailed parameter description in its docstring.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:_validate_csp_directive",
+          "created_at": "2025-12-29T19:45:21.412337"
+        },
+        {
+          "id": "c2709a4d-4db8-4b71-8b45-e1b37d5bed47",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "django/utils/csp.py:_validate_csp_value",
+            "snippet": "def _validate_csp_value(value, directive):",
+            "metadata": {}
+          },
+          "title": "Incomplete parameter documentation in _validate_csp_value",
+          "description": "The function '_validate_csp_value' lacks a detailed parameter description in its docstring.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:_validate_csp_value",
+          "created_at": "2025-12-29T19:45:21.412360"
+        },
+        {
+          "id": "40143cfc-3736-4877-b93b-95f7af76fbd6",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "django/utils/csp.py:_validate_csp_directive, _validate_csp_value",
+            "snippet": "def _validate_csp_directive(directive):\ndef _validate_csp_value(value, directive):",
+            "metadata": {}
+          },
+          "title": "Missing function parameter types",
+          "description": "The functions '_validate_csp_directive' and '_validate_csp_value' are missing type hints for their parameters.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:_validate_csp_directive, _validate_csp_value",
+          "created_at": "2025-12-29T19:45:21.412375"
+        },
+        {
+          "id": "a411f351-ab68-4228-9328-fdcd07a6622e",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "django/utils/csp.py:_validate_csp_directive, _validate_csp_value, build_policy",
+            "snippet": "def _validate_csp_directive(directive):\ndef _validate_csp_value(value, directive):\ndef build_policy(config, nonce=None):",
+            "metadata": {}
+          },
+          "title": "Missing return type annotations",
+          "description": "The functions '_validate_csp_directive', '_validate_csp_value', and 'build_policy' are missing return type annotations.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:_validate_csp_directive, _validate_csp_value, build_policy",
+          "created_at": "2025-12-29T19:45:21.412389"
+        },
+        {
+          "id": "095de9b2-a76f-4061-97ee-6a3f2c9b9a53",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "django/utils/csp.py:build_policy",
+            "snippet": "if (has_sentinel := CSP.NONCE in values) and nonce:",
+            "metadata": {}
+          },
+          "title": "Complex logic without explanation",
+          "description": "The logic within 'build_policy' for handling nonces and sentinel values lacks explanatory comments.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/utils/csp.py:build_policy",
+          "created_at": "2025-12-29T19:45:21.412416"
+        },
+        {
+          "id": "51f9289d-8ec4-4fbc-9924-ba8aec7dda5d",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "docs/releases/6.1.txt",
+            "snippet": "* The CSP policy builder now validates that directive names and values do not contain semicolons or newlines, raising :exc:`ValueError` with a helpful message if invalid characters are detected.",
+            "metadata": {}
+          },
+          "title": "Undocumented breaking changes",
+          "description": "The PR introduces validation that could raise new exceptions for existing configurations, which might be considered a breaking change. This change is not documented in the release notes.",
+          "has_patch": false,
+          "patch": null,
+          "location": "docs/releases/6.1.txt",
+          "created_at": "2025-12-29T19:45:21.412432"
+        },
+        {
+          "id": "c16730c8-ec8c-47b4-ba16-1a6b1a3ad164",
+          "type": "other",
+          "severity": "major",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": "django/utils/csp.py:81-134",
+            "snippet": "def _validate_csp_directive(directive):... def _validate_csp_value(value, directive):...",
+            "metadata": {}
+          },
+          "title": "Missing tests for empty or null directive names and values",
+          "description": "There are no tests covering scenarios where directive names or values are empty strings or null, which could lead to unexpected behavior or errors in policy generation.",
+          "has_patch": true,
+          "patch": "diff --git a/tests/utils_tests/test_csp.py b/tests/utils_tests/test_csp.py\nindex e2f3c1a..4c5d7b2 100644\n--- a/tests/utils_tests/test_csp.py\n+++ b/tests/utils_tests/test_csp.py\n@@ -100,6 +100,22 @@ class CSPTests(TestCase):\n             self.assertIn(\"script-src 'self'\", policy)\n             self.assertIn(f\"style-src 'nonce-{nonce}'\", policy)\n \n+    def test_empty_directive_name(self):\n+        with self.assertRaises(ValueError):\n# ... patch truncated",
+          "location": "tests/utils_tests/test_csp.py",
+          "created_at": "2025-12-29T19:45:43.040108"
+        }
+      ],
+      "reasoning": "Consolidated 21 findings from 7 agents.",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:45:53.662186"
+    }
+  ],
+  "final_comment_md": "# Code Review\n\n## Summary\nReviewed PR #20468: Fixed #36831 -- Added validation for CSP directive names and values.\nChanged 0 files (+0/-0)\nFound 13 issues requiring attention.\n\n## \ud83d\udfe0 Major Issues\n\n### Potential for bypassing nonce validation\n\n**Location:** `django/utils/csp.py:134`  \n**Type:** logic  \n**Source:** logic_analysis  \n\nThe validation for CSP values skips the nonce sentinel, which could lead to bypassing the validation if a malicious value is set as the nonce.\n\n### Missing tests for empty or null directive names and values\n\n**Location:** `tests/utils_tests/test_csp.py`  \n**Type:** other  \n**Source:** test_analysis  \n\nThere are no tests covering scenarios where directive names or values are empty strings or null, which could lead to unexpected behavior or errors in policy generation.\n\n**Suggested fix:**\n```\ndiff --git a/tests/utils_tests/test_csp.py b/tests/utils_tests/test_csp.py\nindex e2f3c1a..4c5d7b2 100644\n--- a/tests/utils_tests/test_csp.py\n+++ b/tests/utils_tests/test_csp.py\n@@ -100,6 +100,22 @@ class CSPTests(TestCase):\n             self.assertIn(\"script-src 'self'\", policy)\n             self.assertIn(f\"style-src 'nonce-{nonce}'\", policy)\n \n+    def test_empty_directive_name(self):\n+        with self.assertRaises(ValueError):\n# ... patch truncated\n```\n\n\n## \ud83d\udfe1 Minor Issues\n\n### Inconsistent validation for directive names and values\n\n**Location:** `django/utils/csp.py:87`  \n**Type:** logic  \n**Source:** logic_analysis  \n\nDirective names are validated against a set of characters {\";\", \"\\r\", \"\\n\"}, but values are only validated for the presence of semicolons. This inconsistency might not fully prevent malformed CSP policies.\n\n### Missing validation for newline characters in CSP values\n\n**Location:** `django/utils/csp.py:100`  \n**Type:** logic  \n**Source:** logic_analysis  \n\nWhile directive names are validated for newline characters, CSP values are not, potentially allowing for injection attacks or misconfigurations.\n\n### Inefficient Validation Checks in Loops\n\n**Location:** `django/utils/csp.py:134-140`  \n**Type:** performance  \n**Source:** performance_analysis  \n\nThe validation functions `_validate_csp_directive` and `_validate_csp_value` are called inside loops, which could lead to performance issues with large configurations.\n\n### Repeated String Operations\n\n**Location:** `django/utils/csp.py:85-95`  \n**Type:** performance  \n**Source:** performance_analysis  \n\nString operations like `in` checks within `_validate_csp_directive` and `_validate_csp_value` could be optimized for large directive names or values.\n\n### Incomplete parameter documentation in _validate_csp_directive\n\n**Location:** `django/utils/csp.py:_validate_csp_directive`  \n**Type:** other  \n**Source:** documentation_analysis  \n\nThe function '_validate_csp_directive' lacks a detailed parameter description in its docstring.\n\n### Incomplete parameter documentation in _validate_csp_value\n\n**Location:** `django/utils/csp.py:_validate_csp_value`  \n**Type:** other  \n**Source:** documentation_analysis  \n\nThe function '_validate_csp_value' lacks a detailed parameter description in its docstring.\n\n### Missing function parameter types\n\n**Location:** `django/utils/csp.py:_validate_csp_directive, _validate_csp_value`  \n**Type:** other  \n**Source:** documentation_analysis  \n\nThe functions '_validate_csp_directive' and '_validate_csp_value' are missing type hints for their parameters.\n\n### Missing return type annotations\n\n**Location:** `django/utils/csp.py:_validate_csp_directive, _validate_csp_value, build_policy`  \n**Type:** other  \n**Source:** documentation_analysis  \n\nThe functions '_validate_csp_directive', '_validate_csp_value', and 'build_policy' are missing return type annotations.\n\n### Complex logic without explanation\n\n**Location:** `django/utils/csp.py:build_policy`  \n**Type:** other  \n**Source:** documentation_analysis  \n\nThe logic within 'build_policy' for handling nonces and sentinel values lacks explanatory comments.\n\n### Undocumented breaking changes\n\n**Location:** `docs/releases/6.1.txt`  \n**Type:** other  \n**Source:** documentation_analysis  \n\nThe PR introduces validation that could raise new exceptions for existing configurations, which might be considered a breaking change. This change is not documented in the release notes.\n\n\n## \ud83d\udcac Nits\n\n### Potential for Caching Validation Results\n\n**Location:** `django/utils/csp.py:81-134`  \n**Type:** performance  \n**Source:** performance_analysis  \n\nCaching the results of directive and value validations could avoid redundant checks, especially for repeated values across different directives.\n\n",
+  "review_time_s": 80.26941204071045,
+  "token_cost_estimate": 0.0,
+  "prompt_versions": {
+    "SR": "v1",
+    "SFR": "v1",
+    "LR": "v1",
+    "PR": "v1",
+    "DR": "v1",
+    "TR": "v1",
+    "RP": "v1",
+    "Supervisor": "v1"
+  },
+  "metadata": {
+    "repository": "django",
+    "title": "Fixed #36831 -- Added validation for CSP directive names and values.",
+    "author": "naveedqadir"
+  },
+  "created_at": "2025-12-29T19:45:53.662295"
+}

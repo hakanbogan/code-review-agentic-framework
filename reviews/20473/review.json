@@ -1,0 +1,518 @@
+{
+  "correlation_id": "36fedcfd-a53b-4744-8e45-c1faf61fc8b6",
+  "pr_id": "20473",
+  "system_type": "multi_agent",
+  "change_summary": "Reviewed PR #20473: Fixed #2750 \u2014 Prevent ManyToManyField default from being used.\nChanged 0 files (+0/-0)\nFound 6 issues requiring attention.",
+  "findings": [
+    {
+      "id": "a8f42ed9-c676-4f99-8207-a033e18bfac8",
+      "type": "logic",
+      "severity": "major",
+      "source_agent": "LR",
+      "evidence": {
+        "tool": "logic_analysis",
+        "reference": "django/db/models/fields/__init__.py:1109-1112",
+        "snippet": "if not self.many_to_many:\n    defaults['initial'] = self.default",
+        "metadata": {}
+      },
+      "title": "ManyToManyField default handling removal",
+      "description": "Removing default handling for ManyToManyField in form initialization may lead to unexpected behavior for existing applications relying on this feature. This change could potentially break forms that expected these defaults to be pre-selected.",
+      "has_patch": false,
+      "patch": null,
+      "location": "django/db/models/fields/__init__.py:1109-1112",
+      "created_at": "2025-12-29T19:39:16.969069"
+    },
+    {
+      "id": "7a0de061-ad05-4472-bc7b-c69da8e3e223",
+      "type": "logic",
+      "severity": "minor",
+      "source_agent": "LR",
+      "evidence": {
+        "tool": "logic_analysis",
+        "reference": "tests/forms_tests/tests/tests.py:99,126",
+        "snippet": "pk for regular fields. ManyToManyField ignores defaults (refs #2750).",
+        "metadata": {}
+      },
+      "title": "Test case modification for ManyToManyField default",
+      "description": "The test case modifications reflect the changes in ManyToManyField default handling but do not cover scenarios where existing applications might rely on the previous behavior. This could lead to insufficient test coverage for the change.",
+      "has_patch": false,
+      "patch": null,
+      "location": "tests/forms_tests/tests/tests.py:99,126",
+      "created_at": "2025-12-29T19:39:16.969091"
+    },
+    {
+      "id": "6b9851e1-6bcb-409f-b7d0-945462224847",
+      "type": "other",
+      "severity": "major",
+      "source_agent": "DR",
+      "evidence": {
+        "tool": "documentation_analysis",
+        "reference": "django/db/models/fields/__init__.py:1106",
+        "snippet": "if self.has_default():",
+        "metadata": {}
+      },
+      "title": "Missing docstring for updated method",
+      "description": "The method modification in `django/db/models/fields/__init__.py` lacks an updated docstring reflecting the change in behavior for `ManyToManyField` default handling.",
+      "has_patch": false,
+      "patch": null,
+      "location": "django/db/models/fields/__init__.py:1106",
+      "created_at": "2025-12-29T19:39:37.498661"
+    },
+    {
+      "id": "e06acdc3-7d88-4826-b091-e2c99ab30b42",
+      "type": "other",
+      "severity": "major",
+      "source_agent": "DR",
+      "evidence": {
+        "tool": "documentation_analysis",
+        "reference": "tests/forms_tests/tests/tests.py:99",
+        "snippet": "def test_callable_initial_value(self):",
+        "metadata": {}
+      },
+      "title": "Missing test case documentation",
+      "description": "The tests modified in `tests/forms_tests/tests/tests.py` lack comments or docstrings explaining the new test cases' purpose, especially how they relate to the change in `ManyToManyField` default handling.",
+      "has_patch": true,
+      "patch": "--- a/tests/forms_tests/tests/tests.py\n+++ b/tests/forms_tests/tests/tests.py\n@@ -99,6 +99,11 @@ class ModelFormCallableModelDefault(TestCase):\n     def test_callable_initial_value(self):\n         \"\"\"\n         The initial value for a callable default returning a queryset is the\n-        pk.\n+        pk for regular fields. ManyToManyField ignores defaults (refs #2750).\n+        This test verifies that ManyToManyField does not apply callable defaults\n+        as initial values, aligning with the documented behavior change. It ensures\n# ... patch truncated",
+      "location": "tests/forms_tests/tests/tests.py:99",
+      "created_at": "2025-12-29T19:39:37.498721"
+    },
+    {
+      "id": "3677f7d7-f458-4192-a896-34dfce662bcd",
+      "type": "other",
+      "severity": "major",
+      "source_agent": "DR",
+      "evidence": {
+        "tool": "documentation_analysis",
+        "reference": "PR Description",
+        "snippet": "To avoid this mismatch, default handling for M2M fields has been removed from form initialization.",
+        "metadata": {}
+      },
+      "title": "Undocumented breaking change",
+      "description": "The PR introduces a breaking change by altering the behavior of `ManyToManyField` defaults without updating the API documentation to reflect this significant change.",
+      "has_patch": true,
+      "patch": "diff --git a/docs/releases/x.y.txt b/docs/releases/x.y.txt\nindex e123456..f78910a 100644\n--- a/docs/releases/x.y.txt\n+++ b/docs/releases/x.y.txt\n@@ -0,0 +1,6 @@\n+Backwards incompatible changes in x.y\n+======================================\n+\n+* The behavior of `ManyToManyField` defaults has changed. Previously, callable defaults for `ManyToManyField` were applied during form initialization. Now, `ManyToManyField` ignores callable defaults to align with the handling of non-callable defaults. This change may affect forms relying on this behavior.",
+      "location": "N/A",
+      "created_at": "2025-12-29T19:39:37.498737"
+    },
+    {
+      "id": "1ff56b2b-26cf-46c6-b95d-bc0c54a1d748",
+      "type": "other",
+      "severity": "minor",
+      "source_agent": "TR",
+      "evidence": {
+        "tool": "static_analysis",
+        "reference": "tests/forms_tests/tests/tests.py",
+        "snippet": "No assertions found in test changes",
+        "metadata": {}
+      },
+      "title": "Test file modified without assertions",
+      "description": "Test file changes don't include assertions. Tests should verify expected behavior.",
+      "has_patch": false,
+      "patch": null,
+      "location": "tests/forms_tests/tests/tests.py",
+      "created_at": "2025-12-29T19:39:37.501648"
+    }
+  ],
+  "agent_decisions": [
+    {
+      "agent_role": "SR",
+      "task_description": "Review code for security vulnerabilities",
+      "findings": [],
+      "reasoning": "Analyzed security tools output",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:39:07.262896"
+    },
+    {
+      "agent_role": "SFR",
+      "task_description": "Review code style and formatting",
+      "findings": [],
+      "reasoning": "Analyzed linter output and applied nit limits",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:39:07.264994"
+    },
+    {
+      "agent_role": "LR",
+      "task_description": "Review code for logical errors and potential bugs",
+      "findings": [
+        {
+          "id": "a8f42ed9-c676-4f99-8207-a033e18bfac8",
+          "type": "logic",
+          "severity": "major",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "django/db/models/fields/__init__.py:1109-1112",
+            "snippet": "if not self.many_to_many:\n    defaults['initial'] = self.default",
+            "metadata": {}
+          },
+          "title": "ManyToManyField default handling removal",
+          "description": "Removing default handling for ManyToManyField in form initialization may lead to unexpected behavior for existing applications relying on this feature. This change could potentially break forms that expected these defaults to be pre-selected.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/models/fields/__init__.py:1109-1112",
+          "created_at": "2025-12-29T19:39:16.969069"
+        },
+        {
+          "id": "7a0de061-ad05-4472-bc7b-c69da8e3e223",
+          "type": "logic",
+          "severity": "minor",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "tests/forms_tests/tests/tests.py:99,126",
+            "snippet": "pk for regular fields. ManyToManyField ignores defaults (refs #2750).",
+            "metadata": {}
+          },
+          "title": "Test case modification for ManyToManyField default",
+          "description": "The test case modifications reflect the changes in ManyToManyField default handling but do not cover scenarios where existing applications might rely on the previous behavior. This could lead to insufficient test coverage for the change.",
+          "has_patch": false,
+          "patch": null,
+          "location": "tests/forms_tests/tests/tests.py:99,126",
+          "created_at": "2025-12-29T19:39:16.969091"
+        }
+      ],
+      "reasoning": "Analyzed code for logical errors and potential bugs in the changes made to handle ManyToManyField defaults in Django forms. The removal of default handling for ManyToManyFields could lead to unexpected behavior in applications that relied on this feature. Additionally, the test modifications may not fully cover the implications of this change, potentially leaving edge cases untested. It's crucial to ensure that the documentation is updated to reflect these changes and to consider providing guidance for developers on how to adapt to the new behavior.",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 9.374797821044922,
+      "timestamp": "2025-12-29T19:39:16.970798"
+    },
+    {
+      "agent_role": "PR",
+      "task_description": "Review code for performance issues",
+      "findings": [],
+      "reasoning": "Static analysis: 0, LLM analysis: 0",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 5.098588466644287,
+      "timestamp": "2025-12-29T19:39:22.415757"
+    },
+    {
+      "agent_role": "DR",
+      "task_description": "Review code documentation quality",
+      "findings": [
+        {
+          "id": "6b9851e1-6bcb-409f-b7d0-945462224847",
+          "type": "other",
+          "severity": "major",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "django/db/models/fields/__init__.py:1106",
+            "snippet": "if self.has_default():",
+            "metadata": {}
+          },
+          "title": "Missing docstring for updated method",
+          "description": "The method modification in `django/db/models/fields/__init__.py` lacks an updated docstring reflecting the change in behavior for `ManyToManyField` default handling.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/models/fields/__init__.py:1106",
+          "created_at": "2025-12-29T19:39:37.498661"
+        },
+        {
+          "id": "5ea1fd6f-18bb-47ff-8a89-fff684dbbc91",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "django/db/models/fields/__init__.py:1106",
+            "snippet": "if self.has_default():",
+            "metadata": {}
+          },
+          "title": "Missing type hints for parameters and return type",
+          "description": "The modified method in `django/db/models/fields/__init__.py` does not include type hints for its parameters or return type.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/models/fields/__init__.py:1106",
+          "created_at": "2025-12-29T19:39:37.498688"
+        },
+        {
+          "id": "f170754d-e033-47c3-aa9b-f8feec643d7b",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "django/db/models/fields/__init__.py:1106",
+            "snippet": "if not self.many_to_many:",
+            "metadata": {}
+          },
+          "title": "Lack of explanatory comments for logic change",
+          "description": "The code changes to handle `ManyToManyField` defaults lack comments explaining why defaults are now ignored, which is crucial for understanding the rationale behind this significant behavior change.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/models/fields/__init__.py:1106",
+          "created_at": "2025-12-29T19:39:37.498706"
+        },
+        {
+          "id": "e06acdc3-7d88-4826-b091-e2c99ab30b42",
+          "type": "other",
+          "severity": "major",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "tests/forms_tests/tests/tests.py:99",
+            "snippet": "def test_callable_initial_value(self):",
+            "metadata": {}
+          },
+          "title": "Missing test case documentation",
+          "description": "The tests modified in `tests/forms_tests/tests/tests.py` lack comments or docstrings explaining the new test cases' purpose, especially how they relate to the change in `ManyToManyField` default handling.",
+          "has_patch": true,
+          "patch": "--- a/tests/forms_tests/tests/tests.py\n+++ b/tests/forms_tests/tests/tests.py\n@@ -99,6 +99,11 @@ class ModelFormCallableModelDefault(TestCase):\n     def test_callable_initial_value(self):\n         \"\"\"\n         The initial value for a callable default returning a queryset is the\n-        pk.\n+        pk for regular fields. ManyToManyField ignores defaults (refs #2750).\n+        This test verifies that ManyToManyField does not apply callable defaults\n+        as initial values, aligning with the documented behavior change. It ensures\n# ... patch truncated",
+          "location": "tests/forms_tests/tests/tests.py:99",
+          "created_at": "2025-12-29T19:39:37.498721"
+        },
+        {
+          "id": "3677f7d7-f458-4192-a896-34dfce662bcd",
+          "type": "other",
+          "severity": "major",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "PR Description",
+            "snippet": "To avoid this mismatch, default handling for M2M fields has been removed from form initialization.",
+            "metadata": {}
+          },
+          "title": "Undocumented breaking change",
+          "description": "The PR introduces a breaking change by altering the behavior of `ManyToManyField` defaults without updating the API documentation to reflect this significant change.",
+          "has_patch": true,
+          "patch": "diff --git a/docs/releases/x.y.txt b/docs/releases/x.y.txt\nindex e123456..f78910a 100644\n--- a/docs/releases/x.y.txt\n+++ b/docs/releases/x.y.txt\n@@ -0,0 +1,6 @@\n+Backwards incompatible changes in x.y\n+======================================\n+\n+* The behavior of `ManyToManyField` defaults has changed. Previously, callable defaults for `ManyToManyField` were applied during form initialization. Now, `ManyToManyField` ignores callable defaults to align with the handling of non-callable defaults. This change may affect forms relying on this behavior.",
+          "location": "N/A",
+          "created_at": "2025-12-29T19:39:37.498737"
+        }
+      ],
+      "reasoning": "Reviewed documentation completeness for the PR fixing issue #2750. Identified major gaps in docstrings and API documentation, especially concerning the breaking change introduced. Minor issues include missing type hints and explanatory comments. Ensuring these documentation aspects are addressed will significantly improve code maintainability and clarity for future developers.",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 14.74911618232727,
+      "timestamp": "2025-12-29T19:39:37.500448"
+    },
+    {
+      "agent_role": "TR",
+      "task_description": "Review test coverage and quality",
+      "findings": [
+        {
+          "id": "1ff56b2b-26cf-46c6-b95d-bc0c54a1d748",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "tests/forms_tests/tests/tests.py",
+            "snippet": "No assertions found in test changes",
+            "metadata": {}
+          },
+          "title": "Test file modified without assertions",
+          "description": "Test file changes don't include assertions. Tests should verify expected behavior.",
+          "has_patch": false,
+          "patch": null,
+          "location": "tests/forms_tests/tests/tests.py",
+          "created_at": "2025-12-29T19:39:37.501648"
+        }
+      ],
+      "reasoning": "Static: 1, LLM: 0",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 1.2212214469909668,
+      "timestamp": "2025-12-29T19:39:39.063200"
+    },
+    {
+      "agent_role": "RP",
+      "task_description": "Generate code revision proposals",
+      "findings": [
+        {
+          "id": "e06acdc3-7d88-4826-b091-e2c99ab30b42",
+          "type": "other",
+          "severity": "major",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "tests/forms_tests/tests/tests.py:99",
+            "snippet": "def test_callable_initial_value(self):",
+            "metadata": {}
+          },
+          "title": "Missing test case documentation",
+          "description": "The tests modified in `tests/forms_tests/tests/tests.py` lack comments or docstrings explaining the new test cases' purpose, especially how they relate to the change in `ManyToManyField` default handling.",
+          "has_patch": true,
+          "patch": "--- a/tests/forms_tests/tests/tests.py\n+++ b/tests/forms_tests/tests/tests.py\n@@ -99,6 +99,11 @@ class ModelFormCallableModelDefault(TestCase):\n     def test_callable_initial_value(self):\n         \"\"\"\n         The initial value for a callable default returning a queryset is the\n-        pk.\n+        pk for regular fields. ManyToManyField ignores defaults (refs #2750).\n+        This test verifies that ManyToManyField does not apply callable defaults\n+        as initial values, aligning with the documented behavior change. It ensures\n# ... patch truncated",
+          "location": "tests/forms_tests/tests/tests.py:99",
+          "created_at": "2025-12-29T19:39:37.498721"
+        },
+        {
+          "id": "3677f7d7-f458-4192-a896-34dfce662bcd",
+          "type": "other",
+          "severity": "major",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "PR Description",
+            "snippet": "To avoid this mismatch, default handling for M2M fields has been removed from form initialization.",
+            "metadata": {}
+          },
+          "title": "Undocumented breaking change",
+          "description": "The PR introduces a breaking change by altering the behavior of `ManyToManyField` defaults without updating the API documentation to reflect this significant change.",
+          "has_patch": true,
+          "patch": "diff --git a/docs/releases/x.y.txt b/docs/releases/x.y.txt\nindex e123456..f78910a 100644\n--- a/docs/releases/x.y.txt\n+++ b/docs/releases/x.y.txt\n@@ -0,0 +1,6 @@\n+Backwards incompatible changes in x.y\n+======================================\n+\n+* The behavior of `ManyToManyField` defaults has changed. Previously, callable defaults for `ManyToManyField` were applied during form initialization. Now, `ManyToManyField` ignores callable defaults to align with the handling of non-callable defaults. This change may affect forms relying on this behavior.",
+          "location": "N/A",
+          "created_at": "2025-12-29T19:39:37.498737"
+        }
+      ],
+      "reasoning": "Generated patches for 2 high-priority findings",
+      "prompt_version": "v1",
+      "llm_calls": 4,
+      "tokens_used": 0,
+      "execution_time_s": 12.06384563446045,
+      "timestamp": "2025-12-29T19:39:52.509109"
+    },
+    {
+      "agent_role": "Supervisor",
+      "task_description": "Consolidate and validate all findings",
+      "findings": [
+        {
+          "id": "a8f42ed9-c676-4f99-8207-a033e18bfac8",
+          "type": "logic",
+          "severity": "major",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "django/db/models/fields/__init__.py:1109-1112",
+            "snippet": "if not self.many_to_many:\n    defaults['initial'] = self.default",
+            "metadata": {}
+          },
+          "title": "ManyToManyField default handling removal",
+          "description": "Removing default handling for ManyToManyField in form initialization may lead to unexpected behavior for existing applications relying on this feature. This change could potentially break forms that expected these defaults to be pre-selected.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/models/fields/__init__.py:1109-1112",
+          "created_at": "2025-12-29T19:39:16.969069"
+        },
+        {
+          "id": "7a0de061-ad05-4472-bc7b-c69da8e3e223",
+          "type": "logic",
+          "severity": "minor",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "tests/forms_tests/tests/tests.py:99,126",
+            "snippet": "pk for regular fields. ManyToManyField ignores defaults (refs #2750).",
+            "metadata": {}
+          },
+          "title": "Test case modification for ManyToManyField default",
+          "description": "The test case modifications reflect the changes in ManyToManyField default handling but do not cover scenarios where existing applications might rely on the previous behavior. This could lead to insufficient test coverage for the change.",
+          "has_patch": false,
+          "patch": null,
+          "location": "tests/forms_tests/tests/tests.py:99,126",
+          "created_at": "2025-12-29T19:39:16.969091"
+        },
+        {
+          "id": "6b9851e1-6bcb-409f-b7d0-945462224847",
+          "type": "other",
+          "severity": "major",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "django/db/models/fields/__init__.py:1106",
+            "snippet": "if self.has_default():",
+            "metadata": {}
+          },
+          "title": "Missing docstring for updated method",
+          "description": "The method modification in `django/db/models/fields/__init__.py` lacks an updated docstring reflecting the change in behavior for `ManyToManyField` default handling.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/models/fields/__init__.py:1106",
+          "created_at": "2025-12-29T19:39:37.498661"
+        },
+        {
+          "id": "e06acdc3-7d88-4826-b091-e2c99ab30b42",
+          "type": "other",
+          "severity": "major",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "tests/forms_tests/tests/tests.py:99",
+            "snippet": "def test_callable_initial_value(self):",
+            "metadata": {}
+          },
+          "title": "Missing test case documentation",
+          "description": "The tests modified in `tests/forms_tests/tests/tests.py` lack comments or docstrings explaining the new test cases' purpose, especially how they relate to the change in `ManyToManyField` default handling.",
+          "has_patch": true,
+          "patch": "--- a/tests/forms_tests/tests/tests.py\n+++ b/tests/forms_tests/tests/tests.py\n@@ -99,6 +99,11 @@ class ModelFormCallableModelDefault(TestCase):\n     def test_callable_initial_value(self):\n         \"\"\"\n         The initial value for a callable default returning a queryset is the\n-        pk.\n+        pk for regular fields. ManyToManyField ignores defaults (refs #2750).\n+        This test verifies that ManyToManyField does not apply callable defaults\n+        as initial values, aligning with the documented behavior change. It ensures\n# ... patch truncated",
+          "location": "tests/forms_tests/tests/tests.py:99",
+          "created_at": "2025-12-29T19:39:37.498721"
+        },
+        {
+          "id": "3677f7d7-f458-4192-a896-34dfce662bcd",
+          "type": "other",
+          "severity": "major",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "PR Description",
+            "snippet": "To avoid this mismatch, default handling for M2M fields has been removed from form initialization.",
+            "metadata": {}
+          },
+          "title": "Undocumented breaking change",
+          "description": "The PR introduces a breaking change by altering the behavior of `ManyToManyField` defaults without updating the API documentation to reflect this significant change.",
+          "has_patch": true,
+          "patch": "diff --git a/docs/releases/x.y.txt b/docs/releases/x.y.txt\nindex e123456..f78910a 100644\n--- a/docs/releases/x.y.txt\n+++ b/docs/releases/x.y.txt\n@@ -0,0 +1,6 @@\n+Backwards incompatible changes in x.y\n+======================================\n+\n+* The behavior of `ManyToManyField` defaults has changed. Previously, callable defaults for `ManyToManyField` were applied during form initialization. Now, `ManyToManyField` ignores callable defaults to align with the handling of non-callable defaults. This change may affect forms relying on this behavior.",
+          "location": "N/A",
+          "created_at": "2025-12-29T19:39:37.498737"
+        },
+        {
+          "id": "1ff56b2b-26cf-46c6-b95d-bc0c54a1d748",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "tests/forms_tests/tests/tests.py",
+            "snippet": "No assertions found in test changes",
+            "metadata": {}
+          },
+          "title": "Test file modified without assertions",
+          "description": "Test file changes don't include assertions. Tests should verify expected behavior.",
+          "has_patch": false,
+          "patch": null,
+          "location": "tests/forms_tests/tests/tests.py",
+          "created_at": "2025-12-29T19:39:37.501648"
+        }
+      ],
+      "reasoning": "Consolidated 10 findings from 7 agents.",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:39:52.513128"
+    }
+  ],
+  "final_comment_md": "# Code Review\n\n## Summary\nReviewed PR #20473: Fixed #2750 \u2014 Prevent ManyToManyField default from being used.\nChanged 0 files (+0/-0)\nFound 6 issues requiring attention.\n\n## \ud83d\udfe0 Major Issues\n\n### ManyToManyField default handling removal\n\n**Location:** `django/db/models/fields/__init__.py:1109-1112`  \n**Type:** logic  \n**Source:** logic_analysis  \n\nRemoving default handling for ManyToManyField in form initialization may lead to unexpected behavior for existing applications relying on this feature. This change could potentially break forms that expected these defaults to be pre-selected.\n\n### Missing docstring for updated method\n\n**Location:** `django/db/models/fields/__init__.py:1106`  \n**Type:** other  \n**Source:** documentation_analysis  \n\nThe method modification in `django/db/models/fields/__init__.py` lacks an updated docstring reflecting the change in behavior for `ManyToManyField` default handling.\n\n### Missing test case documentation\n\n**Location:** `tests/forms_tests/tests/tests.py:99`  \n**Type:** other  \n**Source:** documentation_analysis  \n\nThe tests modified in `tests/forms_tests/tests/tests.py` lack comments or docstrings explaining the new test cases' purpose, especially how they relate to the change in `ManyToManyField` default handling.\n\n**Suggested fix:**\n```\n--- a/tests/forms_tests/tests/tests.py\n+++ b/tests/forms_tests/tests/tests.py\n@@ -99,6 +99,11 @@ class ModelFormCallableModelDefault(TestCase):\n     def test_callable_initial_value(self):\n         \"\"\"\n         The initial value for a callable default returning a queryset is the\n-        pk.\n+        pk for regular fields. ManyToManyField ignores defaults (refs #2750).\n+        This test verifies that ManyToManyField does not apply callable defaults\n+        as initial values, aligning with the documented behavior change. It ensures\n# ... patch truncated\n```\n\n### Undocumented breaking change\n\n**Location:** `N/A`  \n**Type:** other  \n**Source:** documentation_analysis  \n\nThe PR introduces a breaking change by altering the behavior of `ManyToManyField` defaults without updating the API documentation to reflect this significant change.\n\n**Suggested fix:**\n```\ndiff --git a/docs/releases/x.y.txt b/docs/releases/x.y.txt\nindex e123456..f78910a 100644\n--- a/docs/releases/x.y.txt\n+++ b/docs/releases/x.y.txt\n@@ -0,0 +1,6 @@\n+Backwards incompatible changes in x.y\n+======================================\n+\n+* The behavior of `ManyToManyField` defaults has changed. Previously, callable defaults for `ManyToManyField` were applied during form initialization. Now, `ManyToManyField` ignores callable defaults to align with the handling of non-callable defaults. This change may affect forms relying on this behavior.\n```\n\n\n## \ud83d\udfe1 Minor Issues\n\n### Test case modification for ManyToManyField default\n\n**Location:** `tests/forms_tests/tests/tests.py:99,126`  \n**Type:** logic  \n**Source:** logic_analysis  \n\nThe test case modifications reflect the changes in ManyToManyField default handling but do not cover scenarios where existing applications might rely on the previous behavior. This could lead to insufficient test coverage for the change.\n\n### Test file modified without assertions\n\n**Location:** `tests/forms_tests/tests/tests.py`  \n**Type:** other  \n**Source:** static_analysis  \n\nTest file changes don't include assertions. Tests should verify expected behavior.\n\n",
+  "review_time_s": 45.393903493881226,
+  "token_cost_estimate": 0.0,
+  "prompt_versions": {
+    "SR": "v1",
+    "SFR": "v1",
+    "LR": "v1",
+    "PR": "v1",
+    "DR": "v1",
+    "TR": "v1",
+    "RP": "v1",
+    "Supervisor": "v1"
+  },
+  "metadata": {
+    "repository": "django",
+    "title": "Fixed #2750 \u2014 Prevent ManyToManyField default from being used.",
+    "author": "hcnpeiris"
+  },
+  "created_at": "2025-12-29T19:39:52.513189"
+}

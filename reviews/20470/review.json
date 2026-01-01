@@ -1,0 +1,209 @@
+{
+  "correlation_id": "30aabcc8-882c-4404-a26b-7124ef46c458",
+  "pr_id": "20470",
+  "system_type": "multi_agent",
+  "change_summary": "Reviewed PR #20470: Fixed #36391 -- Doc'd RawSQL usage on \u201cPerforming raw SQL queries\u201d page.\nChanged 0 files (+0/-0)\nFound 1 issues requiring attention.",
+  "findings": [
+    {
+      "id": "fc5ad3fa-9e4e-497e-8696-3c9cf694f1fc",
+      "type": "other",
+      "severity": "minor",
+      "source_agent": "TR",
+      "evidence": {
+        "tool": "test_analysis",
+        "reference": "docs/topics/db/sql.txt:28-250",
+        "snippet": "Django gives you three ways of performing raw SQL queries: you can embed raw SQL fragments into ORM queries using :class:`~django.db.models.expressions.RawSQL`...",
+        "metadata": {}
+      },
+      "title": "Documentation update lacks corresponding test cases",
+      "description": "The documentation for 'Performing raw SQL queries' has been updated to include new information about using RawSQL for embedding raw SQL fragments into ORM queries. However, there are no corresponding updates to test cases that verify the new examples and guidelines work as expected and are clear to the end users.",
+      "has_patch": false,
+      "patch": null,
+      "location": "docs/topics/db/sql.txt",
+      "created_at": "2025-12-29T19:42:41.429296"
+    }
+  ],
+  "agent_decisions": [
+    {
+      "agent_role": "SR",
+      "task_description": "Review code for security vulnerabilities",
+      "findings": [],
+      "reasoning": "Analyzed security tools output",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:42:05.351183"
+    },
+    {
+      "agent_role": "SFR",
+      "task_description": "Review code style and formatting",
+      "findings": [],
+      "reasoning": "Analyzed linter output and applied nit limits",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:42:05.353280"
+    },
+    {
+      "agent_role": "LR",
+      "task_description": "Review code for logical errors and potential bugs",
+      "findings": [],
+      "reasoning": "The provided diff is a documentation update for Django's handling of raw SQL queries. It includes clarifications and additional examples on how to safely perform raw SQL queries within Django, specifically using `RawSQL` and `Func()` expressions. Since the changes are exclusively within documentation (`.txt` file) and do not include any Python code changes, there are no runtime errors, incorrect behavior, data corruption, or security vulnerabilities introduced by these changes. The focus areas such as null/undefined checks, edge cases, control flow, exception handling, concurrency issues, and type safety are not applicable to documentation updates. Therefore, no logical errors, edge cases, or potential bugs are identified within the context of this task.",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 6.143655061721802,
+      "timestamp": "2025-12-29T19:42:11.828359"
+    },
+    {
+      "agent_role": "PR",
+      "task_description": "Review code for performance issues",
+      "findings": [],
+      "reasoning": "Static analysis: 0, LLM analysis: 0",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 8.240356683731079,
+      "timestamp": "2025-12-29T19:42:20.404406"
+    },
+    {
+      "agent_role": "DR",
+      "task_description": "Review code documentation quality",
+      "findings": [],
+      "reasoning": "Reviewed the provided PR details and the diff for the documentation update in the Django project regarding the use of `RawSQL` in performing raw SQL queries. The PR effectively updates the documentation to include `RawSQL` as a method for performing raw SQL queries alongside `Manager.raw()` and `cursor.execute()`. It also provides a clear warning against SQL injection, a common security concern, and elaborates on the proper use of `RawSQL` with examples. The restructuring of the section for clarity and the emphasis on the differences between the methods for executing raw SQL are well-documented. Given the nature of the changes are purely documentation within a `.txt` file for Django's documentation and the focus areas of docstrings, type hints, comments, and API documentation are not applicable to this diff, there are no findings related to incomplete or missing documentation in the context of code. The PR description and the checklist indicate a thorough review for documentation accuracy and relevance, adhering to the goal of ensuring documentation is accurate and up-to-date. Therefore, there are no documentation issues to report based on the provided context and focus areas.",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 7.107331037521362,
+      "timestamp": "2025-12-29T19:42:27.857591"
+    },
+    {
+      "agent_role": "TR",
+      "task_description": "Review test coverage and quality",
+      "findings": [
+        {
+          "id": "fc5ad3fa-9e4e-497e-8696-3c9cf694f1fc",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": "docs/topics/db/sql.txt:28-250",
+            "snippet": "Django gives you three ways of performing raw SQL queries: you can embed raw SQL fragments into ORM queries using :class:`~django.db.models.expressions.RawSQL`...",
+            "metadata": {}
+          },
+          "title": "Documentation update lacks corresponding test cases",
+          "description": "The documentation for 'Performing raw SQL queries' has been updated to include new information about using RawSQL for embedding raw SQL fragments into ORM queries. However, there are no corresponding updates to test cases that verify the new examples and guidelines work as expected and are clear to the end users.",
+          "has_patch": false,
+          "patch": null,
+          "location": "docs/topics/db/sql.txt",
+          "created_at": "2025-12-29T19:42:41.429296"
+        },
+        {
+          "id": "e0a51d01-4acb-4802-9a6a-d0d900909751",
+          "type": "other",
+          "severity": "nit",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": "docs/topics/db/sql.txt:28-50",
+            "snippet": "**Do not use string formatting on raw SQL or quote placeholders in your SQL strings!**",
+            "metadata": {}
+          },
+          "title": "Missing test case for SQL injection protection advice",
+          "description": "The documentation now includes enhanced warnings against SQL injection, specifically advising against string formatting on raw SQL or quoting placeholders. While this is crucial advice, it would be beneficial to include examples or test cases demonstrating safe practices versus unsafe practices to reinforce the importance of this advice.",
+          "has_patch": false,
+          "patch": null,
+          "location": "docs/topics/db/sql.txt",
+          "created_at": "2025-12-29T19:42:41.429321"
+        },
+        {
+          "id": "881764f0-3ad4-4517-a13d-3d9c1ecda94b",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": "docs/topics/db/sql.txt:100-150",
+            "snippet": "For example:: from django.db.models.expressions import RawSQL...",
+            "metadata": {}
+          },
+          "title": "Examples of RawSQL usage without test verification",
+          "description": "The documentation has been updated to include examples of RawSQL usage within ORM queries. To ensure the highest quality and accuracy of the documentation, it would be beneficial to have test cases that verify these examples are correct and function as intended across different database backends.",
+          "has_patch": false,
+          "patch": null,
+          "location": "docs/topics/db/sql.txt",
+          "created_at": "2025-12-29T19:42:41.429338"
+        }
+      ],
+      "reasoning": "Static: 0, LLM: 3",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 13.221071004867554,
+      "timestamp": "2025-12-29T19:42:41.430872"
+    },
+    {
+      "agent_role": "RP",
+      "task_description": "Generate code revision proposals",
+      "findings": [],
+      "reasoning": "Generated patches for 0 high-priority findings",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:42:41.433553"
+    },
+    {
+      "agent_role": "Supervisor",
+      "task_description": "Consolidate and validate all findings",
+      "findings": [
+        {
+          "id": "fc5ad3fa-9e4e-497e-8696-3c9cf694f1fc",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": "docs/topics/db/sql.txt:28-250",
+            "snippet": "Django gives you three ways of performing raw SQL queries: you can embed raw SQL fragments into ORM queries using :class:`~django.db.models.expressions.RawSQL`...",
+            "metadata": {}
+          },
+          "title": "Documentation update lacks corresponding test cases",
+          "description": "The documentation for 'Performing raw SQL queries' has been updated to include new information about using RawSQL for embedding raw SQL fragments into ORM queries. However, there are no corresponding updates to test cases that verify the new examples and guidelines work as expected and are clear to the end users.",
+          "has_patch": false,
+          "patch": null,
+          "location": "docs/topics/db/sql.txt",
+          "created_at": "2025-12-29T19:42:41.429296"
+        }
+      ],
+      "reasoning": "Consolidated 3 findings from 7 agents.",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:42:41.437152"
+    }
+  ],
+  "final_comment_md": "# Code Review\n\n## Summary\nReviewed PR #20470: Fixed #36391 -- Doc'd RawSQL usage on \u201cPerforming raw SQL queries\u201d page.\nChanged 0 files (+0/-0)\nFound 1 issues requiring attention.\n\n## \ud83d\udfe1 Minor Issues\n\n### Documentation update lacks corresponding test cases\n\n**Location:** `docs/topics/db/sql.txt`  \n**Type:** other  \n**Source:** test_analysis  \n\nThe documentation for 'Performing raw SQL queries' has been updated to include new information about using RawSQL for embedding raw SQL fragments into ORM queries. However, there are no corresponding updates to test cases that verify the new examples and guidelines work as expected and are clear to the end users.\n\n",
+  "review_time_s": 36.22584390640259,
+  "token_cost_estimate": 0.0,
+  "prompt_versions": {
+    "SR": "v1",
+    "SFR": "v1",
+    "LR": "v1",
+    "PR": "v1",
+    "DR": "v1",
+    "TR": "v1",
+    "RP": "v1",
+    "Supervisor": "v1"
+  },
+  "metadata": {
+    "repository": "django",
+    "title": "Fixed #36391 -- Doc'd RawSQL usage on \u201cPerforming raw SQL queries\u201d page.",
+    "author": "aadeina"
+  },
+  "created_at": "2025-12-29T19:42:41.437206"
+}

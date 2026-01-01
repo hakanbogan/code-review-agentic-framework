@@ -1,0 +1,915 @@
+{
+  "correlation_id": "b85f0409-b94a-47ab-a703-9c4a126c72cf",
+  "pr_id": "20461",
+  "system_type": "multi_agent",
+  "change_summary": "Reviewed PR #20461: Fixed #36822 -- Added parameter limit for PostgreSQL with server-side binding.\nChanged 0 files (+0/-0)\nFound 10 issues requiring attention.",
+  "findings": [
+    {
+      "id": "a5e7554c-cccf-4553-a7dc-3e5352d0da8f",
+      "type": "logic",
+      "severity": "major",
+      "source_agent": "LR",
+      "evidence": {
+        "tool": "logic_analysis",
+        "reference": "django/db/backends/postgresql/operations.py:404",
+        "snippet": "return self.connection.features.max_query_params // len([...])",
+        "metadata": {}
+      },
+      "title": "Division by zero in bulk_batch_size calculation",
+      "description": "The calculation of bulk_batch_size does not account for the case where the length of fields is zero, leading to a division by zero error.",
+      "has_patch": true,
+      "patch": "--- a/django/db/backends/postgresql/operations.py\n+++ b/django/db/backends/postgresql/operations.py\n@@ -403,7 +404,9 @@\n     def bulk_batch_size(self, fields, objs):\n         if self.connection.features.max_query_params is None or not fields:\n             return len(objs)\n+        field_count = len([f for field in fields for f in (field.fields if isinstance(field, CompositePrimaryKey) else [field])])\n+        return len(objs) if field_count == 0 else min(len(objs), self.connection.features.max_query_params // field_count)",
+      "location": "django/db/backends/postgresql/operations.py:404",
+      "created_at": "2025-12-29T19:49:40.571787"
+    },
+    {
+      "id": "55d73cde-1018-49ea-8d78-769f269920cc",
+      "type": "logic",
+      "severity": "minor",
+      "source_agent": "LR",
+      "evidence": {
+        "tool": "logic_analysis",
+        "reference": "django/db/backends/postgresql/operations.py:403",
+        "snippet": "if self.connection.features.max_query_params is None or not fields:",
+        "metadata": {}
+      },
+      "title": "Potential misuse of max_query_params without checking if server_side_binding is enabled",
+      "description": "The code assumes max_query_params is relevant only when server_side_binding is enabled, but does not explicitly check this condition in bulk_batch_size.",
+      "has_patch": false,
+      "patch": null,
+      "location": "django/db/backends/postgresql/operations.py:403",
+      "created_at": "2025-12-29T19:49:40.571825"
+    },
+    {
+      "id": "f4d645c8-5a0f-461d-a8f7-08fba06ebb4e",
+      "type": "logic",
+      "severity": "minor",
+      "source_agent": "LR",
+      "evidence": {
+        "tool": "logic_analysis",
+        "reference": "django/db/backends/postgresql/features.py:151",
+        "snippet": "return None",
+        "metadata": {}
+      },
+      "title": "max_query_params potentially returning None",
+      "description": "max_query_params returns None when server_side_binding is not configured, which could lead to unexpected behavior in consumers of this property.",
+      "has_patch": false,
+      "patch": null,
+      "location": "django/db/backends/postgresql/features.py:151",
+      "created_at": "2025-12-29T19:49:40.571839"
+    },
+    {
+      "id": "f5439e23-b87e-4449-9051-c531975fc9db",
+      "type": "performance",
+      "severity": "major",
+      "source_agent": "PR",
+      "evidence": {
+        "tool": "performance_analysis",
+        "reference": "operations.py:406-415",
+        "snippet": "return self.connection.features.max_query_params // len([...])",
+        "metadata": {}
+      },
+      "title": "Potential high memory usage in bulk operations",
+      "description": "The calculation for bulk_batch_size could lead to high memory usage when processing a large number of objects with server-side binding enabled.",
+      "has_patch": false,
+      "patch": null,
+      "location": "django/db/backends/postgresql/operations.py:404-416",
+      "created_at": "2025-12-29T19:49:52.528896"
+    },
+    {
+      "id": "c83f892d-8272-4aaa-8224-f89cbc9442f7",
+      "type": "performance",
+      "severity": "minor",
+      "source_agent": "PR",
+      "evidence": {
+        "tool": "performance_analysis",
+        "reference": "features.py:153-156",
+        "snippet": "if self.connection.settings_dict[\"OPTIONS\"].get(\"server_side_binding\"): return 2**16 - 1",
+        "metadata": {}
+      },
+      "title": "Potential for optimizing max_query_params calculation",
+      "description": "The max_query_params property is calculated each time it is accessed. Caching its value could improve performance, especially in scenarios with multiple queries.",
+      "has_patch": false,
+      "patch": null,
+      "location": "django/db/backends/postgresql/features.py:151-157",
+      "created_at": "2025-12-29T19:49:52.528964"
+    },
+    {
+      "id": "25b2f136-8a10-49bf-9de7-32245eb2d21a",
+      "type": "other",
+      "severity": "minor",
+      "source_agent": "DR",
+      "evidence": {
+        "tool": "documentation_analysis",
+        "reference": "tests/backends/postgresql/test_operations.py:78",
+        "snippet": "def test_bulk_batch_size(self):",
+        "metadata": {}
+      },
+      "title": "Missing return value documentation in test methods",
+      "description": "Several test methods in `tests/backends/postgresql/test_operations.py` and `tests/composite_pk/tests.py` are missing docstrings that document the purpose of the test and the expected outcomes.",
+      "has_patch": false,
+      "patch": null,
+      "location": "tests/backends/postgresql/test_operations.py:78",
+      "created_at": "2025-12-29T19:50:16.002457"
+    },
+    {
+      "id": "b67920d3-e8a0-440f-afb1-e6e8030ee61f",
+      "type": "other",
+      "severity": "minor",
+      "source_agent": "DR",
+      "evidence": {
+        "tool": "documentation_analysis",
+        "reference": "PR Description",
+        "snippet": "- [ ] I have added or updated relevant docs, including release notes if applicable.",
+        "metadata": {}
+      },
+      "title": "Incomplete PR checklist",
+      "description": "The PR checklist mentions 'I have added or updated relevant docs, including release notes if applicable.' This item is unchecked, indicating that documentation (docstrings, API docs, or release notes) may not have been fully updated to reflect the changes.",
+      "has_patch": false,
+      "patch": null,
+      "location": "PR Description",
+      "created_at": "2025-12-29T19:50:16.002483"
+    },
+    {
+      "id": "fbe96b70-0814-4740-9bd7-b94d31f430f6",
+      "type": "other",
+      "severity": "minor",
+      "source_agent": "TR",
+      "evidence": {
+        "tool": "static_analysis",
+        "reference": "tests/backends/postgresql/test_operations.py",
+        "snippet": "No assertions found in test changes",
+        "metadata": {}
+      },
+      "title": "Test file modified without assertions",
+      "description": "Test file changes don't include assertions. Tests should verify expected behavior.",
+      "has_patch": false,
+      "patch": null,
+      "location": "tests/backends/postgresql/test_operations.py",
+      "created_at": "2025-12-29T19:50:16.005172"
+    },
+    {
+      "id": "8bb32282-6aa7-454b-9092-05555ecbcd49",
+      "type": "other",
+      "severity": "major",
+      "source_agent": "TR",
+      "evidence": {
+        "tool": "test_analysis",
+        "reference": "features.py:151-157",
+        "snippet": "@cached_property\ndef max_query_params(self):...",
+        "metadata": {}
+      },
+      "title": "Missing tests for 'max_query_params' property",
+      "description": "The new 'max_query_params' property in 'DatabaseFeatures' lacks direct unit tests to verify its behavior under different 'server_side_binding' configurations.",
+      "has_patch": false,
+      "patch": null,
+      "location": "django/db/backends/postgresql/features.py",
+      "created_at": "2025-12-29T19:50:36.664588"
+    },
+    {
+      "id": "67751415-6527-442a-8a87-077063d3d838",
+      "type": "other",
+      "severity": "major",
+      "source_agent": "TR",
+      "evidence": {
+        "tool": "test_analysis",
+        "reference": "operations.py:403-416",
+        "snippet": "def bulk_batch_size(self, fields, objs):...",
+        "metadata": {}
+      },
+      "title": "Insufficient test coverage for 'bulk_batch_size' method",
+      "description": "The 'bulk_batch_size' method modifications are tested, but there's no test covering the scenario where 'fields' is empty and 'max_query_params' is not None.",
+      "has_patch": false,
+      "patch": null,
+      "location": "django/db/backends/postgresql/operations.py",
+      "created_at": "2025-12-29T19:50:36.664622"
+    }
+  ],
+  "agent_decisions": [
+    {
+      "agent_role": "SR",
+      "task_description": "Review code for security vulnerabilities",
+      "findings": [],
+      "reasoning": "Analyzed security tools output",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:49:26.035330"
+    },
+    {
+      "agent_role": "SFR",
+      "task_description": "Review code style and formatting",
+      "findings": [],
+      "reasoning": "Analyzed linter output and applied nit limits",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:49:26.037922"
+    },
+    {
+      "agent_role": "LR",
+      "task_description": "Review code for logical errors and potential bugs",
+      "findings": [
+        {
+          "id": "a5e7554c-cccf-4553-a7dc-3e5352d0da8f",
+          "type": "logic",
+          "severity": "major",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "django/db/backends/postgresql/operations.py:404",
+            "snippet": "return self.connection.features.max_query_params // len([...])",
+            "metadata": {}
+          },
+          "title": "Division by zero in bulk_batch_size calculation",
+          "description": "The calculation of bulk_batch_size does not account for the case where the length of fields is zero, leading to a division by zero error.",
+          "has_patch": true,
+          "patch": "--- a/django/db/backends/postgresql/operations.py\n+++ b/django/db/backends/postgresql/operations.py\n@@ -403,7 +404,9 @@\n     def bulk_batch_size(self, fields, objs):\n         if self.connection.features.max_query_params is None or not fields:\n             return len(objs)\n+        field_count = len([f for field in fields for f in (field.fields if isinstance(field, CompositePrimaryKey) else [field])])\n+        return len(objs) if field_count == 0 else min(len(objs), self.connection.features.max_query_params // field_count)",
+          "location": "django/db/backends/postgresql/operations.py:404",
+          "created_at": "2025-12-29T19:49:40.571787"
+        },
+        {
+          "id": "a8aa28e8-bf67-45cb-84c4-65f6b88b90aa",
+          "type": "logic",
+          "severity": "major",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "django/db/backends/postgresql/operations.py:404",
+            "snippet": "field.fields if isinstance(field, CompositePrimaryKey) else [field]",
+            "metadata": {}
+          },
+          "title": "Incorrect calculation of bulk_batch_size when fields contain a CompositePrimaryKey",
+          "description": "The calculation of bulk_batch_size does not correctly handle fields that are instances of CompositePrimaryKey, potentially leading to an incorrect batch size.",
+          "has_patch": true,
+          "patch": "--- a/django/db/backends/postgresql/operations.py\n+++ b/django/db/backends/postgresql/operations.py\n@@ -403,7 +403,11 @@ class DatabaseOperations(BaseDatabaseOperations):\n         return self.connection.features.max_query_params // len(\n             [\n                 f\n-                for field in fields\n+                for field in fields \n+                for f in (\n+                    field.get_attname_column() if hasattr(field, 'get_attname_column') \n# ... patch truncated",
+          "location": "django/db/backends/postgresql/operations.py:404",
+          "created_at": "2025-12-29T19:49:40.571809"
+        },
+        {
+          "id": "55d73cde-1018-49ea-8d78-769f269920cc",
+          "type": "logic",
+          "severity": "minor",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "django/db/backends/postgresql/operations.py:403",
+            "snippet": "if self.connection.features.max_query_params is None or not fields:",
+            "metadata": {}
+          },
+          "title": "Potential misuse of max_query_params without checking if server_side_binding is enabled",
+          "description": "The code assumes max_query_params is relevant only when server_side_binding is enabled, but does not explicitly check this condition in bulk_batch_size.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/backends/postgresql/operations.py:403",
+          "created_at": "2025-12-29T19:49:40.571825"
+        },
+        {
+          "id": "f4d645c8-5a0f-461d-a8f7-08fba06ebb4e",
+          "type": "logic",
+          "severity": "minor",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "django/db/backends/postgresql/features.py:151",
+            "snippet": "return None",
+            "metadata": {}
+          },
+          "title": "max_query_params potentially returning None",
+          "description": "max_query_params returns None when server_side_binding is not configured, which could lead to unexpected behavior in consumers of this property.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/backends/postgresql/features.py:151",
+          "created_at": "2025-12-29T19:49:40.571839"
+        }
+      ],
+      "reasoning": "Analyzed code for logical errors, focusing on division by zero possibilities, incorrect calculations, and potential misuse of configuration parameters. The identified issues primarily affect the calculation of bulk_batch_size, which is critical for batch operations and could lead to runtime errors or incorrect behavior if not addressed.",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 14.154810667037964,
+      "timestamp": "2025-12-29T19:49:40.573344"
+    },
+    {
+      "agent_role": "PR",
+      "task_description": "Review code for performance issues",
+      "findings": [
+        {
+          "id": "f5439e23-b87e-4449-9051-c531975fc9db",
+          "type": "performance",
+          "severity": "major",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "performance_analysis",
+            "reference": "operations.py:406-415",
+            "snippet": "return self.connection.features.max_query_params // len([...])",
+            "metadata": {}
+          },
+          "title": "Potential high memory usage in bulk operations",
+          "description": "The calculation for bulk_batch_size could lead to high memory usage when processing a large number of objects with server-side binding enabled.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/backends/postgresql/operations.py:404-416",
+          "created_at": "2025-12-29T19:49:52.528896"
+        },
+        {
+          "id": "08742880-bbce-43b9-9f55-447931a97ac7",
+          "type": "performance",
+          "severity": "minor",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "performance_analysis",
+            "reference": "operations.py:406-415",
+            "snippet": "return self.connection.features.max_query_params // len([...])",
+            "metadata": {}
+          },
+          "title": "Unnecessary computation in bulk_batch_size method",
+          "description": "The method bulk_batch_size computes the batch size every time it is called, which could be optimized by caching the result when the parameters do not change.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/backends/postgresql/operations.py:404-416",
+          "created_at": "2025-12-29T19:49:52.528936"
+        },
+        {
+          "id": "c83f892d-8272-4aaa-8224-f89cbc9442f7",
+          "type": "performance",
+          "severity": "minor",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "performance_analysis",
+            "reference": "features.py:153-156",
+            "snippet": "if self.connection.settings_dict[\"OPTIONS\"].get(\"server_side_binding\"): return 2**16 - 1",
+            "metadata": {}
+          },
+          "title": "Potential for optimizing max_query_params calculation",
+          "description": "The max_query_params property is calculated each time it is accessed. Caching its value could improve performance, especially in scenarios with multiple queries.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/backends/postgresql/features.py:151-157",
+          "created_at": "2025-12-29T19:49:52.528964"
+        }
+      ],
+      "reasoning": "Static analysis: 0, LLM analysis: 3",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 11.573806047439575,
+      "timestamp": "2025-12-29T19:49:52.530866"
+    },
+    {
+      "agent_role": "DR",
+      "task_description": "Review code documentation quality",
+      "findings": [
+        {
+          "id": "00d9bfee-2bf7-4e79-a30d-ce888fa75f3a",
+          "type": "other",
+          "severity": "major",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "django/db/backends/postgresql/features.py:151",
+            "snippet": "@cached_property\ndef max_query_params(self):",
+            "metadata": {}
+          },
+          "title": "Missing docstring for `max_query_params`",
+          "description": "The `max_query_params` property in `django/db/backends/postgresql/features.py` is missing a docstring. This property is crucial for understanding the limit on query parameters when server-side binding is enabled.",
+          "has_patch": true,
+          "patch": "--- a/django/db/backends/postgresql/features.py\n+++ b/django/db/backends/postgresql/features.py\n@@ -151,6 +151,9 @@ class DatabaseFeatures(BaseDatabaseFeatures):\n         options = self.connection.settings_dict[\"OPTIONS\"]\n         return is_psycopg3 and options.get(\"server_side_binding\") is True\n \n+    @cached_property\n+    def max_query_params(self):\n+        \"\"\"Return the maximum number of query parameters allowed when server-side binding is enabled, otherwise None.\"\"\"\n         if self.connection.settings_dict[\"OPTIONS\"].get(\"server_side_binding\"):\n# ... patch truncated",
+          "location": "django/db/backends/postgresql/features.py:151",
+          "created_at": "2025-12-29T19:50:16.002350"
+        },
+        {
+          "id": "5c77f8ff-1aac-45b4-9a1a-f56991a74c86",
+          "type": "other",
+          "severity": "major",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "django/db/backends/postgresql/operations.py:403",
+            "snippet": "def bulk_batch_size(self, fields, objs):",
+            "metadata": {}
+          },
+          "title": "Missing docstring for `bulk_batch_size` method",
+          "description": "The `bulk_batch_size` method in `django/db/backends/postgresql/operations.py` lacks a docstring. This method's functionality, especially its calculation logic for batch sizes based on the number of query parameters, is not immediately clear without documentation.",
+          "has_patch": true,
+          "patch": "--- a/django/db/backends/postgresql/operations.py\n+++ b/django/db/backends/postgresql/operations.py\n@@ -403,6 +403,12 @@\n         return lhs_expr, rhs_expr\n \n+    def bulk_batch_size(self, fields, objs):\n+        \"\"\"\n+        Calculates the maximum number of objects that can be bulk inserted/updated based on the number of fields and the database's max query parameters limit.\n+        \"\"\"\n+        if self.connection.features.max_query_params is None or not fields:\n# ... patch truncated",
+          "location": "django/db/backends/postgresql/operations.py:403",
+          "created_at": "2025-12-29T19:50:16.002373"
+        },
+        {
+          "id": "766ce7db-cffa-4d28-a74c-938656e6677d",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "django/db/backends/postgresql/operations.py:403",
+            "snippet": "def bulk_batch_size(self, fields, objs):",
+            "metadata": {}
+          },
+          "title": "Missing type hints for `bulk_batch_size` parameters and return type",
+          "description": "The `bulk_batch_size` method parameters `fields` and `objs`, and its return type lack type hints. Adding type hints would improve code readability and maintainability.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/backends/postgresql/operations.py:403",
+          "created_at": "2025-12-29T19:50:16.002393"
+        },
+        {
+          "id": "88be2312-6ee5-4178-ac97-aa5ff2ac2266",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "django/db/backends/postgresql/operations.py:403",
+            "snippet": "return self.connection.features.max_query_params // len([...])",
+            "metadata": {}
+          },
+          "title": "Complex logic without explanatory comments",
+          "description": "The logic within `bulk_batch_size` for calculating batch sizes based on the presence of server-side binding and the number of fields is complex and lacks inline comments explaining the rationale behind the calculations.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/backends/postgresql/operations.py:403",
+          "created_at": "2025-12-29T19:50:16.002423"
+        },
+        {
+          "id": "25b2f136-8a10-49bf-9de7-32245eb2d21a",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "tests/backends/postgresql/test_operations.py:78",
+            "snippet": "def test_bulk_batch_size(self):",
+            "metadata": {}
+          },
+          "title": "Missing return value documentation in test methods",
+          "description": "Several test methods in `tests/backends/postgresql/test_operations.py` and `tests/composite_pk/tests.py` are missing docstrings that document the purpose of the test and the expected outcomes.",
+          "has_patch": false,
+          "patch": null,
+          "location": "tests/backends/postgresql/test_operations.py:78",
+          "created_at": "2025-12-29T19:50:16.002457"
+        },
+        {
+          "id": "b67920d3-e8a0-440f-afb1-e6e8030ee61f",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "PR Description",
+            "snippet": "- [ ] I have added or updated relevant docs, including release notes if applicable.",
+            "metadata": {}
+          },
+          "title": "Incomplete PR checklist",
+          "description": "The PR checklist mentions 'I have added or updated relevant docs, including release notes if applicable.' This item is unchecked, indicating that documentation (docstrings, API docs, or release notes) may not have been fully updated to reflect the changes.",
+          "has_patch": false,
+          "patch": null,
+          "location": "PR Description",
+          "created_at": "2025-12-29T19:50:16.002483"
+        }
+      ],
+      "reasoning": "Reviewed documentation completeness for the PR titled 'Fixed #36822 -- Added parameter limit for PostgreSQL with server-side binding.' The focus was on ensuring that new functionalities introduced by the PR are well-documented, including docstrings for public methods and properties, type hints for method parameters and return types, and explanatory comments for complex logic. Additionally, the completeness of the PR checklist regarding documentation updates was evaluated.",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 23.10946035385132,
+      "timestamp": "2025-12-29T19:50:16.003989"
+    },
+    {
+      "agent_role": "TR",
+      "task_description": "Review test coverage and quality",
+      "findings": [
+        {
+          "id": "fbe96b70-0814-4740-9bd7-b94d31f430f6",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "tests/backends/postgresql/test_operations.py",
+            "snippet": "No assertions found in test changes",
+            "metadata": {}
+          },
+          "title": "Test file modified without assertions",
+          "description": "Test file changes don't include assertions. Tests should verify expected behavior.",
+          "has_patch": false,
+          "patch": null,
+          "location": "tests/backends/postgresql/test_operations.py",
+          "created_at": "2025-12-29T19:50:16.005172"
+        },
+        {
+          "id": "8bb32282-6aa7-454b-9092-05555ecbcd49",
+          "type": "other",
+          "severity": "major",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": "features.py:151-157",
+            "snippet": "@cached_property\ndef max_query_params(self):...",
+            "metadata": {}
+          },
+          "title": "Missing tests for 'max_query_params' property",
+          "description": "The new 'max_query_params' property in 'DatabaseFeatures' lacks direct unit tests to verify its behavior under different 'server_side_binding' configurations.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/backends/postgresql/features.py",
+          "created_at": "2025-12-29T19:50:36.664588"
+        },
+        {
+          "id": "67751415-6527-442a-8a87-077063d3d838",
+          "type": "other",
+          "severity": "major",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": "operations.py:403-416",
+            "snippet": "def bulk_batch_size(self, fields, objs):...",
+            "metadata": {}
+          },
+          "title": "Insufficient test coverage for 'bulk_batch_size' method",
+          "description": "The 'bulk_batch_size' method modifications are tested, but there's no test covering the scenario where 'fields' is empty and 'max_query_params' is not None.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/backends/postgresql/operations.py",
+          "created_at": "2025-12-29T19:50:36.664622"
+        },
+        {
+          "id": "4a75c5ab-1521-4cfd-a94d-fbb87baa3afd",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": "features.py:151-157",
+            "snippet": "if self.connection.settings_dict['OPTIONS'].get('server_side_binding')...",
+            "metadata": {}
+          },
+          "title": "Missing edge case test for 'max_query_params' with extreme values",
+          "description": "Consider adding tests for 'max_query_params' with extreme values, such as the maximum number of parameters that can be handled.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/backends/postgresql/features.py",
+          "created_at": "2025-12-29T19:50:36.664646"
+        },
+        {
+          "id": "9bc1e60a-e780-4c88-bed8-a7624462b9b3",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": "test_operations.py:78-129",
+            "snippet": "self.assertEqual(connection.ops.bulk_batch_size([...]), len(objects))",
+            "metadata": {}
+          },
+          "title": "Lack of meaningful assertions in 'test_bulk_batch_size'",
+          "description": "The 'test_bulk_batch_size' method in 'test_operations.py' primarily asserts counts but does not validate the correctness of the batch sizes under different configurations.",
+          "has_patch": false,
+          "patch": null,
+          "location": "tests/backends/postgresql/test_operations.py",
+          "created_at": "2025-12-29T19:50:36.664675"
+        },
+        {
+          "id": "c1bbaa03-9478-4089-a9bf-792bf818bd50",
+          "type": "other",
+          "severity": "nit",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": "test_operations.py:78-129",
+            "snippet": "with mock.patch.object(..., return_value=max_query_params):...",
+            "metadata": {}
+          },
+          "title": "Potential for flaky tests due to hard-coded 'max_query_params'",
+          "description": "The tests for 'bulk_batch_size' use a hard-coded 'max_query_params' value, which could lead to flaky tests if the underlying logic or default values change.",
+          "has_patch": false,
+          "patch": null,
+          "location": "tests/backends/postgresql/test_operations.py",
+          "created_at": "2025-12-29T19:50:36.664697"
+        },
+        {
+          "id": "2aafd7c6-ba4a-4a77-b95f-5eb73ab4b58d",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": "features.py:151-157",
+            "snippet": "@cached_property\ndef prohibits_null_characters_in_text_exception(self):...",
+            "metadata": {}
+          },
+          "title": "Missing test for 'prohibits_null_characters_in_text_exception' modification",
+          "description": "The modification to 'prohibits_null_characters_in_text_exception' in 'features.py' is not accompanied by specific tests to verify its behavior.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/backends/postgresql/features.py",
+          "created_at": "2025-12-29T19:50:36.664717"
+        }
+      ],
+      "reasoning": "Static: 1, LLM: 6",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 20.323644638061523,
+      "timestamp": "2025-12-29T19:50:36.666180"
+    },
+    {
+      "agent_role": "RP",
+      "task_description": "Generate code revision proposals",
+      "findings": [
+        {
+          "id": "a5e7554c-cccf-4553-a7dc-3e5352d0da8f",
+          "type": "logic",
+          "severity": "major",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "django/db/backends/postgresql/operations.py:404",
+            "snippet": "return self.connection.features.max_query_params // len([...])",
+            "metadata": {}
+          },
+          "title": "Division by zero in bulk_batch_size calculation",
+          "description": "The calculation of bulk_batch_size does not account for the case where the length of fields is zero, leading to a division by zero error.",
+          "has_patch": true,
+          "patch": "--- a/django/db/backends/postgresql/operations.py\n+++ b/django/db/backends/postgresql/operations.py\n@@ -403,7 +404,9 @@\n     def bulk_batch_size(self, fields, objs):\n         if self.connection.features.max_query_params is None or not fields:\n             return len(objs)\n+        field_count = len([f for field in fields for f in (field.fields if isinstance(field, CompositePrimaryKey) else [field])])\n+        return len(objs) if field_count == 0 else min(len(objs), self.connection.features.max_query_params // field_count)",
+          "location": "django/db/backends/postgresql/operations.py:404",
+          "created_at": "2025-12-29T19:49:40.571787"
+        },
+        {
+          "id": "a8aa28e8-bf67-45cb-84c4-65f6b88b90aa",
+          "type": "logic",
+          "severity": "major",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "django/db/backends/postgresql/operations.py:404",
+            "snippet": "field.fields if isinstance(field, CompositePrimaryKey) else [field]",
+            "metadata": {}
+          },
+          "title": "Incorrect calculation of bulk_batch_size when fields contain a CompositePrimaryKey",
+          "description": "The calculation of bulk_batch_size does not correctly handle fields that are instances of CompositePrimaryKey, potentially leading to an incorrect batch size.",
+          "has_patch": true,
+          "patch": "--- a/django/db/backends/postgresql/operations.py\n+++ b/django/db/backends/postgresql/operations.py\n@@ -403,7 +403,11 @@ class DatabaseOperations(BaseDatabaseOperations):\n         return self.connection.features.max_query_params // len(\n             [\n                 f\n-                for field in fields\n+                for field in fields \n+                for f in (\n+                    field.get_attname_column() if hasattr(field, 'get_attname_column') \n# ... patch truncated",
+          "location": "django/db/backends/postgresql/operations.py:404",
+          "created_at": "2025-12-29T19:49:40.571809"
+        },
+        {
+          "id": "00d9bfee-2bf7-4e79-a30d-ce888fa75f3a",
+          "type": "other",
+          "severity": "major",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "django/db/backends/postgresql/features.py:151",
+            "snippet": "@cached_property\ndef max_query_params(self):",
+            "metadata": {}
+          },
+          "title": "Missing docstring for `max_query_params`",
+          "description": "The `max_query_params` property in `django/db/backends/postgresql/features.py` is missing a docstring. This property is crucial for understanding the limit on query parameters when server-side binding is enabled.",
+          "has_patch": true,
+          "patch": "--- a/django/db/backends/postgresql/features.py\n+++ b/django/db/backends/postgresql/features.py\n@@ -151,6 +151,9 @@ class DatabaseFeatures(BaseDatabaseFeatures):\n         options = self.connection.settings_dict[\"OPTIONS\"]\n         return is_psycopg3 and options.get(\"server_side_binding\") is True\n \n+    @cached_property\n+    def max_query_params(self):\n+        \"\"\"Return the maximum number of query parameters allowed when server-side binding is enabled, otherwise None.\"\"\"\n         if self.connection.settings_dict[\"OPTIONS\"].get(\"server_side_binding\"):\n# ... patch truncated",
+          "location": "django/db/backends/postgresql/features.py:151",
+          "created_at": "2025-12-29T19:50:16.002350"
+        },
+        {
+          "id": "5c77f8ff-1aac-45b4-9a1a-f56991a74c86",
+          "type": "other",
+          "severity": "major",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "django/db/backends/postgresql/operations.py:403",
+            "snippet": "def bulk_batch_size(self, fields, objs):",
+            "metadata": {}
+          },
+          "title": "Missing docstring for `bulk_batch_size` method",
+          "description": "The `bulk_batch_size` method in `django/db/backends/postgresql/operations.py` lacks a docstring. This method's functionality, especially its calculation logic for batch sizes based on the number of query parameters, is not immediately clear without documentation.",
+          "has_patch": true,
+          "patch": "--- a/django/db/backends/postgresql/operations.py\n+++ b/django/db/backends/postgresql/operations.py\n@@ -403,6 +403,12 @@\n         return lhs_expr, rhs_expr\n \n+    def bulk_batch_size(self, fields, objs):\n+        \"\"\"\n+        Calculates the maximum number of objects that can be bulk inserted/updated based on the number of fields and the database's max query parameters limit.\n+        \"\"\"\n+        if self.connection.features.max_query_params is None or not fields:\n# ... patch truncated",
+          "location": "django/db/backends/postgresql/operations.py:403",
+          "created_at": "2025-12-29T19:50:16.002373"
+        }
+      ],
+      "reasoning": "Generated patches for 4 high-priority findings",
+      "prompt_version": "v1",
+      "llm_calls": 5,
+      "tokens_used": 0,
+      "execution_time_s": 22.881943225860596,
+      "timestamp": "2025-12-29T19:51:01.171950"
+    },
+    {
+      "agent_role": "Supervisor",
+      "task_description": "Consolidate and validate all findings",
+      "findings": [
+        {
+          "id": "a5e7554c-cccf-4553-a7dc-3e5352d0da8f",
+          "type": "logic",
+          "severity": "major",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "django/db/backends/postgresql/operations.py:404",
+            "snippet": "return self.connection.features.max_query_params // len([...])",
+            "metadata": {}
+          },
+          "title": "Division by zero in bulk_batch_size calculation",
+          "description": "The calculation of bulk_batch_size does not account for the case where the length of fields is zero, leading to a division by zero error.",
+          "has_patch": true,
+          "patch": "--- a/django/db/backends/postgresql/operations.py\n+++ b/django/db/backends/postgresql/operations.py\n@@ -403,7 +404,9 @@\n     def bulk_batch_size(self, fields, objs):\n         if self.connection.features.max_query_params is None or not fields:\n             return len(objs)\n+        field_count = len([f for field in fields for f in (field.fields if isinstance(field, CompositePrimaryKey) else [field])])\n+        return len(objs) if field_count == 0 else min(len(objs), self.connection.features.max_query_params // field_count)",
+          "location": "django/db/backends/postgresql/operations.py:404",
+          "created_at": "2025-12-29T19:49:40.571787"
+        },
+        {
+          "id": "55d73cde-1018-49ea-8d78-769f269920cc",
+          "type": "logic",
+          "severity": "minor",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "django/db/backends/postgresql/operations.py:403",
+            "snippet": "if self.connection.features.max_query_params is None or not fields:",
+            "metadata": {}
+          },
+          "title": "Potential misuse of max_query_params without checking if server_side_binding is enabled",
+          "description": "The code assumes max_query_params is relevant only when server_side_binding is enabled, but does not explicitly check this condition in bulk_batch_size.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/backends/postgresql/operations.py:403",
+          "created_at": "2025-12-29T19:49:40.571825"
+        },
+        {
+          "id": "f4d645c8-5a0f-461d-a8f7-08fba06ebb4e",
+          "type": "logic",
+          "severity": "minor",
+          "source_agent": "LR",
+          "evidence": {
+            "tool": "logic_analysis",
+            "reference": "django/db/backends/postgresql/features.py:151",
+            "snippet": "return None",
+            "metadata": {}
+          },
+          "title": "max_query_params potentially returning None",
+          "description": "max_query_params returns None when server_side_binding is not configured, which could lead to unexpected behavior in consumers of this property.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/backends/postgresql/features.py:151",
+          "created_at": "2025-12-29T19:49:40.571839"
+        },
+        {
+          "id": "f5439e23-b87e-4449-9051-c531975fc9db",
+          "type": "performance",
+          "severity": "major",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "performance_analysis",
+            "reference": "operations.py:406-415",
+            "snippet": "return self.connection.features.max_query_params // len([...])",
+            "metadata": {}
+          },
+          "title": "Potential high memory usage in bulk operations",
+          "description": "The calculation for bulk_batch_size could lead to high memory usage when processing a large number of objects with server-side binding enabled.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/backends/postgresql/operations.py:404-416",
+          "created_at": "2025-12-29T19:49:52.528896"
+        },
+        {
+          "id": "c83f892d-8272-4aaa-8224-f89cbc9442f7",
+          "type": "performance",
+          "severity": "minor",
+          "source_agent": "PR",
+          "evidence": {
+            "tool": "performance_analysis",
+            "reference": "features.py:153-156",
+            "snippet": "if self.connection.settings_dict[\"OPTIONS\"].get(\"server_side_binding\"): return 2**16 - 1",
+            "metadata": {}
+          },
+          "title": "Potential for optimizing max_query_params calculation",
+          "description": "The max_query_params property is calculated each time it is accessed. Caching its value could improve performance, especially in scenarios with multiple queries.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/backends/postgresql/features.py:151-157",
+          "created_at": "2025-12-29T19:49:52.528964"
+        },
+        {
+          "id": "25b2f136-8a10-49bf-9de7-32245eb2d21a",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "tests/backends/postgresql/test_operations.py:78",
+            "snippet": "def test_bulk_batch_size(self):",
+            "metadata": {}
+          },
+          "title": "Missing return value documentation in test methods",
+          "description": "Several test methods in `tests/backends/postgresql/test_operations.py` and `tests/composite_pk/tests.py` are missing docstrings that document the purpose of the test and the expected outcomes.",
+          "has_patch": false,
+          "patch": null,
+          "location": "tests/backends/postgresql/test_operations.py:78",
+          "created_at": "2025-12-29T19:50:16.002457"
+        },
+        {
+          "id": "b67920d3-e8a0-440f-afb1-e6e8030ee61f",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "DR",
+          "evidence": {
+            "tool": "documentation_analysis",
+            "reference": "PR Description",
+            "snippet": "- [ ] I have added or updated relevant docs, including release notes if applicable.",
+            "metadata": {}
+          },
+          "title": "Incomplete PR checklist",
+          "description": "The PR checklist mentions 'I have added or updated relevant docs, including release notes if applicable.' This item is unchecked, indicating that documentation (docstrings, API docs, or release notes) may not have been fully updated to reflect the changes.",
+          "has_patch": false,
+          "patch": null,
+          "location": "PR Description",
+          "created_at": "2025-12-29T19:50:16.002483"
+        },
+        {
+          "id": "fbe96b70-0814-4740-9bd7-b94d31f430f6",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "tests/backends/postgresql/test_operations.py",
+            "snippet": "No assertions found in test changes",
+            "metadata": {}
+          },
+          "title": "Test file modified without assertions",
+          "description": "Test file changes don't include assertions. Tests should verify expected behavior.",
+          "has_patch": false,
+          "patch": null,
+          "location": "tests/backends/postgresql/test_operations.py",
+          "created_at": "2025-12-29T19:50:16.005172"
+        },
+        {
+          "id": "8bb32282-6aa7-454b-9092-05555ecbcd49",
+          "type": "other",
+          "severity": "major",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": "features.py:151-157",
+            "snippet": "@cached_property\ndef max_query_params(self):...",
+            "metadata": {}
+          },
+          "title": "Missing tests for 'max_query_params' property",
+          "description": "The new 'max_query_params' property in 'DatabaseFeatures' lacks direct unit tests to verify its behavior under different 'server_side_binding' configurations.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/backends/postgresql/features.py",
+          "created_at": "2025-12-29T19:50:36.664588"
+        },
+        {
+          "id": "67751415-6527-442a-8a87-077063d3d838",
+          "type": "other",
+          "severity": "major",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "test_analysis",
+            "reference": "operations.py:403-416",
+            "snippet": "def bulk_batch_size(self, fields, objs):...",
+            "metadata": {}
+          },
+          "title": "Insufficient test coverage for 'bulk_batch_size' method",
+          "description": "The 'bulk_batch_size' method modifications are tested, but there's no test covering the scenario where 'fields' is empty and 'max_query_params' is not None.",
+          "has_patch": false,
+          "patch": null,
+          "location": "django/db/backends/postgresql/operations.py",
+          "created_at": "2025-12-29T19:50:36.664622"
+        }
+      ],
+      "reasoning": "Consolidated 24 findings from 7 agents.",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:51:01.176618"
+    }
+  ],
+  "final_comment_md": "# Code Review\n\n## Summary\nReviewed PR #20461: Fixed #36822 -- Added parameter limit for PostgreSQL with server-side binding.\nChanged 0 files (+0/-0)\nFound 10 issues requiring attention.\n\n## \ud83d\udfe0 Major Issues\n\n### Division by zero in bulk_batch_size calculation\n\n**Location:** `django/db/backends/postgresql/operations.py:404`  \n**Type:** logic  \n**Source:** logic_analysis  \n\nThe calculation of bulk_batch_size does not account for the case where the length of fields is zero, leading to a division by zero error.\n\n**Suggested fix:**\n```\n--- a/django/db/backends/postgresql/operations.py\n+++ b/django/db/backends/postgresql/operations.py\n@@ -403,7 +404,9 @@\n     def bulk_batch_size(self, fields, objs):\n         if self.connection.features.max_query_params is None or not fields:\n             return len(objs)\n+        field_count = len([f for field in fields for f in (field.fields if isinstance(field, CompositePrimaryKey) else [field])])\n+        return len(objs) if field_count == 0 else min(len(objs), self.connection.features.max_query_params // field_count)\n```\n\n### Potential high memory usage in bulk operations\n\n**Location:** `django/db/backends/postgresql/operations.py:404-416`  \n**Type:** performance  \n**Source:** performance_analysis  \n\nThe calculation for bulk_batch_size could lead to high memory usage when processing a large number of objects with server-side binding enabled.\n\n### Missing tests for 'max_query_params' property\n\n**Location:** `django/db/backends/postgresql/features.py`  \n**Type:** other  \n**Source:** test_analysis  \n\nThe new 'max_query_params' property in 'DatabaseFeatures' lacks direct unit tests to verify its behavior under different 'server_side_binding' configurations.\n\n### Insufficient test coverage for 'bulk_batch_size' method\n\n**Location:** `django/db/backends/postgresql/operations.py`  \n**Type:** other  \n**Source:** test_analysis  \n\nThe 'bulk_batch_size' method modifications are tested, but there's no test covering the scenario where 'fields' is empty and 'max_query_params' is not None.\n\n\n## \ud83d\udfe1 Minor Issues\n\n### Potential misuse of max_query_params without checking if server_side_binding is enabled\n\n**Location:** `django/db/backends/postgresql/operations.py:403`  \n**Type:** logic  \n**Source:** logic_analysis  \n\nThe code assumes max_query_params is relevant only when server_side_binding is enabled, but does not explicitly check this condition in bulk_batch_size.\n\n### max_query_params potentially returning None\n\n**Location:** `django/db/backends/postgresql/features.py:151`  \n**Type:** logic  \n**Source:** logic_analysis  \n\nmax_query_params returns None when server_side_binding is not configured, which could lead to unexpected behavior in consumers of this property.\n\n### Potential for optimizing max_query_params calculation\n\n**Location:** `django/db/backends/postgresql/features.py:151-157`  \n**Type:** performance  \n**Source:** performance_analysis  \n\nThe max_query_params property is calculated each time it is accessed. Caching its value could improve performance, especially in scenarios with multiple queries.\n\n### Missing return value documentation in test methods\n\n**Location:** `tests/backends/postgresql/test_operations.py:78`  \n**Type:** other  \n**Source:** documentation_analysis  \n\nSeveral test methods in `tests/backends/postgresql/test_operations.py` and `tests/composite_pk/tests.py` are missing docstrings that document the purpose of the test and the expected outcomes.\n\n### Incomplete PR checklist\n\n**Location:** `PR Description`  \n**Type:** other  \n**Source:** documentation_analysis  \n\nThe PR checklist mentions 'I have added or updated relevant docs, including release notes if applicable.' This item is unchecked, indicating that documentation (docstrings, API docs, or release notes) may not have been fully updated to reflect the changes.\n\n### Test file modified without assertions\n\n**Location:** `tests/backends/postgresql/test_operations.py`  \n**Type:** other  \n**Source:** static_analysis  \n\nTest file changes don't include assertions. Tests should verify expected behavior.\n\n",
+  "review_time_s": 95.30431032180786,
+  "token_cost_estimate": 0.0,
+  "prompt_versions": {
+    "SR": "v1",
+    "SFR": "v1",
+    "LR": "v1",
+    "PR": "v1",
+    "DR": "v1",
+    "TR": "v1",
+    "RP": "v1",
+    "Supervisor": "v1"
+  },
+  "metadata": {
+    "repository": "django",
+    "title": "Fixed #36822 -- Added parameter limit for PostgreSQL with server-side binding.",
+    "author": "JaeHyuckSa"
+  },
+  "created_at": "2025-12-29T19:51:01.176720"
+}

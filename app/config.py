@@ -89,12 +89,12 @@ class Settings(BaseSettings):
 
     # Review Configuration
     max_nits_per_review: int = Field(
-        default=5,
+        default=2,
         ge=0,
         description="Maximum nit-level findings per review"
     )
     max_patch_lines: int = Field(
-        default=10,
+        default=15,
         ge=1,
         description="Maximum lines in auto-generated patches"
     )

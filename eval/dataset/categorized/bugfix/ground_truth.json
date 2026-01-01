@@ -121,5 +121,275 @@
     "labeler_id": "synthetic_expert_review",
     "labeled_at": "2025-12-07T18:37:25.737624",
     "notes": "Synthetic ground truth for bugfix PR based on common review patterns"
+  },
+  {
+    "pr_id": "14",
+    "important_issues": [
+      "PR lacks actual security fixes in diff: The PR title and description mention 'Security fixes' but the diff does not contain any changes rela @ N/A",
+      "Unrelated changes in a security fix PR: The PR includes changes to `.gitignore`, `CONTRIBUTING.md`, and the addition of `commitlint.config.j @ .gitignore:198-200, CONTRIBUTING.md:45-100, commitlint.config.js:1-23",
+      "Potential memory leak in message appending: Appending large amounts of content without checks can lead to memory exhaustion. @ vibe/cli/textual_ui/widgets/messages.py:63-76",
+      "Inefficient content update pattern: Repeatedly checking and appending to the content string can be inefficient for large updates. @ vibe/core/agent.py:352-375"
+    ],
+    "false_positive_tolerance": 2,
+    "labeler_id": "extracted_from_reviews",
+    "labeled_at": "2025-12-27T19:10:22.927063Z",
+    "notes": "Extracted from review results. Total findings: 20, Critical: 1, Major: 3"
+  },
+  {
+    "pr_id": "2779",
+    "important_issues": [
+      "Changes unrelated to PR title: The PR title 'Cache errors for dependents' suggests improvements in error handling or caching mechan @ .flake8:1-5, .github/DISCUSSION_TEMPLATE/questions.yml:1-158, .github/DISCUSSION_TEMPLATE/translations.yml:1-45"
+    ],
+    "false_positive_tolerance": 2,
+    "labeler_id": "extracted_from_reviews",
+    "labeled_at": "2025-12-27T19:10:22.928202Z",
+    "notes": "Extracted from review results. Total findings: 26, Critical: 1, Major: 0"
+  },
+  {
+    "pr_id": "14616",
+    "important_issues": [
+      "Potential Type Mismatch in _is_json_field Function: The _is_json_field function checks if any item in the metadata is of type 'Json' from 'pydantic.type @ fastapi/dependencies/utils.py:719-725",
+      "Missing Validation for 'alias' Resolution: The function _get_multidict_value uses an 'alias' to fetch values from 'values'. However, there's no @ fastapi/dependencies/utils.py:731-740",
+      "Missing docstring for _is_json_field function: The newly added function '_is_json_field' lacks a docstring. It's crucial to document its purpose, p @ fastapi/dependencies/utils.py:716",
+      "Missing docstring for test functions: The test functions 'test_form_str' and 'test_form_json_list' in the new test file lack docstrings. D @ tests/test_form_json_type.py:0",
+      "Missing endpoint documentation: The PR introduces new endpoints but does not update the API documentation to reflect these changes.  @ fastapi/dependencies/utils.py:0"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "extracted_from_reviews",
+    "labeled_at": "2025-12-29T19:15:01.889899Z",
+    "notes": "Extracted from review results. Total findings: 10, Critical: 0, Major: 5"
+  },
+  {
+    "pr_id": "14595",
+    "important_issues": [
+      "Missing tests for realm parameter enforcement in HTTPBasic: The PR introduces a mandatory 'realm' parameter for HTTPBasic authentication but lacks explicit test @ fastapi/security/http.py"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:25:13.094851Z",
+    "notes": "Extracted from OpenAI review. Total findings: 2, Critical: 0, Major: 1"
+  },
+  {
+    "pr_id": "20476",
+    "important_issues": [
+      "Exception handling in version retrieval functions: The functions get_django_version and get_redis_py_version use a broad exception catch. This could ma @ django/core/cache/backends/redis.py:17,33",
+      "Missing parameter and return type documentation: The functions 'get_django_version' and 'get_redis_py_version' lack parameter and return type documen @ django/core/cache/backends/redis.py",
+      "Undocumented API changes: The PR does not mention updating the API documentation to reflect the new version identification fea @ PR Description",
+      "New feature not documented in guides: There is no mention of updating guides or README files to include information on the new version ide @ PR Checklist"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:38:15.905075Z",
+    "notes": "Extracted from OpenAI review. Total findings: 10, Critical: 0, Major: 4"
+  },
+  {
+    "pr_id": "20473",
+    "important_issues": [
+      "ManyToManyField default handling removal: Removing default handling for ManyToManyField in form initialization may lead to unexpected behavior @ django/db/models/fields/__init__.py:1109-1112",
+      "Missing docstring for updated method: The method modification in `django/db/models/fields/__init__.py` lacks an updated docstring reflecti @ django/db/models/fields/__init__.py:1106",
+      "Missing test case documentation: The tests modified in `tests/forms_tests/tests/tests.py` lack comments or docstrings explaining the  @ tests/forms_tests/tests/tests.py:99",
+      "Undocumented breaking change: The PR introduces a breaking change by altering the behavior of `ManyToManyField` defaults without u @ N/A"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:39:52.519281Z",
+    "notes": "Extracted from OpenAI review. Total findings: 6, Critical: 0, Major: 4"
+  },
+  {
+    "pr_id": "20472",
+    "important_issues": [
+      "Potential infinite loop with malformed input: The function `split_header_words` does not account for the possibility of a non-terminating quoted s @ django/utils/http.py:316-372",
+      "Inefficient String Handling in split_header_words: The use of string concatenation within a loop for assembling header parts in split_header_words can  @ django/utils/http.py:316-372",
+      "Missing docstring for public function split_header_words: The function 'split_header_words' is public and lacks a docstring explaining its purpose, parameters @ django/utils/http.py:316",
+      "Outdated docstring after code change in HttpRequest.accepted_types: The method 'HttpRequest.accepted_types' was modified to use 'split_header_words' for parsing, but it @ django/http/request.py:97"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:41:02.845017Z",
+    "notes": "Extracted from OpenAI review. Total findings: 11, Critical: 0, Major: 4"
+  },
+  {
+    "pr_id": "20471",
+    "important_issues": [
+      "Inconsistent `use_fieldset` attribute behavior: The `use_fieldset` attribute is set to `True` in `AdminFileWidget` but reverted to `False` in `Clear @ django/forms/widgets.py:533",
+      "Test case potentially not covering the reverted change: The test case `test_fieldset` in `AdminFileWidgetTests` asserts `use_fieldset` is `True`, which cont @ tests/admin_widgets/tests.py:705",
+      "Missing tests for ClearableFileInput.use_fieldset attribute change: The change in the use_fieldset attribute from True to False in ClearableFileInput and its impact on  @ django/forms/widgets.py",
+      "Missing tests for AdminFileWidget.use_fieldset attribute addition: The addition of the use_fieldset attribute to AdminFileWidget is not accompanied by tests to verify  @ django/contrib/admin/widgets.py"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:42:00.510166Z",
+    "notes": "Extracted from OpenAI review. Total findings: 8, Critical: 0, Major: 4"
+  },
+  {
+    "pr_id": "20469",
+    "important_issues": [
+      "Inconsistent constructor parameters: The BaseCache subclasses now require an 'alias' parameter, but existing code that instantiates these @ django/core/cache/backends/base.py:58",
+      "Missing alias parameter handling in BaseDatabaseCache: The BaseDatabaseCache's __init__ method now accepts **kwargs to support the 'alias' parameter, but d @ django/core/cache/backends/db.py:30",
+      "No tests for cache alias instantiation: The PR introduces the ability for cache backends to receive an alias name upon instantiation, but no @ django/core/cache/backends/*.py",
+      "No integration tests for cache alias usage: There are no integration tests verifying that the cache alias is correctly used and passed through t @ django/core/cache/__init__.py"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:44:30.116906Z",
+    "notes": "Extracted from OpenAI review. Total findings: 11, Critical: 0, Major: 4"
+  },
+  {
+    "pr_id": "20468",
+    "important_issues": [
+      "Potential for bypassing nonce validation: The validation for CSP values skips the nonce sentinel, which could lead to bypassing the validation @ django/utils/csp.py:134",
+      "Missing tests for empty or null directive names and values: There are no tests covering scenarios where directive names or values are empty strings or null, whi @ tests/utils_tests/test_csp.py"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:45:53.669865Z",
+    "notes": "Extracted from OpenAI review. Total findings: 13, Critical: 0, Major: 2"
+  },
+  {
+    "pr_id": "20466",
+    "important_issues": [
+      "Potential for missing migrations: The script check_migrations.py may not detect all missing migrations due to the filtering of apps in @ scripts/check_migrations.py:20",
+      "Unmanaged model migration might not behave as expected: Creating migrations for unmanaged models (Unmanaged model in 0003_unmanaged_alter_book_id.py) could  @ tests/migration_test_data_persistence/migrations/0003_unmanaged_alter_book_id.py:14",
+      "Missing module docstring: The new script 'check_migrations.py' lacks a module-level docstring to explain its overall purpose a @ scripts/check_migrations.py:1",
+      "Missing function parameter and return type hints: The main function in 'check_migrations.py' does not include type hints for its parameters or its ret @ scripts/check_migrations.py:10"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:47:21.448152Z",
+    "notes": "Extracted from OpenAI review. Total findings: 11, Critical: 0, Major: 4"
+  },
+  {
+    "pr_id": "20464",
+    "important_issues": [
+      "Potential inefficient JSON data handling in database queries: The modification in JSONField key __in lookup could lead to inefficient data handling and processing @ django/db/models/fields/json.py:615-625"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:48:20.805599Z",
+    "notes": "Extracted from OpenAI review. Total findings: 2, Critical: 0, Major: 1"
+  },
+  {
+    "pr_id": "20463",
+    "important_issues": [
+      "Potential for applying migrations out of order: The logic in _create_project_state_for_collect_sql may lead to migrations being applied out of their @ django/db/migrations/loader.py:433-454",
+      "Potential inefficient graph traversal: The implementation of `_create_project_state_for_collect_sql` method may lead to inefficient graph t @ django/db/migrations/loader.py:431-461"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:49:02.845726Z",
+    "notes": "Extracted from OpenAI review. Total findings: 4, Critical: 0, Major: 2"
+  },
+  {
+    "pr_id": "20461",
+    "important_issues": [
+      "Division by zero in bulk_batch_size calculation: The calculation of bulk_batch_size does not account for the case where the length of fields is zero, @ django/db/backends/postgresql/operations.py:404",
+      "Potential high memory usage in bulk operations: The calculation for bulk_batch_size could lead to high memory usage when processing a large number o @ django/db/backends/postgresql/operations.py:404-416",
+      "Missing tests for 'max_query_params' property: The new 'max_query_params' property in 'DatabaseFeatures' lacks direct unit tests to verify its beha @ django/db/backends/postgresql/features.py",
+      "Insufficient test coverage for 'bulk_batch_size' method: The 'bulk_batch_size' method modifications are tested, but there's no test covering the scenario whe @ django/db/backends/postgresql/operations.py"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:51:01.183071Z",
+    "notes": "Extracted from OpenAI review. Total findings: 10, Critical: 0, Major: 4"
+  },
+  {
+    "pr_id": "20460",
+    "important_issues": [
+      "Inconsistent behavior for non-Oracle databases: The change assumes all databases treat empty strings as NULLs, which may not be true for databases o @ django/db/models/sql/query.py:1447",
+      "Test coverage for 'iexact' lookup change: The modification to treat empty strings as NULL for iexact lookups on Oracle is significant and requ @ django/db/models/sql/query.py:1444"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:51:49.905430Z",
+    "notes": "Extracted from OpenAI review. Total findings: 3, Critical: 0, Major: 2"
+  },
+  {
+    "pr_id": "20459",
+    "important_issues": [
+      "Potential Type Conversion Error: Coercing `self._route` to a string without checking its type could lead to unexpected behavior if `_ @ django/urls/resolvers.py:343",
+      "Missing tests for error scenarios in RoutePattern.match(): The modifications in RoutePattern.match() to handle lazy routes correctly lack tests for error scena @ django/urls/resolvers.py"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:52:47.223821Z",
+    "notes": "Extracted from OpenAI review. Total findings: 4, Critical: 0, Major: 2"
+  },
+  {
+    "pr_id": "20458",
+    "important_issues": [
+      "Missing docstring for public methods: Public methods 'first()' and 'last()' in QuerySet class lack docstrings explaining their new behavio @ django/db/models/query.py:1155, 1168",
+      "Missing test case documentation: New test cases in 'tests/get_earliest_or_latest/tests.py' lack comments explaining the purpose and e @ tests/get_earliest_or_latest/tests.py:266",
+      "Undocumented deprecation warning: The deprecation warning introduced for 'first()' and 'last()' methods when called without arguments  @ N/A",
+      "Missing tests for deprecation warning logic: The changes introduce a deprecation warning for calling first()/last() after order_by() with no argu @ django/db/models/query.py"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:53:59.227343Z",
+    "notes": "Extracted from OpenAI review. Total findings: 7, Critical: 0, Major: 4"
+  },
+  {
+    "pr_id": "20457",
+    "important_issues": [
+      "Potential Unhandled Promise Rejection: The promise from 'navigator.clipboard.writeText(textToCopy)' may not be handled correctly if it reje @ docs/_static/copybutton.js:20"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:54:52.997503Z",
+    "notes": "Extracted from OpenAI review. Total findings: 7, Critical: 0, Major: 1"
+  },
+  {
+    "pr_id": "20453",
+    "important_issues": [
+      "Change in test method may not cover original issue: The original test method 'test_in_lookup_in_filter_text_field' was specifically designed to test the @ tests.py:1856-1862",
+      "Potential mismatch in expected test outcomes: The change in the test method alters the expected results from a single season object ([self.s2]) to @ tests.py:1862",
+      "Test file modified without assertions: Test file changes don't include assertions. Tests should verify expected behavior. @ tests/lookup/tests.py",
+      "Modified logic without updated tests: The test method 'test_in_lookup_in_filter_text_field' was renamed and its logic changed to use 'asse @ tests/lookup/tests.py:1855"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T20:08:51.926616Z",
+    "notes": "Extracted from OpenAI review. Total findings: 4, Critical: 0, Major: 2"
+  },
+  {
+    "pr_id": "20452",
+    "important_issues": [
+      "Potential for AssertionError in write method: The write method raises an AssertionError if the data is not a bytes instance, which could lead to a @ django/core/servers/basehttp.py:143",
+      "Potential for AssertionError before start_response: In the write method, an AssertionError is raised if write() is called before start_response(), which @ django/core/servers/basehttp.py:146",
+      "Missing class docstring: The ServerHandler class is missing a docstring that explains its purpose and usage within the Django @ django/core/servers/basehttp.py:ServerHandler",
+      "Missing method docstring: The new method 'write' lacks a docstring explaining its purpose, especially its behavior change when @ django/core/servers/basehttp.py:ServerHandler.write",
+      "Missing test case docstrings: The new test cases in 'tests/servers/test_basehttp.py' lack docstrings that explain what each test v @ tests/servers/test_basehttp.py:WSGIHeadRequestTests",
+      "Missing tests for error handling in new write method: The new write method in basehttp.py introduces error handling for non-bytes data types and no start_ @ django/core/servers/basehttp.py:143-145",
+      "Missing tests for HEAD requests with chunked transfer encoding: The changes include handling for HEAD requests with chunked transfer encoding by removing the 'Trans @ django/core/servers/basehttp.py:161-163",
+      "Transfer-Encoding header manipulation: Manipulating the Transfer-Encoding header based on the request type could lead to unexpected behavio @ django/core/servers/basehttp.py:164",
+      "HEAD request handling does not account for all edge cases: The logic for handling HEAD requests assumes certain conditions about headers and response bodies th @ django/core/servers/basehttp.py:130-170"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T20:10:40.024976Z",
+    "notes": "Extracted from OpenAI review. Total findings: 9, Critical: 0, Major: 7"
+  },
+  {
+    "pr_id": "20447",
+    "important_issues": [
+      "Test file modified without assertions: Test file changes don't include assertions. Tests should verify expected behavior. @ tests/model_fields/models.py"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T20:14:24.528322Z",
+    "notes": "Extracted from OpenAI review. Total findings: 1, Critical: 0, Major: 0"
+  },
+  {
+    "pr_id": "14585",
+    "important_issues": [
+      "Inconsistent error handling in documentation scripts: The scripts for updating README.md and mkdocs.yml use `raise typer.Exit(1)` after making updates, wh @ scripts/docs.py",
+      "Automatic deletion of non-translated pages without confirmation: The script automatically deletes non-translated pages found in the repository without any user confi @ scripts/docs.py:407",
+      "Misleading success message in ensure_non_translated: The success message 'No non-translated pages found ✅' is printed even if non-translated pages were f @ scripts/docs.py:415",
+      "Repeated file read operations: The script reads the entire content of a file to check if an update is needed before writing back to @ scripts/docs.py:234-242",
+      "Unnecessary file write operations: The script writes to files without checking if changes are necessary, leading to unnecessary I/O ope @ scripts/docs.py:244-250"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T20:23:37.682431Z",
+    "notes": "Extracted from OpenAI review. Total findings: 5, Critical: 0, Major: 2"
   }
 ]

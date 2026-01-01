@@ -75,5 +75,164 @@
     "labeler_id": "synthetic_expert_review",
     "labeled_at": "2025-12-07T18:37:25.743278",
     "notes": "Synthetic ground truth for feature PR based on common review patterns"
+  },
+  {
+    "pr_id": "143",
+    "important_issues": [
+      "blacklist: Consider possible security implications associated with the subprocess module. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/ios.py:19",
+      "start_process_with_partial_path: Starting a process with a partial executable path @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/ios.py:63",
+      "blacklist: Consider possible security implications associated with the subprocess module. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/main.py:19",
+      "start_process_with_partial_path: Starting a process with a partial executable path @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/main.py:64",
+      "start_process_with_partial_path: Starting a process with a partial executable path @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/main.py:92",
+      "start_process_with_partial_path: Starting a process with a partial executable path @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/main.py:128",
+      "blacklist: Use of possibly insecure function - consider using safer ast.literal_eval. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/actions/handler.py:285",
+      "blacklist: Consider possible security implications associated with the subprocess module. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/connection.py:3",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/connection.py:74",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/connection.py:110",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/connection.py:126",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/connection.py:242",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/connection.py:271",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/connection.py:283",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/connection.py:311",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/connection.py:318",
+      "blacklist: Consider possible security implications associated with the subprocess module. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/device.py:4",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/device.py:23",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/device.py:50",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/device.py:70",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/device.py:74",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/device.py:99",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/device.py:136",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/device.py:163",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/device.py:179",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/device.py:203",
+      "blacklist: Consider possible security implications associated with the subprocess module. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/input.py:4",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/input.py:23",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/input.py:49",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/input.py:69",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/input.py:78",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/input.py:100",
+      "blacklist: Consider possible security implications associated with the subprocess module. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/screenshot.py:5",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/screenshot.py:45",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/adb/screenshot.py:58",
+      "blacklist: Consider possible security implications associated with the subprocess module. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/connection.py:3",
+      "start_process_with_partial_path: Starting a process with a partial executable path @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/connection.py:70",
+      "start_process_with_partial_path: Starting a process with a partial executable path @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/connection.py:126",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/connection.py:210",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/connection.py:235",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/connection.py:265",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/connection.py:290",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/connection.py:323",
+      "blacklist: Consider possible security implications associated with the subprocess module. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/device.py:3",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/device.py:49",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/device.py:114",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/device.py:167",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/device.py:221",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/device.py:274",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/device.py:315",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/device.py:343",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/device.py:381",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/device.py:413",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/device.py:451",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/input.py:52",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/input.py:85",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/input.py:94",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/input.py:130",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/input.py:159",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/input.py:200",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/input.py:227",
+      "try_except_pass: Try, Except, Pass detected. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/input.py:235",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/input.py:262",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/input.py:288",
+      "blacklist: Consider possible security implications associated with the subprocess module. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/screenshot.py:5",
+      "request_with_no_cert_validation: Call to requests with verify=False disabling SSL certificate checks, security issue. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/screenshot.py:79",
+      "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input. @ /var/folders/2f/q03m37y143j2h1_2nt8fx18r0000gn/T/code-review-repos/Open-AutoGLM/phone_agent/xctest/screenshot.py:129"
+    ],
+    "false_positive_tolerance": 5,
+    "labeler_id": "extracted_from_reviews",
+    "labeled_at": "2025-12-27T19:10:22.917752Z",
+    "notes": "Extracted from review results. Total findings: 96, Critical: 23, Major: 44"
+  },
+  {
+    "pr_id": "14468",
+    "important_issues": [
+      "Potential infinite loop: The while loop for reading file chunks does not ensure progress towards termination if the file size @ fastapi/dependencies/utils.py:892-913",
+      "Incorrect file content handling: The content of the file is only appended to the 'content' bytearray if the file size exceeds max_siz @ fastapi/dependencies/utils.py:907",
+      "Unreachable code after raising exception: The code to append chunk to content is unreachable after raising RequestEntityTooLarge exception. @ fastapi/dependencies/utils.py:908",
+      "Inefficient File Upload Handling: The file upload handling mechanism reads the entire file into memory to check its size, which can le @ fastapi/dependencies/utils.py:890-918",
+      "Missing docstring for public API endpoint: The new API endpoint '/upload' lacks a docstring explaining its purpose, accepted parameters, and re @ main.py:29",
+      "Missing docstring for new exception handler: Function 'request_entity_too_large_exception_handler' lacks a docstring explaining its purpose and p @ fastapi/exception_handlers.py:8",
+      "Missing class docstring: The new exception class 'RequestEntityTooLarge' lacks a docstring. @ fastapi/exceptions.py:182",
+      "Undocumented API change: The addition of 'max_size' parameter to the 'File' class and its impact on file uploads is not docum @ fastapi/params.py:725",
+      "Missing unit tests for upload file size limit functionality: The PR introduces functionality to limit the upload file size but does not include corresponding uni @ fastapi/dependencies/utils.py",
+      "Missing integration tests for RequestEntityTooLarge exception: There are no integration tests covering the scenario where an uploaded file exceeds the maximum allo @ fastapi/exception_handlers.py"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:04:42.416558Z",
+    "notes": "Extracted from OpenAI review. Total findings: 19, Critical: 0, Major: 10"
+  },
+  {
+    "pr_id": "14615",
+    "important_issues": [
+      "Potential for AttributeError: If 'dependency_overrides_provider' is not None but does not have 'dependency_overrides' attribute, a @ fastapi/dependencies/utils.py:602",
+      "Missing unit tests for DependencyOverridesProvider implementation: The introduction of DependencyOverridesProvider as a Protocol requires unit tests to ensure that obj @ fastapi/types.py",
+      "No integration tests for dependency_overrides_provider parameter changes: Changes to the dependency_overrides_provider parameter in multiple functions across fastapi/dependen @ fastapi/dependencies/utils.py, fastapi/routing.py"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "extracted_from_reviews",
+    "labeled_at": "2025-12-29T19:15:01.889295Z",
+    "notes": "Extracted from review results. Total findings: 5, Critical: 0, Major: 3"
+  },
+  {
+    "pr_id": "14610",
+    "important_issues": [
+      "New functionality lacks unit tests: The newly added streaming inference example using StreamingResponse lacks corresponding unit tests t @ docs_src/streaming/streaming_inference.py:1-47"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:18:03.682208Z",
+    "notes": "Extracted from OpenAI review. Total findings: 14, Critical: 0, Major: 1"
+  },
+  {
+    "pr_id": "14609",
+    "important_issues": [
+      "Dropped support for `pydantic.v1` not documented: The PR drops support for `pydantic.v1` but does not update the API documentation to reflect this bre @ fastapi/_compat/__init__.py",
+      "Outdated setup instructions: With the removal of `pydantic.v1` support, the setup instructions in README and guides are likely ou @ README.md"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:18:55.096985Z",
+    "notes": "Extracted from OpenAI review. Total findings: 3, Critical: 0, Major: 2"
+  },
+  {
+    "pr_id": "14599",
+    "important_issues": [
+      "Missing exception handling documentation in public API: The public API endpoint '/notify/' lacks documentation on how exceptions in background tasks are han @ background-tasks.md: Silent Failure Example section"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:23:44.543722Z",
+    "notes": "Extracted from OpenAI review. Total findings: 6, Critical: 0, Major: 1"
+  },
+  {
+    "pr_id": "20455",
+    "important_issues": [
+      "Potential for unhandled exception in supports_inspectdb: The method supports_inspectdb attempts to call get_table_list on the database introspection object w @ django/db/backends/base/features.py:446-450",
+      "Potential database connection overhead in supports_inspectdb: The implementation of supports_inspectdb uses a database connection to check for feature support, wh @ django/db/backends/base/features.py:443-451"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T20:06:28.869391Z",
+    "notes": "Extracted from OpenAI review. Total findings: 2, Critical: 0, Major: 2"
+  },
+  {
+    "pr_id": "20454",
+    "important_issues": [
+      "Outdated comments: The removal of certain properties like 'supports_bbcontains_lookup' from BaseSpatialFeatures without @ django/contrib/gis/db/backends/base/features.py"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T20:07:37.304873Z",
+    "notes": "Extracted from OpenAI review. Total findings: 1, Critical: 0, Major: 0"
   }
 ]

@@ -78,7 +78,7 @@ def _resolve_repo_path(repo_path_or_url: str) -> Path:
             temp_dir.parent.mkdir(parents=True, exist_ok=True)
             subprocess.run(["git", "clone", repo_path_or_url, str(temp_dir)], check=True)
 
-        console.print(f"[green]✓ Repository ready at {temp_dir}[/green]")
+        console.print(f"[green]OK Repository ready at {temp_dir}[/green]")
         return temp_dir
 
     # Local path
@@ -140,7 +140,7 @@ def _checkout_pr_branch(repo_path: Path, pr_id: str) -> tuple[str, str]:
     )
     merge_base = merge_base_result.stdout.strip()
 
-    console.print(f"[green]✓ Checked out PR #{pr_id} branch[/green]")
+    console.print(f"[green]OK Checked out PR #{pr_id} branch[/green]")
     console.print(f"[dim]Merge base: {merge_base[:8]}[/dim]")
 
     return merge_base, branch_name
@@ -293,7 +293,7 @@ def review(
             author = pr_info["author"]
             branch_source = pr_info["branch_source"]
             branch_target = pr_info["branch_target"]
-            console.print(f"[green]✓[/green] Fetched PR: {title[:60]}...")
+            console.print(f"[green]OK[/green] Fetched PR: {title[:60]}...")
         except Exception as e:
             console.print(f"[yellow]Warning: Could not fetch PR info from GitHub: {e}[/yellow]")
             if title is None:

@@ -35,11 +35,11 @@ class ReviewStorage:
 
         # Save markdown comment
         md_path = pr_dir / "review.md"
-        md_path.write_text(result.final_comment_md)
+        md_path.write_text(result.final_comment_md, encoding="utf-8")
 
         # Save full JSON result
         json_path = pr_dir / "review.json"
-        json_path.write_text(json.dumps(result.model_dump(mode="json"), indent=2))
+        json_path.write_text(json.dumps(result.model_dump(mode="json"), indent=2), encoding="utf-8")
 
         # Update index
         self._update_index(result)
@@ -98,6 +98,10 @@ class ReviewStorage:
 
         try:
             data = json.loads(json_path.read_text())
+            # Handle legacy comprehensive_agent system_type (map to multi_agent)
+            if data.get("system_type") == "comprehensive_agent":
+                data["system_type"] = "multi_agent"
+                logger.info(f"Mapped comprehensive_agent to multi_agent for PR {pr_id}")
             return PRReviewResult(**data)
         except Exception as e:
             logger.error(f"Failed to load review {pr_id}: {e}")

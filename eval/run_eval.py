@@ -78,31 +78,79 @@ class DatasetLoader:
         return self._category_benchmarks
 
     def load_pr_list(self) -> List[PRMetadata]:
-        """Load list of PRs to evaluate."""
+        """Load list of PRs to evaluate from categorized directories."""
+        # First try to load from categorized directories
+        categorized_path = self.dataset_path / "categorized"
+        if categorized_path.exists():
+            all_prs = []
+            categories = ["bugfix", "feature", "refactor", "other"]
+            
+            for category in categories:
+                prs_file = categorized_path / category / "prs.json"
+                if prs_file.exists():
+                    with open(prs_file, "r", encoding="utf-8") as f:
+                        prs_data = json.load(f)
+                        for pr_data in prs_data:
+                            try:
+                                pr = PRMetadata(**pr_data)
+                                all_prs.append(pr)
+                            except Exception as e:
+                                logger.warning(f"Failed to load PR {pr_data.get('pr_id', 'unknown')}: {e}")
+            
+            if all_prs:
+                logger.info(f"Loaded {len(all_prs)} PRs from categorized directories")
+                return all_prs
+        
+        # Fallback to pr_list.json if categorized doesn't exist
         pr_list_file = self.dataset_path / "pr_list.json"
+        if pr_list_file.exists():
+            with open(pr_list_file) as f:
+                data = json.load(f)
+            logger.info(f"Loaded {len(data)} PRs from pr_list.json")
+            return [PRMetadata(**pr) for pr in data]
 
-        if not pr_list_file.exists():
-            logger.warning(f"PR list not found: {pr_list_file}")
-            return []
-
-        with open(pr_list_file) as f:
-            data = json.load(f)
-
-        return [PRMetadata(**pr) for pr in data]
+        logger.warning(f"No PR list found in {self.dataset_path}")
+        return []
 
     def load_ground_truth(self) -> Dict[str, GroundTruthLabel]:
-        """Load ground truth labels.
-
-        NOTE: For new reviewed PRs, ground truth should NOT exist.
-        Dataset ground truth is only for benchmarking purposes and should
-        not be used for evaluation of new reviews.
-
-        Returns empty dict to ensure new reviews don't have ground truth.
-        """
-        # Return empty dict - new reviews should not have ground truth
-        # Dataset is only for benchmarking (category statistics)
-        logger.info("Ground truth: Using empty dict (new reviews have no ground truth)")
-        return {}
+        """Load ground truth labels from categorized directories."""
+        ground_truth = {}
+        categorized_path = self.dataset_path / "categorized"
+        
+        if not categorized_path.exists():
+            logger.warning("Categorized directory not found, returning empty ground truth")
+            return {}
+        
+        categories = ["bugfix", "feature", "refactor", "other"]
+        
+        for category in categories:
+            gt_file = categorized_path / category / "ground_truth.json"
+            if gt_file.exists():
+                with open(gt_file, "r", encoding="utf-8") as f:
+                    gt_data = json.load(f)
+                    for gt_item in gt_data:
+                        try:
+                            # Handle datetime string parsing
+                            if "labeled_at" in gt_item and isinstance(gt_item["labeled_at"], str):
+                                from datetime import datetime
+                                try:
+                                    gt_item["labeled_at"] = datetime.fromisoformat(gt_item["labeled_at"].replace("Z", "+00:00"))
+                                except:
+                                    # If parsing fails, use current time
+                                    from datetime import datetime, timezone
+                                    gt_item["labeled_at"] = datetime.now(timezone.utc)
+                            
+                            gt_label = GroundTruthLabel(**gt_item)
+                            ground_truth[gt_label.pr_id] = gt_label
+                        except Exception as e:
+                            logger.warning(f"Failed to load ground truth for PR {gt_item.get('pr_id', 'unknown')}: {e}")
+        
+        if ground_truth:
+            logger.info(f"Loaded ground truth for {len(ground_truth)} PRs")
+        else:
+            logger.warning("No ground truth found in categorized directories")
+        
+        return ground_truth
 
 
 class EvaluationRunner:

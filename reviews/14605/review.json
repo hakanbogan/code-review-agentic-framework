@@ -1,0 +1,173 @@
+{
+  "correlation_id": "59ac1b00-6087-418a-8b3b-d649465f1db3",
+  "pr_id": "14605",
+  "system_type": "multi_agent",
+  "change_summary": "Reviewed PR #14605: \ud83d\udd0a Add a custom `FastAPIDeprecationWarning`\nChanged 0 files (+0/-0)\nFound 1 issues requiring attention.",
+  "findings": [
+    {
+      "id": "e4218f7b-a427-4960-9ec6-f18ace367795",
+      "type": "other",
+      "severity": "minor",
+      "source_agent": "TR",
+      "evidence": {
+        "tool": "static_analysis",
+        "reference": "tests/benchmarks/test_general_performance.py",
+        "snippet": "No assertions found in test changes",
+        "metadata": {}
+      },
+      "title": "Test file modified without assertions",
+      "description": "Test file changes don't include assertions. Tests should verify expected behavior.",
+      "has_patch": false,
+      "patch": null,
+      "location": "tests/benchmarks/test_general_performance.py",
+      "created_at": "2025-12-29T19:20:53.707970"
+    }
+  ],
+  "agent_decisions": [
+    {
+      "agent_role": "SR",
+      "task_description": "Review code for security vulnerabilities",
+      "findings": [],
+      "reasoning": "Analyzed security tools output",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:20:43.186744"
+    },
+    {
+      "agent_role": "SFR",
+      "task_description": "Review code style and formatting",
+      "findings": [],
+      "reasoning": "Analyzed linter output and applied nit limits",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:20:43.189195"
+    },
+    {
+      "agent_role": "LR",
+      "task_description": "Review code for logical errors and potential bugs",
+      "findings": [],
+      "reasoning": "I now can give a great answer",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 1.5693750381469727,
+      "timestamp": "2025-12-29T19:20:45.131796"
+    },
+    {
+      "agent_role": "PR",
+      "task_description": "Review code for performance issues",
+      "findings": [],
+      "reasoning": "Static analysis: 0, LLM analysis: 0",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 6.536109924316406,
+      "timestamp": "2025-12-29T19:20:52.006449"
+    },
+    {
+      "agent_role": "DR",
+      "task_description": "Review code documentation quality",
+      "findings": [],
+      "reasoning": "I now can give a great answer",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 1.3586790561676025,
+      "timestamp": "2025-12-29T19:20:53.706585"
+    },
+    {
+      "agent_role": "TR",
+      "task_description": "Review test coverage and quality",
+      "findings": [
+        {
+          "id": "e4218f7b-a427-4960-9ec6-f18ace367795",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "tests/benchmarks/test_general_performance.py",
+            "snippet": "No assertions found in test changes",
+            "metadata": {}
+          },
+          "title": "Test file modified without assertions",
+          "description": "Test file changes don't include assertions. Tests should verify expected behavior.",
+          "has_patch": false,
+          "patch": null,
+          "location": "tests/benchmarks/test_general_performance.py",
+          "created_at": "2025-12-29T19:20:53.707970"
+        }
+      ],
+      "reasoning": "Static: 1, LLM: 0",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 1.4086410999298096,
+      "timestamp": "2025-12-29T19:20:55.452311"
+    },
+    {
+      "agent_role": "RP",
+      "task_description": "Generate code revision proposals",
+      "findings": [],
+      "reasoning": "Generated patches for 0 high-priority findings",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:20:55.454719"
+    },
+    {
+      "agent_role": "Supervisor",
+      "task_description": "Consolidate and validate all findings",
+      "findings": [
+        {
+          "id": "e4218f7b-a427-4960-9ec6-f18ace367795",
+          "type": "other",
+          "severity": "minor",
+          "source_agent": "TR",
+          "evidence": {
+            "tool": "static_analysis",
+            "reference": "tests/benchmarks/test_general_performance.py",
+            "snippet": "No assertions found in test changes",
+            "metadata": {}
+          },
+          "title": "Test file modified without assertions",
+          "description": "Test file changes don't include assertions. Tests should verify expected behavior.",
+          "has_patch": false,
+          "patch": null,
+          "location": "tests/benchmarks/test_general_performance.py",
+          "created_at": "2025-12-29T19:20:53.707970"
+        }
+      ],
+      "reasoning": "Consolidated 1 findings from 7 agents.",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:20:55.459172"
+    }
+  ],
+  "final_comment_md": "# Code Review\n\n## Summary\nReviewed PR #14605: \ud83d\udd0a Add a custom `FastAPIDeprecationWarning`\nChanged 0 files (+0/-0)\nFound 1 issues requiring attention.\n\n## \ud83d\udfe1 Minor Issues\n\n### Test file modified without assertions\n\n**Location:** `tests/benchmarks/test_general_performance.py`  \n**Type:** other  \n**Source:** static_analysis  \n\nTest file changes don't include assertions. Tests should verify expected behavior.\n\n",
+  "review_time_s": 12.42303991317749,
+  "token_cost_estimate": 0.0,
+  "prompt_versions": {
+    "SR": "v1",
+    "SFR": "v1",
+    "LR": "v1",
+    "PR": "v1",
+    "DR": "v1",
+    "TR": "v1",
+    "RP": "v1",
+    "Supervisor": "v1"
+  },
+  "metadata": {
+    "repository": "fastapi",
+    "title": "\ud83d\udd0a Add a custom `FastAPIDeprecationWarning`",
+    "author": "tiangolo"
+  },
+  "created_at": "2025-12-29T19:20:55.459258"
+}

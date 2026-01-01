@@ -81,7 +81,7 @@ class BaseAgent(ABC):
         prompt_path = self.settings.get_prompt_path(self.role.value, self.prompt_version)
         if not prompt_path.exists():
             raise FileNotFoundError(f"Prompt not found: {prompt_path}")
-        return prompt_path.read_text()
+        return prompt_path.read_text(encoding="utf-8")
 
     def _create_decision(
         self,

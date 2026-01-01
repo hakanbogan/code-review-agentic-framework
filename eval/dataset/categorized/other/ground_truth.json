@@ -1,0 +1,133 @@
+[
+  {
+    "pr_id": "12000",
+    "important_issues": [
+      "PR title does not match changes: The PR title 'system to chart queries' suggests a feature addition or enhancement related to chartin @ mindsdb/__main__.py:341-343, mindsdb/api/a2a/agent.py:108-138",
+      "Removal of langchain handler without updating dependent features: The removal of the langchain handler from default_handlers.txt could cause runtime errors or functio @ default_handlers.txt:4",
+      "Removal of tokenizer loading without removing related configuration options: The code for loading the tokenizer has been removed, but there's no indication that related configur @ mindsdb/__main__.py:341-347",
+      "Incomplete transformation logic for chunk types: The transformation logic for chunks in MindsDBAgent does not handle all possible types explicitly, p @ mindsdb/api/a2a/agent.py:108-138",
+      "Removal of skill-related functionality without removing all references: Skill-related functions are removed, but the codebase might still have references or dependencies on @ mindsdb/api/executor/command_executor.py",
+      "Removal of tokenizer loading may impact feature functionality: The removal of the tokenizer loading feature from the startup sequence could potentially degrade the @ mindsdb/__main__.py:341-357",
+      "Missing docstring for public class MindsDBAgent: The class MindsDBAgent lacks a docstring explaining its purpose, parameters, and usage. @ mindsdb/api/a2a/agent.py:108",
+      "Outdated docstring after code change: The removal of tokenizer loading functionality in __main__.py is not reflected in the module's docst @ mindsdb/__main__.py:341",
+      "Missing tests for new A2A format transformation logic: The transformation logic in MindsDBAgent for converting HTTP endpoint format to A2A format lacks cor @ mindsdb/api/a2a/agent.py:108-145"
+    ],
+    "false_positive_tolerance": 5,
+    "labeler_id": "extracted_from_reviews",
+    "labeled_at": "2025-12-27T19:10:22.925440Z",
+    "notes": "Extracted from review results. Total findings: 192, Critical: 1, Major: 8"
+  },
+  {
+    "pr_id": "14612",
+    "important_issues": [
+      "Removal of dynamic error handling: The removal of IsDict and related dynamic error handling reduces the flexibility in handling differe @ test_list.py"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:16:20.502481Z",
+    "notes": "Extracted from OpenAI review. Total findings: 2, Critical: 0, Major: 1"
+  },
+  {
+    "pr_id": "14611",
+    "important_issues": [
+      "Removal of Pydantic v1 Compatibility Checks: The removal of Pydantic v1 specific test variants and compatibility checks could lead to potential i @ test_additional_properties_bool.py and test_additional_responses_custom_model_in_callback.py",
+      "Use of inline_snapshot without validation: The use of inline_snapshot for asserting the response in tests without visible validation logic or s @ test_additional_responses_custom_model_in_callback.py"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:17:05.112199Z",
+    "notes": "Extracted from OpenAI review. Total findings: 3, Critical: 0, Major: 2"
+  },
+  {
+    "pr_id": "14608",
+    "important_issues": [
+      "Missing Dependency Import: The 'dep_b' function is used as a dependency in route handlers but is not defined or imported in the @ test_general_performance.py",
+      "High memory usage in large payload processing: LargeIn and LargeOut models may cause high memory usage when processing large payloads due to storin @ test_general_performance.py",
+      "Pytest Fixture Unused: The pytest fixture 'client' is defined but its dependency on the 'app' fixture is removed, potential @ test_general_performance.py:@pytest.fixture(scope=\"module\")"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:20:09.664257Z",
+    "notes": "Extracted from OpenAI review. Total findings: 4, Critical: 0, Major: 3"
+  },
+  {
+    "pr_id": "14604",
+    "important_issues": [
+      "Unsupported language specified: The 'language' field for the local-ruff-check and local-ruff-format hooks is set to 'unsupported', w @ .pre-commit-config.yaml:19,27",
+      "Incorrect command usage: The entry command uses 'uv run' which seems to be a typo or incorrect command. It's likely intended  @ .pre-commit-config.yaml:17,25"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T19:21:57.799689Z",
+    "notes": "Extracted from OpenAI review. Total findings: 3, Critical: 0, Major: 2"
+  },
+  {
+    "pr_id": "14609",
+    "important_issues": [
+      "Dropped support for `pydantic.v1` not documented: The PR drops support for `pydantic.v1` but does not update the API documentation to reflect this bre @ fastapi/_compat/__init__.py",
+      "Outdated setup instructions: With the removal of `pydantic.v1` support, the setup instructions in README and guides are likely ou @ README.md"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "extracted_from_reviews",
+    "labeled_at": "2025-12-29T19:27:32.402689Z",
+    "notes": "Extracted from review results. Total findings: 3, Critical: 0, Major: 2"
+  },
+  {
+    "pr_id": "20449",
+    "important_issues": [
+      "Potential for missing linter checks: The change to use 'prek' over individual linter calls could miss specific linter configurations or c @ .github/workflows/linters.yml",
+      "Lack of explicit test coverage for CI configuration changes: The changes in CI configuration to use pre-commit hooks instead of individual linter calls lack expl @ .github/workflows/docs.yml, .github/workflows/linters.yml"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T20:13:13.798651Z",
+    "notes": "Extracted from OpenAI review. Total findings: 3, Critical: 0, Major: 1"
+  },
+  {
+    "pr_id": "20448",
+    "important_issues": [
+      "Dependency updates do not directly impact test coverage: The PR consists of updates to linter dependencies and does not introduce new functionality or modify @ N/A"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T20:13:54.722207Z",
+    "notes": "Extracted from OpenAI review. Total findings: 1, Critical: 0, Major: 0"
+  },
+  {
+    "pr_id": "20447",
+    "important_issues": [
+      "Test file modified without assertions: Test file changes don't include assertions. Tests should verify expected behavior. @ tests/model_fields/models.py"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "extracted_from_reviews",
+    "labeled_at": "2025-12-29T20:16:35.447196Z",
+    "notes": "Extracted from review results. Total findings: 1, Critical: 0, Major: 0"
+  },
+  {
+    "pr_id": "14586",
+    "important_issues": [
+      "Duplicate CodSpeed test configuration: The CodSpeed test configuration for Ubuntu with Python 3.13 appears twice, which could lead to dupli @ .github/workflows/test.yml:64-68",
+      "Incorrect conditional for CodSpeed benchmarks: The condition for running CodSpeed benchmarks is based on a 'codspeed' matrix variable, but the stan @ .github/workflows/test.yml:85-89",
+      "Parallel execution of CodSpeed tests lacks specific test scenarios: The addition of parallel execution for CodSpeed tests alongside other tests to speed up CI processes @ .github/workflows/test.yml:89"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T20:21:52.136189Z",
+    "notes": "Extracted from OpenAI review. Total findings: 3, Critical: 0, Major: 2"
+  },
+  {
+    "pr_id": "14584",
+    "important_issues": [
+      "Potential method not found error: The method 'model_dump' may not exist on the 'item' object. Originally, 'dict()' was used which is a @ tutorial002.py:18, tutorial002_py310.py:18, tutorial003.py:17, tutorial003_py310.py:17, tutorial004.py:17, tutorial004_py310.py:17, tutorial001.py:34, tutorial001_py310.py:32, tutorial002.py:32, tutorial002_py310.py:30, crud.py:28",
+      "Undocumented method change from 'dict()' to 'model_dump()': The method change from 'dict()' to 'model_dump()' in Pydantic models across multiple files is undocu @ Multiple files",
+      "Missing integration tests for API endpoints: API endpoints in tutorials have been updated to use 'model_dump' instead of 'dict', but there are no @ docs_src/body/tutorial002.py, docs_src/body/tutorial003.py, docs_src/body/tutorial004.py",
+      "Missing update in README/Guides: Given the significant change from 'dict()' to 'model_dump()', it's crucial to update the README file @ Documentation",
+      "Potential breaking change not noted: The change from 'dict()' to 'model_dump()' is not noted as a breaking change in the documentation. T @ Change log",
+      "Missing test cases for edge conditions in 'model_dump': There are no tests covering edge cases for the 'model_dump' method, such as handling of null values, @ Unknown"
+    ],
+    "false_positive_tolerance": 1,
+    "labeler_id": "openai_review_extraction",
+    "labeled_at": "2025-12-29T20:26:10.430977Z",
+    "notes": "Extracted from OpenAI review. Total findings: 6, Critical: 0, Major: 3"
+  }
+]

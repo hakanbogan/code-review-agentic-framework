@@ -1,0 +1,116 @@
+{
+  "correlation_id": "c403bcb6-0cf2-4955-9a60-53b90d9b28d8",
+  "pr_id": "20475",
+  "system_type": "multi_agent",
+  "change_summary": "Reviewed PR #20475: [6.0.x] Fixed #36835 -- [template] Adding `Library` to `__all__`\nChanged 0 files (+0/-0)\nFound 0 issues requiring attention.",
+  "findings": [],
+  "agent_decisions": [
+    {
+      "agent_role": "SR",
+      "task_description": "Review code for security vulnerabilities",
+      "findings": [],
+      "reasoning": "Analyzed security tools output",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:38:21.534123"
+    },
+    {
+      "agent_role": "SFR",
+      "task_description": "Review code style and formatting",
+      "findings": [],
+      "reasoning": "Analyzed linter output and applied nit limits",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:38:21.536335"
+    },
+    {
+      "agent_role": "LR",
+      "task_description": "Review code for logical errors and potential bugs",
+      "findings": [],
+      "reasoning": "The task provided does not include any code changes or diffs to review. Without specific code modifications, it's impossible to identify runtime errors, incorrect behavior, data corruption, security vulnerabilities, or any other issues as per the focus areas. The review process relies on analyzing specific code changes to detect potential problems. In this case, the absence of a code diff means there are no findings to report.",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 5.197458028793335,
+      "timestamp": "2025-12-29T19:38:27.059213"
+    },
+    {
+      "agent_role": "PR",
+      "task_description": "Review code for performance issues",
+      "findings": [],
+      "reasoning": "Static analysis: 0, LLM analysis: 0",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 4.9311511516571045,
+      "timestamp": "2025-12-29T19:38:32.338960"
+    },
+    {
+      "agent_role": "DR",
+      "task_description": "Review code documentation quality",
+      "findings": [],
+      "reasoning": "I now can give a great answer",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 0.9943063259124756,
+      "timestamp": "2025-12-29T19:38:33.672538"
+    },
+    {
+      "agent_role": "TR",
+      "task_description": "Review test coverage and quality",
+      "findings": [],
+      "reasoning": "Static: 0, LLM: 0",
+      "prompt_version": "v1",
+      "llm_calls": 1,
+      "tokens_used": 0,
+      "execution_time_s": 2.485238552093506,
+      "timestamp": "2025-12-29T19:38:36.497137"
+    },
+    {
+      "agent_role": "RP",
+      "task_description": "Generate code revision proposals",
+      "findings": [],
+      "reasoning": "Generated patches for 0 high-priority findings",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:38:36.499398"
+    },
+    {
+      "agent_role": "Supervisor",
+      "task_description": "Consolidate and validate all findings",
+      "findings": [],
+      "reasoning": "Consolidated 0 findings from 7 agents.",
+      "prompt_version": "v1",
+      "llm_calls": 0,
+      "tokens_used": 0,
+      "execution_time_s": 0.0,
+      "timestamp": "2025-12-29T19:38:36.503384"
+    }
+  ],
+  "final_comment_md": "# Code Review\n\n## Summary\nReviewed PR #20475: [6.0.x] Fixed #36835 -- [template] Adding `Library` to `__all__`\nChanged 0 files (+0/-0)\nFound 0 issues requiring attention.\n",
+  "review_time_s": 17.07280421257019,
+  "token_cost_estimate": 0.0,
+  "prompt_versions": {
+    "SR": "v1",
+    "SFR": "v1",
+    "LR": "v1",
+    "PR": "v1",
+    "DR": "v1",
+    "TR": "v1",
+    "RP": "v1",
+    "Supervisor": "v1"
+  },
+  "metadata": {
+    "repository": "django",
+    "title": "[6.0.x] Fixed #36835 -- [template] Adding `Library` to `__all__`",
+    "author": "MagIlyasDOMA"
+  },
+  "created_at": "2025-12-29T19:38:36.503441"
+}
