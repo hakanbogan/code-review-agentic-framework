@@ -84,10 +84,11 @@ def test_noise_metric():
         "001": GroundTruthLabel(
             pr_id="001",
             important_issues=[],
+            false_positive_tolerance=1,
             labeler_id="test",
         )
     }
-    
+
     metric = NoiseMetric()
     values = metric.calculate([result], gt)
     

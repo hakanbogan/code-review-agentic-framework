@@ -195,7 +195,7 @@ class CoverageMetric(BaseMetric):
         # Fallback: Severity-based coverage
         return self._calculate_severity_coverage(results)
 
-    def r43_calculate_gt_coverage(
+    def _calculate_gt_coverage(
         self,
         results: List[PRReviewResult],
         ground_truth: Dict[str, GroundTruthLabel],
