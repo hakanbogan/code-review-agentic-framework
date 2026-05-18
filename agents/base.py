@@ -119,6 +119,22 @@ class BaseAgent(ABC):
         """Get total tokens used from callback."""
         return self.token_callback.total_tokens
 
+    @staticmethod
+    def _extract_tokens(crew_result: Any) -> int:
+        """Read aggregated tokens from a CrewAI Crew.kickoff() result.
+
+        CrewAI 1.6.x routes through litellm and silently drops langchain
+        callbacks during Agent LLM conversion (see crewai/agent/core.py:
+        create_llm), so the framework's TokenUsageCallback never fires.
+        CrewOutput.token_usage (UsageMetrics) is the reliable source —
+        total_tokens aggregates input + output across every LLM call
+        inside the Crew.
+        """
+        token_usage = getattr(crew_result, "token_usage", None)
+        if token_usage is not None:
+            return int(getattr(token_usage, "total_tokens", 0))
+        return 0
+
     def _validate_findings(self, findings: List[Finding]) -> List[Finding]:
         """Validate findings meet evidence requirements."""
         valid = []

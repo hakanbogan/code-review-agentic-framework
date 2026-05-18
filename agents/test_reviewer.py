@@ -210,19 +210,10 @@ class TestCoverageReviewer(BaseAgent):
     def _execute_task(self, agent: Agent, task: Task) -> dict:
         """Execute CrewAI task."""
         try:
-            self._reset_token_tracking()
-            crew = Crew(
-                agents=[agent],
-                tasks=[task],
-                verbose=False,
-                callbacks=[self.token_callback]
-            )
+            crew = Crew(agents=[agent], tasks=[task], verbose=False)
             result = crew.kickoff()
             output = str(result) if result else ""
-            tokens = self._get_token_count()
-            if tokens == 0 and hasattr(result, 'usage_metadata'):
-                if hasattr(result.usage_metadata, 'total_tokens'):
-                    tokens = result.usage_metadata.total_tokens
+            tokens = self._extract_tokens(result)
             return {"reasoning": output[:500], "tokens": tokens, "raw_output": output}
         except Exception as e:
             logger.error(f"Error executing CrewAI task: {e}")
