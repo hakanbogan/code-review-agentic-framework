@@ -214,7 +214,8 @@ class ReviewFlow:
         provider = self.settings.llm_provider
         model = self.settings.openai_model if provider.value == "openai" else self.settings.anthropic_model
 
-        # Pricing per 1M tokens (as of 2024-2025)
+        # Pricing per 1M tokens. Cross-check against https://www.anthropic.com/pricing
+        # and https://openai.com/api/pricing periodically.
         if provider.value == "openai":
             # OpenAI pricing
             if "gpt-4o" in model.lower():
@@ -234,8 +235,18 @@ class ReviewFlow:
                 input_price = 2.50
                 output_price = 10.00
         else:
-            # Anthropic pricing
-            if "claude-3-5-sonnet" in model.lower():
+            # Anthropic pricing — Claude 4.x branches checked first so the
+            # generic "claude-3-haiku" / "claude-3-opus" rules don't shadow them.
+            if "claude-opus-4" in model.lower():       # Opus 4.x family
+                input_price = 15.00
+                output_price = 75.00
+            elif "claude-sonnet-4" in model.lower():   # Sonnet 4.x family
+                input_price = 3.00
+                output_price = 15.00
+            elif "claude-haiku-4" in model.lower():    # Haiku 4.x family
+                input_price = 1.00
+                output_price = 5.00
+            elif "claude-3-5-sonnet" in model.lower():
                 input_price = 3.00  # $3.00 per 1M input tokens
                 output_price = 15.00  # $15.00 per 1M output tokens
             elif "claude-3-opus" in model.lower():
@@ -248,7 +259,7 @@ class ReviewFlow:
                 input_price = 0.25
                 output_price = 1.25
             else:
-                # Default to Claude 3.5 Sonnet pricing
+                # Default to Claude Sonnet 4.x pricing
                 input_price = 3.00
                 output_price = 15.00
 

@@ -161,15 +161,15 @@ LLM_PROVIDER=anthropic  # or "openai"
 
 # OpenAI Configuration (if LLM_PROVIDER=openai)
 OPENAI_API_KEY=sk-proj-...
-OPENAI_MODEL=gpt-4-turbo-preview
+OPENAI_MODEL=gpt-4-turbo
 OPENAI_TEMPERATURE=0.0
 OPENAI_SEED=42
 
 # Anthropic Configuration (if LLM_PROVIDER=anthropic)
-# Recommended: claude-3-5-haiku-20241022 (best price-performance)
-# Alternatives: claude-3-5-sonnet-20241022 (balanced), claude-3-opus-20240229 (highest quality)
+# Recommended: claude-haiku-4-5-20251001 (best price-performance)
+# Alternatives: claude-sonnet-4-6 (balanced), claude-opus-4-7 (highest quality)
 ANTHROPIC_API_KEY=sk-ant-api03-...
-ANTHROPIC_MODEL=claude-3-5-haiku-20241022
+ANTHROPIC_MODEL=claude-haiku-4-5-20251001
 
 # GitHub (required for dataset collection and PR fetching)
 GITHUB_TOKEN=ghp_...
@@ -190,10 +190,10 @@ SEED_FOR_EXPERIMENTS=42
 The framework supports both **OpenAI** and **Anthropic** LLM providers:
 
 - **OpenAI**: GPT-4 Turbo, GPT-4, GPT-3.5 Turbo
-- **Anthropic**: 
-  - **Claude 3.5 Haiku** (recommended): Best price-performance ratio ($0.80-1.00/1M input, $4-5/1M output)
-  - **Claude 3.5 Sonnet**: Balanced performance ($3/1M input, $15/1M output)
-  - **Claude 3 Opus**: Highest quality ($15/1M input, $75/1M output)
+- **Anthropic** (verify current rates at https://www.anthropic.com/pricing):
+  - **Claude Haiku 4.5** (recommended): Best price-performance ratio (~$1/1M input, ~$5/1M output)
+  - **Claude Sonnet 4.x**: Balanced performance (~$3/1M input, ~$15/1M output)
+  - **Claude Opus 4.x**: Highest quality (~$15/1M input, ~$75/1M output)
 
 Set `LLM_PROVIDER=anthropic` or `LLM_PROVIDER=openai` in your `.env` file.
 

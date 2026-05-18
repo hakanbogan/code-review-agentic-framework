@@ -16,7 +16,7 @@ def mock_settings():
     """Create mock settings."""
     return Settings(
         openai_api_key="test-key",
-        openai_model="gpt-4-turbo-preview",
+        openai_model="gpt-4-turbo",
         openai_temperature=0.0,
         openai_seed=42,
     )
