@@ -80,6 +80,25 @@ def test_ruff_tool_parse_output():
     assert result["violations"][0]["code"] == "E501"
 
 
+@patch("subprocess.run")
+def test_bandit_tool_excludes_common_dirs(mock_run):
+    """Bandit command must include --exclude with common venv/cache dirs.
+
+    bandit does NOT respect .gitignore, so without this flag it would scan
+    .venv/, node_modules/, __pycache__/, and other irrelevant directories
+    on any project root containing them.
+    """
+    mock_run.return_value = MagicMock(stdout='{"results": []}', stderr="", returncode=0)
+    tool = BanditTool()
+    tool._run_bandit(Path("/tmp/some-project"))
+
+    called_cmd = mock_run.call_args[0][0]
+    assert "--exclude" in called_cmd
+    exclude_arg = called_cmd[called_cmd.index("--exclude") + 1]
+    for pattern in (".venv", "venv", "node_modules", "__pycache__", ".git"):
+        assert pattern in exclude_arg, f"{pattern!r} missing from bandit --exclude list"
+
+
 def test_semgrep_tool_parse_output():
     """Test semgrep output parsing."""
     tool = SemgrepTool()

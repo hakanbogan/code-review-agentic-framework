@@ -8,6 +8,14 @@ from typing import Any, Dict
 from domain import ToolResult
 from tools.base import BaseTool
 
+# bandit does not respect .gitignore. When pointed at a project root that
+# contains a virtualenv or third-party caches it will scan thousands of
+# unrelated files. Always exclude the common offenders.
+BANDIT_EXCLUDE_DIRS = (
+    ".venv,venv,env,.git,node_modules,__pycache__,build,dist,"
+    ".tox,.pytest_cache,.mypy_cache,.ruff_cache"
+)
+
 
 class SemgrepTool(BaseTool):
     """Semgrep for security vulnerability detection."""
@@ -187,6 +195,7 @@ class BanditTool(BaseTool):
             "-r" if target_path.is_dir() else "",
             str(target_path),
             "-f", "json",
+            "--exclude", BANDIT_EXCLUDE_DIRS,
         ]
         cmd = [c for c in cmd if c]  # Remove empty strings
 
